@@ -3,9 +3,13 @@
 
 ## Please when ready add your teams application URL or IP to the repository description. This will help with grading. Teams are expected to keep this value up to date.
 
+> Team Info Page: http://100.26.92.104/
+
 ## Please do the following steps before completing Milestone 0.
 1. Change the name of the repository. All that needs to change is the NN to your respective team number. Team numbers whose value is less than 10, please pad with a 0. Ex team 1 is Team01 team 11 is Team11. Please make sure to also remove the username from the repository as well. Teams with incorrectly name repository will have points deducted from their milestone 0 grades.
       - Please follow the naming convention assigned by your instructor.
+
+      > **Repo name**: csc648-848-sw-engineering-SU21-T07
 
 1. PLEASE REMOVE THE USERNAME FROM THE REPOSITORY NAME!!!
 
