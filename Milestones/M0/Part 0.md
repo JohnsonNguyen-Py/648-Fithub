@@ -2,7 +2,7 @@
 
 > Alias: Error404
 
-## Proposed poroject idea
+## Proposed project idea
 
 > To develop a web application that helps a person find a workout buddy based on the location, workout interest and more.
 
