@@ -1,0 +1,3 @@
+Install express: npm install express
+Install mysql: npm install mysql
+To kill and start node server: lsof -i tcp:3000 -> kill -9 pid
