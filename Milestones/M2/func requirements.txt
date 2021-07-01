@@ -1,0 +1,145 @@
+P1 (Mandatory)
+Guest User:
+Guest users shall be able to view events posted by other users.
+Guest users shall be able to select their interests.
+Guest users shall see other users’ user names of people looking to work out nearby.
+Guest users shall be able to register.
+Guest users shall be able to Log in as registered users.
+Guest users shall be able to access the homepage.
+Guest users shall be able to access the About us page.
+Guest users shall be able to access the Contact us page.
+Guest users shall be able to access the Support page
+Guest users shall be able to delete their account from FitHub
+
+Registered User:
+11. Registered users  shall be able to access homepage
+12. Registered users shall be able to access About us page
+13. Registered users shall be able to access Contact us page
+14. Registered users shall be able to access Support Page
+15. Registered users shall be able to send workout invites to other users.
+16. Registered users shall be able to select their interests
+17. Registered users shall be able to edit their information
+18. Registered users shall be able to update their profile picture
+19. Registered users shall be able to delete their profile picture
+20. Registered users shall be able to deactivate their account
+22. Registered users shall be able to change their account passwords
+26. Registered users shall be able to delete their account from Fithub
+
+Searching People
+27. Registered users shall be able to have a certain number of swipes per day.
+28. Registered users shall be able search for buddies with similar interest
+29. Registered users shall be able search for buddies nearby
+30. Registered users shall be able to filter search options based on their interests.
+31. Registered users shall be able to filter search options based on how far they are willing to travel.
+
+Friends
+33. Registered users shall be able to find friends to exercise with.
+34. Registered users shall be able to add other registered users as friends.
+35. Registered users shall be able to access their friend list
+36. Registered users shall DM (direct message) other registered users only if they are friends.
+37. Registered users shall have multiple friends if they choose to.
+38. Registered users shall have 0 friends if they choose to.
+39. Registered users shall have the ability to unfriend a former friend.
+40. Register users shall have the ability to block a former friend.
+41. Register users shall have the ability to report a former friend.
+43. Registered users shall view friend's event postings.
+44. Registered users shall be able to decline friend requests.
+45. Registered users shall be able to accept friend requests.
+
+Events
+46. Registered users shall be able to create events 
+47. Registered users shall be able to delete events they created
+48. Registered users shall be able to edit the events they created
+49. Registered users shall be able to join an event
+50. Registered users shall be able to exit from an event
+51. Registered users shall be able to rejoin an event
+52. Registered users shall invite people to events they created
+
+Chats
+70. Registered users shall be able to create a private chat
+78. Registered users shall be able to reject to join in a private chat
+80. Registered users shall be able to accept to join in a private chat
+
+
+Web Application
+89. Web Application shall have About us Page
+90. Web Application shall have Contact us page
+91. Web Application shall ask user to log in
+92. Web Application shall display user’s profile
+93. Web Application shall show notifications to the user
+94. Web Application shall show friend requests
+95. Web Application shall allow user to check their messages
+96. Web Application shall allow user to check event dates they are planning to go
+98. Web Application shall allow user to change password of their account
+99. Web Application shall allow user to deactivate their account
+101. Web Application shall show the logs of user activities
+102. Web application shall show events occurring nearby
+104. Web Application shall allow user to log out
+105. Web Application shall allow user to delete the account
+106. Web Application shall allow user to see list of friends
+108. Web Application shall allow user to search for people using various filter options
+
+P2 (Desired)
+
+Registered User:
+21. Registered users shall be able to save their frequent searches
+24. Registered users shall be able to send an introductory message to a different user in their search result.
+25. Registered users shall be able to  share their real time location with FitHub
+
+Buddy Pass
+82. Registered users shall be able to view people with gym membership
+83. Registered users shall be able to  put request to access buddy pass
+84. Registered users shall be able to  accept the request to access buddy pass
+85. Registered users shall be able to reject the request to buddy pass
+ Web Application shall show buddy pass requests
+
+History logs
+86. Registered users shall access their event visits in logs
+87. Registered users shall access their workout pairing information in logs
+88. Registered users shall be able to access their workout partner’s information from logs
+
+Web Application
+103. Web Application shall show people recommendation with similar interest
+
+P3 (Opportunistic)
+
+Searching People
+32. Registered users shall be able to remove people from their search results
+
+Friends
+42. Registered users shall view friend's club postings.
+
+Clubs
+53. Registered users shall be able to create the club 
+54. Registered users shall be able to update the picture of the club they created
+55. Registered users shall be able to edit the club name they created
+56. Registered users shall be able to delete the club they created
+57. Registered users shall be able to delete the club picture they created
+58. Registered users shall be able to send request to  join the club
+59. Registered users shall be able to leave a club 
+60. Registered users shall be able to send request rejoin a club
+61. Registered users shall be able to add members to the club they created
+62. Registered users shall be able to remove members from the club they created
+63. Registered users shall be able to post in club
+64. Registered users shall be member of multiple clubs
+65. Registered users shall be admin of multiple clubs
+66. Registered users shall be able to invite people to club
+67. Registered users shall be able to accept the joining request for club they created
+68. Registered users shall be able to reject the joining request for club they created
+
+Chats
+69. Registered users  shall be able to create a group chat  
+71. Registered users  shall be able to invite friends to the group chat
+72. Registered users shall be able to remove people from group chat
+73. Registered users shall be able to add unknown people from the chat
+74. Registered users shall be able to post in the group chat
+75. Registered users shall be able to leave a group chat 
+76. Registered users shall be able to dissolution the group chat they cheated
+77. Registered users shall be able to recall their posts
+79. Registered users shall be able to reject to join in a group chat
+81. Registered users shall be able to accept to join in a group chat
+ 
+Web Application
+97. Web Application shall allow user to check updates of the club
+103. Web Application shall show people recommendation with similar interest
+107. Web Application shall allow user to see list of clubs

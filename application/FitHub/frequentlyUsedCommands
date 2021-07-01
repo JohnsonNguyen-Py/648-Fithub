@@ -1,3 +1,14 @@
+npm packages
 Install express: npm install express
 Install mysql: npm install mysql
+
+Restarting API.js file issue
 To kill and start node server: lsof -i tcp:3000 -> kill -9 pid
+
+Github
+git pull
+git checkout develop // use development branch
+
+git addd .
+git commit -m "message"
+git push
