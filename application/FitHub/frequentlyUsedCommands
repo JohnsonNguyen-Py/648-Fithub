@@ -9,6 +9,6 @@ Github
 git pull
 git checkout develop // use development branch
 
-git addd .
+git add .
 git commit -m "message"
 git push
