@@ -11,11 +11,14 @@
         if (form.checkValidity() === false) {
           event.preventDefault();
           event.stopPropagation();
+        } else {
+          event.preventDefault();
+          event.stopPropagation();
+          registerUser();
         }
         form.classList.add('was-validated');
       }, false);
     });
-    registerUser();
   }, false);
 })();
 
@@ -24,14 +27,13 @@ function registerUser() {
     {
       url: "http://100.26.92.104:3000/registerUser",
       type: "POST",
-
-
+      crossDomain : true,
+      headers: {  'Access-Control-Allow-Origin': 'http://100.26.92.104:3000' },
       data: {
         phone: $("#phone").val(),
         zip_code: $("#zip_code").val(),
         activity_type: $("#passions").val(),
         email_id: $("#email_id").val(),
-
         password: $("#password").val()
       },
       success: function (response) {

@@ -13,6 +13,11 @@ async function getTestingData(callback) {
     });
 }
 
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    next();
+  });
+  
 // hello world
 app.get('/', function (req, res) {
     res.send('Welcome to FitHub!!!');
