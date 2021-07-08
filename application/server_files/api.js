@@ -65,7 +65,7 @@ app.post('/registerUser', urlencodedParser, function (req, res) {
                             };
                             var sql1 = "INSERT INTO `registered user`(user_id, phone, address, zip_code, activity_type) VALUES (" + registeredUser.user_id + ",'" + registeredUser.phone + "','" + registeredUser.address + "','" + registeredUser.zip_code + "','" + registeredUser.activity_type + "')";
                             dbconnection.query(sql1, (err1, result1) => {
-                                if (err) {
+                                if (err1) {
                                     res.send({ status: "failure", message: err1, data: {} });
                                 } else {
                                     reg_id = result1.insertId;
@@ -76,7 +76,7 @@ app.post('/registerUser', urlencodedParser, function (req, res) {
                                     }
                                     var sql2 = "INSERT INTO `account`(reg_id, username, password) VALUES (" + account.reg_id + ",'" + account.username + "','" + account.password + "')";
                                     dbconnection.query(sql2, (err2, result2) => {
-                                        if (err) {
+                                        if (err2) {
                                             res.send({ status: "failure", message: err2, data: {} });
                                         } else {
                                             res.send({ status: "success", message: "User Registered", data: {} });
