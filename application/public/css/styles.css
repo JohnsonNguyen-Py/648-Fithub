@@ -26,6 +26,10 @@ p {
   line-height: 1.5;
 }
 
+.fa-2x {
+  padding-right: 5px;
+}
+
 .navbar-brand {
   font-family: "Noto Sans"
 }
@@ -170,4 +174,55 @@ p {
     position: static;
     transform: rotate(0);
   }
+}
+
+/* modal */
+.dumbbell {
+  display: block;
+  margin: 10px 240px 0px;
+  color: #4C4C6D;
+}
+
+.modal-title{
+  width: 100%;
+  text-align: center;
+  color: black;
+}
+
+
+.modal-body {
+  color: black;
+}
+
+/* .invalid class prevents CSS from automatically applying */
+.invalid input:required:invalid {
+  background: #BE4C54;
+}
+
+/* Mark valid inputs during .invalid state */
+.invalid input:required:valid {
+  background: #17D654;
+}
+
+.form-control:focus {
+  box-shadow:  5px 5px 5px black;
+  border-color: black;
+
+}
+
+.loginC {
+  width: 100%;
+  text-align: center;
+}
+.forgot {
+  width: 100%;
+  text-align: center;
+}
+
+.forgotL {
+  color: gray;
+}
+
+.forgotL:hover {
+  color: black;
 }

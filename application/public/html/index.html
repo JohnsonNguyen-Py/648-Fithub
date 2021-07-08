@@ -12,13 +12,17 @@
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
   <!-- CSS Stylesheets -->
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="../css/styles.css">
 
   <!-- Font Awesome -->
   <script src="https://kit.fontawesome.com/ab3cb519ad.js" crossorigin="anonymous"></script>
 
   <!-- Favicon -->
-  <link rel="icon" href="images/favicon.ico">
+  <link rel="icon" href="../images/favicon.ico">
+
+  <!-- JS -->
+  <script defer src="../js/index.js" charset="utf-8"></script>
+  <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 </head>
 
@@ -33,7 +37,9 @@
 
       <nav class="navbar navbar-expand-lg navbar-dark">
 
-        <a class="navbar-brand" href="">FitHub</a>
+
+        <i class="fas fa-dumbbell fa-2x"></i>
+        <a class="navbar-brand">FitHub</a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -61,11 +67,54 @@
       <div class="row">
         <div class="col-lg-6">
           <h1 class="big-heading">Meet new and interesting workout partners nearby.</h1>
-          <button type="button" class="btn btn-dark btn-lg download-button"> Create Account</button>
-          <button type="button" class="btn btn-outline-light btn-lg download-button"> Log in</button>
+
+          <a href="registration.html" class="btn btn-dark btn-lg download-button">Create Account</a>
+
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-outline-light btn-lg download-button" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
+            Log in
+          </button>
+
+          <!-- Modal -->
+          <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header1">
+                  <a class="dumbbell" href="https://cs.sfsu.edu/"><i class="fas fa-dumbbell"></i></a>
+                </div>
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLongTitle">Log In</h5>
+                </div>
+                <div class="modal-body">
+
+
+              <!-- Form Validation -->
+                  <form class="needs-validation" novalidate>
+                    <div class="form-group">
+                      <label for="exampleInputUsername">Username</label>
+                      <input class="form-control" placeholder="Enter username">
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">Password</label>
+                      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                    </div>
+                  </form>
+
+                </div>
+                <div class="modal-footer">
+                  <button onclick="myFunction()" type="button" class="loginC btn btn-outline-dark download-button">Continue</button>
+                </div>
+                <div class="forgot">
+                  <a class="forgotL" href="https://cs.sfsu.edu/">Forgot your password?</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
         </div>
         <div class="col-lg-6">
-          <img class="title-image" src="images/partner.jpg" class="img-fluid. max-width: 100%;" alt="iphone-mockup">
+          <img class="title-image" src="../images/partner.jpg" class="img-fluid. max-width: 100%;" alt="iphone-mockup">
         </div>
       </div>
 
@@ -112,12 +161,12 @@
       <div class="carousel-inner">
         <div class="carousel-item active container-fluid">
           <h2 class="testimonial-text">I no longer have to workout alone. I've found the best workout partner on FitHub.</h2>
-          <img class="testimonial-image" src="images/circle-cropped.png" alt="woman-image">
+          <img class="testimonial-image" src="../images/circle-cropped.png" alt="woman-image">
           <em class="pebbles">San Francisco, California</em>
         </div>
         <div class="carousel-item container-fluid">
           <h2 class="testimonial-text">I used to be so lonely, but with FitHub's help, they've found me a reliable workout buddy. I think.</h2>
-          <img class="testimonial-image" src="images/circle-cropped1.png" alt="man-img">
+          <img class="testimonial-image" src="../images/circle-cropped1.png" alt="man-img">
           <em class="beverly">Leesville, Louisiana</em>
         </div>
       </div>
@@ -140,10 +189,10 @@
   <!-- Press -->
 
   <section class="colored-section" id="press">
-    <img class="press-logo" src="images/techcrunch.png" alt="tc-logo">
-    <img class="press-logo" src="images/tnw.png" alt="tnw-logo">
-    <img class="press-logo" src="images/bizinsider3.png" alt="biz-insider-logo">
-    <img class="press-logo" src="images/mashable.png" alt="mashable-logo">
+    <img class="press-logo" src="../images/TechCrunch.png" alt="tc-logo">
+    <img class="press-logo" src="../images/tnw.png" alt="tnw-logo">
+    <img class="press-logo" src="../images/bizinsider3.png" alt="biz-insider-logo">
+    <img class="press-logo" src="../images/mashable.png" alt="mashable-logo">
 
   </section>
 
@@ -216,8 +265,48 @@
     <div class="container-fluid">
 
       <h3 class="big-heading">Find a Workout Partner Today.</h3>
-      <button type="button" class="btn btn-dark btn-lg download-button"> Create Account</button>
-      <button type="button" class="btn btn-outline-light btn-lg download-button"> Log in</button>
+      <a href="registration.html" class="btn btn-dark btn-lg download-button">Create Account</a>
+
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn-outline-light btn-lg download-button" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
+        Log in
+      </button>
+
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header1">
+              <a class="dumbbell" href="https://cs.sfsu.edu/"><i class="fas fa-dumbbell"></i></a>
+            </div>
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">Log In</h5>
+            </div>
+            <div class="modal-body">
+
+
+          <!-- Form Validation -->
+              <form class="needs-validation" novalidate>
+                <div class="form-group">
+                  <label for="exampleInputUsername">Username</label>
+                  <input class="form-control" placeholder="Enter username">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Password</label>
+                  <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                </div>
+              </form>
+
+            </div>
+            <div class="modal-footer">
+              <button onclick="myFunction()" type="button" class="loginC btn btn-outline-dark download-button">Continue</button>
+            </div>
+            <div class="forgot">
+              <a class="forgotL" href="https://cs.sfsu.edu/">Forgot your password?</a>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
