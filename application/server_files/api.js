@@ -29,40 +29,51 @@ app.post('/registerUser', urlencodedParser, function (req, res) {
         email_id: req.body.email_id,
         is_registered: is_registered
     }
-    var sql = "INSERT INTO `guest user`(email_id, is_registered) VALUES ('" + guest.email_id + "'," + is_registered + ")";
-    dbconnection.query(sql, (err, result) => {
+    var checkisuserexists = "SELECT * from `guest user` where email_id = '" + guest.email_id + "'";
+    dbconnection.query(checkisuserexists, (err, res1) => {
         if (err) {
-            res.send({ status: "failure", message: err, data: {} });
+            res1.send({ status: "failure", message: err, data: {} });
         } else {
-            var inserted_id = result.insertId;
-            // console.log(inserted_id);
-            if (is_registered == 1) {
-                registeredUser = {
-                    user_id: inserted_id,
-                    phone: req.body.phone,
-                    address: req.body.address,
-                    zip_code: req.body.zip_code,
-                    activity_type: req.body.activity_type
-                };
-                var sql1 = "INSERT INTO `registered user`(user_id, phone, address, zip_code, activity_type) VALUES (" + registeredUser.user_id + ",'" + registeredUser.phone + "','" + registeredUser.address + "','" + registeredUser.zip_code + "','" + registeredUser.activity_type + "')";
-                dbconnection.query(sql1, (err1, result1) => {
+            if (res1.length > 0) {
+                res.send({ status: "failure", message: "User already exists", data: {} });
+            } else {
+                var sql = "INSERT INTO `guest user`(email_id, is_registered) VALUES ('" + guest.email_id + "'," + is_registered + ")";
+                dbconnection.query(sql, (err, result) => {
                     if (err) {
-                        res.send({ status: "failure", message: err1, data: {} });
+                        res.send({ status: "failure", message: err, data: {} });
                     } else {
-                        reg_id = result1.insertId;
-                        account = {
-                            reg_id: reg_id,
-                            username: req.body.email_id,
-                            password: req.body.password
+                        var inserted_id = result.insertId;
+                        // console.log(inserted_id);
+                        if (is_registered == 1) {
+                            registeredUser = {
+                                user_id: inserted_id,
+                                phone: req.body.phone,
+                                address: req.body.address,
+                                zip_code: req.body.zip_code,
+                                activity_type: req.body.activity_type
+                            };
+                            var sql1 = "INSERT INTO `registered user`(user_id, phone, address, zip_code, activity_type) VALUES (" + registeredUser.user_id + ",'" + registeredUser.phone + "','" + registeredUser.address + "','" + registeredUser.zip_code + "','" + registeredUser.activity_type + "')";
+                            dbconnection.query(sql1, (err1, result1) => {
+                                if (err) {
+                                    res.send({ status: "failure", message: err1, data: {} });
+                                } else {
+                                    reg_id = result1.insertId;
+                                    account = {
+                                        reg_id: reg_id,
+                                        username: req.body.email_id,
+                                        password: req.body.password
+                                    }
+                                    var sql2 = "INSERT INTO `account`(reg_id, username, password) VALUES (" + account.reg_id + ",'" + account.username + "','" + account.password + "')";
+                                    dbconnection.query(sql2, (err2, result2) => {
+                                        if (err) {
+                                            res.send({ status: "failure", message: err2, data: {} });
+                                        } else {
+                                            res.send({ status: "success", message: "User Registered", data: {} });
+                                        }
+                                    });
+                                }
+                            });
                         }
-                        var sql2 = "INSERT INTO `account`(reg_id, username, password) VALUES (" + account.reg_id + ",'" + account.username + "','" + account.password + "')";
-                        dbconnection.query(sql2, (err2, result2) => {
-                            if (err) {
-                                res.send({ status: "failure", message: err2, data: {} });
-                            } else {
-                                res.send({ status: "success", message: "User Registered", data: {} });
-                            }
-                        });
                     }
                 });
             }
