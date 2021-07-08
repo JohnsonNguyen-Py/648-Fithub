@@ -80,6 +80,7 @@ label {
   padding: 20px;
 }
 
+/* forgot password */
 .forgot {
   margin-top: 200px;
 }
@@ -92,15 +93,30 @@ label {
   color: #FFE194;
 }
 
+/* button small */
 .btn-sm {
   margin: 5px;
 }
 
+.btn-sm:hover {
+  background-color: #FFE194;
+}
+
+
+
+
+/* modal */
 .modal-title {
   width: 100%;
   text-align: center;
   padding: 10px;
 }
+
+/* form */
+.form-control:focus {
+    box-shadow:  5px 5px 5px black;
+    border-color: black;
+  }
 
 .letEveryone {
   line-height: 1.5;
