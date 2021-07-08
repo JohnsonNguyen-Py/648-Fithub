@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 var bodyParser = require('body-parser');
+var md5 = require('md5');
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 var dbconnection = require('./mysqlConnector');
@@ -61,7 +62,7 @@ app.post('/registerUser', urlencodedParser, function (req, res) {
                                     account = {
                                         reg_id: reg_id,
                                         username: req.body.email_id,
-                                        password: req.body.password
+                                        password: md5(req.body.password)
                                     }
                                     var sql2 = "INSERT INTO `account`(reg_id, username, password) VALUES (" + account.reg_id + ",'" + account.username + "','" + account.password + "')";
                                     dbconnection.query(sql2, (err2, result2) => {
