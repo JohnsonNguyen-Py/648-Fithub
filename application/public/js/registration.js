@@ -1,5 +1,5 @@
 
-// Example starter JavaScript for disabling form submissions if there are invalid fields
+//Example starter JavaScript for disabling form submissions if there are invalid fields
 (function () {
   'use strict';
   window.addEventListener('load', function () {
@@ -11,21 +11,26 @@
         if (form.checkValidity() === false) {
           event.preventDefault();
           event.stopPropagation();
+        } else {
+          event.preventDefault();
+          event.stopPropagation();
+          registerUser();
         }
+        
         form.classList.add('was-validated');
       }, false);
     });
-    registerUser();
   }, false);
 })();
 
 function registerUser() {
+  console.log("in register");
   $.ajax(
     {
       url: "http://100.26.92.104:3000/registerUser",
       type: "POST",
-
-
+      crossDomain : true,
+      dataType:'jsonp',
       data: {
         phone: $("#phone").val(),
         zip_code: $("#zip_code").val(),
@@ -40,7 +45,6 @@ function registerUser() {
       error: function () {
         alert("Error!");
       }
-
     });
 }
 

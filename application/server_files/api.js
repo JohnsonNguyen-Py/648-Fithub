@@ -4,6 +4,11 @@ var bodyParser = require('body-parser');
 var md5 = require('md5');
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    next();
+  });
+
 var dbconnection = require('./mysqlConnector');
 
 async function getTestingData(callback) {
@@ -13,6 +18,11 @@ async function getTestingData(callback) {
     });
 }
 
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    next();
+  });
+  
 // hello world
 app.get('/', function (req, res) {
     res.send('Welcome to FitHub!!!');
