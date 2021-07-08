@@ -18,4 +18,4 @@ var router = express.Router();
 //    res.render("registration", { title: "NAME FROM FRONTEND INSERT HERE", search: true });
 //})
 
-module.exports = router;
+//module.exports = router;
