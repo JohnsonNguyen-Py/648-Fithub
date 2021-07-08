@@ -15,19 +15,32 @@
         form.classList.add('was-validated');
       }, false);
     });
+    registerUser();
   }, false);
 })();
 
-$.ajax(
-  {
-    type: "POST",
-    url: "http://100.26.92.104:3000/registerUser",
+function registerUser() {
+  $.ajax(
+    {
+      url: "http://100.26.92.104:3000/registerUser",
+      type: "POST",
 
-    phone: req.body.phone,
-    address: req.body.address,
-    zip_code: req.body.zip_code,
-    activity_type: req.body.activity_type,
-    email_id: req.body.email_id,
-    password: req.body.password,
 
-  })
+      data: {
+        phone: $("#phone").val(),
+        zip_code: $("#zip_code").val(),
+        activity_type: $("#passions").val(),
+        email_id: $("#email_id").val(),
+
+        password: $("#password").val()
+      },
+      success: function (response) {
+        alert(response.message);
+      },
+      error: function () {
+        alert("Error!");
+      }
+
+    });
+}
+
