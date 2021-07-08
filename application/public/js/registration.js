@@ -16,7 +16,18 @@
       }, false);
     });
   }, false);
-
-
 })();
 
+$.ajax(
+  {
+    type: "POST",
+    url: "http://100.26.92.104:3000/registerUser",
+
+    phone: req.body.phone,
+    address: req.body.address,
+    zip_code: req.body.zip_code,
+    activity_type: req.body.activity_type,
+    email_id: req.body.email_id,
+    password: req.body.password,
+
+  })
