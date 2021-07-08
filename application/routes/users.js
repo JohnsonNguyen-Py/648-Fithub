@@ -1,6 +1,6 @@
-// var express = require("express");
-// var router = express.Router();
-// var bcrypt = require('bcrypt');
+var express = require("express");
+var router = express.Router();
+//var bcrypt = require('bcrypt');
 // var db = require("application\public\server_files\mysqlConnector.js");
 // var UserError = require("application\public\helpers\UserError.js");
 
@@ -75,4 +75,4 @@
 //         });
 // });
 
-// module.exports = router;
+module.exports = router;
