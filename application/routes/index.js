@@ -9,13 +9,13 @@ var router = express.Router();
 
 
 //Login page
-router.get('/login', (req, res, next) => {
-    res.render("login", { title: "NAME FROM FRONTEND INSERT HERE", search: true });
-})
+//router.get('/login', (req, res, next) => {
+//   res.render("login", { title: "NAME FROM FRONTEND INSERT HERE", search: true });
+//})
 
 // Registration page
-router.get('/registration', (req, res, next) => {
-    res.render("registration", { title: "NAME FROM FRONTEND INSERT HERE", search: true });
-})
+//router.get('/registration', (req, res, next) => {
+//    res.render("registration", { title: "NAME FROM FRONTEND INSERT HERE", search: true });
+//})
 
 module.exports = router;
