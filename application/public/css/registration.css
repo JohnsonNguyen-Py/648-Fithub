@@ -91,3 +91,19 @@ label {
 .forgotL:hover {
   color: #FFE194;
 }
+
+.btn-sm {
+  margin: 5px;
+}
+
+.modal-title {
+  width: 100%;
+  text-align: center;
+  padding: 10px;
+}
+
+.letEveryone {
+  line-height: 1.5;
+  padding: 10px;
+  font-size: 13px;
+}
