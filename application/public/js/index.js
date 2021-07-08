@@ -1,12 +1,19 @@
-function myFunction() {
-  // Get the value of the input field with id="numb"
-  let x = document.getElementById("numb").value;
-  // If x is Not a Number or less than one or greater than 10
-  let text;
-  if (isNaN(x) || x < 1 || x > 10) {
-    text = "Input not valid";
-  } else {
-    text = "Input OK";
-  }
-  document.getElementById("demo").innerHTML = text;
-}
+
+// Example starter JavaScript for disabling form submissions if there are invalid fields
+(function() {
+  'use strict';
+  window.addEventListener('load', function() {
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.getElementsByClassName('needs-validation');
+    // Loop over them and prevent submission
+    var validation = Array.prototype.filter.call(forms, function(form) {
+      form.addEventListener('submit', function(event) {
+        if (form.checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+      }, false);
+    });
+  }, false);
+})();
