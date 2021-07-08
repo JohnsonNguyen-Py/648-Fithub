@@ -102,7 +102,10 @@ label {
   background-color: #FFE194;
 }
 
-
+/* continue btn */
+.continueB {
+  margin-top: 70px;
+}
 
 
 /* modal */
