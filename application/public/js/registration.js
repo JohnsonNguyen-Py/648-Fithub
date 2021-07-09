@@ -27,8 +27,8 @@ function registerUser() {
     {
       url: "http://100.26.92.104:3000/registerUser",
       type: "POST",
-      crossDomain : true,
-      headers: {  'Access-Control-Allow-Origin': 'http://100.26.92.104:3000' },
+      crossDomain: true,
+      headers: { 'Access-Control-Allow-Origin': 'http://100.26.92.104:3000' },
       data: {
         phone: $("#phone").val(),
         zip_code: $("#zip_code").val(),
@@ -38,6 +38,8 @@ function registerUser() {
       },
       success: function (response) {
         alert(response.message);
+        window.location.href = 'http://100.26.92.104/';
+
       },
       error: function () {
         alert("Error!");
