@@ -37,6 +37,8 @@ function registerUser() {
       },
       success: function (response) {
         alert(response.message);
+        window.location.href = 'http://100.26.92.104/';
+
       },
       error: function () {
         alert("Error!");
