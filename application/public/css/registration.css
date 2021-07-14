@@ -131,3 +131,7 @@ label {
 .form-check {
   padding-top: 25px;
 }
+
+.custom-control-label {
+  padding: 0px 5px;
+}
