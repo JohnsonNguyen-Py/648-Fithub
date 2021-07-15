@@ -41,7 +41,6 @@ input[type="search"]::-webkit-search-cancel-button {
 .form-control:focus {
   box-shadow:  5px 5px 5px black;
   border-color: black;
-
 }
 
 
@@ -160,6 +159,62 @@ body {
   padding: 0 0 20px 0;
 }
 
+/* side butttons */
+
+/* modal */
+.dumbbell {
+  display: block;
+  margin: 10px 240px 0px;
+  color: #4C4C6D;
+}
+
+.modal-title{
+  width: 100%;
+  text-align: center;
+  color: black;
+}
+
+.noCard {
+  font-weight: bold;
+}
+
+.checkLabel {
+padding-left: 1.4em;
+display:inline-block;
+}
+
+.check {
+  position: absolute;
+  margin-top: 5px;
+}
+
+.checkbox{
+  margin-top: 5px;
+}
+
+
+
+.letEveryone {
+  line-height: 1.5;
+  padding: 10px;
+  font-size: 13px;
+  text-align: center;
+  color: gray;
+}
+
+.agree{
+  color: gray;
+  text-align: center;
+
+}
+
+.containerPlatinum {
+  text-align: center;
+  align-items: center;
+  padding-bottom: 20px;
+}
+
+
 
 
 
@@ -171,6 +226,14 @@ body {
 
 .btn-sm:hover {
   background-color: #FFE194;
+}
+
+.btnCenter {
+  text-align: center;
+}
+
+.logOut{
+  text-align: center;
 }
 
 
