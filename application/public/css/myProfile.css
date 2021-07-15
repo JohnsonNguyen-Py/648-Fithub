@@ -1,5 +1,6 @@
 
-/* link to myProfile page */
+
+/* link to matching page */
 a {
   text-decoration: none;
 }
@@ -61,14 +62,19 @@ body {
   padding: 0
 }
 
+/* side Bar */
+
 .side {
-  min-width: 320px;
+  width: 320px;
   height: 200px;
   background-color: #FFF;
   height: 100%;
   min-height: 100vh;
   border-right: 1px solid #e1e1e1;
   margin-right: 350px;
+
+
+
 }
 
 .side .header {
@@ -95,66 +101,26 @@ body {
   font-size: 23px;
 }
 
-.side .menu ul {
-  display: flex;
-  padding: 0 20px;
+.card1 {
+  width: 250px;
+  background-color: white;
+  margin: 10px;
 }
 
-.side .menu ul li {
-  list-style: none;
-  margin: 0 10px;
-  font-weight: 700;
+.card-text {
+  color: grey;
   font-size: 15px;
-  letter-spacing: 0.5px;
 }
 
-.side .menu .active {
-  border-bottom: 3px solid #fd5068;
-  padding-bottom: 2px;
-}
-
-.side .messages {
-  padding: 10px 20px;
-  display: flex;
-  align-items: center;
-  transition: 0.2 box-shadow;
-}
-
-.side .messages .avatar img {
-  width: 70px;
-  height: 70px;
-  border-radius: 70px;
-}
-
-.side .messages .user {
-  padding: 0 10px;
-  font-weight: 500;
-  letter-spacing: 0.5px;
-  font-size: 18px;
-}
-
-.side .messages .text {
-  width: 200px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  padding: 0 10px;
-  font-weight: 300;
-  font-size: 15px;
-  opacity: 0.8;
-}
-
-.side .messages:hover {
-  box-shadow: 0 0 15px 0 rgba(43, 78, 78, 0.1);
-  border-right: 5px solid #fd5068;
-}
-
+/* card */
 .content {
-  width: 100% display: flex;
+  width: 100%
+  display: flex;
   padding: 20px 0;
   align-items: center;
   flex-direction: column;
   margin-top: 100px;
+
 }
 
 .content .card {
@@ -188,22 +154,28 @@ body {
   font-size: 26px;
 }
 
-.content .card .local {
+.content .card .passions {
   display: flex;
   align-items: center;
   padding: 0 0 20px 0;
 }
 
-.content .card .local i {
-  margin: 5px 0;
-  color: #fff;
+
+
+
+
+/* button small */
+.btn-sm {
+  margin: 5px;
 }
 
-.content .card .local span {
-  color: #fff;
-  padding: 0 10px;
-  text-shadow: 1px 1px 5px #444;
+.btn-sm:hover {
+  background-color: #FFE194;
 }
+
+
+
+/* content buttons */
 
 .content .buttons {
   margin-top: 10px;
