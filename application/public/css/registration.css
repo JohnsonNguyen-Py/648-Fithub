@@ -131,3 +131,23 @@ label {
 .form-check {
   padding-top: 25px;
 }
+
+.custom-control-label {
+  padding: 0px 5px;
+}
+
+/* optional */
+
+.optional {
+  max-width: 50%;
+  margin: 40px auto;
+}
+
+.col {
+  color: #FFE194;
+}
+
+.col-auto {
+  color: white;
+  text-align: center;
+  }
