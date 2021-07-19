@@ -58,12 +58,13 @@ app.post('/registerUser', urlencodedParser, function (req, res) {
                         if (is_registered == 1) {
                             registeredUser = {
                                 user_id: inserted_id,
+                                gender: req.body.gender,
                                 phone: req.body.phone,
                                 address: req.body.address,
                                 zip_code: req.body.zip_code,
                                 activity_type: req.body.activity_type
                             };
-                            var sql1 = "INSERT INTO `registered user`(user_id, phone, address, zip_code, activity_type) VALUES (" + registeredUser.user_id + ",'" + registeredUser.phone + "','" + registeredUser.address + "','" + registeredUser.zip_code + "','" + registeredUser.activity_type + "')";
+                            var sql1 = "INSERT INTO `registered user`(user_id, gender, phone, address, zip_code, activity_type) VALUES (" + registeredUser.user_id + ",'"+registeredUser.gender+"','" + registeredUser.phone + "','" + registeredUser.address + "','" + registeredUser.zip_code + "','" + registeredUser.activity_type + "')";
                             dbconnection.query(sql1, (err1, result1) => {
                                 if (err1) {
                                     res.send({ status: "failure", message: err1, data: {} });
