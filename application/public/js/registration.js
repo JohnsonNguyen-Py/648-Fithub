@@ -46,6 +46,7 @@ function registerUser() {
       data: {
         phone: $("#phone").val(),
         zip_code: $("#zip_code").val(),
+        gender: $("input[type='radio'][name='radio-stacked']:checked").val(),
         activity_type: activity_type,
         address: $("#address").val(),
         email_id: $("#email_id").val(),
@@ -53,8 +54,8 @@ function registerUser() {
       },
       success: function (response) {
         if(response.status == "success") {
-          alert(response.message);
-          window.location.href = 'http://100.26.92.104/';
+          alert("Thank you for registering. Go to home page and then log in!!!");
+          window.location.href = 'index.html';
         } else {
           alert("failure");
           console.log(response)
@@ -67,4 +68,3 @@ function registerUser() {
 
     });
 }
-

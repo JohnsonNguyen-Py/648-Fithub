@@ -45,12 +45,12 @@
         <div class="col-lg-6 ">
           <label for="validationCustom02">Gender</label>
           <div>
-            <input type="radio" class="custom-control-input" id="customControlValidation2" name="radio-stacked" required>
+            <input type="radio" class="custom-control-input" id="customControlValidation2" name="radio-stacked" value ="female" required>
             <label class="custom-control-label" for="customControlValidation1"> Female </label>
-            <input type="radio" class="custom-control-input" id="customControlValidation3" name="radio-stacked" required>
+            <input type="radio" class="custom-control-input" id="customControlValidation3" name="radio-stacked" value ="male" required>
             <label class="custom-control-label" for="customControlValidation2"> Male </label>
-            <input type="radio" class="custom-control-input" id="customControlValidation3" name="radio-stacked" required>
-            <label class="custom-control-label" for="customControlValidation3"> More </label>
+            <input type="radio" class="custom-control-input" id="customControlValidation3" name="radio-stacked" value ="other" required>
+            <label class="custom-control-label" for="customControlValidation3"> Other </label>
             <div class="invalid-feedback">Please provide one.</div>
             <div class="valid-feedback">Looks good!</div>
           </div>
@@ -69,9 +69,9 @@
         </div>
         <div class="col-lg-6">
           <label for="exampleInputEmail1">Password</label>
-          <input type="password" class="form-control" id="password" placeholder="Enter Password" required>
+          <input type="password" minlength= "6" maxlength= "12" class="form-control" id="password" placeholder="Enter Password" required>
           <div class="invalid-feedback">
-            Please provide a password.
+            Please provide a password with length (6-12).
           </div>
         </div>
       </div>
@@ -101,7 +101,7 @@
         </div>
         <div class="col-lg-6">
           <label for="validationCustom03">Zipcode</label>
-          <input type="number" class="form-control" id="zip_code" placeholder="Enter Zip Code" required>
+          <input type="number" class="form-control" minlength= "5" maxlength= "5" id="zip_code" placeholder="Enter Zip Code" required>
           <div class="invalid-feedback">
             Please provide a valid zipcode.
           </div>
@@ -206,12 +206,12 @@
       </div>
 </div>
 <a href="../html/myProfile.html">
-  <button class="btn btn-outline-light continueB" type="submit">Continue</button>
+  <button class="btn btn-outline-light continueB" type="submit">Register</button>
   </a>
   </form>
   <footer>
     <div class="forgot">
-      <a class="forgotL" href="https://cs.sfsu.edu/">Already have an account? Log in.</a>
+      <a class="forgotL" href="../index.html">Already have an account? Log in.</a>
     </div>
   </footer>
 </body>
