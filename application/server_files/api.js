@@ -11,28 +11,23 @@ app.use((req, res, next) => {
 
 var dbconnection = require('./mysqlConnector');
 
-async function getTestingData(callback) {
-    dbconnection.query('select * from testing', function (err, rows, fields) {
-        if (err) throw err
-        callback(rows);
-    });
-}
+//SESSIONS
+var sessions = require('express-session');
+var mysqlSessions = require('express-mysql-session')(sessions);
+
+
 
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
     next();
-  });
-  
+});
+
 // hello world
 app.get('/', function (req, res) {
+    console.log(req.sessions); //TESTING SESSIONS
     res.send('Welcome to FitHub!!!');
 });
 
-app.get('/dbtesting', function (req, res) {
-    getTestingData(function (data) {
-        res.send(data);
-    })
-});
 
 app.post('/registerUser', urlencodedParser, function (req, res) {
     var is_registered = 1, reg_id = 0;
@@ -93,4 +88,39 @@ app.post('/registerUser', urlencodedParser, function (req, res) {
     });
 });
 
+
+
+
+app.use(sessions({
+    store: mysqlSessionStore,
+    secret: "csc648",
+    resave: false,
+    saveUninitialized: false
+
+}));
+
+app.post('/login'), urlencodedParser, (req, res) => {
+    let Username = req.body.Username;
+    let Password = req.body.Password;
+};
+
 app.listen(3000);
+
+
+
+
+
+
+/*
+app.get('/dbtesting', function (req, res) {
+    getTestingData(function (data) {
+        res.send(data);
+    })
+});
+
+async function getTestingData(callback) {
+    dbconnection.query('select * from testing', function (err, rows, fields) {
+        if (err) throw err
+        callback(rows);
+    });
+}*/
