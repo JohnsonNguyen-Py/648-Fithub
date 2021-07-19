@@ -7,7 +7,7 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false })
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
     next();
-  });
+});
 
 var dbconnection = require('./mysqlConnector');
 
@@ -59,7 +59,7 @@ app.post('/registerUser', urlencodedParser, function (req, res) {
                                 zip_code: req.body.zip_code,
                                 activity_type: req.body.activity_type
                             };
-                            var sql1 = "INSERT INTO `registered user`(user_id, gender, phone, address, zip_code, activity_type) VALUES (" + registeredUser.user_id + ",'"+registeredUser.gender+"','" + registeredUser.phone + "','" + registeredUser.address + "','" + registeredUser.zip_code + "','" + registeredUser.activity_type + "')";
+                            var sql1 = "INSERT INTO `registered user`(user_id, gender, phone, address, zip_code, activity_type) VALUES (" + registeredUser.user_id + ",'" + registeredUser.gender + "','" + registeredUser.phone + "','" + registeredUser.address + "','" + registeredUser.zip_code + "','" + registeredUser.activity_type + "')";
                             dbconnection.query(sql1, (err1, result1) => {
                                 if (err1) {
                                     res.send({ status: "failure", message: err1, data: {} });
@@ -104,7 +104,7 @@ app.post('/login'), urlencodedParser, (req, res) => {
     let Password = req.body.Password;
 };
 
-app.listen(3000);
+//app.listen(3000);
 
 
 
