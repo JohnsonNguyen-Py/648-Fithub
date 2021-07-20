@@ -50,6 +50,10 @@ p {
   color: black;
 }
 
+#selectPlan .price-text, #selectPlan h3 {
+  color: black;
+}
+
 /* Navigation Bar */
 .navbar {
   padding-bottom: 1.5rem;

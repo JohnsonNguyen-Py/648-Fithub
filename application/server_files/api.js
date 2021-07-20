@@ -28,7 +28,6 @@ app.get('/', function (req, res) {
     res.send('Welcome to FitHub!!!');
 });
 
-
 app.post('/registerUser', urlencodedParser, function (req, res) {
     var is_registered = 1, reg_id = 0;
     var guest = {
@@ -91,13 +90,13 @@ app.post('/registerUser', urlencodedParser, function (req, res) {
 
 
 
-app.use(sessions({
-    store: mysqlSessionStore,
-    secret: "csc648",
-    resave: false,
-    saveUninitialized: false
+// app.use(sessions({
+//     store: mysqlSessionStore,
+//     secret: "csc648",
+//     resave: false,
+//     saveUninitialized: false
 
-}));
+// }));
 
 app.post('/login'), urlencodedParser, (req, res) => {
     let Username = req.body.Username;

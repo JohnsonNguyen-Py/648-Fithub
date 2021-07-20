@@ -6,11 +6,14 @@
   <title>FitHub</title>
 
   <!-- BootStrap Scripts -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+    rel="stylesheet">
   <!-- CSS Stylesheets -->
   <link rel="stylesheet" href="css/styles.css">
 
@@ -32,7 +35,7 @@
   <section class="colored-section" id="title">
     <div class="container-fluid">
       <!-- Nav Bar -->
-      <nav class="navbar navbar-expand-lg navbar-dark" id = "header">
+      <nav class="navbar navbar-expand-lg navbar-dark" id="header">
       </nav>
       <!-- Title -->
 
@@ -43,12 +46,14 @@
           <a href="html/registration.html" class="btn btn-dark btn-lg download-button">Create Account</a>
 
           <!-- Button trigger modal -->
-          <button type="button" class="btn btn-outline-light btn-lg download-button" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
+          <button type="button" class="btn btn-outline-light btn-lg download-button" data-bs-toggle="modal"
+            data-bs-target="#exampleModalCenter">
             Log in
           </button>
 
           <!-- Modal -->
-          <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
               <div class="modal-content">
                 <div class="modal-header1">
@@ -122,61 +127,9 @@
       </div>
   </section>
 
-
-  <!-- Testimonials -->
-
-  <!-- Testimonial Section -->
-
-  <section class="colored-section" id=testimonial>
-
-    <div id="testimonials" class="carousel slide" data-bs-ride="false" data-bs-keyboard="true">
-      <div class="carousel-inner">
-        <div class="carousel-item active container-fluid">
-          <h2 class="testimonial-text">I no longer have to workout alone. I've found the best workout partner on FitHub.</h2>
-          <img class="testimonial-image" src="images/circle-cropped.png" alt="woman-image">
-          <em class="pebbles">San Francisco, California</em>
-        </div>
-        <div class="carousel-item container-fluid">
-          <h2 class="testimonial-text">I used to be so lonely, but with FitHub's help, they've found me a reliable workout buddy. I think.</h2>
-
-
-          <img class="testimonial-image" src="images/circle-cropped1.png" alt="man-img">
-
-          <em class="beverly">Leesville, Louisiana</em>
-        </div>
-      </div>
-
-      <!-- Carousel Buttons -->
-      <button class="carousel-control-prev" type="button" data-bs-target="#testimonials" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#testimonials" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
-
-    </div>
-  </section>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
-
-
-  <!-- Press -->
-
-  <section class="colored-section" id="press">
-
-    <img class="press-logo" src="images/TechCrunch.png" alt="tc-logo">
-    <img class="press-logo" src="images/tnw.png" alt="tnw-logo">
-    <img class="press-logo" src="images/bizinsider3.png" alt="biz-insider-logo">
-    <img class="press-logo" src="images/mashable.png" alt="mashable-logo">
-
-
-  </section>
-
-
   <!-- Pricing -->
 
-  <section class="white-section" id="pricing">
+  <section class="colored-section" id="pricing">
 
     <div class="A-plan">
       <h2 class="section-heading">A Plan for Every Fitness Enthusiast Needs</h2>
@@ -184,7 +137,7 @@
     </div>
 
 
-    <div class="row">
+    <div class="row" id="selectPlan">
       <div class="pricing-column col-lg-4 col-md-6 text-center">
         <div class="card">
           <div class="card-header">
@@ -195,6 +148,7 @@
             <p>5 Matches Per Day</p>
             <p>10 Messages Per Day</p>
             <p>Unlimited App Usage</p>
+            <p> &nbsp;</p>
             <button type="button" class="w-100 btn btn-outline-dark btn-lg">Sign Up</button>
           </div>
         </div>
@@ -210,6 +164,7 @@
             <p>Unlimited Matches</p>
             <p>Unlimited Messages</p>
             <p>Unlimited App Usage</p>
+            <p> &nbsp;</p>
             <button type="button" class="w-100 btn btn-outline-dark btn-lg">Sign Up</button>
           </div>
         </div>
@@ -234,6 +189,71 @@
 
   </section>
 
+  <section class="white-section" id="contact">
+
+  </section>
+  <section class="colored-section" id="aboutus">
+    <div class="A-plan">
+      <h2 class="section-heading">The Fithub team</h2>
+      <p id="teaminfo">Fithub helps you find out workout buddy based on your location, workout interest and more. Join
+        now!!!</p>
+    </div>
+    <div class="row">
+      <div class="col-lg-4">
+        <img class="testimonial-image" src="images/vvora.jpeg" alt="woman-image">
+        <div class="card-header">
+          <h3>Vidhi Vora</h3>
+          <p>Team Lead</p>
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <img class="testimonial-image" src="images/vvora.jpeg" alt="woman-image">
+        <div class="card-header">
+          <h3>Vidhi Vora</h3>
+          <p>Team Lead</p>
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <img class="testimonial-image" src="images/vvora.jpeg" alt="woman-image">
+        <div class="card-header">
+          <h3>Vidhi Vora</h3>
+          <p>Team Lead</p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-4">
+        <img class="testimonial-image" src="images/circle-cropped.png" alt="woman-image">
+        <div class="card-header">
+          <h3>Vidhi Vora</h3>
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <img class="testimonial-image" src="images/circle-cropped.png" alt="woman-image">
+        <div class="card-header">
+          <h3>Vidhi Vora</h3>
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <img class="testimonial-image" src="images/circle-cropped.png" alt="woman-image">
+        <div class="card-header">
+          <h3>Vidhi Vora</h3>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-4">
+        <img class="testimonial-image" src="images/circle-cropped.png" alt="woman-image">
+        <div class="card-header">
+          <h3>Vidhi Vora</h3>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- Call to Action -->
 
@@ -248,12 +268,14 @@
 
 
       <!-- Button trigger modal -->
-      <button type="button" class="btn btn-outline-light btn-lg download-button" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
+      <button type="button" class="btn btn-outline-light btn-lg download-button" data-bs-toggle="modal"
+        data-bs-target="#exampleModalCenter">
         Log in
       </button>
 
       <!-- Modal -->
-      <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
             <div class="modal-header1">
@@ -279,7 +301,8 @@
 
             </div>
             <div class="modal-footer">
-              <button onclick="myFunction()" type="button" class="loginC btn btn-outline-dark download-button">Continue</button>
+              <button onclick="myFunction()" type="button"
+                class="loginC btn btn-outline-dark download-button">Continue</button>
             </div>
             <div class="forgot">
               <a class="forgotL" href="https://cs.sfsu.edu/">Forgot your password?</a>
@@ -297,7 +320,8 @@
   </footer>
 </body>
 <script>
-$("#header").load("html/header.html");
-$("#footer").load("html/footer.html");
+  $("#header").load("html/header.html");
+  $("#footer").load("html/footer.html");
 </script>
+
 </html>
