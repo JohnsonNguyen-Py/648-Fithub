@@ -97,8 +97,7 @@ app.post('/saveContactUs', urlencodedParser, function (req, res) {
         email: req.body.email,
         query: req.body.query,
     };
-    var sql = "INSERT INTO `contact_us`(name, email, query) VALUES ('" + data.name + "'," + data.email + ", '"+data.query+"')";
-    console.log(sql);
+    var sql = "INSERT INTO `contact_us`(name, email, query) VALUES ('" + data.name + "','" + data.email + "', '"+data.query+"')";
     dbconnection.query(sql, (err, result) => {
         if (err) {
             res.send({ status: "failure", message: err, data: {} });
