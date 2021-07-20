@@ -17,11 +17,11 @@ app.use((req, res, next) => {
 });
 
 app.use(sessions({
-    secret: 'Keep it secret'
-    , name: 'fithubSession'
-    , saveUninitialized: false
+    secret: 'Keep it secret',
+    name: 'fithubSession',
+	resave: true,
+    saveUninitialized: false
 }));
-
 
 // hello world
 app.get('/', function (req, res) {
