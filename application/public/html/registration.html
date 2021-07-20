@@ -3,13 +3,18 @@
 
 <head>
   <meta charset="utf-8">
-  <title>FitHub</title>
+  <title>Register | FitHub</title>
   <!-- BootStrap Scripts -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+    crossorigin="anonymous"></script>
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+    rel="stylesheet">
   <!-- CSS Stylesheets -->
   <link rel="stylesheet" href="../css/registration.css">
   <!-- Font Awesome -->
@@ -27,7 +32,7 @@
   <!-- Nav Bar -->
   <div class="title">
     <i class="fas fa-dumbbell fa-2x"></i>
-    <a class="navbar-brand" href="http://100.26.92.104/">FitHub</a>
+    <a class="navbar-brand" href="../index.html">FitHub</a>
   </div>
   <!-- Title -->
   <div class="col-lg-6 cl">
@@ -36,8 +41,8 @@
     <form class="needs-validation" novalidate>
       <div class="row">
         <div class="col-lg-6 ">
-          <label for="validationCustom01">First name</label>
-          <input type="text" class="form-control" id="validationCustom01" placeholder="First name" required>
+          <label for="validationCustom01">Name</label>
+          <input type="text" class="form-control" id="validationCustom01" placeholder="Name" required>
           <div class="valid-feedback">
             Looks good!
           </div>
@@ -45,12 +50,15 @@
         <div class="col-lg-6 ">
           <label for="validationCustom02">Gender</label>
           <div>
-            <input type="radio" class="custom-control-input" id="customControlValidation2" name="radio-stacked" required>
+            <input type="radio" class="custom-control-input" id="customControlValidation2" name="radio-stacked"
+              value="female" required>
             <label class="custom-control-label" for="customControlValidation1"> Female </label>
-            <input type="radio" class="custom-control-input" id="customControlValidation3" name="radio-stacked" required>
+            <input type="radio" class="custom-control-input" id="customControlValidation3" name="radio-stacked"
+              value="male" required>
             <label class="custom-control-label" for="customControlValidation2"> Male </label>
-            <input type="radio" class="custom-control-input" id="customControlValidation3" name="radio-stacked" required>
-            <label class="custom-control-label" for="customControlValidation3"> More </label>
+            <input type="radio" class="custom-control-input" id="customControlValidation3" name="radio-stacked"
+              value="other" required>
+            <label class="custom-control-label" for="customControlValidation3"> Other </label>
             <div class="invalid-feedback">Please provide one.</div>
             <div class="valid-feedback">Looks good!</div>
           </div>
@@ -62,23 +70,25 @@
       <div class="row">
         <div class="col-lg-6">
           <label for="exampleInputEmail1">Email address</label>
-          <input type="email" class="form-control" id="email_id" placeholder="Enter email" required>
+          <input type="email" class="form-control" id="email_id" placeholder="Enter Email address" required>
           <div class="invalid-feedback">
             Please provide a valid email.
           </div>
         </div>
         <div class="col-lg-6">
           <label for="exampleInputEmail1">Password</label>
-          <input type="password" class="form-control" id="password" placeholder="Enter Password" required>
+          <input type="password" minlength="6" maxlength="12" class="form-control" id="password"
+            placeholder="Enter Password" required>
           <div class="invalid-feedback">
-            Please provide a password.
+            Please provide a password with length (6-12).
           </div>
         </div>
       </div>
       <div class="row">
         <div class="col-lg-6">
           <label class="exampleInputBirthday">Birthday</label>
-          <input class="form-control" id="validationCustom04" name="date" placeholder="MM/DD/YYYY" required />
+          <input type="date" class="form-control" id="validationCustom04" name="date" placeholder="MM/DD/YYYY"
+            required />
           <div class="invalid-feedback">
             Please provide a valid birthday.
           </div>
@@ -93,15 +103,16 @@
       </div>
       <div class="row">
         <div class="col-lg-6">
-          <label for="validationCustom03">City</label>
-          <input type="text" class="form-control" id="city" placeholder="Enter City" required>
+          <label for="validationCustom03">Address</label>
+          <input type="text" class="form-control" id="address" placeholder="Enter Full Address" required>
           <div class="invalid-feedback">
             Please provide a valid city.
           </div>
         </div>
         <div class="col-lg-6">
           <label for="validationCustom03">Zipcode</label>
-          <input type="number" class="form-control" id="zip_code" placeholder="Enter Zip Code" required>
+          <input type="number" class="form-control" minlength="5" maxlength="5" id="zip_code"
+            placeholder="Enter Zip Code" required>
           <div class="invalid-feedback">
             Please provide a valid zipcode.
           </div>
@@ -114,7 +125,8 @@
           <label for="validationCustom03">Passions</label>
           <!-- Button trigger modal -->
           <div class="">
-            <button type="button" id="passions" class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <button type="button" id="passions" class="btn btn-outline-light" data-bs-toggle="modal"
+              data-bs-target="#exampleModal">
               + Add Passions
             </button>
             <div class="invalid-feedback" id="actfeedback">
@@ -122,7 +134,8 @@
             </div>
           </div>
           <!-- Modal -->
-          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
             <div class="modal-dialog">
               <div class="modal-content">
                 <h5 class="modal-title" id="exampleModalLabel">Passions</h5>
@@ -131,61 +144,116 @@
                     profile</p>
                 </div>
                 <div class="modal-body" id="activities">
-                  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button" autocomplete="off" data-info="weights">🏋️‍♀️ Weights</button>
-                  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button" autocomplete="off" data-info="cycling">🚴‍♂️ Cycling</button>
-                  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button" autocomplete="off" data-info="mountain_biking">🚵‍♀️ Mountain Biking</button>
-                  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button" autocomplete="off" data-info="rock_climbing">🧗‍♀️ Rock Climbing</button>
-                  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button" autocomplete="off" data-info="rowing">🚣 Rowing‍</button>
-                  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button" autocomplete="off" data-info="waterpolo">🤽 Waterpolo</button>
-                  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button" autocomplete="off" data-info="swimming">🏊‍♀️ Swimming</button>
-                  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button" autocomplete="off" data-info="surfing">🏄‍♀️ Surfing</button>
-                  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button" autocomplete="off" data-info="horseriding">🏇 Horseriding</button>
-                  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button" autocomplete="off" data-info="golf">🏌️‍♀️ Golf</button>
-                  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button" autocomplete="off" data-info="handball">🤾‍♀️ Handball</button>
-                  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button" autocomplete="off" data-info="fencing">🤺 Fencing</button>
-                  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button" autocomplete="off" data-info="basketball">⛹️‍♀️ Basketball</button>
-                  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button" autocomplete="off" data-info="calisthenics">🤸‍♀️ Calisthenics‍</button>
-                  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button" autocomplete="off" data-info="wrestling">🤼‍♀️ Wrestling</button>
-                  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button" autocomplete="off" data-info="parasailing">🪂 Parasailing</button>
-                  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button" autocomplete="off" data-info="snowboarding">🏂 Snowboarding</button>
-                  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button" autocomplete="off" data-info="skiing">⛷ Skiing</button>
-                  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button" autocomplete="off" data-info="curling">🥌 Curling</button>
-                  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button" autocomplete="off" data-info="ice_skating">⛸ Ice Skating</button>
-                  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button" autocomplete="off" data-info="sleding">🛷 Sleding</button>
-                  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button" autocomplete="off" data-info="roller_skating">🛼 Roller Skating</button>
-                  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button" autocomplete="off" data-info="skating">🛹 Skating‍</button>
-                  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button" autocomplete="off" data-info="mma">🥋 MMA</button>
-                  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button" autocomplete="off" data-info="boxing">🥊 Boxing</button>
-                  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button" autocomplete="off" data-info="snorkeling">🤿 Snorkeling</button>
-                  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button" autocomplete="off" data-info="fishing">🎣 Fishing</button>
-                  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button" autocomplete="off" data-info="archery">🏹 Archery</button>
-                  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button" autocomplete="off" data-info="kite_flying">🪁 Kite Flying</button>
-                  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button" autocomplete="off" data-info="badminton">🏸 Badminton</button>
-                  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button" autocomplete="off" data-info="ultimate_boomerang">🪃 Ultimate Boomerang</button>
-                  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button" autocomplete="off" data-info="cricket">🏏 Cricket</button>
-                  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button" autocomplete="off" data-info="lacrosse">🥍 Lacrosse</button>
-                  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button" autocomplete="off" data-info="field_hockey">🏑 Field Hockey</button>
-                  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button" autocomplete="off" data-info="ice_hockey">🏒 Ice Hockey</button>
-                  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button" autocomplete="off" data-info="ping_pong">🏓 Ping Pong</button>
-                  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button" autocomplete="off" data-info="pool">🎱 Pool</button>
-                  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button" autocomplete="off" data-info="ultimate_frisbee">🥏 Ultimate Frisbee</button>
-                  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button" autocomplete="off" data-info="rugby">🏉 Rugby</button>
-                  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button" autocomplete="off" data-info="volleyball">🏐 Volleyball</button>
-                  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button" autocomplete="off" data-info="tennis">🎾 Tennis</button>
-                  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button" autocomplete="off" data-info="softball">🥎 Softball</button>
-                  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button" autocomplete="off" data-info="baseball">⚾️ Baseball</button>
-                  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button" autocomplete="off" data-info="american_football">🏈 American Football</button>
-                  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button" autocomplete="off" data-info="soccer">⚽️ Soccer</button>
-                  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button" autocomplete="off" data-info="running">🏃‍♀️ Running</button>
-                  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button" autocomplete="off" data-info="wheelchair_sports">👩‍🦽 Wheelchair Sports</button>
-                  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button" autocomplete="off" data-info="walking">🚶‍♀️ Walking</button>
-                  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button" autocomplete="off" data-info="bowling">🎳 Bowling</button>
-                  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button" autocomplete="off" data-info="darts">🎯 Darts</button>
-                  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button" autocomplete="off" data-info="juggling">🤹‍♀️ Juggling</button>
-                  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button" autocomplete="off" data-info="outdoors">⛺️ Outdoors</button>
-                  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button" autocomplete="off" data-info="dancing">💃 Dancing</button>
-                  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button" autocomplete="off" data-info="cardio">🫁 Cardio</button>
-                  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button" autocomplete="off" data-info="muscle">💪 Muscle</button>
+                  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button" autocomplete="off"
+                    data-info="weights">🏋️‍♀️ Weights</button>
+                  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button" autocomplete="off"
+                    data-info="cycling">🚴‍♂️ Cycling</button>
+                  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button" autocomplete="off"
+                    data-info="mountain_biking">🚵‍♀️ Mountain Biking</button>
+                  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button" autocomplete="off"
+                    data-info="rock_climbing">🧗‍♀️ Rock Climbing</button>
+                  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button" autocomplete="off"
+                    data-info="rowing">🚣 Rowing‍</button>
+                  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button" autocomplete="off"
+                    data-info="waterpolo">🤽 Waterpolo</button>
+                  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button" autocomplete="off"
+                    data-info="swimming">🏊‍♀️ Swimming</button>
+                  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button" autocomplete="off"
+                    data-info="surfing">🏄‍♀️ Surfing</button>
+                  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button" autocomplete="off"
+                    data-info="horseriding">🏇 Horseriding</button>
+                  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button" autocomplete="off"
+                    data-info="golf">🏌️‍♀️ Golf</button>
+                  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button" autocomplete="off"
+                    data-info="handball">🤾‍♀️ Handball</button>
+                  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button" autocomplete="off"
+                    data-info="fencing">🤺 Fencing</button>
+                  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button" autocomplete="off"
+                    data-info="basketball">⛹️‍♀️ Basketball</button>
+                  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button" autocomplete="off"
+                    data-info="calisthenics">🤸‍♀️ Calisthenics‍</button>
+                  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button" autocomplete="off"
+                    data-info="wrestling">🤼‍♀️ Wrestling</button>
+                  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button" autocomplete="off"
+                    data-info="parasailing">🪂 Parasailing</button>
+                  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button" autocomplete="off"
+                    data-info="snowboarding">🏂 Snowboarding</button>
+                  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button" autocomplete="off"
+                    data-info="skiing">⛷ Skiing</button>
+                  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button" autocomplete="off"
+                    data-info="curling">🥌 Curling</button>
+                  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button" autocomplete="off"
+                    data-info="ice_skating">⛸ Ice Skating</button>
+                  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button" autocomplete="off"
+                    data-info="sleding">🛷 Sleding</button>
+                  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button" autocomplete="off"
+                    data-info="roller_skating">🛼 Roller Skating</button>
+                  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button" autocomplete="off"
+                    data-info="skating">🛹 Skating‍</button>
+                  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button" autocomplete="off"
+                    data-info="mma">🥋 MMA</button>
+                  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button" autocomplete="off"
+                    data-info="boxing">🥊 Boxing</button>
+                  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button" autocomplete="off"
+                    data-info="snorkeling">🤿 Snorkeling</button>
+                  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button" autocomplete="off"
+                    data-info="fishing">🎣 Fishing</button>
+                  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button" autocomplete="off"
+                    data-info="archery">🏹 Archery</button>
+                  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button" autocomplete="off"
+                    data-info="kite_flying">🪁 Kite Flying</button>
+                  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button" autocomplete="off"
+                    data-info="badminton">🏸 Badminton</button>
+                  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button" autocomplete="off"
+                    data-info="ultimate_boomerang">🪃 Ultimate Boomerang</button>
+                  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button" autocomplete="off"
+                    data-info="cricket">🏏 Cricket</button>
+                  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button" autocomplete="off"
+                    data-info="lacrosse">🥍 Lacrosse</button>
+                  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button" autocomplete="off"
+                    data-info="field_hockey">🏑 Field Hockey</button>
+                  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button" autocomplete="off"
+                    data-info="ice_hockey">🏒 Ice Hockey</button>
+                  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button" autocomplete="off"
+                    data-info="ping_pong">🏓 Ping Pong</button>
+                  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button" autocomplete="off"
+                    data-info="pool">🎱 Pool</button>
+                  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button" autocomplete="off"
+                    data-info="ultimate_frisbee">🥏 Ultimate Frisbee</button>
+                  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button" autocomplete="off"
+                    data-info="rugby">🏉 Rugby</button>
+                  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button" autocomplete="off"
+                    data-info="volleyball">🏐 Volleyball</button>
+                  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button" autocomplete="off"
+                    data-info="tennis">🎾 Tennis</button>
+                  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button" autocomplete="off"
+                    data-info="softball">🥎 Softball</button>
+                  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button" autocomplete="off"
+                    data-info="baseball">⚾️ Baseball</button>
+                  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button" autocomplete="off"
+                    data-info="american_football">🏈 American Football</button>
+                  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button" autocomplete="off"
+                    data-info="soccer">⚽️ Soccer</button>
+                  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button" autocomplete="off"
+                    data-info="running">🏃‍♀️ Running</button>
+                  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button" autocomplete="off"
+                    data-info="wheelchair_sports">👩‍🦽 Wheelchair Sports</button>
+                  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button" autocomplete="off"
+                    data-info="walking">🚶‍♀️ Walking</button>
+                  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button" autocomplete="off"
+                    data-info="bowling">🎳 Bowling</button>
+                  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button" autocomplete="off"
+                    data-info="darts">🎯 Darts</button>
+                  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button" autocomplete="off"
+                    data-info="juggling">🤹‍♀️ Juggling</button>
+                  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button" autocomplete="off"
+                    data-info="outdoors">⛺️ Outdoors</button>
+                  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button" autocomplete="off"
+                    data-info="dancing">💃 Dancing</button>
+                  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button" autocomplete="off"
+                    data-info="cardio">🫁 Cardio</button>
+                  <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button" autocomplete="off"
+                    data-info="muscle">💪 Muscle</button>
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">Close</button>
@@ -204,30 +272,14 @@
           </div>
         </div>
       </div>
-  <div class="optional">
-    <div class="row">
-      <div class="col"><hr></div>
-      <div class="col-auto">Optional</div>
-      <div class="col"><hr></div>
   </div>
-  </div>
-  <div class="row">
-    <div class="col-lg-6">
-      <label for="exampleInputEmail1">Height</label>
-      <input type="number" class="form-control" placeholder="Enter Height" />
-    </div>
-    <div class="col-lg-6">
-      <label for="exampleInputEmail1">Weight</label>
-      <input type="number" class="form-control" placeholder="Enter Weight" />
-
-    </div>
-  </div>
-</div>
-  <button class="btn btn-outline-light continueB" type="submit">Continue</button>
+  <a href="../html/myProfile.html">
+    <button class="btn btn-outline-light continueB" type="submit">Register</button>
+  </a>
   </form>
   <footer>
     <div class="forgot">
-      <a class="forgotL" href="https://cs.sfsu.edu/">Already have an account? Log in.</a>
+      <a class="forgotL" href="../index.html">Already have an account? Log in.</a>
     </div>
   </footer>
 </body>

@@ -1,3 +1,50 @@
+
+/* link to myProfile page */
+a {
+  text-decoration: none;
+}
+
+/* navbar */
+.navbar {
+  padding: 0px 10px 10px;
+}
+
+
+
+.fa-dumbbell {
+  color: #4C4C6D;
+}
+
+.navbar .navbar-brand {
+  font-family: "Noto Sans";
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #4C4C6D;
+  padding-left: 5px;
+}
+
+.nav-item {
+  padding: 0 18px;
+
+}
+
+.navbar .nav-item .nav-link {
+  font-size: 1.2rem;
+  font-family: "Merriweather";
+  color: #4C4C6D;
+}
+
+input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+}
+.form-control:focus {
+  box-shadow:  5px 5px 5px black;
+  border-color: black;
+
+}
+
+
+
 * {
   box-sizing: border-box;
 }

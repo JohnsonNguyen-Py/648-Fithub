@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>FitHub | Exercise, Make friends & Meet New People</title>
+  <title>Find a Buddy | FitHub</title>
   <!-- BootStrap Scripts -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
@@ -28,13 +28,48 @@
 </head>
 
 <body>
+  <!-- Nav Bar -->
+
+  <nav class="navbar navbar-expand-lg navbar-dark">
+
+
+    <i class="fas fa-dumbbell fa-2x"></i>
+    <a class="navbar-brand" href="http://100.26.92.104/">FitHub</a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="../html/myProfile.html">Account</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="http://100.26.92.104/">Events</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="http://100.26.92.104/">Log out</a>
+        </li>
+      </ul>
+    </div>
+      <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
+        <input type="search" class="form-control form-control-dark" placeholder="Search..." aria-label="Search">
+      </form>
+
+  </nav>
+
+
   <div class="container">
+
+
+
     <div class="side">
       <div class="header">
         <div class="avatar">
           <img src="../images/circle-cropped.png" alt="">
         </div>
-        <div class="title">My Profile</div>
+        <a class="title" href="http://100.26.92.104/">My Profile</a>
       </div>
       <div class="menu">
         <ul>
@@ -60,7 +95,6 @@
           <div class="text">Let's workout</div>
         </div>
       </div>
-
       <div class="messages">
         <div class="avatar">
           <img src="https://randomuser.me/api/portraits/women/31.jpg" alt="" />
@@ -71,6 +105,9 @@
         </div>
       </div>
     </div>
+
+
+
     <div class="content">
       <div class="card">
         <div class="user">
@@ -97,6 +134,8 @@
       </div>
     </div>
   </div>
+
+
 </body>
 
 </html>
