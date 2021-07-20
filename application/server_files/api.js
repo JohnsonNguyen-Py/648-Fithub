@@ -4,11 +4,6 @@ var bodyParser = require('body-parser');
 var md5 = require('md5');
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
-app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*');
-    next();
-});
-
 var dbconnection = require('./mysqlConnector');
 
 //SESSIONS
@@ -16,11 +11,17 @@ var sessions = require('express-session');
 var mysqlSessions = require('express-mysql-session')(sessions);
 
 
-
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
     next();
 });
+
+app.use(sessions({
+    secret: 'Keep it secret'
+    , name: 'fithubSession'
+    , saveUninitialized: false
+}));
+
 
 // hello world
 app.get('/', function (req, res) {
@@ -97,7 +98,7 @@ app.post('/saveContactUs', urlencodedParser, function (req, res) {
         email: req.body.email,
         query: req.body.query,
     };
-    var sql = "INSERT INTO `contact_us`(name, email, query) VALUES ('" + data.name + "','" + data.email + "', '"+data.query+"')";
+    var sql = "INSERT INTO `contact_us`(name, email, query) VALUES ('" + data.name + "','" + data.email + "', '" + data.query + "')";
     dbconnection.query(sql, (err, result) => {
         if (err) {
             res.send({ status: "failure", message: err, data: {} });
@@ -107,6 +108,47 @@ app.post('/saveContactUs', urlencodedParser, function (req, res) {
     });
 });
 
+app.post('/checkUserLoggedIn', function (req, res) {
+    if (req.session.loggedIn) {
+        res.send({ status: "success", message: "User logged in", data: {} });
+    } else {
+        res.send({ status: "failure", message: "guest user", data: {} });
+    }
+});
+
+app.post('/loginAPI', bodyParser.urlencoded(), function (req, res) {
+
+    let email = "vidhi@sfsu.edu";
+    let password = md5("vidhi5");
+    var checkisuserexists = "SELECT * from `account` where username = '" + email + "'";
+    dbconnection.query(checkisuserexists, (err, res1) => {
+        if (err) {
+            res.send({ status: "failure", message: err, data: {} });
+        } else {
+            if (res1.length == 1) {
+                if (res1[0].password == password) {
+                    var userinfo = "SELECT * from `registered user` where reg_id = " + res1[0].reg_id ;
+                    dbconnection.query(userinfo, (err, data) => {
+                        req.session.loggedIn = true;
+                        req.session.data = data[0];
+                        res.send({ status: "success", message: "Log in successful", data: {} });
+                    });
+                } else {
+                    res.send({ status: "failure", message: "Incorrect Password", data: {} });
+                }
+            } else if (res.length == 0) {
+                res.send({ status: "failure", message: "User does not exists", data: {} });
+            } else {
+                res.send({ status: "failure", message: "Multiple entries found. Please contact site administrator", data: {} });
+            }
+        }
+    });
+});
+
+app.post('/logOut', function(req, res) {
+    req.session.destroy((err) => {});
+    res.send({status: "success" , message: "user logged out", data :{}});
+});
 
 // app.use(sessions({
 //     store: mysqlSessionStore,
