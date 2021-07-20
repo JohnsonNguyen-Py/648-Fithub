@@ -91,7 +91,7 @@ app.post('/registerUser', urlencodedParser, function (req, res) {
 });
 
 //Save contact us info
-app.post('/registerUser', urlencodedParser, function (req, res) {
+app.post('/saveContactUs', urlencodedParser, function (req, res) {
     var data = {
         name: req.body.name,
         email: req.body.email,
