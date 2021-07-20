@@ -24,10 +24,9 @@
   <link rel="icon" href="images/favicon.ico">
 
   <!-- JS -->
-  <script defer src="js/index.js" charset="utf-8"></script>
-  <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <!-- <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> -->
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
-
+  <script defer src="js/common.js" charset="utf-8"></script>
 </head>
 
 <body>
@@ -87,26 +86,17 @@
               </div>
             </div>
           </div>
-
-
         </div>
         <div class="col-lg-6">
           <img class="title-image" src="images/partner.jpg" class="img-fluid. max-width: 100%;" alt="iphone-mockup">
         </div>
       </div>
-
     </div>
   </section>
 
-
-  <!-- Features -->
-
   <section class="white-section" id="features">
-
     <div class="container-fluid">
-
       <div class="row">
-
         <div class="col-lg-4 text-center">
           <i class="fas fa-check-circle fa-5x"></i>
           <h3 class="feature-title">Easy to use.</h3>
@@ -133,7 +123,7 @@
 
     <div class="A-plan">
       <h2 class="section-heading">A Plan for Every Fitness Enthusiast Needs</h2>
-      <p>Simple and affordable price plans for you and your needs.</p>
+      <p class="info-text-sm">Simple and affordable price plans for you and your needs.</p>
     </div>
 
 
@@ -186,133 +176,123 @@
         </div>
       </div>
     </div>
-
   </section>
 
   <section class="white-section" id="contact">
-
-  </section>
-  <section class="colored-section" id="aboutus">
     <div class="A-plan">
-      <h2 class="section-heading">The Fithub team</h2>
-      <p id="teaminfo">Fithub helps you find out workout buddy based on your location, workout interest and more. Join
-        now!!!</p>
+      <h2 class="section-heading">Need help? Contact us!!!</h2>
+      <p>Send us your query</p>
     </div>
-    <div class="row">
-      <div class="col-lg-4">
-        <img class="testimonial-image" src="images/vvora.jpeg" alt="woman-image">
-        <div class="card-header">
-          <h3>Vidhi Vora</h3>
-          <p>Team Lead</p>
-        </div>
-      </div>
-
-      <div class="col-lg-4">
-        <img class="testimonial-image" src="images/vvora.jpeg" alt="woman-image">
-        <div class="card-header">
-          <h3>Vidhi Vora</h3>
-          <p>Team Lead</p>
-        </div>
-      </div>
-
-      <div class="col-lg-4">
-        <img class="testimonial-image" src="images/vvora.jpeg" alt="woman-image">
-        <div class="card-header">
-          <h3>Vidhi Vora</h3>
-          <p>Team Lead</p>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-lg-4">
-        <img class="testimonial-image" src="images/circle-cropped.png" alt="woman-image">
-        <div class="card-header">
-          <h3>Vidhi Vora</h3>
-        </div>
-      </div>
-
-      <div class="col-lg-4">
-        <img class="testimonial-image" src="images/circle-cropped.png" alt="woman-image">
-        <div class="card-header">
-          <h3>Vidhi Vora</h3>
-        </div>
-      </div>
-
-      <div class="col-lg-4">
-        <img class="testimonial-image" src="images/circle-cropped.png" alt="woman-image">
-        <div class="card-header">
-          <h3>Vidhi Vora</h3>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-lg-4">
-        <img class="testimonial-image" src="images/circle-cropped.png" alt="woman-image">
-        <div class="card-header">
-          <h3>Vidhi Vora</h3>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Call to Action -->
-
-  <section class="colored-section" id="cta">
-
-    <div class="container-fluid">
-
-      <h3 class="big-heading">Find a Workout Partner Today.</h3>
-
-      <a href="html/registration.html" class="btn btn-dark btn-lg download-button">Create Account</a>
-
-
-
-      <!-- Button trigger modal -->
-      <button type="button" class="btn btn-outline-light btn-lg download-button" data-bs-toggle="modal"
-        data-bs-target="#exampleModalCenter">
-        Log in
-      </button>
-
-      <!-- Modal -->
-      <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
-        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="modal-header1">
-              <a class="dumbbell" href="https://cs.sfsu.edu/"><i class="fas fa-dumbbell"></i></a>
-            </div>
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLongTitle">Log In</h5>
-            </div>
-            <div class="modal-body">
-
-
-              <!-- Form Validation -->
-              <form class="needs-validation" novalidate>
-                <div class="form-group">
-                  <label for="exampleInputUsername">Username</label>
-                  <input class="form-control" placeholder="Enter username">
-                </div>
-                <div class="form-group">
-                  <label for="exampleInputPassword1">Password</label>
-                  <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                </div>
-              </form>
-
-            </div>
-            <div class="modal-footer">
-              <button onclick="myFunction()" type="button"
-                class="loginC btn btn-outline-dark download-button">Continue</button>
-            </div>
-            <div class="forgot">
-              <a class="forgotL" href="https://cs.sfsu.edu/">Forgot your password?</a>
-            </div>
+    <form class="validateData">
+      <div class="row">
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4">
+          <label for="validationCustom01"></label>
+          <input type="text" class="form-control" id="contactName" placeholder="Enter your name here" required>
+          <div class="valid-feedback">
+            Looks good!
           </div>
         </div>
+        <div class="col-lg-4"></div>
+      </div>
+      <div class="row">
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4">
+          <label for="exampleInputEmail1"></label>
+          <input type="email" class="form-control" id="contactEmail" placeholder="Enter your email here" required>
+          <div class="invalid-feedback">
+            Please provide a valid email.
+          </div>
+        </div>
+        <div class="col-lg-4"></div>
+      </div>
+      <div class="row">
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4">
+          <label for="exampleInputEmail1"></label>
+          <textarea class="form-control" placeholder="Enter your query/feedback here (min 10 characters)" id="contacttext"></textarea>
+        </div>
+        <div class="col-lg-4"></div>
+      </div>
+      <div class="row">
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4">
+            <button id= "submitQuery" class="btn btn-dark btn-lg download-button" type="button">Submit</button>
+        </div>
+        <div class="col-lg-4"></div>
+      </div>
+    </form>
+  </section>
+
+  <section class="colored-section" id="aboutus">
+    <div class="A-plan">
+      <h2 class="section-heading">ERROR404</h2>
+      <p class="info-text-big">Hi, this is Team 07 - Section 01</p>
+      <p class="info-text-sm"><strong>Course:</strong> CSC 0648-01 Software Engineering at SFSU</p>
+      <p class="info-text-sm"><strong>Instructor:</strong> Prof. Jose Ortiz</p>
+      <p class="info-text-sm"><strong>Semster:</strong> Summer 2021</p>
+
+    </div>
+    <div class="row">
+      <div class="col-lg-4">
+        <img class="testimonial-image" src="images/vvora.jpeg" alt="woman-image">
+        <div class="card-header">
+          <h3>Vidhi Vora</h3>
+          <p>Team Lead</p>
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <img class="testimonial-image" src="images/jnguyen.jpg" alt="woman-image">
+        <div class="card-header">
+          <h3>Johnson Nguyen</h3>
+          <p>Backend Lead</p>
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <img class="testimonial-image" src="images/rsimental.jpg" alt="woman-image">
+        <div class="card-header">
+          <h3>Roberto Simental</h3>
+          <p>Frontend Lead</p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-4">
+        <img class="testimonial-image" src="images/msatumba.jpg" alt="woman-image">
+        <div class="card-header">
+          <h3>Michael Satumba</h3>
+          <p>Frontend</p>
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <img class="testimonial-image" src="images/zzhao.jpg" alt="woman-image">
+        <div class="card-header">
+          <h3>Zhinan Zhao</h3>
+          <p>Backend</p>
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <img class="testimonial-image" src="images/ehernandez1.jpg" alt="woman-image">
+        <div class="card-header">
+          <h3>Eduardo Hernandez</h3>
+          <p>Backend</p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-4">
+        <img class="testimonial-image" src="images/zwang.jpg" alt="woman-image">
+        <div class="card-header">
+          <h3>Ziming Wang</h3>
+          <p>Frontend</p>
+        </div>
       </div>
     </div>
   </section>
-
 
   <!-- Footer -->
 

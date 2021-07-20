@@ -28,6 +28,7 @@ app.get('/', function (req, res) {
     res.send('Welcome to FitHub!!!');
 });
 
+//Register a user
 app.post('/registerUser', urlencodedParser, function (req, res) {
     var is_registered = 1, reg_id = 0;
     var guest = {
@@ -89,7 +90,22 @@ app.post('/registerUser', urlencodedParser, function (req, res) {
     });
 });
 
-
+//Save contact us info
+app.post('/registerUser', urlencodedParser, function (req, res) {
+    var data = {
+        name: req.body.name,
+        email: req.body.email,
+        query: req.body.query,
+    };
+    var sql = "INSERT INTO `contact_us`(name, email, query) VALUES ('" + data.name + "'," + data.email + ", '"+data.query+"')";
+    dbconnection.query(sql, (err, result) => {
+        if (err) {
+            res.send({ status: "failure", message: err, data: {} });
+        } else {
+            res.send({ status: "success", message: err, data: {} });
+        }
+    });
+});
 
 
 // app.use(sessions({
