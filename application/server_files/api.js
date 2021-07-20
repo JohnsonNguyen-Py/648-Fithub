@@ -119,7 +119,7 @@ app.post('/checkUserLoggedIn', function (req, res) {
 app.post('/loginAPI', bodyParser.urlencoded(), function (req, res) {
 
     let email = req.body.email;
-    let password = req.body.password;
+    let password = md5(req.body.password);
     var checkisuserexists = "SELECT * from `account` where username = '" + email + "'";
     dbconnection.query(checkisuserexists, (err, res1) => {
         if (err) {
