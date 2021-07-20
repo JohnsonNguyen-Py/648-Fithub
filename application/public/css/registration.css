@@ -54,6 +54,18 @@ p {
   text-align: left;
 }
 
+.contentDiv {
+  text-align: left;
+}
+
+.contentDiv h2 {
+  color: rgb(247, 247, 208);
+  font-size: 2rem;
+}
+
+.contentDiv label{
+  color: white;
+}
 
 
 

@@ -13,6 +13,18 @@ p {
   font-family: "Noto Sans"
 }
 
+p.info-text-big {
+  color: #FFE194;
+  font-family: "Noto Sans";
+  font-size: 1.2rem
+}
+
+p.info-text-sm {
+  color: #FFE194;
+  font-family: "Noto Sans";
+  font-size: 1rem
+}
+
 /* Headings Section */
 .big-heading {
   font-family: "Merriweather";
@@ -47,6 +59,10 @@ p {
 
 .white-section {
   background-color: #fff;
+  color: black;
+}
+
+#selectPlan .price-text, #selectPlan h3 {
   color: black;
 }
 
@@ -229,4 +245,8 @@ input[type="search"]::-webkit-search-cancel-button {
 
 .forgotL:hover {
   color: black;
+}
+
+#footer .container-fluid {
+  padding: 2% 0%;
 }
