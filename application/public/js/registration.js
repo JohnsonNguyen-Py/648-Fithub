@@ -55,7 +55,7 @@ function registerUser() {
       success: function (response) {
         if(response.status == "success") {
           alert("Thank you for registering. Go to home page and then log in!!!");
-          window.location.href = 'index.html';
+          window.location.href = '../index.html';
         } else {
           alert("failure");
           console.log(response)
