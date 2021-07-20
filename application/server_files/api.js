@@ -19,7 +19,7 @@ app.use((req, res, next) => {
 app.use(sessions({
     secret: 'Keep it secret',
     name: 'fithubSession',
-	resave: true,
+    resave: true,
     saveUninitialized: false
 }));
 
@@ -117,9 +117,10 @@ app.post('/checkUserLoggedIn', function (req, res) {
 });
 
 app.post('/loginAPI', bodyParser.urlencoded(), function (req, res) {
-
+    //get username and password
     let email = req.body.email;
     let password = md5(req.body.password);
+    //check if user password exists and match
     var checkisuserexists = "SELECT * from `account` where username = '" + email + "'";
     dbconnection.query(checkisuserexists, (err, res1) => {
         if (err) {
@@ -129,11 +130,20 @@ app.post('/loginAPI', bodyParser.urlencoded(), function (req, res) {
                 res.send({ status: "failure", message: "User does not exists", data: {} });
             } else if (res1.length == 1) {
                 if (res1[0].password == password) {
-                    var userinfo = "SELECT * from `registered user` where reg_id = " + res1[0].reg_id ;
+                    //get user info from database
+                    var userinfo = "SELECT * from `registered user` where reg_id = " + res1[0].reg_id;
                     dbconnection.query(userinfo, (err, data) => {
-                        req.session.loggedIn = true;
-                        req.session.data = data[0];
-                        res.send({ status: "success", message: "Log in successful", data: {} });
+                        req.session.save(function (err) {
+                            if (err) {
+                                res.send({ status: "failure", message: "Cannot create session", data: {} });
+                            } else {
+                                req.session.loggedIn = true;
+                                req.session.data = data[0];
+                                // console.log("req.session");
+                                // console.log(req.session);
+                                res.send({ status: "success", message: "Log in successful", data: {} });
+                            }
+                        });
                     });
                 } else {
                     res.send({ status: "failure", message: "Incorrect Password", data: {} });
@@ -145,9 +155,9 @@ app.post('/loginAPI', bodyParser.urlencoded(), function (req, res) {
     });
 });
 
-app.post('/logOut', function(req, res) {
-    req.session.destroy((err) => {});
-    res.send({status: "success" , message: "user logged out", data :{}});
+app.post('/logOut', function (req, res) {
+    req.session.destroy((err) => { });
+    res.send({ status: "success", message: "user logged out", data: {} });
 });
 
 // app.use(sessions({
