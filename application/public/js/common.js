@@ -35,9 +35,9 @@ $("#submitQuery").on("click", function () {
         success: function (response) {
             if (response.status == "success") {
                 alert("Thank you for query/feedback!!!");
-                $("#contactName").val();
-                $("#contactEmail").val();
-                $("#contacttext").val();
+                $("#contactName").val('');
+                $("#contactEmail").val('');
+                $("#contacttext").val('');
             } else {
                 alert("Something went wrong. Please try again!!!");
             }
