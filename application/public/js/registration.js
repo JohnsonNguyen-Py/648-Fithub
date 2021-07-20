@@ -46,11 +46,13 @@ function registerUser() {
       data: {
         phone: $("#phone").val(),
         zip_code: $("#zip_code").val(),
+        name: $("#validationCustom01").val(),
         gender: $("input[type='radio'][name='radio-stacked']:checked").val(),
         activity_type: activity_type,
         address: $("#address").val(),
         email_id: $("#email_id").val(),
-        password: $("#password").val()
+        password: $("#password").val(),
+        birthdate: $("#validationCustom04").val()
       },
       success: function (response) {
         if(response.status == "success") {

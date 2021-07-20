@@ -52,10 +52,12 @@ app.post('/registerUser', urlencodedParser, function (req, res) {
                         if (is_registered == 1) {
                             registeredUser = {
                                 user_id: inserted_id,
+                                name: req.body.name,
                                 gender: req.body.gender,
                                 phone: req.body.phone,
                                 address: req.body.address,
                                 zip_code: req.body.zip_code,
+                                birthdate: req.body.birthdate,
                                 activity_type: req.body.activity_type
                             };
                             var sql1 = "INSERT INTO `registered user`(user_id, gender, phone, address, zip_code, activity_type) VALUES (" + registeredUser.user_id + ",'" + registeredUser.gender + "','" + registeredUser.phone + "','" + registeredUser.address + "','" + registeredUser.zip_code + "','" + registeredUser.activity_type + "')";
