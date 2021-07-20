@@ -98,12 +98,12 @@ app.post('/registerUser', urlencodedParser, function (req, res) {
 
 // }));
 
-app.post('/login'), urlencodedParser, (req, res) => {
-    let Username = req.body.Username;
-    let Password = req.body.Password;
-};
+// app.post('/login'), urlencodedParser, (req, res) => {
+//     let Username = req.body.Username;
+//     let Password = req.body.Password;
+// };
 
-//app.listen(3000);
+app.listen(3000);
 
 
 
