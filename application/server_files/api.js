@@ -125,7 +125,9 @@ app.post('/loginAPI', bodyParser.urlencoded(), function (req, res) {
         if (err) {
             res.send({ status: "failure", message: err, data: {} });
         } else {
-            if (res1.length == 1) {
+            if (res1.length == 0) {
+                res.send({ status: "failure", message: "User does not exists", data: {} });
+            } else if (res1.length == 1) {
                 if (res1[0].password == password) {
                     var userinfo = "SELECT * from `registered user` where reg_id = " + res1[0].reg_id ;
                     dbconnection.query(userinfo, (err, data) => {
@@ -136,8 +138,6 @@ app.post('/loginAPI', bodyParser.urlencoded(), function (req, res) {
                 } else {
                     res.send({ status: "failure", message: "Incorrect Password", data: {} });
                 }
-            } else if (res.length == 0) {
-                res.send({ status: "failure", message: "User does not exists", data: {} });
             } else {
                 res.send({ status: "failure", message: "Multiple entries found. Please contact site administrator", data: {} });
             }
