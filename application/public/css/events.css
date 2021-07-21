@@ -1,7 +1,6 @@
 .list-group{
-    margin-top: 5%;
-    margin-left: 20%;
-    margin-right: 20%;
+    margin-left: 10%;
+    margin-right: 10%;
 }
 #post-event{
     float: right;
@@ -58,3 +57,299 @@
 .button1 {
 background-color: #BA55D3;
 }
+
+
+
+/* link to matching page */
+a {
+    text-decoration: none;
+  }
+  
+  /* navbar */
+  .navbar {
+    padding: 0px 10px 10px;
+  }
+  
+  
+  
+  .fa-dumbbell {
+    color: #4C4C6D;
+  }
+  
+  .navbar .navbar-brand {
+    font-family: "Noto Sans";
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #4C4C6D;
+    padding-left: 5px;
+  }
+  
+  .nav-item {
+    padding: 0 18px;
+  
+  }
+  
+  .navbar .nav-item .nav-link {
+    font-size: 1.2rem;
+    font-family: "Merriweather";
+    color: #4C4C6D;
+  }
+  
+  input[type="search"]::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+  }
+  .form-control:focus {
+    box-shadow:  5px 5px 5px black;
+    border-color: black;
+  }
+  
+  
+  
+  * {
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f5f7fa;
+    margin: 0;
+  }
+  
+  .container {
+    display: flex;
+    margin: 0;
+    padding: 0
+  }
+  
+  /* side Bar */
+  
+  .side {
+    width: 320px;
+    height: 200px;
+    background-color: #FFF;
+    height: 100%;
+    min-height: 100vh;
+    border-right: 1px solid #e1e1e1;
+  
+  }
+  
+  .side .header {
+    background: linear-gradient(262deg, #FFE194, #4C4C6D);
+    width: 100%;
+    height: 80px;
+    box-shadow: 0 1px 8px 0 rbga(0, 20, 20, 0.2);
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+  }
+  
+  .side .header .avatar img {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    border: 2px solid #fff;
+    box-shadow: 0 1px 8px 0 rbga(0, 20, 20, 0.2);
+  }
+  
+  .side .header .title {
+    padding: 0 10px;
+    color: #fff;
+    font-size: 23px;
+  }
+  
+  .card1 {
+    width: 250px;
+    background-color: white;
+    margin: 10px;
+  }
+  
+  .card-text {
+    color: grey;
+    font-size: 15px;
+  }
+  
+  /* card */
+  .content {
+    width: 100%;
+    display: flex;
+    padding: 20px 0;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 100px;
+  
+  }
+  
+  .content .card {
+    position: relative;
+    height: 450px;
+  }
+  
+  .content .card .user {
+    width: 380px;
+    height: 450px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 1px 10px 0 rgba(0, 20, 20, 0.5);
+  }
+  
+  .content .card .user .profile {
+    position: absolute;
+    bottom: 0px;
+    left: 20px;
+  }
+  
+  .content .card .user .name {
+    color: #fff;
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-shadow: 1px 1px 5px #444;
+  }
+  
+  .content .card .user .name span {
+    font-size: 26px;
+  }
+  
+  .content .card .passions {
+    display: flex;
+    align-items: center;
+    padding: 0 0 20px 0;
+  }
+  
+  /* side butttons */
+  
+  /* modal */
+  .dumbbell {
+    display: block;
+    margin: 10px 240px 0px;
+    color: #4C4C6D;
+  }
+  
+  .modal-title{
+    width: 100%;
+    text-align: center;
+    color: black;
+  }
+  
+  .noCard {
+    font-weight: bold;
+  }
+  
+  .checkLabel {
+  padding-left: 1.4em;
+  display:inline-block;
+  }
+  
+  .check {
+    position: absolute;
+    margin-top: 5px;
+  }
+  
+  .checkbox{
+    margin-top: 5px;
+  }
+  
+  
+  
+  .letEveryone {
+    line-height: 1.5;
+    padding: 10px;
+    font-size: 13px;
+    text-align: center;
+    color: gray;
+  }
+  
+  .agree{
+    color: gray;
+    text-align: center;
+  
+  }
+  
+  .containerPlatinum {
+    text-align: center;
+    align-items: center;
+    padding-bottom: 20px;
+  }
+  
+  
+.form-control:focus {
+    box-shadow:  5px 5px 5px black;
+    border-color: black;
+  
+  }
+  
+  /* button small */
+  .btn-sm {
+    margin: 5px;
+  }
+  
+  .btn-sm:hover {
+    background-color: #FFE194;
+  }
+  
+  .btnCenter {
+    text-align: center;
+  }
+  
+  .logOut{
+    text-align: center;
+  }
+  
+  
+  
+  /* content buttons */
+  
+  .content .buttons {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    margin-left: 90px;
+  }
+  
+  .content .buttons .no i {
+    color: #fd2e79;
+    font-size: 33px;
+  }
+  
+  .content .buttons .star i {
+    color: #2bb1ff;
+    font-size: 22px;
+  }
+  
+  .content .buttons .heart i {
+    color: #11e298;
+    font-size: 32px;
+  }
+  
+  .content .buttons .no,
+  .content .buttons .star,
+  .content .buttons .heart {
+    background-color: #fff;
+    width: 70px;
+    height: 70px;
+    box-shadow: 0 1px 10px 0 rgba(0, 20, 20, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 70px;
+    margin: 4px;
+    transition: 0.2s transform;
+  }
+  
+  .content .buttons .no:hover,
+  .content .buttons .star:hover,
+  .content .buttons .heart:hover {
+    transform: scale(1.1);
+  }
+  
+  .content .buttons .star {
+    width: 60px;
+    height: 60px;
+  }
+  #footer .container-fluid {
+    padding: 2% 0%;
+  }
+  
+  .creatingevent {
+    width: 100%;
+  }
