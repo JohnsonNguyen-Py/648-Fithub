@@ -39,7 +39,7 @@ app.post('/registerUser', urlencodedParser, function (req, res) {
     var checkisuserexists = "SELECT * from `guest user` where email_id = '" + guest.email_id + "'";
     dbconnection.query(checkisuserexists, (err, res1) => {
         if (err) {
-            res1.send({ status: "failure", message: err, data: {} });
+            res.send({ status: "failure", message: err, data: {} });
         } else {
             if (res1.length > 0) {
                 res.send({ status: "failure", message: "User already exists", data: {} });
