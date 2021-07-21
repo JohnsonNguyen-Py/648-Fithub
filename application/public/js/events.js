@@ -66,7 +66,7 @@ $("#saveEvent").on("click", function () {
         success: function (response) {
             if (response.status == "success") {
                 alert("Event created");
-                window.location.href = "/events.html"
+                window.location.href = "events.html"
             } else {
                 alert("Something went wrong. Please try again!!!");
             }
