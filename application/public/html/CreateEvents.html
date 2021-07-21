@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>FitHub</title>
+
+    <!-- BootStrap Scripts -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+        rel="stylesheet">
+    <!-- CSS Stylesheets -->
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/events.css">
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/ab3cb519ad.js" crossorigin="anonymous"></script>
+
+    <!-- Favicon -->
+    <link rel="icon" href="../images/favicon.ico">
+
+    <!-- JS -->
+    <script defer src="js/index.js" charset="utf-8"></script>
+    <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+</head>
+
+
+<body>
+
+    <section class="colored-section" id="title">
+        <div class="container-fluid">
+
+
+
+            <!-- Nav Bar -->
+
+            <nav class="navbar navbar-expand-lg navbar-dark">
+
+
+                <i class="fas fa-dumbbell fa-2x"></i>
+                <a class="navbar-brand">FitHub</a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#footer">Contact</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#pricing">Pricing</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#cta">Sign up</a>
+                        </li>
+                    </ul>
+                </div>
+                <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
+                    <input type="search" class="form-control form-control-dark" placeholder="Search..."
+                        aria-label="Search">
+                </form>
+
+            </nav>
+        </div>
+    </section>
+
+
+    <!-- Events -->
+    <div id="post-event">
+        <button type="button" class="btn btn-light">Create an Event</button>
+    </div>
+
+    <section class="white-section" id="events-list">
+
+
+        <div class="list-group">
+            <div class="event-card">
+                <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="event">Creat New Event</h5>
+                    </div>
+                    <p class="create-event">Title</p>
+                    <input type="text"><br><br>
+
+                    <p class="create-event">Description</p>
+                    <input type="text" style="width: 250px; height: 100px;"><br><br>
+
+                    <p class="create-event">Location</p>
+                    <input type="text"><br><br>
+
+                    <p class="create-event">Time Start</p>
+                    <input type="time"><br><br>
+
+                    <p class="create-event">Time End</p>
+                    <input type="time"><br><br><br>
+
+                    <label class="create-event" for="img">Select Image</label>
+                    <input type="file" name="img">
+
+                    <button type="button">Submit</button>
+
+                    <div class="event-organizer">
+                        <small>Event creator</small>
+                        <img class="event-creator-image" src="../images/circle-cropped.png">
+                    </div>
+                    <!-- <img class="event-image" src="../images/circle-cropped.png"> -->
+                </a>
+            </div>
+            
+            
+        </div>
+    </section>
+    <!-- Footer -->
+
+    <footer class="white-section" id="footer">
+
+        <div class="container-fluid">
+
+
+            <a class="medium-i-fb-t" href="https://cs.sfsu.edu/"><i class="foot-icons fab fa-twitter"></i></a>
+            <a class="medium-i-fb-t" href="https://cs.sfsu.edu/"> <i class="foot-icons fab fa-facebook-square"></i></a>
+            <a class="medium-i-fb-t" href="https://cs.sfsu.edu/"><i class="foot-icons fab fa-instagram"></i></a>
+            <a class="medium-i-fb-t" href="https://cs.sfsu.edu/"><i class="foot-icons fab fa-medium"></i></a>
+
+
+            <p>© Copyright 2021 FitHub</p>
+        </div>
+    </footer>
+</body>
