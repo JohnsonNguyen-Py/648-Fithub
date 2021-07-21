@@ -118,7 +118,8 @@ function validateEmail(email) {
 
 // checkUserLoggedIn();
 
-$("#searchbarbt").on("click", function () {
+// $("#searchbarbt").on("click", function () {
+$("#searchbar").on("keyup", function () {
     let text = $("#searchbar").val();
     let html = "";
     if (text.length == 0) {
@@ -139,7 +140,6 @@ $("#searchbarbt").on("click", function () {
                 if (response.data.length > 0) {
                     let data = response.data;
                     $.each(data, function (key, value) {
-                        console.log(value);
                         html += '<li role="presentation"><a role="menuitem" tabindex="-1" href="">' + value.title + '</a></li>';
                     });
                 } else {
