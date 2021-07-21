@@ -29,9 +29,9 @@
   <!-- Favicon -->
   <link rel="icon" href="../images/favicon.ico">
   <!-- JS -->
-  <script defer src="../js/common.js" charset="utf-8"></script>
   <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+  <script  src="../js/common.js" charset="utf-8"></script>
 
 </head>
 
@@ -83,7 +83,7 @@
         <div class="avatar">
           <img src="../images/circle-cropped.png" alt="">
         </div>
-        <a class="title" href="http://100.26.92.104/">My Profile</a>
+        <a class="title" href="#">My Profile</a>
       </div>
 
       <div class="flex-shrink-0 p-3">
@@ -125,53 +125,8 @@
               <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                 <li>
                   <!-- Button trigger modal -->
-                  <button type="button" class="btn btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
-                    Manage Payment Account
-                  </button>
-                  <!-- Modal -->
-                  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
-                    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered" role="document">
-                      <div class="modal-content">
-                        <div class="modal-header1">
-                          <a class="dumbbell" href="#"><i class="fas fa-dumbbell"></i></a>
-                        </div>
-                        <div class="modal-header">
-                          <h5 class="modal-title" id="exampleModalLongTitle">Manage Payment Account</h5>
-                        </div>
-                        <div class="modal-body">
-                          <p class="noCard">You have no cards saved. To add a card, make a purchase.</p>
-                        </div>
-                </li>
-                <li>
-                  <!-- Button trigger modal -->
-                  <button type="button" class="btn btn-sm" data-bs-toggle="modal" data-bs-target="#modal2">
-                    Restore Purchases
-                  </button>
-                  <!-- Modal -->
-                  <div class="modal fade" id="modal2" tabindex="-1" role="dialog"
-                    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered" role="document">
-                      <div class="modal-content">
-                        <div class="modal-header1">
-                          <a class="dumbbell" href="#"><i class="fas fa-dumbbell"></i></a>
-                        </div>
-                        <div class="modal-header">
-                          <h5 class="modal-title" id="exampleModalLongTitle">Restore Your Purchase?</h5>
-                        </div>
-                        <div class="modal-body">
-                          <p>If you've created a new account and you're looking to transfer your subscription from your
-                            old account, enter your confirmation code below:</p>
-                          <input type="number" class="form-control">
-                        </div>
-                        <div class="modal-footer">
-                          <button type="submit" class="loginC btn btn-outline-dark download-button">Continue</button>
-                        </div>
-                </li>
-                <li>
-                  <!-- Button trigger modal -->
                   <button type="button" class="btn btn-sm" data-bs-toggle="modal" data-bs-target="#modal3">
-                    Email
+                    Change Password
                   </button>
                   <!-- Modal -->
                   <div class="modal fade" id="modal3" tabindex="-1" role="dialog"
@@ -182,24 +137,22 @@
                           <a class="dumbbell" href="#"><i class="fas fa-dumbbell"></i></a>
                         </div>
                         <div class="modal-header">
-                          <h5 class="modal-title" id="exampleModalLongTitle">Email</h5>
+                          <h5 class="modal-title" id="exampleModalLongTitle">Change Password</h5>
                         </div>
                         <div class="modal-body">
-                          <input type="email" class="form-control" placeholder="Verify Email">
-                          <div class="checkbox">
-                            <input type="checkbox" class="check">
-                            <label class="checkLabel">I would like to recieve emails about promotions and marketing
-                              campaigns</label>
-                          </div>
+                          <input type="password" class="form-control" placeholder="Enter New Password">
                         </div>
                         <div class="modal-footer">
-                          <button type="submit" class="loginC btn btn-outline-dark download-button">Continue</button>
+                          <button id = "changePassword" type="button" class="loginC btn btn-outline-dark download-button">Change</button>
                         </div>
+                      </div>
+                    </div>
+                  </div>
                 </li>
                 <li>
                   <!-- Button trigger modal -->
                   <button type="button" class="btn btn-sm" data-bs-toggle="modal" data-bs-target="#modal4">
-                    Phone Number
+                    Edit Profile
                   </button>
                   <!-- Modal -->
                   <div class="modal fade" id="modal4" tabindex="-1" role="dialog"
@@ -210,40 +163,28 @@
                           <a class="dumbbell" href="#"><i class="fas fa-dumbbell"></i></a>
                         </div>
                         <div class="modal-header">
-                          <h5 class="modal-title" id="exampleModalLongTitle">Phone Number</h5>
+                          <h5 class="modal-title" id="exampleModalLongTitle">Profile info</h5>
                         </div>
                         <div class="modal-body">
-                          <input type="number" class="form-control" placeholder="Verify Phone Number">
+                          <label>Phone number:</label>
+                          <input type="number" class="form-control" placeholder="Change Phone Number" value="6697864565">
+                          
+                          <label>Address:</label>
+                          <input type="text" class="form-control" placeholder="Change Address" value = "San Jose">
+                          
+                          <label>Zipcode:</label>
+                          <input type="number" class="form-control" placeholder="Change zip code" value = "95043">
+                          
+                          <label>Birthdate:</label>
+                          <input type="date" class="form-control" placeholder="Change birthdate" value = "1998-04-05">
+
+                          <label>Profile Picture:</label>
+                          <input type="file" class="form-control" placeholder="Change Profile picture">
                         </div>
                         <div class="modal-footer">
-                          <button type="submit" class="btn btn-outline-dark">Continue</button>
+                          <button id="editProfile" type="button" class="btn btn-outline-dark">Continue</button>
                         </div>
                 </li>
-                <li>
-                  <!-- Button trigger modal -->
-                  <button type="button" class="btn btn-sm" data-bs-toggle="modal" data-bs-target="#modal5">
-                    Promo Code
-                  </button>
-                  <!-- Modal -->
-                  <div class="modal fade" id="modal5" tabindex="-1" role="dialog"
-                    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered" role="document">
-                      <div class="modal-content">
-                        <div class="modal-header1">
-                          <a class="dumbbell" href="#"><i class="fas fa-dumbbell"></i></a>
-                        </div>
-                        <h5 class="modal-title" id="exampleModalLabel">Promo Code</h5>
-                        <p class="letEveryone">Unlock In-App Rewards</p>
-                        <div class="modal-body">
-                          <input type="number" class="form-control" placeholder="Promo Code">
-                          <span class="agree">By clicking Continue, you agree to our Terms. Learn how we process your
-                            data in our Privacy Policy and Cookie Policy.</span>
-                        </div>
-                        <div class="modal-footer">
-                          <button type="submit" class="btn btn-outline-dark">Continue</button>
-                        </div>
-                </li>
-                <div id="emailHelp" class="form-text">Verified Phone Number and Email help secure your account.</div>
               </ul>
             </div>
           </li>
@@ -368,7 +309,8 @@
                         <div class="modal-body">
                           <div class="messages">
                             <div class="friend">
-                              <div class="user"><i class="fas fa-dumbbell"></i>&nbsp;Jonathan accepted your work out request</div>
+                              <div class="user"><i class="fas fa-dumbbell"></i>&nbsp;Jonathan accepted your work out
+                                request</div>
                             </div>
                           </div>
                           <div class="messages">
@@ -387,8 +329,6 @@
         </ul>
       </div>
     </div>
-
-
     <div class="content">
       <div class="card">
         <div class="user">
@@ -405,24 +345,8 @@
             </div>
           </div>
         </div>
-        <div class="buttons">
-          <div class="no">
-            <i class="fas fa-times"></i>
-          </div>
-          <div class="star">
-            <i class="fas fa-star fa"></i>
-          </div>
-          <div class="heart">
-            <i class="fas fa-dumbbell"></i>
-          </div>
-        </div>
       </div>
     </div>
-
-
-
-
-
 </body>
-
+<script  src="../js/profile.js" charset="utf-8"></script>
 </html>
