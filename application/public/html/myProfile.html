@@ -88,362 +88,13 @@
 
       <div class="flex-shrink-0 p-3">
         <ul class="list-unstyled ps-0">
-
-          <li class="mb-1">
-            <button div class="card1" data-bs-toggle="modal" data-bs-target="#modal13">
-              <div class="row no-gutters">
-                <div class="col">
-                  <div class="card-body">
-                    <h5 class="card-title">Gym Rat</h5>
-                    <p class="card-text">Priority Likes, See Who Likes you & More!</p>
-                  </div>
-                </div>
-              </div>
-            </button>
-            <div class="modal fade" id="modal13" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-              aria-hidden="true">
-              <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content containerPlatinum">
-                  <div class="modal-header1">
-                    <a class="dumbbell" href="https://cs.sfsu.edu/"><i class="fas fa-dumbbell"></i></a>
-                  </div>
-                  <h5 class="modal-title" id="exampleModalLabel">Get Gym Rat</h5>
-
-                  <div class="col-md-7 col-lg-8">
-                    <h4 class="mb-3">Billing address</h4>
-                    <form class="needs-validation" novalidate>
-                      <div class="row g-3">
-                        <div class="col-sm-6">
-                          <label for="firstName" class="form-label">First name</label>
-                          <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
-                          <div class="invalid-feedback">
-                            Valid first name is required.
-                          </div>
-                        </div>
-
-                        <div class="col-sm-6">
-                          <label for="lastName" class="form-label">Last name</label>
-                          <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
-                          <div class="invalid-feedback">
-                            Valid last name is required.
-                          </div>
-                        </div>
-
-
-
-                        <div class="col-12">
-                          <label for="email" class="form-label">Email <span class="text-muted">(Optional)</span></label>
-                          <input type="email" class="form-control" id="email" placeholder="you@example.com">
-                          <div class="invalid-feedback">
-                            Please enter a valid email address for shipping updates.
-                          </div>
-                        </div>
-
-                        <div class="col-12">
-                          <label for="address" class="form-label">Address</label>
-                          <input type="text" class="form-control" id="address" placeholder="1234 Main St" required>
-                          <div class="invalid-feedback">
-                            Please enter your shipping address.
-                          </div>
-                        </div>
-
-                        <div class="col-12">
-                          <label for="address2" class="form-label">Address 2 <span
-                              class="text-muted">(Optional)</span></label>
-                          <input type="text" class="form-control" id="address2" placeholder="Apartment or suite">
-                        </div>
-
-                        <div class="col-md-5">
-                          <label for="country" class="form-label">Country</label>
-                          <select class="form-select" id="country" required>
-                            <option value="">Choose...</option>
-                            <option>United States</option>
-                          </select>
-                          <div class="invalid-feedback">
-                            Please select a valid country.
-                          </div>
-                        </div>
-
-                        <div class="col-md-4">
-                          <label for="state" class="form-label">State</label>
-                          <select class="form-select" id="state" required>
-                            <option value="">Choose...</option>
-                            <option>California</option>
-                          </select>
-                          <div class="invalid-feedback">
-                            Please provide a valid state.
-                          </div>
-                        </div>
-
-                        <div class="col-md-3">
-                          <label for="zip" class="form-label">Zip</label>
-                          <input type="text" class="form-control" id="zip" placeholder="" required>
-                          <div class="invalid-feedback">
-                            Zip code required.
-                          </div>
-                        </div>
-                      </div>
-
-                      <hr class="my-4">
-
-                      <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="same-address">
-                        <label class="form-check-label" for="same-address">Shipping address is the same as my billing
-                          address</label>
-                      </div>
-
-                      <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="save-info">
-                        <label class="form-check-label" for="save-info">Save this information for next time</label>
-                      </div>
-
-                      <hr class="my-4">
-
-                      <h4 class="mb-3">Payment</h4>
-
-                      <div class="my-3">
-                        <div class="form-check">
-                          <input id="credit" name="paymentMethod" type="radio" class="form-check-input" checked
-                            required>
-                          <label class="form-check-label" for="credit">Credit card</label>
-                        </div>
-                        <div class="form-check">
-                          <input id="debit" name="paymentMethod" type="radio" class="form-check-input" required>
-                          <label class="form-check-label" for="debit">Debit card</label>
-                        </div>
-                        <div class="form-check">
-                          <input id="paypal" name="paymentMethod" type="radio" class="form-check-input" required>
-                          <label class="form-check-label" for="paypal">PayPal</label>
-                        </div>
-                      </div>
-
-                      <div class="row gy-3">
-                        <div class="col-md-6">
-                          <label for="cc-name" class="form-label">Name on card</label>
-                          <input type="text" class="form-control" id="cc-name" placeholder="" required>
-                          <small class="text-muted">Full name as displayed on card</small>
-                          <div class="invalid-feedback">
-                            Name on card is required
-                          </div>
-                        </div>
-
-                        <div class="col-md-6">
-                          <label for="cc-number" class="form-label">Credit card number</label>
-                          <input type="text" class="form-control" id="cc-number" placeholder="" required>
-                          <div class="invalid-feedback">
-                            Credit card number is required
-                          </div>
-                        </div>
-
-                        <div class="col-md-3">
-                          <label for="cc-expiration" class="form-label">Expiration</label>
-                          <input type="text" class="form-control" id="cc-expiration" placeholder="" required>
-                          <div class="invalid-feedback">
-                            Expiration date required
-                          </div>
-                        </div>
-
-                        <div class="col-md-3">
-                          <label for="cc-cvv" class="form-label">CVV</label>
-                          <input type="text" class="form-control" id="cc-cvv" placeholder="" required>
-                          <div class="invalid-feedback">
-                            Security code required
-                          </div>
-                        </div>
-                      </div>
-
-                      <hr class="my-4">
-
-                      <button class="w-100 btn btn-primary btn-lg" type="submit">Continue to checkout</button>
-                    </form>
-                  </div>
-                </div>
-
-
-
-          </li>
-
-
-
-          <li class="mb-1">
-            <button div class="card1" data-bs-toggle="modal" data-bs-target="#modal14">
-              <div class="row no-gutters">
-                <div class="col">
-                  <div class="card-body">
-                    <h5 class="card-title">Cardio Bunny</h5>
-                    <p class="card-text">See Who Likes You & More!</p>
-                  </div>
-                </div>
-              </div>
-            </button>
-            <div class="modal fade" id="modal14" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-              aria-hidden="true">
-              <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content containerPlatinum">
-                  <div class="modal-header1">
-                    <a class="dumbbell" href="https://cs.sfsu.edu/"><i class="fas fa-dumbbell"></i></a>
-                  </div>
-                  <h5 class="modal-title" id="exampleModalLabel">Get Cardio Bunny</h5>
-
-                  <div class="col-md-7 col-lg-8">
-                    <h4 class="mb-3">Billing address</h4>
-                    <form class="needs-validation" novalidate>
-                      <div class="row g-3">
-                        <div class="col-sm-6">
-                          <label for="firstName" class="form-label">First name</label>
-                          <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
-                          <div class="invalid-feedback">
-                            Valid first name is required.
-                          </div>
-                        </div>
-
-                        <div class="col-sm-6">
-                          <label for="lastName" class="form-label">Last name</label>
-                          <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
-                          <div class="invalid-feedback">
-                            Valid last name is required.
-                          </div>
-                        </div>
-
-
-
-                        <div class="col-12">
-                          <label for="email" class="form-label">Email <span class="text-muted">(Optional)</span></label>
-                          <input type="email" class="form-control" id="email" placeholder="you@example.com">
-                          <div class="invalid-feedback">
-                            Please enter a valid email address for shipping updates.
-                          </div>
-                        </div>
-
-                        <div class="col-12">
-                          <label for="address" class="form-label">Address</label>
-                          <input type="text" class="form-control" id="address" placeholder="1234 Main St" required>
-                          <div class="invalid-feedback">
-                            Please enter your shipping address.
-                          </div>
-                        </div>
-
-                        <div class="col-12">
-                          <label for="address2" class="form-label">Address 2 <span
-                              class="text-muted">(Optional)</span></label>
-                          <input type="text" class="form-control" id="address2" placeholder="Apartment or suite">
-                        </div>
-
-                        <div class="col-md-5">
-                          <label for="country" class="form-label">Country</label>
-                          <select class="form-select" id="country" required>
-                            <option value="">Choose...</option>
-                            <option>United States</option>
-                          </select>
-                          <div class="invalid-feedback">
-                            Please select a valid country.
-                          </div>
-                        </div>
-
-                        <div class="col-md-4">
-                          <label for="state" class="form-label">State</label>
-                          <select class="form-select" id="state" required>
-                            <option value="">Choose...</option>
-                            <option>California</option>
-                          </select>
-                          <div class="invalid-feedback">
-                            Please provide a valid state.
-                          </div>
-                        </div>
-
-                        <div class="col-md-3">
-                          <label for="zip" class="form-label">Zip</label>
-                          <input type="text" class="form-control" id="zip" placeholder="" required>
-                          <div class="invalid-feedback">
-                            Zip code required.
-                          </div>
-                        </div>
-                      </div>
-
-                      <hr class="my-4">
-
-                      <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="same-address">
-                        <label class="form-check-label" for="same-address">Shipping address is the same as my billing
-                          address</label>
-                      </div>
-
-                      <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="save-info">
-                        <label class="form-check-label" for="save-info">Save this information for next time</label>
-                      </div>
-
-                      <hr class="my-4">
-
-                      <h4 class="mb-3">Payment</h4>
-
-                      <div class="my-3">
-                        <div class="form-check">
-                          <input id="credit" name="paymentMethod" type="radio" class="form-check-input" checked
-                            required>
-                          <label class="form-check-label" for="credit">Credit card</label>
-                        </div>
-                        <div class="form-check">
-                          <input id="debit" name="paymentMethod" type="radio" class="form-check-input" required>
-                          <label class="form-check-label" for="debit">Debit card</label>
-                        </div>
-                        <div class="form-check">
-                          <input id="paypal" name="paymentMethod" type="radio" class="form-check-input" required>
-                          <label class="form-check-label" for="paypal">PayPal</label>
-                        </div>
-                      </div>
-
-                      <div class="row gy-3">
-                        <div class="col-md-6">
-                          <label for="cc-name" class="form-label">Name on card</label>
-                          <input type="text" class="form-control" id="cc-name" placeholder="" required>
-                          <small class="text-muted">Full name as displayed on card</small>
-                          <div class="invalid-feedback">
-                            Name on card is required
-                          </div>
-                        </div>
-
-                        <div class="col-md-6">
-                          <label for="cc-number" class="form-label">Credit card number</label>
-                          <input type="text" class="form-control" id="cc-number" placeholder="" required>
-                          <div class="invalid-feedback">
-                            Credit card number is required
-                          </div>
-                        </div>
-
-                        <div class="col-md-3">
-                          <label for="cc-expiration" class="form-label">Expiration</label>
-                          <input type="text" class="form-control" id="cc-expiration" placeholder="" required>
-                          <div class="invalid-feedback">
-                            Expiration date required
-                          </div>
-                        </div>
-
-                        <div class="col-md-3">
-                          <label for="cc-cvv" class="form-label">CVV</label>
-                          <input type="text" class="form-control" id="cc-cvv" placeholder="" required>
-                          <div class="invalid-feedback">
-                            Security code required
-                          </div>
-                        </div>
-                      </div>
-
-                      <hr class="my-4">
-
-                      <button class="w-100 btn btn-primary btn-lg" type="submit">Continue to checkout</button>
-                    </form>
-                  </div>
-                </div>
-
-          </li>
-
           <li class="mb-1" data-bs-toggle="modal" data-bs-target="#modal15">
             <button div class="card1">
               <div class="row no-gutters">
                 <div class="col">
                   <div class="card-body">
                     <h5 class="card-title">Spotter</h5>
-                    <p class="card-text">Unlimited Likes & More!</p>
+                    <p class="card-text">Active Subscription</p>
                   </div>
                 </div>
               </div>
@@ -453,164 +104,17 @@
               <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content containerPlatinum">
                   <div class="modal-header1">
-                    <a class="dumbbell" href="https://cs.sfsu.edu/"><i class="fas fa-dumbbell"></i></a>
+                    <a class="dumbbell" href="#"><i class="fas fa-dumbbell"></i></a>
                   </div>
-                  <h5 class="modal-title" id="exampleModalLabel">Get Spotter</h5>
-
-                  <div class="col-md-7 col-lg-8">
-                    <h4 class="mb-3">Billing address</h4>
-                    <form class="needs-validation" novalidate>
-                      <div class="row g-3">
-                        <div class="col-sm-6">
-                          <label for="firstName" class="form-label">First name</label>
-                          <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
-                          <div class="invalid-feedback">
-                            Valid first name is required.
-                          </div>
-                        </div>
-
-                        <div class="col-sm-6">
-                          <label for="lastName" class="form-label">Last name</label>
-                          <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
-                          <div class="invalid-feedback">
-                            Valid last name is required.
-                          </div>
-                        </div>
-
-
-
-                        <div class="col-12">
-                          <label for="email" class="form-label">Email <span class="text-muted">(Optional)</span></label>
-                          <input type="email" class="form-control" id="email" placeholder="you@example.com">
-                          <div class="invalid-feedback">
-                            Please enter a valid email address for shipping updates.
-                          </div>
-                        </div>
-
-                        <div class="col-12">
-                          <label for="address" class="form-label">Address</label>
-                          <input type="text" class="form-control" id="address" placeholder="1234 Main St" required>
-                          <div class="invalid-feedback">
-                            Please enter your shipping address.
-                          </div>
-                        </div>
-
-                        <div class="col-12">
-                          <label for="address2" class="form-label">Address 2 <span
-                              class="text-muted">(Optional)</span></label>
-                          <input type="text" class="form-control" id="address2" placeholder="Apartment or suite">
-                        </div>
-
-                        <div class="col-md-5">
-                          <label for="country" class="form-label">Country</label>
-                          <select class="form-select" id="country" required>
-                            <option value="">Choose...</option>
-                            <option>United States</option>
-                          </select>
-                          <div class="invalid-feedback">
-                            Please select a valid country.
-                          </div>
-                        </div>
-
-                        <div class="col-md-4">
-                          <label for="state" class="form-label">State</label>
-                          <select class="form-select" id="state" required>
-                            <option value="">Choose...</option>
-                            <option>California</option>
-                          </select>
-                          <div class="invalid-feedback">
-                            Please provide a valid state.
-                          </div>
-                        </div>
-
-                        <div class="col-md-3">
-                          <label for="zip" class="form-label">Zip</label>
-                          <input type="text" class="form-control" id="zip" placeholder="" required>
-                          <div class="invalid-feedback">
-                            Zip code required.
-                          </div>
-                        </div>
-                      </div>
-
-                      <hr class="my-4">
-
-                      <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="same-address">
-                        <label class="form-check-label" for="same-address">Shipping address is the same as my billing
-                          address</label>
-                      </div>
-
-                      <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="save-info">
-                        <label class="form-check-label" for="save-info">Save this information for next time</label>
-                      </div>
-
-                      <hr class="my-4">
-
-                      <h4 class="mb-3">Payment</h4>
-
-                      <div class="my-3">
-                        <div class="form-check">
-                          <input id="credit" name="paymentMethod" type="radio" class="form-check-input" checked
-                            required>
-                          <label class="form-check-label" for="credit">Credit card</label>
-                        </div>
-                        <div class="form-check">
-                          <input id="debit" name="paymentMethod" type="radio" class="form-check-input" required>
-                          <label class="form-check-label" for="debit">Debit card</label>
-                        </div>
-                        <div class="form-check">
-                          <input id="paypal" name="paymentMethod" type="radio" class="form-check-input" required>
-                          <label class="form-check-label" for="paypal">PayPal</label>
-                        </div>
-                      </div>
-
-                      <div class="row gy-3">
-                        <div class="col-md-6">
-                          <label for="cc-name" class="form-label">Name on card</label>
-                          <input type="text" class="form-control" id="cc-name" placeholder="" required>
-                          <small class="text-muted">Full name as displayed on card</small>
-                          <div class="invalid-feedback">
-                            Name on card is required
-                          </div>
-                        </div>
-
-                        <div class="col-md-6">
-                          <label for="cc-number" class="form-label">Credit card number</label>
-                          <input type="text" class="form-control" id="cc-number" placeholder="" required>
-                          <div class="invalid-feedback">
-                            Credit card number is required
-                          </div>
-                        </div>
-
-                        <div class="col-md-3">
-                          <label for="cc-expiration" class="form-label">Expiration</label>
-                          <input type="text" class="form-control" id="cc-expiration" placeholder="" required>
-                          <div class="invalid-feedback">
-                            Expiration date required
-                          </div>
-                        </div>
-
-                        <div class="col-md-3">
-                          <label for="cc-cvv" class="form-label">CVV</label>
-                          <input type="text" class="form-control" id="cc-cvv" placeholder="" required>
-                          <div class="invalid-feedback">
-                            Security code required
-                          </div>
-                        </div>
-                      </div>
-
-                      <hr class="my-4">
-
-                      <button class="w-100 btn btn-primary btn-lg" type="submit">Continue to checkout</button>
-                    </form>
+                  <div class="modal-body">
+                    <p>5 Matches Per Day</p>
+                    <p>10 Messages Per Day</p>
+                    <p>Unlimited App Usage</p>
+                    <button class="w-100 btn btn-dark btn-sm" type="submit">Close</button>
                   </div>
                 </div>
+              </div>
           </li>
-
-
-
-
 
           <li class="mb-1">
             <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
@@ -630,7 +134,7 @@
                     <div class="modal-dialog modal-dialog-centered" role="document">
                       <div class="modal-content">
                         <div class="modal-header1">
-                          <a class="dumbbell" href="https://cs.sfsu.edu/"><i class="fas fa-dumbbell"></i></a>
+                          <a class="dumbbell" href="#"><i class="fas fa-dumbbell"></i></a>
                         </div>
                         <div class="modal-header">
                           <h5 class="modal-title" id="exampleModalLongTitle">Manage Payment Account</h5>
@@ -650,7 +154,7 @@
                     <div class="modal-dialog modal-dialog-centered" role="document">
                       <div class="modal-content">
                         <div class="modal-header1">
-                          <a class="dumbbell" href="https://cs.sfsu.edu/"><i class="fas fa-dumbbell"></i></a>
+                          <a class="dumbbell" href="#"><i class="fas fa-dumbbell"></i></a>
                         </div>
                         <div class="modal-header">
                           <h5 class="modal-title" id="exampleModalLongTitle">Restore Your Purchase?</h5>
@@ -675,7 +179,7 @@
                     <div class="modal-dialog modal-dialog-centered" role="document">
                       <div class="modal-content">
                         <div class="modal-header1">
-                          <a class="dumbbell" href="https://cs.sfsu.edu/"><i class="fas fa-dumbbell"></i></a>
+                          <a class="dumbbell" href="#"><i class="fas fa-dumbbell"></i></a>
                         </div>
                         <div class="modal-header">
                           <h5 class="modal-title" id="exampleModalLongTitle">Email</h5>
@@ -703,7 +207,7 @@
                     <div class="modal-dialog modal-dialog-centered" role="document">
                       <div class="modal-content">
                         <div class="modal-header1">
-                          <a class="dumbbell" href="https://cs.sfsu.edu/"><i class="fas fa-dumbbell"></i></a>
+                          <a class="dumbbell" href="#"><i class="fas fa-dumbbell"></i></a>
                         </div>
                         <div class="modal-header">
                           <h5 class="modal-title" id="exampleModalLongTitle">Phone Number</h5>
@@ -726,7 +230,7 @@
                     <div class="modal-dialog modal-dialog-centered" role="document">
                       <div class="modal-content">
                         <div class="modal-header1">
-                          <a class="dumbbell" href="https://cs.sfsu.edu/"><i class="fas fa-dumbbell"></i></a>
+                          <a class="dumbbell" href="#"><i class="fas fa-dumbbell"></i></a>
                         </div>
                         <h5 class="modal-title" id="exampleModalLabel">Promo Code</h5>
                         <p class="letEveryone">Unlock In-App Rewards</p>
@@ -746,244 +250,6 @@
 
           <li class="mb-1">
             <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
-              data-bs-target="#dashboard-collapse" aria-expanded="false">
-              Discovery Settings
-            </button>
-            <div class="collapse" id="dashboard-collapse">
-              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                <li>
-                  <!-- Button trigger modal -->
-                  <button type="button" class="btn btn-sm" data-bs-toggle="modal" data-bs-target="#modal6">
-                    Location
-                  </button>
-                  <!-- Modal -->
-                  <div class="modal fade" id="modal6" tabindex="-1" role="dialog"
-                    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered" role="document">
-                      <div class="modal-content">
-                        <div class="modal-header1">
-                          <a class="dumbbell" href="https://cs.sfsu.edu/"><i class="fas fa-dumbbell"></i></a>
-                        </div>
-                        <h5 class="modal-title" id="exampleModalLabel">Location</h5>
-                        <div class="modal-body">
-                          <input type="number" class="form-control" placeholder="City">
-                        </div>
-                        <div class="modal-footer">
-                          <button type="submit" class="btn btn-outline-dark">Continue</button>
-                        </div>
-                </li>
-                <li>
-                  <!-- Button trigger modal -->
-                  <button type="button" class="btn btn-sm" data-bs-toggle="modal" data-bs-target="#modal7">
-                    Maximum Distance
-                  </button>
-                  <!-- Modal -->
-                  <div class="modal fade" id="modal7" tabindex="-1" role="dialog"
-                    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered" role="document">
-                      <div class="modal-content">
-                        <div class="modal-header1">
-                          <a class="dumbbell" href="https://cs.sfsu.edu/"><i class="fas fa-dumbbell"></i></a>
-                        </div>
-                        <h5 class="modal-title" id="exampleModalLabel">Maximum Distance in Miles</h5>
-                        <div class="modal-body">
-                          <input type="range" name="range" step="1" min="1" max="100"
-                            onchange="rangePrimary.value=value">
-                          <input type="text" id="rangePrimary" />
-                        </div>
-                </li>
-                <li>
-                <li>
-                  <!-- Button trigger modal -->
-                  <button type="button" class="btn btn-sm" data-bs-toggle="modal" data-bs-target="#modal8">
-                    Looking For
-                  </button>
-                  <!-- Modal -->
-                  <div class="modal fade" id="modal8" tabindex="-1" role="dialog"
-                    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered" role="document">
-                      <div class="modal-content">
-                        <div class="modal-header1">
-                          <a class="dumbbell" href="https://cs.sfsu.edu/"><i class="fas fa-dumbbell"></i></a>
-                        </div>
-                        <h5 class="modal-title" id="exampleModalLabel">Show Me</h5>
-                        <div class="modal-body">
-                          <input type="radio" class="custom-control-input" id="customControlValidation2"
-                            name="radio-stacked" required>
-                          <label class="custom-control-label" for="customControlValidation1"> Female </label>
-                          <input type="radio" class="custom-control-input" id="customControlValidation3"
-                            name="radio-stacked" required>
-                          <label class="custom-control-label" for="customControlValidation2"> Male </label>
-                          <input type="radio" class="custom-control-input" id="customControlValidation3"
-                            name="radio-stacked" required>
-                          <label class="custom-control-label" for="customControlValidation3"> Everyone </label>
-                        </div>
-                </li>
-
-
-
-                <li>
-                  <!-- Button trigger modal -->
-                  <button type="button" class="btn btn-sm" data-bs-toggle="modal" data-bs-target="#modal9">
-                    Age Range
-                  </button>
-                  <!-- Modal -->
-                  <div class="modal fade" id="modal9" tabindex="-1" role="dialog"
-                    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered" role="document">
-                      <div class="modal-content">
-                        <div class="modal-header1">
-                          <a class="dumbbell" href="https://cs.sfsu.edu/"><i class="fas fa-dumbbell"></i></a>
-                        </div>
-                        <h5 class="modal-title" id="exampleModalLabel">Age Range</h5>
-                        <div class="modal-body">
-                          <input class="form-control" type="number" placeholder="18-55+">
-                        </div>
-                </li>
-                <li>
-                  <!-- Button trigger modal -->
-                  <div class="">
-                    <button type="button" id="passions" class="btn btn-sm" data-bs-toggle="modal"
-                      data-bs-target="#modal10">
-                      Passions
-                    </button>
-                  </div>
-                  <!-- Modal -->
-                  <div class="modal fade" id="modal10" tabindex="-1" aria-labelledby="exampleModalLabel"
-                    aria-hidden="true">
-                    <div class="modal-dialog">
-                      <div class="modal-content">
-                        <h5 class="modal-title" id="exampleModalLabel">Passions</h5>
-                        <div class="">
-                          <p class="letEveryone">Let everyone know what you're passionate about by adding it to your
-                            profile</p>
-                        </div>
-                        <div class="modal-body btnCenter" id="activities">
-                          <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button"
-                            autocomplete="off" data-info="weights">🏋️‍♀️ Weights</button>
-                          <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button"
-                            autocomplete="off" data-info="cycling">🚴‍♂️ Cycling</button>
-                          <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button"
-                            autocomplete="off" data-info="mountain_biking">🚵‍♀️ Mountain Biking</button>
-                          <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button"
-                            autocomplete="off" data-info="rock_climbing">🧗‍♀️ Rock Climbing</button>
-                          <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button"
-                            autocomplete="off" data-info="rowing">🚣 Rowing‍</button>
-                          <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button"
-                            autocomplete="off" data-info="waterpolo">🤽 Waterpolo</button>
-                          <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button"
-                            autocomplete="off" data-info="swimming">🏊‍♀️ Swimming</button>
-                          <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button"
-                            autocomplete="off" data-info="surfing">🏄‍♀️ Surfing</button>
-                          <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button"
-                            autocomplete="off" data-info="horseriding">🏇 Horseriding</button>
-                          <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button"
-                            autocomplete="off" data-info="golf">🏌️‍♀️ Golf</button>
-                          <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button"
-                            autocomplete="off" data-info="handball">🤾‍♀️ Handball</button>
-                          <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button"
-                            autocomplete="off" data-info="fencing">🤺 Fencing</button>
-                          <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button"
-                            autocomplete="off" data-info="basketball">⛹️‍♀️ Basketball</button>
-                          <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button"
-                            autocomplete="off" data-info="calisthenics">🤸‍♀️ Calisthenics‍</button>
-                          <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button"
-                            autocomplete="off" data-info="wrestling">🤼‍♀️ Wrestling</button>
-                          <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button"
-                            autocomplete="off" data-info="parasailing">🪂 Parasailing</button>
-                          <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button"
-                            autocomplete="off" data-info="snowboarding">🏂 Snowboarding</button>
-                          <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button"
-                            autocomplete="off" data-info="skiing">⛷ Skiing</button>
-                          <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button"
-                            autocomplete="off" data-info="curling">🥌 Curling</button>
-                          <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button"
-                            autocomplete="off" data-info="ice_skating">⛸ Ice Skating</button>
-                          <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button"
-                            autocomplete="off" data-info="sleding">🛷 Sleding</button>
-                          <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button"
-                            autocomplete="off" data-info="roller_skating">🛼 Roller Skating</button>
-                          <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button"
-                            autocomplete="off" data-info="skating">🛹 Skating‍</button>
-                          <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button"
-                            autocomplete="off" data-info="mma">🥋 MMA</button>
-                          <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button"
-                            autocomplete="off" data-info="boxing">🥊 Boxing</button>
-                          <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button"
-                            autocomplete="off" data-info="snorkeling">🤿 Snorkeling</button>
-                          <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button"
-                            autocomplete="off" data-info="fishing">🎣 Fishing</button>
-                          <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button"
-                            autocomplete="off" data-info="archery">🏹 Archery</button>
-                          <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button"
-                            autocomplete="off" data-info="kite_flying">🪁 Kite Flying</button>
-                          <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button"
-                            autocomplete="off" data-info="badminton">🏸 Badminton</button>
-                          <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button"
-                            autocomplete="off" data-info="ultimate_boomerang">🪃 Ultimate Boomerang</button>
-                          <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button"
-                            autocomplete="off" data-info="cricket">🏏 Cricket</button>
-                          <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button"
-                            autocomplete="off" data-info="lacrosse">🥍 Lacrosse</button>
-                          <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button"
-                            autocomplete="off" data-info="field_hockey">🏑 Field Hockey</button>
-                          <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button"
-                            autocomplete="off" data-info="ice_hockey">🏒 Ice Hockey</button>
-                          <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button"
-                            autocomplete="off" data-info="ping_pong">🏓 Ping Pong</button>
-                          <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button"
-                            autocomplete="off" data-info="pool">🎱 Pool</button>
-                          <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button"
-                            autocomplete="off" data-info="ultimate_frisbee">🥏 Ultimate Frisbee</button>
-                          <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button"
-                            autocomplete="off" data-info="rugby">🏉 Rugby</button>
-                          <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button"
-                            autocomplete="off" data-info="volleyball">🏐 Volleyball</button>
-                          <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button"
-                            autocomplete="off" data-info="tennis">🎾 Tennis</button>
-                          <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button"
-                            autocomplete="off" data-info="softball">🥎 Softball</button>
-                          <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button"
-                            autocomplete="off" data-info="baseball">⚾️ Baseball</button>
-                          <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button"
-                            autocomplete="off" data-info="american_football">🏈 American Football</button>
-                          <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button"
-                            autocomplete="off" data-info="soccer">⚽️ Soccer</button>
-                          <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button"
-                            autocomplete="off" data-info="running">🏃‍♀️ Running</button>
-                          <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button"
-                            autocomplete="off" data-info="wheelchair_sports">👩‍🦽 Wheelchair Sports</button>
-                          <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button"
-                            autocomplete="off" data-info="walking">🚶‍♀️ Walking</button>
-                          <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button"
-                            autocomplete="off" data-info="bowling">🎳 Bowling</button>
-                          <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button"
-                            autocomplete="off" data-info="darts">🎯 Darts</button>
-                          <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button"
-                            autocomplete="off" data-info="juggling">🤹‍♀️ Juggling</button>
-                          <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button"
-                            autocomplete="off" data-info="outdoors">⛺️ Outdoors</button>
-                          <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button"
-                            autocomplete="off" data-info="dancing">💃 Dancing</button>
-                          <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button"
-                            autocomplete="off" data-info="cardio">🫁 Cardio</button>
-                          <button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="button"
-                            autocomplete="off" data-info="muscle">💪 Muscle</button>
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">Close</button>
-                          <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal" required>Save
-                            changes</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-              </ul>
-            </div>
-          </li>
-          <li class="mb-1">
-            <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
               data-bs-target="#orders-collapse" aria-expanded="false">
               Notifications
             </button>
@@ -992,7 +258,7 @@
                 <li>
                   <!-- Button trigger modal -->
                   <button type="button" class="btn btn-sm" data-bs-toggle="modal" data-bs-target="#modal11">
-                    Push Notifications
+                    Work out requests
                   </button>
                   <!-- Modal -->
                   <div class="modal fade" id="modal11" tabindex="-1" role="dialog"
@@ -1000,53 +266,124 @@
                     <div class="modal-dialog modal-dialog-centered" role="document">
                       <div class="modal-content">
                         <div class="modal-header1">
-                          <a class="dumbbell" href="https://cs.sfsu.edu/"><i class="fas fa-dumbbell"></i></a>
+                          <a class="dumbbell" href="#"><i class="fas fa-dumbbell"></i></a>
                         </div>
-                        <h5 class="modal-title" id="exampleModalLabel">Push Notifications</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Work out Requests</h5>
                         <div class="modal-body">
-                          <div class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked>
-                            <label class="form-check-label" for="flexSwitchCheckChecked">New Matches</label>
+                          <div class="messages">
+                            <div class="avatar">
+                              <img src="https://randomuser.me/api/portraits/women/28.jpg" alt="">
+                            </div>
+                            <div class="friend">
+                              <div class="user">Hannah Montana
+                                <div class="no">
+                                  <i class="fa fa-check" aria-hidden="true"></i>
+                                  &nbsp;&nbsp;
+                                  <i class="fas fa-times" aria-hidden="true"></i>
+                                </div>
+                              </div>
+                            </div>
                           </div>
-                          <div class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked>
-                            <label class="form-check-label" for="flexSwitchCheckChecked">Messages</label>
-                          </div>
-                          <div class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked>
-                            <label class="form-check-label" for="flexSwitchCheckChecked">Message Likes</label>
+                          <div class="messages">
+                            <div class="avatar">
+                              <img src="https://randomuser.me/api/portraits/women/28.jpg" alt="">
+                            </div>
+                            <div class="friend">
+                              <div class="user">Jenny Hill
+                                <div class="no">
+                                  <i class="fa fa-check" aria-hidden="true"></i>
+                                  &nbsp;&nbsp;
+                                  <i class="fas fa-times" aria-hidden="true"></i>
+                                </div>
+                              </div>
+                            </div>
                           </div>
                         </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <!-- Button trigger modal -->
+                  <button type="button" class="btn btn-sm" data-bs-toggle="modal" data-bs-target="#modalfre11">
+                    Friend requests
+                  </button>
+                  <!-- Modal -->
+                  <div class="modal fade" id="modalfre11" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header1">
+                          <a class="dumbbell" href="#"><i class="fas fa-dumbbell"></i></a>
+                        </div>
+                        <h5 class="modal-title" id="exampleModalLabel">Friend Requests</h5>
+                        <div class="modal-body">
+                          <div class="messages">
+                            <div class="avatar">
+                              <img src="https://randomuser.me/api/portraits/women/28.jpg" alt="">
+                            </div>
+                            <div class="friend">
+                              <div class="user">Pheobe Roy
+                                <div class="no">
+                                  <i class="fa fa-check" aria-hidden="true"></i>
+                                  &nbsp;&nbsp;
+                                  <i class="fas fa-times" aria-hidden="true"></i>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="messages">
+                            <div class="avatar">
+                              <img src="https://randomuser.me/api/portraits/women/28.jpg" alt="">
+                            </div>
+                            <div class="friend">
+                              <div class="user">Julie Green
+                                <div class="no">
+                                  <i class="fa fa-check" aria-hidden="true"></i>
+                                  &nbsp;&nbsp;
+                                  <i class="fas fa-times" aria-hidden="true"></i>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <!-- Button trigger modal -->
+                  <button type="button" class="btn btn-sm" data-bs-toggle="modal" data-bs-target="#modal111">
+                    Other
+                  </button>
+                  <!-- Modal -->
+                  <div class="modal fade" id="modal111" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header1">
+                          <a class="dumbbell" href="#"><i class="fas fa-dumbbell"></i></a>
+                        </div>
+                        <h5 class="modal-title" id="exampleModalLabel">Notifications</h5>
+                        <div class="modal-body">
+                          <div class="messages">
+                            <div class="friend">
+                              <div class="user"><i class="fas fa-dumbbell"></i>&nbsp;Jonathan accepted your work out request</div>
+                            </div>
+                          </div>
+                          <div class="messages">
+                            <div class="friend">
+                              <div class="user"><i class="fas fa-dumbbell"></i>&nbsp;You have 2 new friend rquests</div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </li>
               </ul>
             </div>
           </li>
-          <li class="mb-1">
-            <!-- Button trigger modal -->
-            <button type="button" class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="modal"
-              data-bs-target="#modal12" aria-expanded="false">
-              Log out
-            </button>
-          </li>
-          <!-- Modal -->
-          <div class="modal fade" id="modal12" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-            aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-              <div class="modal-content">
-                <div class="modal-header1">
-                  <a class="dumbbell" href="https://cs.sfsu.edu/"><i class="fas fa-dumbbell"></i></a>
-                </div>
-                <h5 class="modal-title" id="exampleModalLabel">Are you sure you want to log out?</h5>
-                <div>
-                  <p class="letEveryone">You will continue to be seen by compatible users in your last known location.
-                  </p>
-                </div>
-                <div class="modal-body logOut">
-                  <a href="http://100.26.92.104/">
-                    <button type="submit" class="btn btn-outline-dark">Log out</button>
-                  </a>
-                  <button type="submit" class="btn btn-light">Cancel</button>
-                </div>
         </ul>
       </div>
     </div>
