@@ -23,6 +23,14 @@
 })();
 
 function registerUser() {
+  let phone = $("#phone").val();
+  if(zip.length != 10) {
+    $("#contactfeedback").css("display","block");
+    return;
+  } else {
+    $("#contactfeedback").css("display","none");
+  }
+
   let activity_type = "";
   $("#activities button").each(function (index) {
     if ($(this).hasClass("active") === true) {
@@ -37,6 +45,15 @@ function registerUser() {
     $("#actfeedback").css("display","none");
   }
   activity_type = activity_type.replace(/^,/, '');
+
+  let zip = $("#zip_code").val();
+  if(zip.length != 5) {
+    $("#zipfeedback").css("display","block");
+    return;
+  } else {
+    $("#zipfeedback").css("display","none");
+  }
+
   // console.log(activity_type);
   $.ajax(
     {
@@ -44,8 +61,8 @@ function registerUser() {
       type: "POST",
       crossDomain: true,
       data: {
-        phone: $("#phone").val(),
-        zip_code: $("#zip_code").val(),
+        phone: phone,
+        zip_code: zip,
         name: $("#validationCustom01").val(),
         gender: $("input[type='radio'][name='radio-stacked']:checked").val(),
         activity_type: activity_type,
