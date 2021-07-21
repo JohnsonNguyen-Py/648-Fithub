@@ -157,6 +157,19 @@ $("#searchbarbt").on("click", function () {
     });
 })
 
+$("#resetPassword").on("click", function () {
+    let email = $("#email_idreset").val();
+    console.log(email);
+    if (!validateEmail(email)) {
+        $("#email_idreset").css('border', '1px solid red');
+        return;
+    } else {
+        $("#email_idreset").css('border', '');
+    }
+    alert("Reset password link has been sent to your registered email");
+    window.location.href="../index.html";
+});
+
 $(document).bind('click', function (e) {
     var par = $(e.target).parent();
     if (!$('#displist').is(e.target)) {
