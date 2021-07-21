@@ -79,16 +79,17 @@
                     <ul class="list-unstyled ps-0">
                         <li class="mb-1">
                             <a href="CreateEvents.html">
-                            <button class="btn btn-toggle align-items-center rounded collapsed" aria-expanded="false">
-                                Create an Event
-                            </button>
-                        </a>
+                                <button class="btn btn-toggle align-items-center rounded collapsed"
+                                    aria-expanded="false">
+                                    Create an Event
+                                </button>
+                            </a>
                         </li>
 
                         <li class="mb-1">
                             <button class="btn btn-toggle align-items-center rounded collapsed"
                                 data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">
-                                Discovery Settings
+                                Search Filters
                             </button>
                             <div class="collapse" id="dashboard-collapse">
                                 <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
@@ -96,7 +97,7 @@
                                         <!-- Button trigger modal -->
                                         <button type="button" class="btn btn-sm" data-bs-toggle="modal"
                                             data-bs-target="#modal6">
-                                            Location
+                                            Zipcode
                                         </button>
                                         <!-- Modal -->
                                         <div class="modal fade" id="modal6" tabindex="-1" role="dialog"
@@ -107,14 +108,17 @@
                                                         <a class="dumbbell" href="https://cs.sfsu.edu/"><i
                                                                 class="fas fa-dumbbell"></i></a>
                                                     </div>
-                                                    <h5 class="modal-title" id="exampleModalLabel">Location</h5>
+                                                    <h5 class="modal-title" id="exampleModalLabel">Zipcode</h5>
                                                     <div class="modal-body">
-                                                        <input type="number" class="form-control" placeholder="City">
+                                                        <input type="number" class="form-control" placeholder="zipcode">
                                                     </div>
                                                     <div class="modal-footer">
-                                                        <button type="submit"
-                                                            class="btn btn-outline-dark">Continue</button>
+                                                        <button type="button" class="btn btn-secondary"
+                                                            id="searchzipevent">Continue</button>
                                                     </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </li>
                                     <li>
                                         <!-- Button trigger modal -->
@@ -136,8 +140,15 @@
                                                     <div class="modal-body">
                                                         <input type="range" name="range" step="1" min="1" max="100"
                                                             onchange="rangePrimary.value=value">
-                                                        <input type="text" id="rangePrimary" />
+                                                        <input type="number" id="rangePrimary" />
                                                     </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary"
+                                                            id="searchdisevent">Continue</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </li>
                                     <li>
 
@@ -160,6 +171,13 @@
                                                     <div class="modal-body">
                                                         <input class="form-control" type="number" placeholder="18-55+">
                                                     </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary"
+                                                            id="searchageevent">Continue</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </li>
                                     <li>
                                         <!-- Button trigger modal -->
@@ -353,7 +371,7 @@
                                                         <button type="button" class="btn btn-outline-dark"
                                                             data-bs-dismiss="modal">Close</button>
                                                         <button type="button" class="btn btn-outline-dark"
-                                                            data-bs-dismiss="modal" required>Save
+                                                            data-bs-dismiss="modal" id="searchpassionevents" required>Save
                                                             changes</button>
                                                     </div>
                                                 </div>

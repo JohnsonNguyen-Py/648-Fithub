@@ -78,3 +78,21 @@ $("#saveEvent").on("click", function () {
     });
 
 });
+
+
+$("#searchzipevent").on("click", function () {
+    $('#modal6').modal('hide');
+});
+
+
+$("#searchdisevent").on("click", function () {
+    $('#modal7').modal('hide');
+});
+
+$("#searchageevent").on("click", function () {
+    $('#modal9').modal('hide');
+});
+
+$("#searchpassionevents").on("click", function () {
+    $('#modal10').modal('hide');
+});
