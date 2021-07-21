@@ -173,7 +173,7 @@ app.post('/saveEvent', urlencodedParser, function (req, res) {
         end_time: req.body.endTime,
         reg_id: 1
     };
-    var sql = "INSERT INTO `events`(reg_id, title, description, address, zipcode, from_date, to_date, start_time, end_time) VALUES ("+data.reg_id+", '"+data.title+"','"+data.description+"','"+data.address+"','"+data.zipcode+"','"+data.from_date+"','"+data.to_date+"','"+data.start_time+"','"+data.end_time+"')";
+    var sql = "INSERT INTO `events`(reg_id, title, description, address, zipcode, from_date, to_date, start_time, end_time) VALUES (" + data.reg_id + ", '" + data.title + "','" + data.description + "','" + data.address + "','" + data.zipcode + "','" + data.from_date + "','" + data.to_date + "','" + data.start_time + "','" + data.end_time + "')";
     dbconnection.query(sql, (err, result) => {
         if (err) {
             res.send({ status: "failure", message: err, data: {} });
@@ -183,21 +183,17 @@ app.post('/saveEvent', urlencodedParser, function (req, res) {
     });
 });
 
-app.post('/getEvents', urlencodedParser,  function(req, res){
+app.post('/getEvents', urlencodedParser, function (req, res) {
     let keyword = req.query.keyword;
-    if(keyword && keyword !== ''){
-      var sql = "SELECT * FROM `events` WHERE `description` LIKE '%" + keyword + "%'";
-      dbconnection.query(sql, (err, result) => {
-          if (err) {
-              res.send({ status: "failure", message: err, data: {} });
-          } else {
-              res.send({ status: "success", message: err, data: result });
-          }
-      });
-    }else{
-      res.send({ status: "failure", message: err, data: {} });
-    }
-  })
+    var sql = "SELECT * FROM `events` WHERE `description` LIKE '%" + keyword + "%'";
+    dbconnection.query(sql, (err, result) => {
+        if (err) {
+            res.send({ status: "failure", message: err, data: {} });
+        } else {
+            res.send({ status: "success", message: err, data: result });
+        }
+    });
+});
 
 // app.use(sessions({
 //     store: mysqlSessionStore,
