@@ -17,6 +17,7 @@
     <!-- CSS Stylesheets -->
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/events.css">
+    <link rel="stylesheet" href="../css/myProfile.css">
 
     <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/ab3cb519ad.js" crossorigin="anonymous"></script>
@@ -32,120 +33,103 @@
 
 
 <body>
-
-    <section class="colored-section" id="title">
-        <div class="container-fluid">
-
-
-
-            <!-- Nav Bar -->
-
-            <nav class="navbar navbar-expand-lg navbar-dark">
-
-
-                <i class="fas fa-dumbbell fa-2x"></i>
-                <a class="navbar-brand">FitHub</a>
-
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#footer">Contact</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#pricing">Pricing</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#cta">Sign up</a>
-                        </li>
-                    </ul>
-                </div>
-                <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
-                    <input type="search" class="form-control form-control-dark" placeholder="Search..."
-                        aria-label="Search">
-                </form>
-
-            </nav>
+<section>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <i class="fas fa-dumbbell fa-2x"></i>
+        <a class="navbar-brand" href="http://100.26.92.104/">FitHub</a>
+    
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+    
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="../html/matching.html">Find a Buddy</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="http://100.26.92.104/">Events</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="http://100.26.92.104/">Log out</a>
+            </li>
+          </ul>
         </div>
+        <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
+          <input type="search" class="form-control form-control-dark" placeholder="Search..." aria-label="Search">
+        </form>
+    
+      </nav>
     </section>
 
-
     <!-- Events -->
+    <div id="post-event">
+        <button type="button" class="btn btn-light">Create an Event</button>
+    </div>
 
-    <section class="white-section" id="events-list">
 
-        <div class="meet-section">
-            <div class="col-lg-8">
-                <div class="card shadow-sm">
-                    <div class="card-header bg-transparent border-0">
-                        <h3 class="mb-0"><i class="far fa-clone pr-1"></i>Event Information</h3>
+
+
+        <div class="list-group">
+            <div class="event-card">
+                <a href="EventProfile.html" class="list-group-item list-group-item-action flex-column align-items-start">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">Biking @ Golden Gate Park</h5>
                     </div>
-                    <div class="card-body pt-0">
-                        <table class="table table-bordered">
-                            <tr>
-                                <th width="30%">Event</th>
-                                <td width="2%">:</td>
-                                <td>Group Biking</td>
-                            </tr>
-                            <tr>
-                                <th width="30%">Location</th>
-                                <td width="2%">:</td>
-                                <td>San Francisco State University, CA</td>
-                            </tr>
-                            <tr>
-                                <th width="30%">Time</th>
-                                <td width="2%">:</td>
-                                <td>19/7/2021-21/7/2021 8:00am-10:00am PST</td>
-                            </tr>
-                            <tr>
-                                <th width="30%">Limit of Enroller</th>
-                                <td width="2%">:</td>
-                                <td>30</td>
-                            </tr>
-                            <tr>
-                            <th width="30%">Contact</th>
-                            <td width="2%">:</td>
-                            <td>415-920-xxxx</td>
-                        </tr>
-                            <tr>
-                                <th width="30%">Description</th>
-                                <td width="2%">:</td>
-                                <td>Welcome to the biggest group biking in SFSU! We are here to meet you up!</td>
-                            </tr>
-                        </table>
+                    <p class="event-details">When</p>
+                    <p class="event-details">Where</p>
+                    <div class="event-organizer">
+                        <small>Event creator</small>
+                        <img class="event-creator-image" src="../images/circle-cropped.png">
                     </div>
-                </div>
-                <button class="button button1">Enroll</button>
+                    <!-- <img class="event-image" src="../images/circle-cropped.png"> -->
+                </a>
+            </div>
+            <div class="event-card">
+                <a href="EventProfile.html" class="list-group-item list-group-item-action flex-column align-items-start">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">Biking @ Golden Gate Park</h5>
+                    </div>
+                    <p class="event-details">When</p>
+                    <p class="event-details">Where</p>
+                    <div class="event-organizer">
+                        <small>Event creator</small>
+                        <img class="event-creator-image" src="../images/circle-cropped.png">
+                    </div>
+                    <!-- <img class="event-image" src="../images/circle-cropped.png"> -->
+                </a>
+            </div>
+            <div class="event-card">
+                <a href="EventProfile.html" class="list-group-item list-group-item-action flex-column align-items-start">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">Biking @ Golden Gate Park</h5>
+                    </div>
+                    <p class="event-details">When</p>
+                    <p class="event-details">Where</p>
+                    <div class="event-organizer">
+                        <small>Event creator</small>
+                        <img class="event-creator-image" src="../images/circle-cropped.png">
+                    </div>
+                    <!-- <img class="event-image" src="../images/circle-cropped.png"> -->
+                </a>
             </div>
         </div>
 
-        <div class="event-arrows">
+        <!-- <div class="event-arrows">
             <a class="arrows" href="#">
                 <img class="arrows" id="left-arrow" src="../images/arrow.png">
             </a>
             <a class="arrows" href="#">
                 <img class="arrows" id="right-arrow" src="../images/arrow.png">
             </a>
-        </div>
-    </section>
+        </div> -->
+ 
     <!-- Footer -->
 
-    <footer class="white-section" id="footer">
-
+    <footer id="footer">
         <div class="container-fluid">
-
-
-            <a class="medium-i-fb-t" href="https://cs.sfsu.edu/"><i class="foot-icons fab fa-twitter"></i></a>
-            <a class="medium-i-fb-t" href="https://cs.sfsu.edu/"> <i class="foot-icons fab fa-facebook-square"></i></a>
-            <a class="medium-i-fb-t" href="https://cs.sfsu.edu/"><i class="foot-icons fab fa-instagram"></i></a>
-            <a class="medium-i-fb-t" href="https://cs.sfsu.edu/"><i class="foot-icons fab fa-medium"></i></a>
-
-
             <p>© Copyright 2021 FitHub</p>
-        </div>
+          </div>
     </footer>
 </body>
