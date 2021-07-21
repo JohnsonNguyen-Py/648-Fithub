@@ -24,7 +24,7 @@
 
 function registerUser() {
   let phone = $("#phone").val();
-  if(zip.length != 10) {
+  if(phone.length != 10) {
     $("#contactfeedback").css("display","block");
     return;
   } else {
