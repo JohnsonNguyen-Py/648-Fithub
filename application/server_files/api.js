@@ -173,7 +173,7 @@ app.post('/saveEvent', urlencodedParser, function (req, res) {
         end_time: req.body.endTime,
         reg_id: 1
     };
-    var sql = "INSERT INTO `contact_us`(reg_id, title, description, address, zipcode, from_date, to_date, start_time, end_time) VALUES (1, '"+data.title+"','"+data.description+"','"+data.address+"','"+data.zipcode+"','"+data.from_date+"','"+data.to_date+"','"+data.start_time+"','"+data.end_time+"')";
+    var sql = "INSERT INTO `events`(reg_id, title, description, address, zipcode, from_date, to_date, start_time, end_time) VALUES ("+data.reg_id+", '"+data.title+"','"+data.description+"','"+data.address+"','"+data.zipcode+"','"+data.from_date+"','"+data.to_date+"','"+data.start_time+"','"+data.end_time+"')";
     dbconnection.query(sql, (err, result) => {
         if (err) {
             res.send({ status: "failure", message: err, data: {} });
