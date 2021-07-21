@@ -63,7 +63,7 @@ p {
   font-size: 2rem;
 }
 
-.contentDiv label{
+.contentDiv label, .contentDiv p{
   color: white;
 }
 
