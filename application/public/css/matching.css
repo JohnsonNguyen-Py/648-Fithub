@@ -94,7 +94,6 @@ body {
   color: #fff;
   font-size: 23px;
 }
-
 .side .menu ul {
   display: flex;
   padding: 0 20px;
@@ -107,6 +106,13 @@ body {
   font-size: 15px;
   letter-spacing: 0.5px;
 }
+
+.side .menu li:hover
+{
+  box-shadow: 0 0 15px 0 rgba(43, 78, 78, 0.1);
+  border-bottom: 5px solid #fd5068;
+}
+
 
 .side .menu .active {
   border-bottom: 3px solid #fd5068;
@@ -148,6 +154,21 @@ body {
   box-shadow: 0 0 15px 0 rgba(43, 78, 78, 0.1);
   border-right: 5px solid #fd5068;
 }
+
+/* Johnson NGUYEN*/
+.myFriends{
+  color:black;
+}
+
+.matches{
+  color:black;
+}
+
+button {
+  outline: none;
+}
+/* Johnson NGUYEN*/
+
 
 .content {
   width: 100% display: flex;
