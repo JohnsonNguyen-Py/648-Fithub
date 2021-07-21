@@ -183,6 +183,22 @@ app.post('/saveEvent', urlencodedParser, function (req, res) {
     });
 });
 
+app.get('/getEvents', function(req, res){
+    let keyword = req.query.keyword;
+    if(keyword && keyword !== ''){
+      var sql = "SELECT * FROM `events` WHERE `description` LIKE '%" + keyword + "%'";
+      dbconnection.query(sql, (err, result) => {
+          if (err) {
+              res.send({ status: "failure", message: err, data: {} });
+          } else {
+              res.send({ status: "success", message: err, data: result });
+          }
+      });
+    }else{
+      res.send({ status: "failure", message: err, data: {} });
+    }
+  })
+
 // app.use(sessions({
 //     store: mysqlSessionStore,
 //     secret: "csc648",

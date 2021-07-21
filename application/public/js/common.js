@@ -1,3 +1,34 @@
+
+function initHeaderSearch() {
+    $('#header-search').selectpicker('val', '');    
+    let inv = 0;
+    $('.form-search input').on('input', (ev) => {
+        clearInterval(inv);
+        const value = ev.target.value;
+        if(value === ""){
+            $('#header-search').empty();
+            $('#header-search').selectpicker('refresh');
+            return;
+        }
+        inv = setTimeout(() => {
+            $.ajax({
+                url: "http://localhost:3000/getEvents?keyword=" + value,
+                type: "GET",
+                crossDomain: true,
+                success: function (response) {
+                    if(response.status === "success"){
+                        const list = response.data.map(el => `<option>${el.description}</option>`);
+                        $('#header-search').empty();
+                        $('#header-search').append(list.join());
+                        $('#header-search').selectpicker('refresh');
+                    }
+                }
+            })
+        }, 400);
+    })
+    
+}
+
 //VIDHI - CHECK USER SESSION
 function checkUserLoggedIn(){
     $.ajax({
@@ -8,12 +39,12 @@ function checkUserLoggedIn(){
             if (response.status == "success") {
                 $("#header").load("html/headerlogin.html");
             } else {
-                $("#header").load("html/header.html");
+                $("#header").load("html/header.html", initHeaderSearch);
             }
             $("#footer").load("html/footer.html");
         },
         error: function () {
-            $("#header").load("html/header.html");
+            $("#header").load("html/header.html", initHeaderSearch);
             $("#footer").load("html/footer.html");
         }
     });
