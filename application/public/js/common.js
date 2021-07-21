@@ -1,36 +1,7 @@
 
-function initHeaderSearch() {
-    $('#header-search').selectpicker('val', '');    
-    let inv = 0;
-    $('.form-search input').on('input', (ev) => {
-        clearInterval(inv);
-        const value = ev.target.value;
-        if(value === ""){
-            $('#header-search').empty();
-            $('#header-search').selectpicker('refresh');
-            return;
-        }
-        inv = setTimeout(() => {
-            $.ajax({
-                url: "http://localhost:3000/getEvents?keyword=" + value,
-                type: "GET",
-                crossDomain: true,
-                success: function (response) {
-                    if(response.status === "success"){
-                        const list = response.data.map(el => `<option>${el.description}</option>`);
-                        $('#header-search').empty();
-                        $('#header-search').append(list.join());
-                        $('#header-search').selectpicker('refresh');
-                    }
-                }
-            })
-        }, 400);
-    })
-    
-}
 
 //VIDHI - CHECK USER SESSION
-function checkUserLoggedIn(){
+function checkUserLoggedIn() {
     $.ajax({
         url: "http://100.26.92.104:3000/checkUserLoggedIn",
         type: "POST",
@@ -39,19 +10,19 @@ function checkUserLoggedIn(){
             if (response.status == "success") {
                 $("#header").load("html/headerlogin.html");
             } else {
-                $("#header").load("html/header.html", initHeaderSearch);
+                $("#header").load("html/header.html");
             }
             $("#footer").load("html/footer.html");
         },
         error: function () {
-            $("#header").load("html/header.html", initHeaderSearch);
+            $("#header").load("html/header.html");
             $("#footer").load("html/footer.html");
         }
     });
 }
 
 //Vidhi- LOGIN API
-$("#userlogin").on("click",  function () {
+$("#userlogin").on("click", function () {
     let email = $("#validationCustom01").val();
     if (!validateEmail(email)) {
         $("#validationCustom01").css('border', '1px solid red');
@@ -145,11 +116,12 @@ function validateEmail(email) {
     return re.test(String(email).toLowerCase());
 }
 
-checkUserLoggedIn();
+// checkUserLoggedIn();
 
-$("#searchbarbt").on("click",  function (){
+$("#searchbarbt").on("click", function () {
     let text = $("#searchbar").val();
-    if(text.length == 0) {
+    let html = "";
+    if (text.length == 0) {
         $("#searchbar").css('border', '1px solid red');
         return;
     } else {
@@ -163,9 +135,18 @@ $("#searchbarbt").on("click",  function (){
             keyword: text
         },
         success: function (response) {
-            console.log(response.data.length);
             if (response.status == "success") {
-                alert("Search complete");
+                if (response.data.length > 0) {
+                    let data = response.data;
+                    $.each(data, function (key, value) {
+                        console.log(value);
+                        html += '<li role="presentation"><a role="menuitem" tabindex="-1" href="">' + value.title + '</a></li>';
+                    });
+                } else {
+                    html += '<li role="presentation"><a role="menuitem" tabindex="-1" href="#">No result found</a></li>';
+                }
+                $("#displist").html(html);
+                $("#displist").css("display", "block");
             } else {
                 alert("Something went wrong. Please try again!!!");
             }
@@ -173,7 +154,12 @@ $("#searchbarbt").on("click",  function (){
         error: function () {
             alert("Something went wrong. Please try again!!!");
         }
-
     });
-
 })
+
+$(document).bind('click', function (e) {
+    var par = $(e.target).parent();
+    if (!$('#displist').is(e.target)) {
+        $('#displist').css("display", "none");
+    };
+});

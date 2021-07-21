@@ -28,6 +28,7 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 
     <script defer src="../js/events.js" charset="utf-8"></script>
+    <script defer src="../js/common.js" charset="utf-8"></script>
 </head>
 
 
@@ -37,33 +38,39 @@
             <!-- Nav Bar -->
             <nav class="navbar navbar-expand-lg navbar-dark">
                 <i class="fas fa-dumbbell fa-2x"></i>
-                <a class="navbar-brand" href="../index.html">FitHub</a>
+                <a class="navbar-brand" href="http://100.26.92.104/">FitHub</a>
+          
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+                  aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
                 </button>
-
+          
                 <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="../html/myProfile.html">My Account</a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link" href="../html/matching.html">Find a Buddy</a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link" href="../html/events.html">Events</a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link" href="../index.html">Log out</a>
-                          </li>
-                    </ul>
+                  <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                      <a class="nav-link" href="../html/myProfile.html">My Account</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="../html/matching.html">Find a Buddy</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="../html/events.html">Events</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="../index.html">Log out</a>
+                    </li>
+                    <li class="nav-item">
+                      <form class="form-inline d-flex dropdown">
+                        <input class="form-control form-control-sm" type="text" placeholder="Search" id="searchbar"
+                          data-toggle="dropdown">
+                        <button class="btn btn-outline-success btn-sm" id="searchbarbt" type="button">Go</button>
+                        <ul class="dropdown-menu" id="displist" role="menu" aria-labelledby="menu1">
+                        </ul>
+                      </form>
+                    </li>
+                  </ul>
                 </div>
-                <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
-                    <input type="search" class="form-control form-control-dark" placeholder="Search..."
-                        aria-label="Search">
-                </form>
-            </nav>
+              </nav>
         </div>
     </section>
     <div class="container">
@@ -85,22 +92,23 @@
                                 <div class="col-lg-6">
                                     <input type="text" class="form-control" id="title" placeholder="Enter event title"
                                         required> </br>
-                                </div> 
+                                </div>
                             </div>
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <textarea class="form-control" placeholder="Enter event description" id="eventdescription"></textarea> </br>
+                                    <textarea class="form-control" placeholder="Enter event description"
+                                        id="eventdescription"></textarea> </br>
                                 </div>
                             </div>
 
                             <div class="row">
                                 <div class="col-lg-4">
-                                    <input type="text" class="form-control" id="address" placeholder="Enter event address"
-                                        required> </br>
+                                    <input type="text" class="form-control" id="address"
+                                        placeholder="Enter event address" required> </br>
                                 </div>
                                 <div class="col-lg-4">
-                                    <input type="number" class="form-control" id="zipcode" placeholder="Enter event zipcode"
-                                        required> </br>
+                                    <input type="number" class="form-control" id="zipcode"
+                                        placeholder="Enter event zipcode" required> </br>
                                 </div>
                             </div>
                             <div class="row">
@@ -109,22 +117,23 @@
                                         required> </br>
                                 </div>
                                 <div class="col-lg-4">
-                                    <input type="time" class="form-control" id="startTime" placeholder="Enter event start time"
-                                        required>
+                                    <input type="time" class="form-control" id="startTime"
+                                        placeholder="Enter event start time" required>
                                 </div>
                                 <div class="col-lg-4">
-                                    <input type="time" class="form-control" id="endTime" placeholder="Enter event end time"
-                                        required>
+                                    <input type="time" class="form-control" id="endTime"
+                                        placeholder="Enter event end time" required>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-lg-4"> </br></div>
 
                                 <div class="col-lg-4">
-                                    <button id= "saveEvent" class="btn btn-dark btn-lg download-button" type="button">Submit</button> </br>
+                                    <button id="saveEvent" class="btn btn-dark btn-lg download-button"
+                                        type="button">Submit</button> </br>
                                 </div>
 
-                                <div class="col-lg-4"> </br></div> 
+                                <div class="col-lg-4"> </br></div>
                             </div>
                             <!-- <img class="event-image" src="../images/circle-cropped.png"> -->
                         </a>
