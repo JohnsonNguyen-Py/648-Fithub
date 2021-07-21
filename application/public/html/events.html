@@ -8,7 +8,9 @@
     <!-- BootStrap Scripts -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link
@@ -26,7 +28,6 @@
     <!-- JS -->
     <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
-
     <script defer src="../js/events.js" charset="utf-8"></script>
 </head>
 
@@ -47,16 +48,16 @@
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
                             <a class="nav-link" href="../html/myProfile.html">My Account</a>
-                          </li>
-                          <li class="nav-item">
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="../html/matching.html">Find a Buddy</a>
-                          </li>
-                          <li class="nav-item">
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="../html/events.html">Events</a>
-                          </li>
-                          <li class="nav-item">
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="../index.html">Log out</a>
-                          </li>
+                        </li>
                     </ul>
                 </div>
                 <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
@@ -65,66 +66,361 @@
                 </form>
             </nav>
         </div>
-    <div class="container">
-        <div class="side">
-            <div class="header">
-                <div class="avatar">
-                    <img src="../images/circle-cropped.png" alt="">
+        <div class="container">
+            <div class="side">
+                <div class="header">
+                    <div class="avatar">
+                        <img src="../images/circle-cropped.png" alt="">
+                    </div>
+                    <a class="title" href="events.html">Events</a>
                 </div>
-                <a class="title" href="void:;">Events</a>
+                <!-- SIDEBAR LIST -->
+                <div class="flex-shrink-0 p-3">
+                    <ul class="list-unstyled ps-0">
+                        <li class="mb-1">
+                            <a href="CreateEvents.html">
+                            <button class="btn btn-toggle align-items-center rounded collapsed" aria-expanded="false">
+                                Create an Event
+                            </button>
+                        </a>
+                        </li>
+
+                        <li class="mb-1">
+                            <button class="btn btn-toggle align-items-center rounded collapsed"
+                                data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">
+                                Discovery Settings
+                            </button>
+                            <div class="collapse" id="dashboard-collapse">
+                                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                    <li>
+                                        <!-- Button trigger modal -->
+                                        <button type="button" class="btn btn-sm" data-bs-toggle="modal"
+                                            data-bs-target="#modal6">
+                                            Location
+                                        </button>
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="modal6" tabindex="-1" role="dialog"
+                                            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header1">
+                                                        <a class="dumbbell" href="https://cs.sfsu.edu/"><i
+                                                                class="fas fa-dumbbell"></i></a>
+                                                    </div>
+                                                    <h5 class="modal-title" id="exampleModalLabel">Location</h5>
+                                                    <div class="modal-body">
+                                                        <input type="number" class="form-control" placeholder="City">
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="submit"
+                                                            class="btn btn-outline-dark">Continue</button>
+                                                    </div>
+                                    </li>
+                                    <li>
+                                        <!-- Button trigger modal -->
+                                        <button type="button" class="btn btn-sm" data-bs-toggle="modal"
+                                            data-bs-target="#modal7">
+                                            Maximum Distance
+                                        </button>
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="modal7" tabindex="-1" role="dialog"
+                                            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header1">
+                                                        <a class="dumbbell" href="https://cs.sfsu.edu/"><i
+                                                                class="fas fa-dumbbell"></i></a>
+                                                    </div>
+                                                    <h5 class="modal-title" id="exampleModalLabel">Maximum Distance in
+                                                        Miles</h5>
+                                                    <div class="modal-body">
+                                                        <input type="range" name="range" step="1" min="1" max="100"
+                                                            onchange="rangePrimary.value=value">
+                                                        <input type="text" id="rangePrimary" />
+                                                    </div>
+                                    </li>
+                                    <li>
+
+                                    <li>
+                                        <!-- Button trigger modal -->
+                                        <button type="button" class="btn btn-sm" data-bs-toggle="modal"
+                                            data-bs-target="#modal9">
+                                            Age Range
+                                        </button>
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="modal9" tabindex="-1" role="dialog"
+                                            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header1">
+                                                        <a class="dumbbell" href="https://cs.sfsu.edu/"><i
+                                                                class="fas fa-dumbbell"></i></a>
+                                                    </div>
+                                                    <h5 class="modal-title" id="exampleModalLabel">Age Range</h5>
+                                                    <div class="modal-body">
+                                                        <input class="form-control" type="number" placeholder="18-55+">
+                                                    </div>
+                                    </li>
+                                    <li>
+                                        <!-- Button trigger modal -->
+                                        <div class="">
+                                            <button type="button" id="passions" class="btn btn-sm"
+                                                data-bs-toggle="modal" data-bs-target="#modal10">
+                                                Passions
+                                            </button>
+                                        </div>
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="modal10" tabindex="-1"
+                                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Passions</h5>
+                                                    <div class="">
+                                                        <p class="letEveryone">Let everyone know what you're passionate
+                                                            about by adding it to your
+                                                            profile</p>
+                                                    </div>
+                                                    <div class="modal-body btnCenter" id="activities">
+                                                        <button type="button" class="btn btn-outline-dark btn-sm"
+                                                            data-bs-toggle="button" autocomplete="off"
+                                                            data-info="weights">🏋️‍♀️ Weights</button>
+                                                        <button type="button" class="btn btn-outline-dark btn-sm"
+                                                            data-bs-toggle="button" autocomplete="off"
+                                                            data-info="cycling">🚴‍♂️ Cycling</button>
+                                                        <button type="button" class="btn btn-outline-dark btn-sm"
+                                                            data-bs-toggle="button" autocomplete="off"
+                                                            data-info="mountain_biking">🚵‍♀️ Mountain Biking</button>
+                                                        <button type="button" class="btn btn-outline-dark btn-sm"
+                                                            data-bs-toggle="button" autocomplete="off"
+                                                            data-info="rock_climbing">🧗‍♀️ Rock Climbing</button>
+                                                        <button type="button" class="btn btn-outline-dark btn-sm"
+                                                            data-bs-toggle="button" autocomplete="off"
+                                                            data-info="rowing">🚣 Rowing‍</button>
+                                                        <button type="button" class="btn btn-outline-dark btn-sm"
+                                                            data-bs-toggle="button" autocomplete="off"
+                                                            data-info="waterpolo">🤽 Waterpolo</button>
+                                                        <button type="button" class="btn btn-outline-dark btn-sm"
+                                                            data-bs-toggle="button" autocomplete="off"
+                                                            data-info="swimming">🏊‍♀️ Swimming</button>
+                                                        <button type="button" class="btn btn-outline-dark btn-sm"
+                                                            data-bs-toggle="button" autocomplete="off"
+                                                            data-info="surfing">🏄‍♀️ Surfing</button>
+                                                        <button type="button" class="btn btn-outline-dark btn-sm"
+                                                            data-bs-toggle="button" autocomplete="off"
+                                                            data-info="horseriding">🏇 Horseriding</button>
+                                                        <button type="button" class="btn btn-outline-dark btn-sm"
+                                                            data-bs-toggle="button" autocomplete="off"
+                                                            data-info="golf">🏌️‍♀️ Golf</button>
+                                                        <button type="button" class="btn btn-outline-dark btn-sm"
+                                                            data-bs-toggle="button" autocomplete="off"
+                                                            data-info="handball">🤾‍♀️ Handball</button>
+                                                        <button type="button" class="btn btn-outline-dark btn-sm"
+                                                            data-bs-toggle="button" autocomplete="off"
+                                                            data-info="fencing">🤺 Fencing</button>
+                                                        <button type="button" class="btn btn-outline-dark btn-sm"
+                                                            data-bs-toggle="button" autocomplete="off"
+                                                            data-info="basketball">⛹️‍♀️ Basketball</button>
+                                                        <button type="button" class="btn btn-outline-dark btn-sm"
+                                                            data-bs-toggle="button" autocomplete="off"
+                                                            data-info="calisthenics">🤸‍♀️ Calisthenics‍</button>
+                                                        <button type="button" class="btn btn-outline-dark btn-sm"
+                                                            data-bs-toggle="button" autocomplete="off"
+                                                            data-info="wrestling">🤼‍♀️ Wrestling</button>
+                                                        <button type="button" class="btn btn-outline-dark btn-sm"
+                                                            data-bs-toggle="button" autocomplete="off"
+                                                            data-info="parasailing">🪂 Parasailing</button>
+                                                        <button type="button" class="btn btn-outline-dark btn-sm"
+                                                            data-bs-toggle="button" autocomplete="off"
+                                                            data-info="snowboarding">🏂 Snowboarding</button>
+                                                        <button type="button" class="btn btn-outline-dark btn-sm"
+                                                            data-bs-toggle="button" autocomplete="off"
+                                                            data-info="skiing">⛷ Skiing</button>
+                                                        <button type="button" class="btn btn-outline-dark btn-sm"
+                                                            data-bs-toggle="button" autocomplete="off"
+                                                            data-info="curling">🥌 Curling</button>
+                                                        <button type="button" class="btn btn-outline-dark btn-sm"
+                                                            data-bs-toggle="button" autocomplete="off"
+                                                            data-info="ice_skating">⛸ Ice Skating</button>
+                                                        <button type="button" class="btn btn-outline-dark btn-sm"
+                                                            data-bs-toggle="button" autocomplete="off"
+                                                            data-info="sleding">🛷 Sleding</button>
+                                                        <button type="button" class="btn btn-outline-dark btn-sm"
+                                                            data-bs-toggle="button" autocomplete="off"
+                                                            data-info="roller_skating">🛼 Roller Skating</button>
+                                                        <button type="button" class="btn btn-outline-dark btn-sm"
+                                                            data-bs-toggle="button" autocomplete="off"
+                                                            data-info="skating">🛹 Skating‍</button>
+                                                        <button type="button" class="btn btn-outline-dark btn-sm"
+                                                            data-bs-toggle="button" autocomplete="off"
+                                                            data-info="mma">🥋 MMA</button>
+                                                        <button type="button" class="btn btn-outline-dark btn-sm"
+                                                            data-bs-toggle="button" autocomplete="off"
+                                                            data-info="boxing">🥊 Boxing</button>
+                                                        <button type="button" class="btn btn-outline-dark btn-sm"
+                                                            data-bs-toggle="button" autocomplete="off"
+                                                            data-info="snorkeling">🤿 Snorkeling</button>
+                                                        <button type="button" class="btn btn-outline-dark btn-sm"
+                                                            data-bs-toggle="button" autocomplete="off"
+                                                            data-info="fishing">🎣 Fishing</button>
+                                                        <button type="button" class="btn btn-outline-dark btn-sm"
+                                                            data-bs-toggle="button" autocomplete="off"
+                                                            data-info="archery">🏹 Archery</button>
+                                                        <button type="button" class="btn btn-outline-dark btn-sm"
+                                                            data-bs-toggle="button" autocomplete="off"
+                                                            data-info="kite_flying">🪁 Kite Flying</button>
+                                                        <button type="button" class="btn btn-outline-dark btn-sm"
+                                                            data-bs-toggle="button" autocomplete="off"
+                                                            data-info="badminton">🏸 Badminton</button>
+                                                        <button type="button" class="btn btn-outline-dark btn-sm"
+                                                            data-bs-toggle="button" autocomplete="off"
+                                                            data-info="ultimate_boomerang">🪃 Ultimate
+                                                            Boomerang</button>
+                                                        <button type="button" class="btn btn-outline-dark btn-sm"
+                                                            data-bs-toggle="button" autocomplete="off"
+                                                            data-info="cricket">🏏 Cricket</button>
+                                                        <button type="button" class="btn btn-outline-dark btn-sm"
+                                                            data-bs-toggle="button" autocomplete="off"
+                                                            data-info="lacrosse">🥍 Lacrosse</button>
+                                                        <button type="button" class="btn btn-outline-dark btn-sm"
+                                                            data-bs-toggle="button" autocomplete="off"
+                                                            data-info="field_hockey">🏑 Field Hockey</button>
+                                                        <button type="button" class="btn btn-outline-dark btn-sm"
+                                                            data-bs-toggle="button" autocomplete="off"
+                                                            data-info="ice_hockey">🏒 Ice Hockey</button>
+                                                        <button type="button" class="btn btn-outline-dark btn-sm"
+                                                            data-bs-toggle="button" autocomplete="off"
+                                                            data-info="ping_pong">🏓 Ping Pong</button>
+                                                        <button type="button" class="btn btn-outline-dark btn-sm"
+                                                            data-bs-toggle="button" autocomplete="off"
+                                                            data-info="pool">🎱 Pool</button>
+                                                        <button type="button" class="btn btn-outline-dark btn-sm"
+                                                            data-bs-toggle="button" autocomplete="off"
+                                                            data-info="ultimate_frisbee">🥏 Ultimate Frisbee</button>
+                                                        <button type="button" class="btn btn-outline-dark btn-sm"
+                                                            data-bs-toggle="button" autocomplete="off"
+                                                            data-info="rugby">🏉 Rugby</button>
+                                                        <button type="button" class="btn btn-outline-dark btn-sm"
+                                                            data-bs-toggle="button" autocomplete="off"
+                                                            data-info="volleyball">🏐 Volleyball</button>
+                                                        <button type="button" class="btn btn-outline-dark btn-sm"
+                                                            data-bs-toggle="button" autocomplete="off"
+                                                            data-info="tennis">🎾 Tennis</button>
+                                                        <button type="button" class="btn btn-outline-dark btn-sm"
+                                                            data-bs-toggle="button" autocomplete="off"
+                                                            data-info="softball">🥎 Softball</button>
+                                                        <button type="button" class="btn btn-outline-dark btn-sm"
+                                                            data-bs-toggle="button" autocomplete="off"
+                                                            data-info="baseball">⚾️ Baseball</button>
+                                                        <button type="button" class="btn btn-outline-dark btn-sm"
+                                                            data-bs-toggle="button" autocomplete="off"
+                                                            data-info="american_football">🏈 American Football</button>
+                                                        <button type="button" class="btn btn-outline-dark btn-sm"
+                                                            data-bs-toggle="button" autocomplete="off"
+                                                            data-info="soccer">⚽️ Soccer</button>
+                                                        <button type="button" class="btn btn-outline-dark btn-sm"
+                                                            data-bs-toggle="button" autocomplete="off"
+                                                            data-info="running">🏃‍♀️ Running</button>
+                                                        <button type="button" class="btn btn-outline-dark btn-sm"
+                                                            data-bs-toggle="button" autocomplete="off"
+                                                            data-info="wheelchair_sports">👩‍🦽 Wheelchair
+                                                            Sports</button>
+                                                        <button type="button" class="btn btn-outline-dark btn-sm"
+                                                            data-bs-toggle="button" autocomplete="off"
+                                                            data-info="walking">🚶‍♀️ Walking</button>
+                                                        <button type="button" class="btn btn-outline-dark btn-sm"
+                                                            data-bs-toggle="button" autocomplete="off"
+                                                            data-info="bowling">🎳 Bowling</button>
+                                                        <button type="button" class="btn btn-outline-dark btn-sm"
+                                                            data-bs-toggle="button" autocomplete="off"
+                                                            data-info="darts">🎯 Darts</button>
+                                                        <button type="button" class="btn btn-outline-dark btn-sm"
+                                                            data-bs-toggle="button" autocomplete="off"
+                                                            data-info="juggling">🤹‍♀️ Juggling</button>
+                                                        <button type="button" class="btn btn-outline-dark btn-sm"
+                                                            data-bs-toggle="button" autocomplete="off"
+                                                            data-info="outdoors">⛺️ Outdoors</button>
+                                                        <button type="button" class="btn btn-outline-dark btn-sm"
+                                                            data-bs-toggle="button" autocomplete="off"
+                                                            data-info="dancing">💃 Dancing</button>
+                                                        <button type="button" class="btn btn-outline-dark btn-sm"
+                                                            data-bs-toggle="button" autocomplete="off"
+                                                            data-info="cardio">🫁 Cardio</button>
+                                                        <button type="button" class="btn btn-outline-dark btn-sm"
+                                                            data-bs-toggle="button" autocomplete="off"
+                                                            data-info="muscle">💪 Muscle</button>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-outline-dark"
+                                                            data-bs-dismiss="modal">Close</button>
+                                                        <button type="button" class="btn btn-outline-dark"
+                                                            data-bs-dismiss="modal" required>Save
+                                                            changes</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+            <div class="creatingevent">
+                <section class="white-section" id="events-list">
+                    <div class="event-card">
+                        <a href="EventProfile.html"
+                            class="list-group-item list-group-item-action flex-column align-items-start">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Biking @ Golden Gate Park</h5>
+                            </div>
+                            <p class="event-details">When</p>
+                            <p class="event-details">Where</p>
+                            <div class="event-organizer">
+                                <small>Event creator</small>
+                                <img class="event-creator-image" src="../images/circle-cropped.png">
+                            </div>
+                            <!-- <img class="event-image" src="../images/circle-cropped.png"> -->
+                        </a>
+                    </div>
+                    <div class="event-card">
+                        <a href="EventProfile.html"
+                            class="list-group-item list-group-item-action flex-column align-items-start">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Biking @ Golden Gate Park</h5>
+                            </div>
+                            <p class="event-details">When</p>
+                            <p class="event-details">Where</p>
+                            <div class="event-organizer">
+                                <small>Event creator</small>
+                                <img class="event-creator-image" src="../images/circle-cropped.png">
+                            </div>
+                            <!-- <img class="event-image" src="../images/circle-cropped.png"> -->
+                        </a>
+                    </div>
+                    <div class="event-card">
+                        <a href="EventProfile.html"
+                            class="list-group-item list-group-item-action flex-column align-items-start">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Biking @ Golden Gate Park</h5>
+                            </div>
+                            <p class="event-details">When</p>
+                            <p class="event-details">Where</p>
+                            <div class="event-organizer">
+                                <small>Event creator</small>
+                                <img class="event-creator-image" src="../images/circle-cropped.png">
+                            </div>
+                            <!-- <img class="event-image" src="../images/circle-cropped.png"> -->
+                        </a>
+                    </div>
+                </section>
             </div>
         </div>
-        <div class="creatingevent">
-            <section class="white-section" id="events-list">
-                <div class="event-card">
-                <a href="EventProfile.html" class="list-group-item list-group-item-action flex-column align-items-start">
-                    <div class="d-flex w-100 justify-content-between">
-                        <h5 class="mb-1">Biking @ Golden Gate Park</h5>
-                    </div>
-                    <p class="event-details">When</p>
-                    <p class="event-details">Where</p>
-                    <div class="event-organizer">
-                        <small>Event creator</small>
-                        <img class="event-creator-image" src="../images/circle-cropped.png">
-                    </div>
-                    <!-- <img class="event-image" src="../images/circle-cropped.png"> -->
-                </a>
-            </div>
-            <div class="event-card">
-                <a href="EventProfile.html" class="list-group-item list-group-item-action flex-column align-items-start">
-                    <div class="d-flex w-100 justify-content-between">
-                        <h5 class="mb-1">Biking @ Golden Gate Park</h5>
-                    </div>
-                    <p class="event-details">When</p>
-                    <p class="event-details">Where</p>
-                    <div class="event-organizer">
-                        <small>Event creator</small>
-                        <img class="event-creator-image" src="../images/circle-cropped.png">
-                    </div>
-                    <!-- <img class="event-image" src="../images/circle-cropped.png"> -->
-                </a>
-            </div>
-            <div class="event-card">
-                <a href="EventProfile.html" class="list-group-item list-group-item-action flex-column align-items-start">
-                    <div class="d-flex w-100 justify-content-between">
-                        <h5 class="mb-1">Biking @ Golden Gate Park</h5>
-                    </div>
-                    <p class="event-details">When</p>
-                    <p class="event-details">Where</p>
-                    <div class="event-organizer">
-                        <small>Event creator</small>
-                        <img class="event-creator-image" src="../images/circle-cropped.png">
-                    </div>
-                    <!-- <img class="event-image" src="../images/circle-cropped.png"> -->
-                </a>
-            </div>
-            </section>
-        </div>
-    </div>
     </section>
 
 
-        <!-- <div class="event-arrows">
+    <!-- <div class="event-arrows">
             <a class="arrows" href="#">
                 <img class="arrows" id="left-arrow" src="../images/arrow.png">
             </a>
@@ -132,7 +428,7 @@
                 <img class="arrows" id="right-arrow" src="../images/arrow.png">
             </a>
         </div> -->
- 
+
     <!-- Footer -->
     <footer class="white-section" id="footer">
         <div class="container-fluid">

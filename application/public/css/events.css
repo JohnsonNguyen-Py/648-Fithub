@@ -18,10 +18,12 @@
     float:left;
     margin-right: 1%;
 }
-.event-organizer{
-    margin-left: -83%;
-    margin-top: 5%;
-}
+/* .event-organizer::after{
+    float: left;
+    content: "";
+    clear: both;
+    display: table;
+} */
 .event-creator-image {
     width: 75px;
     height: 75px;
