@@ -149,7 +149,7 @@ checkUserLoggedIn();
 
 $("#searchbarbt").on("click",  function (){
     let text = $("#searchbar").val();
-    if(text.lenght == 0) {
+    if(text.length == 0) {
         $("#searchbar").css('border', '1px solid red');
         return;
     } else {
@@ -163,7 +163,7 @@ $("#searchbarbt").on("click",  function (){
             keyword: text
         },
         success: function (response) {
-            console.log(response.data)
+            console.log(response.data.length);
             if (response.status == "success") {
                 alert("Search complete");
             } else {

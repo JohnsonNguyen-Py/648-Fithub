@@ -186,6 +186,7 @@ app.post('/saveEvent', urlencodedParser, function (req, res) {
 app.post('/getEvents', urlencodedParser, function (req, res) {
     let keyword = req.query.keyword;
     var sql = "SELECT * FROM `events` WHERE `description` LIKE '%" + keyword + "%'";
+    console.log(sql);
     dbconnection.query(sql, (err, result) => {
         if (err) {
             res.send({ status: "failure", message: err, data: {} });
