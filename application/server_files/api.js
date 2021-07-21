@@ -183,7 +183,7 @@ app.post('/saveEvent', urlencodedParser, function (req, res) {
     });
 });
 
-app.get('/getEvents', function(req, res){
+app.post('/getEvents', urlencodedParser,  function(req, res){
     let keyword = req.query.keyword;
     if(keyword && keyword !== ''){
       var sql = "SELECT * FROM `events` WHERE `description` LIKE '%" + keyword + "%'";

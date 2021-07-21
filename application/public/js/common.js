@@ -146,3 +146,34 @@ function validateEmail(email) {
 }
 
 checkUserLoggedIn();
+
+$("#searchbarbt").on("click",  function (){
+    let text = $("#searchbar").val();
+    if(text.lenght == 0) {
+        $("#searchbar").css('border', '1px solid red');
+        return;
+    } else {
+        $("#searchbar").css('border', '');
+    }
+    $.ajax({
+        url: "http://100.26.92.104:3000/getEvents",
+        type: "POST",
+        crossDomain: true,
+        data: {
+            keyword: text
+        },
+        success: function (response) {
+            console.log(response.data)
+            if (response.status == "success") {
+                alert("Search complete");
+            } else {
+                alert("Something went wrong. Please try again!!!");
+            }
+        },
+        error: function () {
+            alert("Something went wrong. Please try again!!!");
+        }
+
+    });
+
+})
