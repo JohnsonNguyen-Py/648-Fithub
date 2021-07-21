@@ -59,8 +59,7 @@ function registerUser() {
           alert("Thank you for registering. Go to home page and then log in!!!");
           window.location.href = '../index.html';
         } else {
-          alert("failure");
-          console.log(response)
+          alert(response.message);
         }
 
       },

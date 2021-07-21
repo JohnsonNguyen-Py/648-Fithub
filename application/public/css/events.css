@@ -37,3 +37,24 @@
 #left-arrow{
     transform: rotate(180deg);
 }
+.meet-section{
+    min-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 25px;
+}
+.button {
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+.button1 {
+background-color: #BA55D3;
+}

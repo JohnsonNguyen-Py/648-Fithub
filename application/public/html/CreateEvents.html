@@ -75,61 +75,54 @@
 
 
     <!-- Events -->
+    <div id="post-event">
+        <button type="button" class="btn btn-light">Create an Event</button>
+    </div>
 
     <section class="white-section" id="events-list">
 
-        <div class="meet-section">
-            <div class="col-lg-8">
-                <div class="card shadow-sm">
-                    <div class="card-header bg-transparent border-0">
-                        <h3 class="mb-0"><i class="far fa-clone pr-1"></i>Event Information</h3>
-                    </div>
-                    <div class="card-body pt-0">
-                        <table class="table table-bordered">
-                            <tr>
-                                <th width="30%">Event</th>
-                                <td width="2%">:</td>
-                                <td>Group Biking</td>
-                            </tr>
-                            <tr>
-                                <th width="30%">Location</th>
-                                <td width="2%">:</td>
-                                <td>San Francisco State University, CA</td>
-                            </tr>
-                            <tr>
-                                <th width="30%">Time</th>
-                                <td width="2%">:</td>
-                                <td>19/7/2021-21/7/2021 8:00am-10:00am PST</td>
-                            </tr>
-                            <tr>
-                                <th width="30%">Limit of Enroller</th>
-                                <td width="2%">:</td>
-                                <td>30</td>
-                            </tr>
-                            <tr>
-                            <th width="30%">Contact</th>
-                            <td width="2%">:</td>
-                            <td>415-920-xxxx</td>
-                        </tr>
-                            <tr>
-                                <th width="30%">Description</th>
-                                <td width="2%">:</td>
-                                <td>Welcome to the biggest group biking in SFSU! We are here to meet you up!</td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
-                <button class="button button1">Enroll</button>
-            </div>
-        </div>
 
-        <div class="event-arrows">
-            <a class="arrows" href="#">
-                <img class="arrows" id="left-arrow" src="../images/arrow.png">
-            </a>
-            <a class="arrows" href="#">
-                <img class="arrows" id="right-arrow" src="../images/arrow.png">
-            </a>
+        <div class="list-group">
+            <div class="event-card">
+                <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="event">Creat New Event</h5>
+                    </div>
+                    <p class="create-event">Title</p>
+                    <input type="text"><br><br>
+
+                    <p class="create-event">Description</p>
+                    <input type="text" style="width: 250px; height: 100px;"><br><br>
+
+                    <p class="create-event">Date</p>
+                    <input type="date"><br><br>
+
+                    <p class="create-event">Location</p>
+                    <input type="text"><br><br>
+
+                    <p class="create-event">Zip</p>
+                    <input type="text"><br><br>
+
+                    <p class="create-event">Time Start</p>
+                    <input type="time"><br><br>
+
+                    <p class="create-event">Time End</p>
+                    <input type="time"><br><br><br>
+
+                    <label class="create-event" for="img">Select Image</label>
+                    <input type="file" name="img"><br><br>
+
+                    <button type="button">Submit</button>
+
+                    <div class="event-organizer">
+                        <small>Event creator</small>
+                        <img class="event-creator-image" src="../images/circle-cropped.png">
+                    </div>
+                    <!-- <img class="event-image" src="../images/circle-cropped.png"> -->
+                </a>
+            </div>
+            
+            
         </div>
     </section>
     <!-- Footer -->
