@@ -99,7 +99,7 @@ body {
   padding: 0 20px;
 }
 
-.side .menu ul li {
+.side .menu li {
   list-style: none;
   margin: 0 10px;
   font-weight: 700;
@@ -167,6 +167,9 @@ body {
 button {
   outline: none;
 }
+
+
+
 /* Johnson NGUYEN*/
 
 
