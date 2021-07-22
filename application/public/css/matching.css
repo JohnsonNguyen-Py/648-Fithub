@@ -239,12 +239,12 @@ button {
 
 .content .buttons .no i {
   color: #fd2e79;
-  font-size: 33px;
+  font-size: 32px;
 }
 
 .content .buttons .star i {
-  color: #2bb1ff;
-  font-size: 22px;
+  color: #05a11a;
+  font-size: 32px;
 }
 
 .content .buttons .heart i {
@@ -274,6 +274,6 @@ button {
 }
 
 .content .buttons .star {
-  width: 60px;
-  height: 60px;
+  width: 70px;
+  height: 70px;
 }
