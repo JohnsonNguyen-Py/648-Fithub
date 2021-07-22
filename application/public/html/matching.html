@@ -194,27 +194,64 @@
 
 
     <div class="content">
-      <div class="card">
-        <div class="user">
-          <img class="user" src="../images/woman-unsplash.jpg" />
-          <div class="profile">
-            <div class="name">Megan <span>26</span></div>
-            <div class="local">
-              <i class="fas fa-map-marker-alt"></i>
-              <span>20 miles away</span>
+      <div class="div_content" id="div_myMatchesTab">
+        <div class="card">
+          <div class="user">
+            <img class="user" src="../images/woman-unsplash.jpg" />
+            <div class="profile">
+              <div class="name">Megan <span>26</span></div>
+              <div class="local">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>20 miles away</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="buttons">
+          <div class="star" id="accept">
+            <i class="fas fa-check"></i>
+          </div>
+          <div class="no" id="reject">
+            <i class="fas fa-times"></i>
+          </div>
+          <div class="heart">
+            <i class="fas fa-dumbbell"></i>
+          </div>
+        </div>
+      </div>
+      <div class="div_content" id="div_messagesTab" style="display: none;">
+        <div class="card">
+          <div class="row">
+            <div class="col-lg-6"><img src="https://randomuser.me/api/portraits/women/28.jpg" alt=""></div>
+            <div class="col-lg-6"><h1>Hannah Montana</h1></div>
+          </div></br></br>
+          <div class="row">
+            <div class="col-lg-4">
+              <label class = "form-control" for="exampleInputEmail1">Hello want to workout?</label>
+            </div>
+          </div>
+          <div class="row" id="messagesTabRow">
+            <div class="col-lg-8">
+              <input type="email" class="form-control" id="message" placeholder="Write message..." required>
+            </div>
+            <div class="col-lg-4">
+              <button class="btn btn-outline-dark continueB" type="button">Send</button>
             </div>
           </div>
         </div>
       </div>
-      <div class="buttons">
-        <div class="star">
-          <i class="fas fa-check"></i>
-        </div>
-        <div class="no">
-          <i class="fas fa-times"></i>
-        </div>
-        <div class="heart">
-          <i class="fas fa-dumbbell"></i>
+      <div class="div_content" id="div_myFriendsTab" style="display: none;">
+        <div class="card">
+          <div class="user">
+            <img class="user" src="../images/profile.jpg" />
+            <div class="profile">
+              <div class="name">Kehlani <span>20</span></div>
+              <div class="local">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>4 miles away</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
