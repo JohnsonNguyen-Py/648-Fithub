@@ -11,6 +11,7 @@
     margin: auto;
     width: 80%;
 }
+
 .event-card{
     margin-bottom: 2%;
 }
@@ -41,6 +42,10 @@
 }
 #left-arrow{
     transform: rotate(180deg);
+}
+#event-info{
+  margin: auto;
+  width: 80%;
 }
 .meet-section{
     min-width: 100%;
