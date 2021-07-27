@@ -3,6 +3,8 @@
 
 <head>
   <meta charset="utf-8">
+  <meta name="description" content="Fithub is a web app for helping people find workout events">
+  <meta name="keywords" content="Fithub, Workout, Friends, Workout Buddies, Events, Workout Events">
   <title>Events | FitHub</title>
 
   <!-- BootStrap Scripts -->
@@ -36,94 +38,107 @@
 
 
 <body>
-<section class="colored-section" id="ptitle">
-  <div class="container-fluid">
-    <!-- Nav Bar -->
-    <nav class="navbar navbar-expand-lg navbar-dark">
-      <i class="fas fa-dumbbell fa-2x"></i>
-      <a class="navbar-brand" href="http://100.26.92.104/">FitHub</a>
-
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-              aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="../html/myProfile.html">My Account</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="../html/matching.html">Find a Buddy</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="../html/events.html">Events</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="../index.html">Log out</a>
-          </li>
-          <li class="nav-item">
-            <form class="form-inline d-flex dropdown">
-              <input class="form-control form-control-sm" type="text" placeholder="Search Events" id="searchbar"
-                     data-toggle="dropdown">
-              <ul class="dropdown-menu" id="displist" role="menu" aria-labelledby="menu1">
-              </ul>
-            </form>
-          </li>
-        </ul>
-      </div>
-    </nav>
-  </div>
-  <div class="container">
-    <div class="side">
-      <div class="header">
-        <div class="avatar">
-          <img src="../images/circle-cropped.png" alt="">
+  <section class="colored-section" id="ptitle">
+    <div class="container-fluid">
+      <!-- Nav Bar -->
+      <nav class="navbar navbar-expand-lg navbar-dark">
+        <i class="fas fa-dumbbell fa-2x"></i>
+        <a class="navbar-brand" href="../index.html">FitHub</a>
+  
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+  
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="../html/myProfile.html">My Account</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../html/matching.html">Find a Buddy</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../html/events.html">Events</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../index.html">Log out</a>
+            </li>
+            <li class="nav-item">
+              <form class="form-inline d-flex dropdown">
+                <input class="form-control form-control-sm" type="text" placeholder="Search Events" id="searchbar"
+                  data-toggle="dropdown">
+                <ul class="dropdown-menu" id="displist" role="menu" aria-labelledby="menu1">
+                </ul>
+              </form>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <div class="container">
+      <div class="side">
+        <div class="header">
+          <div class="avatar">
+            <img src="../images/circle-cropped.png" alt="">
+          </div>
+          <a class="title" href="events.html">Events</a>
         </div>
         <a class="title" href="events.html">Events</a>
       </div>
     </div>
 
-    <!-- Events -->
-    <div class="creatingevent">
-      <div class="col-lg-8" id="event-info">
-        <div class="card shadow-sm">
-          <div class="card-header bg-transparent border-0">
-            <h3 class="mb-0"><i class="far fa-clone pr-1"></i>Event Information</h3>
+      <!-- Events -->
+      <div class="creatingevent">
+        <div class="col-lg-8" id="event-info">
+          <div class="card shadow-sm">
+            <div class="card-header bg-transparent border-0">
+              <h3 class="mb-0"><i class="far fa-clone pr-1"></i>Event Information</h3>
+            </div>
+            <div class="card-body pt-0">
+              <table class="table table-bordered">
+                <tr>
+                  <th width="30%">Event</th>
+                  <td width="2%">:</td>
+                  <td>Group Biking</td>
+                </tr>
+                <tr>
+                  <th width="30%">Location</th>
+                  <td width="2%">:</td>
+                  <td>San Francisco State University, CA</td>
+                </tr>
+                <tr>
+                  <th width="30%">Time</th>
+                  <td width="2%">:</td>
+                  <td>19/7/2021-21/7/2021 8:00am-10:00am PST</td>
+                </tr>
+                <tr>
+                  <th width="30%">Limit of Enroller</th>
+                  <td width="2%">:</td>
+                  <td>30</td>
+                </tr>
+                <tr>
+                  <th width="30%">Contact</th>
+                  <td width="2%">:</td>
+                  <td>415-920-xxxx</td>
+                </tr>
+                <tr>
+                  <th width="30%">Description</th>
+                  <td width="2%">:</td>
+                  <td>Welcome to the biggest group biking in SFSU! We are here to meet you up!</td>
+                </tr>
+              </table>
+            </div>
+            <div class="row event-buttons">
+              <div class="col-lg-4">
+                  <button class="btn btn-lg download-button" id="join-button"
+                      type="button">Join</button> </br>
+              </div>
+              <div class="col-lg-4">
+                <button  class="btn btn-lg download-button" id="leave-button"
+                    type="button">Leave</button> </br>
+            </div>
           </div>
-          <div class="card-body pt-0">
-            <table class="table table-bordered">
-              <tr>
-                <th width="30%">Event</th>
-                <td width="2%">:</td>
-                <td>Group Biking</td>
-              </tr>
-              <tr>
-                <th width="30%">Location</th>
-                <td width="2%">:</td>
-                <td>San Francisco State University, CA</td>
-              </tr>
-              <tr>
-                <th width="30%">Time</th>
-                <td width="2%">:</td>
-                <td>19/7/2021-21/7/2021 8:00am-10:00am PST</td>
-              </tr>
-              <tr>
-                <th width="30%">Limit of Enroller</th>
-                <td width="2%">:</td>
-                <td>30</td>
-              </tr>
-              <tr>
-                <th width="30%">Contact</th>
-                <td width="2%">:</td>
-                <td>415-920-xxxx</td>
-              </tr>
-              <tr>
-                <th width="30%">Description</th>
-                <td width="2%">:</td>
-                <td>Welcome to the biggest group biking in SFSU! We are here to meet you up!</td>
-              </tr>
-            </table>
           </div>
         </div>
       </div>
