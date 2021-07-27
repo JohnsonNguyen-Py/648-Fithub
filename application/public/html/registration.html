@@ -130,8 +130,8 @@
         <div class="col-lg-6">
           <label for="exampleInputEmail1">Phone #</label>
           <input type="number" class="form-control" id="phone" placeholder="Enter Phone #" required>
-          <div class="invalid-feedback">
-            Please provide a valid contact no.
+          <div class="invalid-feedback" id = "contactfeedback">
+            Please provide a valid 10 digit contact no.
           </div>
         </div>
       </div>
@@ -147,8 +147,8 @@
           <label for="validationCustom03">Zipcode</label>
           <input type="number" class="form-control" minlength="5" maxlength="5" id="zip_code"
             placeholder="Enter Zip Code" required>
-          <div class="invalid-feedback">
-            Please provide a valid zipcode.
+          <div class="invalid-feedback" id="zipfeedback">
+            Please provide a 5 digit zipcode.
           </div>
         </div>
       </div>
@@ -311,9 +311,12 @@
     <button class="btn btn-outline-light continueB" type="submit">Register</button>
   </a>
   </form>
-  <footer>
+  <footer id="footer">
     <div class="forgot">
       <a class="forgotL" href="../index.html">Already have an account? Log in.</a>
+    </div>
+    <div class="container-fluid">
+      <p>© Copyright 2021 FitHub</p>
     </div>
   </footer>
 </body>

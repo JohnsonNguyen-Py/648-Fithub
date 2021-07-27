@@ -160,6 +160,41 @@ app.post('/logOut', function (req, res) {
     res.send({ status: "success", message: "user logged out", data: {} });
 });
 
+//Save event info
+app.post('/saveEvent', urlencodedParser, function (req, res) {
+    var data = {
+        title: req.body.title,
+        description: req.body.description,
+        address: req.body.address,
+        zipcode: req.body.zipcode,
+        from_date: req.body.date,
+        to_date: req.body.date,
+        start_time: req.body.startTime,
+        end_time: req.body.endTime,
+        reg_id: 1
+    };
+    var sql = "INSERT INTO `events`(reg_id, title, description, address, zipcode, from_date, to_date, start_time, end_time) VALUES (" + data.reg_id + ", '" + data.title + "','" + data.description + "','" + data.address + "','" + data.zipcode + "','" + data.from_date + "','" + data.to_date + "','" + data.start_time + "','" + data.end_time + "')";
+    dbconnection.query(sql, (err, result) => {
+        if (err) {
+            res.send({ status: "failure", message: err, data: {} });
+        } else {
+            res.send({ status: "success", message: err, data: {} });
+        }
+    });
+});
+
+app.post('/getEvents', urlencodedParser, function (req, res) {
+    let keyword = req.body.keyword;
+    var sql = "SELECT * FROM `events` WHERE `description` LIKE '%" + keyword + "%'";
+    dbconnection.query(sql, (err, result) => {
+        if (err) {
+            res.send({ status: "failure", message: err, data: {} });
+        } else {
+            res.send({ status: "success", message: err, data: result });
+        }
+    });
+});
+
 // app.use(sessions({
 //     store: mysqlSessionStore,
 //     secret: "csc648",

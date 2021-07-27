@@ -1,5 +1,7 @@
+
+
 //VIDHI - CHECK USER SESSION
-function checkUserLoggedIn(){
+function checkUserLoggedIn() {
     $.ajax({
         url: "http://100.26.92.104:3000/checkUserLoggedIn",
         type: "POST",
@@ -20,7 +22,7 @@ function checkUserLoggedIn(){
 }
 
 //Vidhi- LOGIN API
-$("#userlogin").on("click",  function () {
+$("#userlogin").on("click", function () {
     let email = $("#validationCustom01").val();
     if (!validateEmail(email)) {
         $("#validationCustom01").css('border', '1px solid red');
@@ -114,4 +116,63 @@ function validateEmail(email) {
     return re.test(String(email).toLowerCase());
 }
 
-checkUserLoggedIn();
+// checkUserLoggedIn();
+
+// $("#searchbarbt").on("click", function () {
+$("#searchbar").on("keyup", function () {
+    let text = $("#searchbar").val();
+    let html = "";
+    if (text.length == 0) {
+        $("#searchbar").css('border', '1px solid red');
+        return;
+    } else {
+        $("#searchbar").css('border', '');
+    }
+    $.ajax({
+        url: "http://100.26.92.104:3000/getEvents",
+        type: "POST",
+        crossDomain: true,
+        data: {
+            keyword: text
+        },
+        success: function (response) {
+            if (response.status == "success") {
+                if (response.data.length > 0) {
+                    let data = response.data;
+                    $.each(data, function (key, value) {
+                        html += '<li role="presentation"><a role="menuitem" tabindex="-1" href="">' + value.title + '</a></li>';
+                    });
+                } else {
+                    html += '<li role="presentation"><a role="menuitem" tabindex="-1" href="#">No result found</a></li>';
+                }
+                $("#displist").html(html);
+                $("#displist").css("display", "block");
+            } else {
+                alert("Something went wrong. Please try again!!!");
+            }
+        },
+        error: function () {
+            alert("Something went wrong. Please try again!!!");
+        }
+    });
+})
+
+$("#resetPassword").on("click", function () {
+    let email = $("#email_idreset").val();
+    console.log(email);
+    if (!validateEmail(email)) {
+        $("#email_idreset").css('border', '1px solid red');
+        return;
+    } else {
+        $("#email_idreset").css('border', '');
+    }
+    alert("Reset password link has been sent to your registered email");
+    window.location.href="../index.html";
+});
+
+$(document).bind('click', function (e) {
+    var par = $(e.target).parent();
+    if (!$('#displist').is(e.target)) {
+        $('#displist').css("display", "none");
+    };
+});
