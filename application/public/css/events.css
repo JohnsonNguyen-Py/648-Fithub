@@ -19,6 +19,11 @@
     float:left;
     margin-right: 1%;
 }
+.time-text{
+  float: right;
+  color: #6c757d;
+  opacity: 1;
+}
 /* .event-organizer::after{
     float: left;
     content: "";

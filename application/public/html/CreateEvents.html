@@ -78,14 +78,14 @@
                 <div class="avatar">
                     <img src="../images/circle-cropped.png" alt="">
                 </div>
-                <a class="title" href="void:;">Events</a>
+                <a class="title" href="events.html">Events</a>
             </div>
         </div>
         <div class="creatingevent">
             <section class="white-section" id="events-list">
                 <div class="list-group">
                     <div class="event-card">
-                        <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                        <div class="list-group-item">
                             <h1 class="big-heading">Create Event</h1>
                             <div class="row">
                                 <div class="col-lg-6">
@@ -106,7 +106,7 @@
                                         placeholder="Enter event address" required> </br>
                                 </div>
                                 <div class="col-lg-4">
-                                    <input type="number" class="form-control" id="zipcode"
+                                    <input type="text" class="form-control" id="zipcode"  maxlength="5" pattern="[0-9]{5}"
                                         placeholder="Enter event zipcode" required> </br>
                                 </div>
                             </div>
@@ -117,11 +117,13 @@
                                 </div>
                                 <div class="col-lg-4">
                                     <input type="time" class="form-control" id="startTime"
-                                        placeholder="Enter event start time" required>
+                                        value="12:00" required>
+                                    <label for=startTime class="time-text">Start Time</label>
                                 </div>
                                 <div class="col-lg-4">
                                     <input type="time" class="form-control" id="endTime"
-                                        placeholder="Enter event end time" required>
+                                        value="12:00" required>
+                                    <label for=endTime class="time-text">End Time</label>
                                 </div>
                             </div>
                             <div class="row">
@@ -135,7 +137,7 @@
                                 <div class="col-lg-4"> </br></div>
                             </div>
                             <!-- <img class="event-image" src="../images/circle-cropped.png"> -->
-                        </a>
+                        </div>
                     </div>
                 </div>
             </section>
