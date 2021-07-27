@@ -91,34 +91,14 @@
       <!--JOHNSON NGUYEN-->
       <div class="menu">
         <ul>
-          <li class="tabButtons" onClick="openTab(event,'myFriendsandMatchesTab')">Matches</li>
+          <li class="tabButtons active" onClick="openTab(event,'myMatchesTab')">Matches</li>
           <li class="tabButtons" onClick="openTab(event,'messagesTab')" class="active">Messages</li>
-          <li class="tabButtons" onClick="openTab(event,'myFriendsandMatchesTab')">My Friends</li>
-
+          <li class="tabButtons" onClick="openTab(event,'myFriendsTab')">My Friends</li>
         </ul>
 
       </div>
 
-      <script>
-        function openTab(evt, tabName) {
-          let i, tabContent, tabButtons;
-
-          tabContent = document.getElementsByClassName("tabContent");
-          for (i = 0; i < tabContent.length; i++) {
-            tabContent[i].style.display = "none";
-          }
-
-          tabButtons = document.getElementsByClassName("tabButtons");
-          for (i = 0; i < tabButtons.length; i++) {
-            tabButtons[i].className = tabButtons[i].className.replace(" active", "");
-          }
-
-          document.getElementById(tabName).style.display = "block";
-          evt.currentTarget.className += " active";
-        }
-      </script>
-
-      <div id="messagesTab" class="tabContent">
+      <div id="messagesTab" class="tabContent" style="display: none;">
         <div class="messages">
           <div class="avatar">
             <img src="https://randomuser.me/api/portraits/women/28.jpg" alt="">
@@ -152,16 +132,39 @@
 
 
       <!-- here-->
-      <div id="myFriendsandMatchesTab" class="tabContent">
+      <div id="myMatchesTab" class="tabContent">
         <div class="messages">
           <div class="avatar">
             <img src="https://randomuser.me/api/portraits/women/28.jpg" alt="">
           </div>
           <div class="friend">
-            <div class="user">Hannah Montana</div>
+            <div class="user">Megan</div>
           </div>
         </div>
 
+        <div class="messages">
+          <div class="avatar">
+            <img src="https://randomuser.me/api/portraits/women/39.jpg" alt="" />
+          </div>
+          <div class="message">
+            <div class="user">Kehlani</div>
+
+          </div>
+        </div>
+
+        <div class="messages">
+          <div class="avatar">
+            <img src="https://randomuser.me/api/portraits/women/31.jpg" alt="" />
+          </div>
+          <div class="message">
+            <div class="user">Beyonce</div>
+
+          </div>
+        </div>
+
+      </div>
+
+      <div id="myFriendsTab" class="tabContent" style="display: none;">
         <div class="messages">
           <div class="avatar">
             <img src="https://randomuser.me/api/portraits/women/39.jpg" alt="" />
@@ -191,27 +194,64 @@
 
 
     <div class="content">
-      <div class="card">
-        <div class="user">
-          <img class="user" src="../images/woman-unsplash.jpg" />
-          <div class="profile">
-            <div class="name">Megan <span>26</span></div>
-            <div class="local">
-              <i class="fas fa-map-marker-alt"></i>
-              <span>20 miles away</span>
+      <div class="div_content" id="div_myMatchesTab">
+        <div class="card">
+          <div class="user">
+            <img class="user" src="../images/woman-unsplash.jpg" />
+            <div class="profile">
+              <div class="name">Megan <span>26</span></div>
+              <div class="local">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>20 miles away</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="buttons">
+          <div class="star" id="accept">
+            <i class="fas fa-check"></i>
+          </div>
+          <div class="no" id="reject">
+            <i class="fas fa-times"></i>
+          </div>
+          <div class="heart">
+            <i class="fas fa-dumbbell"></i>
+          </div>
+        </div>
+      </div>
+      <div class="div_content" id="div_messagesTab" style="display: none;">
+        <div class="card">
+          <div class="row">
+            <div class="col-lg-6"><img src="https://randomuser.me/api/portraits/women/28.jpg" alt=""></div>
+            <div class="col-lg-6"><h1>Hannah Montana</h1></div>
+          </div></br></br>
+          <div class="row">
+            <div class="col-lg-4">
+              <label class = "form-control" for="exampleInputEmail1">Hello want to workout?</label>
+            </div>
+          </div>
+          <div class="row" id="messagesTabRow">
+            <div class="col-lg-8">
+              <input type="email" class="form-control" id="message" placeholder="Write message..." required>
+            </div>
+            <div class="col-lg-4">
+              <button class="btn btn-outline-dark continueB" type="button">Send</button>
             </div>
           </div>
         </div>
       </div>
-      <div class="buttons">
-        <div class="no">
-          <i class="fas fa-times"></i>
-        </div>
-        <div class="star">
-          <i class="fas fa-star fa"></i>
-        </div>
-        <div class="heart">
-          <i class="fas fa-dumbbell"></i>
+      <div class="div_content" id="div_myFriendsTab" style="display: none;">
+        <div class="card">
+          <div class="user">
+            <img class="user" src="../images/profile.jpg" />
+            <div class="profile">
+              <div class="name">Kehlani <span>20</span></div>
+              <div class="local">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>4 miles away</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -223,5 +263,6 @@
   </footer>
 
 </body>
+<script defer src="../js/matching.js" charset="utf-8"></script>
 
 </html>
