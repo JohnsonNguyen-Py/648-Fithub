@@ -25,3 +25,6 @@ function openTab(evt, tabName) {
 $("#accept").on("click", function() {
     alert("Work out request sent");
 })
+
+// for messages section - Vidhi Vora
+
