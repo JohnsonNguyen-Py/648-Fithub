@@ -7,8 +7,9 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false })
 var dbconnection = require('./mysqlConnector');
 
 //SESSIONS
-var sessions = require('express-session');
-var mysqlSessions = require('express-mysql-session')(sessions);
+var session = require('express-session');
+var mysqlSession = require('express-mysql-session')(sessions);
+
 
 
 app.use((req, res, next) => {
@@ -16,9 +17,21 @@ app.use((req, res, next) => {
     next();
 });
 
-app.use(sessions({
-    secret: 'Keep it secret',
-    name: 'fithubSession',
+var mysqlSessionStore = new mysqlSession(
+    {
+
+        /* using default options */
+
+    }
+
+    , require("./mysqlConnector")
+
+);
+
+app.use(session({
+    key: "csid",
+    secret: 'key That will sign in cookies',
+    store: mysqlSessionStore,
     resave: true,
     saveUninitialized: false
 }));
@@ -139,9 +152,14 @@ app.post('/loginAPI', bodyParser.urlencoded(), function (req, res) {
                             } else {
                                 req.session.loggedIn = true;
                                 req.session.data = data[0];
-                                // console.log("req.session");
-                                // console.log(req.session);
+
+                                req.session.username = username;
+                                req.session.reg_id = regId;
+
+                                //console.log("req.session");
+                                //console.log(req.session);
                                 res.send({ status: "success", message: "Log in successful", data: {} });
+
                             }
                         });
                     });
@@ -154,6 +172,7 @@ app.post('/loginAPI', bodyParser.urlencoded(), function (req, res) {
         }
     });
 });
+
 
 app.post('/logOut', function (req, res) {
     req.session.destroy((err) => { });
@@ -208,7 +227,7 @@ app.post('/getEvents', urlencodedParser, function (req, res) {
 //     let Password = req.body.Password;
 // };
 
-app.listen(3000);
+app.listen(3000, console.log("Server running on 3000"));
 
 
 
