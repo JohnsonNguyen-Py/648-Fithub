@@ -8,7 +8,7 @@ var dbconnection = require('./mysqlConnector');
 
 //SESSIONS
 var session = require('express-session');
-var mysqlSession = require('express-mysql-session')(sessions);
+var mysqlSession = require('express-mysql-session')(session);
 
 
 
