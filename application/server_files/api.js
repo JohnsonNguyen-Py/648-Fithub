@@ -17,27 +17,27 @@ app.use((req, res, next) => {
     next();
 });
 
-var mysqlSessionStore = new mysqlSession(
-    {
+// var mysqlSessionStore = new mysqlSession(
+//     {
 
-        /* using default options */
+//         /* using default options */
 
-    }
+//     }
 
-    , require("./mysqlConnector")
+//     , require("./mysqlConnector")
 
-);
+// );
 
-app.use(session({
-    key: "csid",
-    secret: 'key That will sign in cookies',
-    store: mysqlSessionStore,
-    resave: true,
-    saveUninitialized: false
-}));
+// app.use(session({
+//     key: "csid",
+//     secret: 'key That will sign in cookies',
+//     store: mysqlSessionStore,
+//     resave: true,
+//     saveUninitialized: false
+// }));
 
 // hello world
-app.get('/', function (req, res) {
+app.get('/', function (req, res) {    
     console.log(req.session); //TESTING SESSIONS
     res.send('Welcome to FitHub!!!');
 });
@@ -129,7 +129,7 @@ app.post('/checkUserLoggedIn', function (req, res) {
     }
 });
 
-app.post('/loginAPI', bodyParser.urlencoded(), function (req, res) {
+app.post('/loginAPI', urlencodedParser, function (req, res) {
     //get username and password
     let email = req.body.email;
     let password = md5(req.body.password);
@@ -263,36 +263,4 @@ app.post('/changePassword', urlencodedParser, function (req, res) {
     }
 })
 
-// app.use(sessions({
-//     store: mysqlSessionStore,
-//     secret: "csc648",
-//     resave: false,
-//     saveUninitialized: false
-
-// }));
-
-// app.post('/login'), urlencodedParser, (req, res) => {
-//     let Username = req.body.Username;
-//     let Password = req.body.Password;
-// };
-
 app.listen(3000, console.log("Server running on 3000"));
-
-
-
-
-
-
-/*
-app.get('/dbtesting', function (req, res) {
-    getTestingData(function (data) {
-        res.send(data);
-    })
-});
-
-async function getTestingData(callback) {
-    dbconnection.query('select * from testing', function (err, rows, fields) {
-        if (err) throw err
-        callback(rows);
-    });
-}*/
