@@ -277,3 +277,10 @@ button {
   width: 70px;
   height: 70px;
 }
+
+#messagesTabRow {
+  position: absolute;
+  bottom: 3px;
+  width: 100%;
+  left: 3px;
+}

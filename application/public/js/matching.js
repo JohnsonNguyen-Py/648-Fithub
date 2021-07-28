@@ -6,10 +6,10 @@ function openTab(evt, tabName) {
       tabContent[i].style.display = "none";
     }
 
-    // divContent = document.getElementsByClassName("content");
-    // for (i = 0; i < divContent.length; i++) {
-    //     divContent[i].style.display = "none";
-    // }
+    divContent = document.getElementsByClassName("div_content");
+    for (i = 0; i < divContent.length; i++) {
+        divContent[i].style.display = "none";
+    }
 
     tabButtons = document.getElementsByClassName("tabButtons");
     for (i = 0; i < tabButtons.length; i++) {
@@ -19,5 +19,9 @@ function openTab(evt, tabName) {
     document.getElementById(tabName).style.display = "block";
     evt.currentTarget.className += " active";
 
-    // document.getElementById("div_" + tabName).style.display = "block";
+    document.getElementById("div_" + tabName).style.display = "block";
   }
+
+$("#accept").on("click", function() {
+    alert("Work out request sent");
+})

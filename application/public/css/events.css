@@ -1,3 +1,31 @@
+/*create events*/
+.time-text{
+  float: right;
+  color: #6c757d;
+  opacity: 1;
+}
+.meet-section{
+  min-width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 25px;
+}
+/*event profile*/
+.event-buttons{
+  margin:auto;
+  width: 50%;
+  margin-bottom: 5%;
+}
+#join-button{
+  color: white;
+  background-color: #05a11a;
+}
+#leave-button{
+  color: white;
+  background-color: #fd2e79;
+}
+/*events*/
 .list-group{
     margin-left: 10%;
     margin-right: 10%;
@@ -11,7 +39,6 @@
     margin: auto;
     width: 80%;
 }
-
 .event-card{
     margin-bottom: 2%;
 }
@@ -47,13 +74,7 @@
   margin: auto;
   width: 80%;
 }
-.meet-section{
-    min-width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 25px;
-}
+/*General Events CSS*/
 .button {
   border: none;
   color: white;

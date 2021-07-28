@@ -109,6 +109,11 @@ input[type="search"]::-webkit-search-cancel-button {
   top: 50%;
   left: 10%;
 }
+.ad-image{
+  align-self: center;
+  height: 400px;
+  width: 200px;
+}
 
 /* features section*/
 #features {
@@ -254,4 +259,7 @@ input[type="search"]::-webkit-search-cancel-button {
 form .bootstrap-select{
   width: 100%!important;
   min-width: 190px;
+}
+
+.ad {
 }
