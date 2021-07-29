@@ -37,7 +37,7 @@ app.use((req, res, next) => {
 // }));
 
 // hello world
-app.get('/', function (req, res) {    
+app.get('/', function (req, res) {
     console.log(req.session); //TESTING SESSIONS
     res.send('Welcome to FitHub!!!');
 });
@@ -86,13 +86,15 @@ app.post('/registerUser', urlencodedParser, function (req, res) {
                                         username: req.body.email_id,
                                         password: md5(req.body.password)
                                     }
-                                    var sql2 = "INSERT INTO `account`(reg_id, username, password) VALUES (" + account.reg_id + ",'" + account.username + "','" + account.password + "')";
+                                    var sql2 = "INSERT INTO `account`(reg_id, username, password) VALUES (" + account.reg_id + ",'" + account.username + "','" + account.password + "');";
                                     dbconnection.query(sql2, (err2, result2) => {
-                                        if (err2) {
-                                            res.send({ status: "failure", message: err2, data: {} });
-                                        } else {
-                                            res.send({ status: "success", message: "User Registered", data: {} });
-                                        }
+                                        dbconnection.query("INSERT INTO `check_new_message` (user_id) VALUES (" + registeredUser.user_id + ");", (err3, result3) => {
+                                            if (err3) {
+                                                res.send({ status: "failure", message: err2, data: {} });
+                                            } else {
+                                                res.send({ status: "success", message: "User Registered", data: {} });
+                                            }
+                                        });
                                     });
                                 }
                             });
@@ -262,5 +264,54 @@ app.post('/changePassword', urlencodedParser, function (req, res) {
         res.send({ status: "failure", message: 'not signed in', data: {} });
     }
 })
+
+//vidhi - api to check for new messages for a user
+app.post('/checkNewMessage', urlencodedParser, function (req, res) {
+    var user = req.body.userid;
+    var sql = "Select is_new_msg from check_new_message where user_id = " + user;
+    dbconnection.query(sql, (err, result) => {
+        if (err) {
+            res.send({ status: "failure", message: err, data: {} });
+        } else {
+            dbconnection.query('UPDATE `check_new_message` SET `is_new_msg` = 0 WHERE `user_id` = ' + user, (e, r) => { });
+            res.send({ status: "success", message: err, data: result[0] });
+        }
+    });
+});
+
+//vidhi - api to get new messages for a user
+app.post('/getNewMessagesDiv', urlencodedParser, function (req, res) {
+    var user = req.body.userid;
+    var fromuser = req.body.fromid;
+    var sql = "Select * from user_messages where to_user_id IN (" + user + "," + fromuser + ") and from_user_id IN (" + user + "," + fromuser + ");";
+    dbconnection.query(sql, (err, result) => {
+        if (err) {
+            res.send({ status: "failure", message: err, data: {} });
+        } else {
+            dbconnection.query('UPDATE `user_messages` SET `is_read` = 1 WHERE `to_user_id` = ' + user + ' AND `from_user_id` = ' + fromuser, (e, r) => { });
+            res.send({ status: "success", message: 'success', data: result });
+        }
+    });
+});
+
+//vidhi - api to get new messages for a side bar
+app.post('/getNewMessagesSide', urlencodedParser, function (req, res) {
+    var user = req.body.userid;
+    var sql = "SELECT name, from_user_id , max(date_updated) as 'date_updated' FROM user_messages join `registered user` on from_user_id = `registered user`.user_id where to_user_id = " + user + " group by  from_user_id, name";
+    dbconnection.query(sql, (err, result) => {
+        var data = {
+            'from': result
+        };
+        var sql2 = "SELECT name, to_user_id , max(date_updated) as 'date_updated' FROM user_messages join `registered user` on to_user_id = `registered user`.user_id where from_user_id = " + user + " group by  to_user_id, name";
+        dbconnection.query(sql2, (err2, result2) => {
+            if (err2) {
+                res.send({ status: "failure", message: err2, data: {} });
+            } else {
+                data['to'] = result2;
+                res.send({ status: "success", message: 'success', data: data });
+            }
+        });
+    });
+});
 
 app.listen(3000, console.log("Server running on 3000"));
