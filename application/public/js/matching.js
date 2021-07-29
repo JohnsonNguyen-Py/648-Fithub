@@ -1,5 +1,6 @@
 var url = "http://localhost:3000/";
 var current_active_tab = "Matches";
+var user_id = $("#accessUserInfo").data("userid");
 
 function openTab(evt, tabName) {
   let i, tabContent, tabButtons;
@@ -42,7 +43,6 @@ setInterval(function () {
   }
 }, 30000);
 
-var user_id = $("#accessUserInfo").data("userid");
 function checkIfNewMesage() {
   $.ajax({
     url: url + "checkNewMessage",
@@ -82,20 +82,26 @@ function fetchNewMsgSide() {
         var html = "";
         for (var m1 in from) {
           for (var m2 in to) {
-            if (from[m1]['date_updated'] < to[m2]['date_updated'] && !used.includes(to[m2]['to_user_id'])) {
-              if(uid == '') {
-                uid = to[m2]['to_user_id'];
-                uname = to[m2]['name'];
+            var d1 = new Date(from[m1]['date_updated']);
+            var d2 = new Date(to[m2]['date_updated']);
+            if (d1 < d2) {
+              if (!used.includes(to[m2]['to_user_id'])) {
+                if (uid == '') {
+                  uid = to[m2]['to_user_id'];
+                  uname = to[m2]['name'];
+                }
+                used.push(to[m2]['to_user_id']);
+                html += '<div class="messages" user_id=' + to[m2]['to_user_id'] + '><div class="avatar"><img src="https://randomuser.me/api/portraits/women/28.jpg" alt=""> </div><div class="friend"><div class="user">' + to[m2]['name'] + '</div><div class="timedisplay">Last sent on: ' + to[m2]['date_updated'].replace('T', ' ').replace(".000Z", " ") + '</div> </div> </div>'
               }
-              used.push(to[m2]['to_user_id']);
-              html += '<div class="messages" user_id='+to[m2]['to_user_id']+'><div class="avatar"><img src="https://randomuser.me/api/portraits/women/28.jpg" alt=""> </div><div class="friend"><div class="user">' + to[m2]['name'] + '</div><div class="timedisplay">Last sent on: ' + to[m2]['date_updated'].replace('T', ' ').replace(".000Z", " ") + '</div> </div> </div>'
-            } else if (!used.includes(from[m1]['from_user_id'])) {
-              if(uid == '') {
-                uid = from[m1]['from_user_id'];
-                uname = from[m1]['name'];
+            } else {
+              if (!used.includes(from[m1]['from_user_id'])) {
+                if (uid == '') {
+                  uid = from[m1]['from_user_id'];
+                  uname = from[m1]['name'];
+                }
+                used.push(from[m1]['from_user_id']);
+                html += '<div class="messages" user_id=' + from[m1]['from_user_id'] + '><div class="avatar"><img src="https://randomuser.me/api/portraits/women/28.jpg" alt=""> </div><div class="friend"><div class="user">' + from[m1]['name'] + '</div><div class="timedisplay">Last received on: ' + from[m1]['date_updated'].replace('T', ' ').replace(".000Z", " ") + '</div> </div> </div>'
               }
-              used.push(from[m1]['from_user_id']);
-              html += '<div class="messages" user_id='+from[m1]['from_user_id']+'><div class="avatar"><img src="https://randomuser.me/api/portraits/women/28.jpg" alt=""> </div><div class="friend"><div class="user">' + from[m1]['name'] + '</div><div class="timedisplay">Last received on: ' + from[m1]['date_updated'].replace('T', ' ').replace(".000Z", " ") + '</div> </div> </div>'
             }
           }
         }
@@ -123,7 +129,7 @@ function fetchNewMsgDiv(from_user_id, uname) {
     success: function (response) {
       if (response.status == "success") {
         var msgdata = response.data;
-        var  html = '';
+        var html = '';
         for (var msg in msgdata) {
           if (msgdata[msg]['to_user_id'] == user_id) {
             html += '<div class="row"> <div class="col-lg-6"> <label class = "form-control" for="usermessage">' + msgdata[msg]['message'] + ' </br><span class = "timedisplay">' + msgdata[msg]['date_updated'].replace('T', ' ').replace(".000Z", " ") + '</span> </label> </div> </div>';
@@ -145,8 +151,36 @@ function fetchNewMsgDiv(from_user_id, uname) {
   });
 }
 
-$("#sidemsginfo").on("click", ".messages",  function () {
+$("#sidemsginfo").on("click", ".messages", function () {
   var userid = $(this).attr('user_id');
   var username = $(this).find(".user").text();
   fetchNewMsgDiv(userid, username);
+});
+
+$("#sendMessage").on("click", function () {
+  var content = $("#sendMessageText").val();
+  var to_user_id = $("#sendMessage").attr('touser');
+  if (content.length > 0) {
+    $.ajax({
+      url: url + "sendUserMessage",
+      type: "POST",
+      crossDomain: true,
+      data: {
+        from_user_id: user_id,
+        to_user_id: to_user_id,
+        message: content
+      },
+      success: function (response) {
+        if (response.status == "success") {
+          fetchNewMsgDiv(to_user_id, $("#usernamemsg").text());
+          $("#sendMessageText").val('');
+        } else {
+          $("label[for='messageError']").text("Please try again");
+        }
+      },
+      error: function () {
+        alert("Something went wrong. Please try again!!!");
+      }
+    });
+  }
 });
