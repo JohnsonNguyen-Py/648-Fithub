@@ -314,4 +314,21 @@ app.post('/getNewMessagesSide', urlencodedParser, function (req, res) {
     });
 });
 
+//vidhi - api to send user message
+app.post('/sendUserMessage', urlencodedParser, function (req, res) {
+    var to_user_id = req.body.to_user_id;
+    var from_user_id = req.body.from_user_id;
+    var message = req.body.message;
+    var sql = 'INSERT INTO `user_messages` (`to_user_id`, `from_user_id`, `message`, `is_read`) VALUES ('+to_user_id+', '+from_user_id+', "'+message+'", 0)';
+    dbconnection.query(sql, (err, result) => {
+        if (err) {
+            res.send({ status: "failure", message: err, data: {} });
+        } else {
+            var sql2 = 'UPDATE `check_new_message` SET `is_new_msg` = 1 WHERE (`user_id` = '+to_user_id+')';
+            dbconnection.query(sql2, (err2, result2) => {});
+            res.send({ status: "success", message: 'success', data: {} });
+        }
+    });
+});
+
 app.listen(3000, console.log("Server running on 3000"));
