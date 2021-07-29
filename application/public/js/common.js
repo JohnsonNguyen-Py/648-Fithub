@@ -1,24 +1,28 @@
-
-
 //VIDHI - CHECK USER SESSION
+var sessionInfo = {};
+
 function checkUserLoggedIn() {
     $.ajax({
         url: "http://100.26.92.104:3000/checkUserLoggedIn",
         type: "POST",
         crossDomain: true,
         success: function (response) {
-            if (response.status == "success") {
-                $("#header").load("html/headerlogin.html");
+            if(response.status == "failure") {
+                alert('Log in first');
+                window.location.href = '../index.html';
             } else {
-                $("#header").load("html/header.html");
+                sessionInfo = response.data.data;
             }
-            $("#footer").load("html/footer.html");
         },
         error: function () {
-            $("#header").load("html/header.html");
-            $("#footer").load("html/footer.html");
         }
     });
+}
+
+if(window.location.pathname == '/' || window.location.pathname == '/index.html') {
+    // console.log(window.location.pathname);
+} else {
+    checkUserLoggedIn();
 }
 
 //Vidhi- LOGIN API
@@ -115,8 +119,6 @@ function validateEmail(email) {
     const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(String(email).toLowerCase());
 }
-
-// checkUserLoggedIn();
 
 // $("#searchbarbt").on("click", function () {
 $("#searchbar").on("keyup", function () {

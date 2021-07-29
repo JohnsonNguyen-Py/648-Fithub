@@ -1,6 +1,30 @@
-var url = "http://localhost:3000/";
+var url = "http://http://100.26.92.104:3000/";
 var current_active_tab = "Matches";
 var user_id = $("#accessUserInfo").data("userid");
+
+var sessionInfo = {};
+
+function checkUserLoggedIn() {
+    $.ajax({
+        url: url + "checkUserLoggedIn",
+        type: "POST",
+        crossDomain: true,
+        success: function (response) {
+            if(response.status == "failure") {
+                alert('Log in first');
+                window.location.href = '../index.html';
+            } else {
+                sessionInfo = response.data.data;
+                $("#accessUserInfo").attr('data-userid', sessionInfo.reg_id);
+                console.log(sessionInfo);
+            }
+        },
+        error: function () {
+        }
+    });
+}
+
+checkUserLoggedIn();
 
 function openTab(evt, tabName) {
   let i, tabContent, tabButtons;
@@ -53,7 +77,7 @@ function checkIfNewMesage() {
     },
     success: function (response) {
       if (response.status == "success") {
-        if (response.data['is_new_msg'] == 1) {
+        if (response.data && response.data['is_new_msg'] == 1) {
           fetchNewMsgDiv($("#fromuser").data("userid"));
         }
       } else {
@@ -65,6 +89,7 @@ function checkIfNewMesage() {
     }
   });
 }
+
 function fetchNewMsgSide() {
   $.ajax({
     url: url + "getNewMessagesSide",
@@ -74,6 +99,7 @@ function fetchNewMsgSide() {
       userid: user_id
     },
     success: function (response) {
+      console.log(response);
       if (response.status == "success") {
         var from = response.data.from;
         var to = response.data.to;
@@ -108,7 +134,8 @@ function fetchNewMsgSide() {
         $("#sidemsginfo").html(html);
         fetchNewMsgDiv(uid, uname);
       } else {
-        $("label[for='messageError']").text("Please refresh the page");
+        $("label[for='messageError']").text("No messages");
+        $("#messagingdiv").html('<div class="col-lg-12"><h1>No messages to show</h1></div>');
       }
     },
     error: function () {

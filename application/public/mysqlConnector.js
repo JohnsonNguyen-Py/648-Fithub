@@ -1,4 +1,3 @@
-// var mysql = require('mysql2/promise');
 var mysql = require('mysql2');
 
 var connectionpool = mysql.createPool({
