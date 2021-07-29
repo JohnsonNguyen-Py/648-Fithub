@@ -1,4 +1,4 @@
-var url = "http://http://100.26.92.104:3000/";
+var url = "http://100.26.92.104:3000/";
 var current_active_tab = "Matches";
 var user_id = $("#accessUserInfo").data("userid");
 
