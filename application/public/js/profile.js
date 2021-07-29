@@ -1,5 +1,5 @@
 
-
+var url = "http://100.26.92.104:3000/";
 var sessionInfo = {};
 
 function checkUserLoggedIn() {
