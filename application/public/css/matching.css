@@ -284,3 +284,13 @@ button {
   width: 100%;
   left: 3px;
 }
+
+#messagingdiv {
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.timedisplay {
+  font-size: 0.7em;
+  color: gray;
+}

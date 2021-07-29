@@ -40,6 +40,7 @@
 </head>
 
 <body>
+  <data id = "accessUserInfo" data-userid="13"></data>
   <!-- Nav Bar -->
   <div class="container-fluid">
     <nav class="navbar navbar-expand-lg navbar-dark">
@@ -95,40 +96,17 @@
         <ul>
           <li class="tabButtons active" onClick="openTab(event,'myMatchesTab')">Matches</li>
           <li class="tabButtons" onClick="openTab(event,'messagesTab')">Messages</li>
-          <li class="tabButtons" onClick="openTab(event,'myFriendsTab')">My Friends</li>
         </ul>
 
       </div>
 
       <div id="messagesTab" class="tabContent" style="display: none;">
-        <div class="messages">
-          <div class="avatar">
-            <img src="https://randomuser.me/api/portraits/women/28.jpg" alt="">
-          </div>
+        <div class="messages" >
           <div class="friend">
-            <div class="user">Hannah Montana</div>
-            <div class="text">Hello want to workout?</div>
+            <label for='messageError' class="user" style="color:red;">Recent Messages</label>
           </div>
         </div>
-
-        <div class="messages">
-          <div class="avatar">
-            <img src="https://randomuser.me/api/portraits/women/39.jpg" alt="" />
-          </div>
-          <div class="message">
-            <div class="user">Kehlani</div>
-            <div class="text">Let's workout</div>
-          </div>
-        </div>
-
-        <div class="messages">
-          <div class="avatar">
-            <img src="https://randomuser.me/api/portraits/women/31.jpg" alt="" />
-          </div>
-          <div class="message">
-            <div class="user">Beyonce</div>
-            <div class="text">How much you squat?</div>
-          </div>
+        <div id ="sidemsginfo"> 
         </div>
       </div>
 
@@ -394,22 +372,20 @@
         </div>
       </div>
       <div class="div_content" id="div_messagesTab" style="display: none;">
-        <div class="card">
+        <div class="card" id="fromuser" data-userid = "1" style="min-width: 30rem;">
           <div class="row">
-            <div class="col-lg-6"><img src="https://randomuser.me/api/portraits/women/28.jpg" alt=""></div>
-            <div class="col-lg-6"><h1>Hannah Montana</h1></div>
+            <div class="col-lg-6"><img id = "userimgmsg" src="https://randomuser.me/api/portraits/women/28.jpg" alt=""></div>
+            <div class="col-lg-6"><h1 id = "usernamemsg"></h1></div>
           </div></br></br>
-          <div class="row">
-            <div class="col-lg-4">
-              <label class = "form-control" for="exampleInputEmail1">Hello want to workout?</label>
-            </div>
+          <div id = "messagingdiv" >
+            <img src="../images/loader.gif" alt = "loader" />
           </div>
           <div class="row" id="messagesTabRow">
             <div class="col-lg-8">
               <input type="email" class="form-control" id="message" placeholder="Write message..." required>
             </div>
             <div class="col-lg-4">
-              <button class="btn btn-outline-dark continueB" type="button">Send</button>
+              <button id = "sendMessage" class="btn btn-outline-dark continueB" type="button" touser="" >Send</button>
             </div>
           </div>
         </div>
