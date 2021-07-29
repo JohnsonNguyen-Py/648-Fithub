@@ -1,9 +1,9 @@
 //VIDHI - CHECK USER SESSION
 var sessionInfo = {};
-
+var url = "http://100.26.92.104:3000/";
 function checkUserLoggedIn() {
     $.ajax({
-        url: "http://100.26.92.104:3000/checkUserLoggedIn",
+        url: url + "checkUserLoggedIn",
         type: "POST",
         crossDomain: true,
         success: function (response) {
@@ -43,7 +43,7 @@ $("#userlogin").on("click", function () {
     }
 
     $.ajax({
-        url: "http://100.26.92.104:3000/loginAPI",
+        url: url + "loginAPI",
         type: "POST",
         crossDomain: true,
         data: {
@@ -89,7 +89,7 @@ $("#submitQuery").on("click", function () {
     }
 
     $.ajax({
-        url: "http://100.26.92.104:3000/saveContactUs",
+        url: url + "saveContactUs",
         type: "POST",
         crossDomain: true,
         data: {
@@ -131,7 +131,7 @@ $("#searchbar").on("keyup", function () {
         $("#searchbar").css('border', '');
     }
     $.ajax({
-        url: "http://100.26.92.104:3000/getEvents",
+        url: url + "getEvents",
         type: "POST",
         crossDomain: true,
         data: {

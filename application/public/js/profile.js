@@ -8,6 +8,7 @@ function checkUserLoggedIn() {
         type: "POST",
         crossDomain: true,
         success: function (response) {
+            console.log(response);
             if(response.status == "failure") {
                 alert('Log in first');
                 window.location.href = '../index.html';
