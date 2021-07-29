@@ -37,7 +37,6 @@ $("#accept").on("click", function () {
 
 // for messages section - Vidhi Vora
 setInterval(function () {
-  console.log("Tab: " + current_active_tab);
   if (current_active_tab == "messagesTab") {
     // fetchNewMesage();
   }
@@ -81,8 +80,6 @@ function fetchNewMsgSide() {
         var used = [];
         var uid = '', uname = '';
         var html = "";
-        console.log(from);
-        console.log(to);
         for (var m1 in from) {
           for (var m2 in to) {
             if (from[m1]['date_updated'] < to[m2]['date_updated'] && !used.includes(to[m2]['to_user_id'])) {
@@ -91,14 +88,14 @@ function fetchNewMsgSide() {
                 uname = to[m2]['name'];
               }
               used.push(to[m2]['to_user_id']);
-              html += '<div class="messages"><div class="avatar"><img src="https://randomuser.me/api/portraits/women/28.jpg" alt=""> </div><div class="friend"><div class="user">' + to[m2]['name'] + '</div><div class="timedisplay">Last sent on: ' + to[m2]['date_updated'].replace('T', ' ').replace(".000Z", " ") + '</div> </div> </div>'
+              html += '<div class="messages" user_id='+to[m2]['to_user_id']+'><div class="avatar"><img src="https://randomuser.me/api/portraits/women/28.jpg" alt=""> </div><div class="friend"><div class="user">' + to[m2]['name'] + '</div><div class="timedisplay">Last sent on: ' + to[m2]['date_updated'].replace('T', ' ').replace(".000Z", " ") + '</div> </div> </div>'
             } else if (!used.includes(from[m1]['from_user_id'])) {
               if(uid == '') {
                 uid = from[m1]['from_user_id'];
                 uname = from[m1]['name'];
               }
               used.push(from[m1]['from_user_id']);
-              html += '<div class="messages"><div class="avatar"><img src="https://randomuser.me/api/portraits/women/28.jpg" alt=""> </div><div class="friend"><div class="user">' + from[m1]['name'] + '</div><div class="timedisplay">Last received on: ' + from[m1]['date_updated'].replace('T', ' ').replace(".000Z", " ") + '</div> </div> </div>'
+              html += '<div class="messages" user_id='+from[m1]['from_user_id']+'><div class="avatar"><img src="https://randomuser.me/api/portraits/women/28.jpg" alt=""> </div><div class="friend"><div class="user">' + from[m1]['name'] + '</div><div class="timedisplay">Last received on: ' + from[m1]['date_updated'].replace('T', ' ').replace(".000Z", " ") + '</div> </div> </div>'
             }
           }
         }
@@ -128,7 +125,6 @@ function fetchNewMsgDiv(from_user_id, uname) {
         var msgdata = response.data;
         var  html = '';
         for (var msg in msgdata) {
-          console.log(msg);
           if (msgdata[msg]['to_user_id'] == user_id) {
             html += '<div class="row"> <div class="col-lg-6"> <label class = "form-control" for="usermessage">' + msgdata[msg]['message'] + ' </br><span class = "timedisplay">' + msgdata[msg]['date_updated'].replace('T', ' ').replace(".000Z", " ") + '</span> </label> </div> </div>';
           } else {
@@ -138,7 +134,7 @@ function fetchNewMsgDiv(from_user_id, uname) {
         html += ' <div class="row"> <div class="col-lg-6">&nbsp;</div>  </div> <div class="row"> <div class="col-lg-6">&nbsp;</div>  </div>';
         $("#messagingdiv").html(html);
         $("#usernamemsg").html(uname);
-        $("#sendMessage").setAttribute('touser', from_user_id);
+        $("#sendMessage").attr('touser', from_user_id);
       } else {
         $("label[for='messageError']").text("Please refresh the page");
       }
@@ -148,3 +144,9 @@ function fetchNewMsgDiv(from_user_id, uname) {
     }
   });
 }
+
+$("#sidemsginfo").on("click", ".messages",  function () {
+  var userid = $(this).attr('user_id');
+  var username = $(this).find(".user").text();
+  fetchNewMsgDiv(userid, username);
+});
