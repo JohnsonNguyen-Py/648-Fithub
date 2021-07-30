@@ -288,6 +288,13 @@ button {
 #messagingdiv {
   overflow-y: scroll;
   overflow-x: hidden;
+  align-self: center;
+  color:#988b7e;
+}
+
+#matchesdiv {
+  text-align: center;
+  color:#988b7e;
 }
 
 .timedisplay {

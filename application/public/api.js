@@ -1,3 +1,4 @@
+process.env.TZ = "America/Los_Angeles";
 const express = require('express');
 const app = express();
 var bodyParser = require('body-parser');
@@ -356,4 +357,54 @@ app.post('/sendUserMessage', urlencodedParser, function (req, res) {
     });
 });
 
-app.listen(3000, console.log("Server running on 3000"));
+//Vidhi - loading user matches data
+app.post('/loadMatches', urlencodedParser, function (req, res) {
+    var user_id = req.body.userid;
+    var sql = 'SELECT workout_id, to_user_id, request_status, date_sent, date_updates, name from `workout request` join `registered user` on `workout request`.to_user_id = `registered user`.user_id where from_user_id = ' + user_id + ' order by date_updates desc';
+    dbconnection.query(sql, (err, result) => {
+        if (err) {
+            res.send({ status: "failure", message: err, data: {} });
+        } else {
+            var data = {}
+            if (result && result.length > 0) {
+                data['sent'] = result;
+            }
+            var sql2 = 'SELECT workout_id, from_user_id, request_status, date_sent, date_updates, name from `workout request` join `registered user` on `workout request`.from_user_id = `registered user`.user_id where to_user_id = ' + user_id + ' order by date_updates desc';
+            dbconnection.query(sql2, (err2, result2) => {
+                if (result2 && result2.length > 0) {
+                    data['received'] = result2;
+                }
+                res.send({ status: "success", message: 'success', data: data });
+            });
+        }
+    });
+});
+
+//vidhi - update user request status
+app.post('/updateRequestStatus', urlencodedParser, function (req, res) {
+    var id = req.body.id;
+    var status = req.body.status;
+    var sql = 'UPDATE `workout request` SET `request_status` = '+status+', date_updates = CURRENT_TIMESTAMP() WHERE `workout_id` = ' + id;
+    dbconnection.query(sql, (err, result) => {
+        if (err) {
+            res.send({ status: "failure", message: err, data: {} });
+        } else {
+            res.send({ status: "success", message: "Status Updates", data: {} });
+        }
+    });
+});
+
+//vidhi - update user request status
+app.post('/fetchUserInfo', urlencodedParser, function (req, res) {
+    var id = req.body.id;
+    var sql = 'SELECT * from `registered user` where user_id = ' + id;
+    dbconnection.query(sql, (err, result) => {
+        if (err) {
+            res.send({ status: "failure", message: err, data: {} });
+        } else {
+            res.send({ status: "success", message: "Status Updates", data: result });
+        }
+    });
+});
+
+app.listen(3000, console.log("Server running on 3000" + new Date().toString()));
