@@ -136,7 +136,7 @@
                           <h5 class="modal-title" id="exampleModalLongTitle">Change Password</h5>
                         </div>
                         <div class="modal-body">
-                          <input type="password" class="form-control" placeholder="Enter New Password">
+                          <input type="password" id="password" class="form-control" placeholder="Enter New Password">
                         </div>
                         <div class="modal-footer">
                           <button id="changePassword" type="button"
@@ -164,17 +164,17 @@
                         </div>
                         <div class="modal-body">
                           <label>Phone number:</label>
-                          <input type="number" class="form-control" placeholder="Change Phone Number"
-                            value="6697864565">
+                          <input id="phone" type="number" class="form-control" placeholder="Change Phone Number"
+                            value="">
 
                           <label>Address:</label>
-                          <input type="text" class="form-control" placeholder="Change Address" value="San Jose">
+                          <input id="address" type="text" class="form-control" placeholder="Change Address" value="">
 
                           <label>Zipcode:</label>
-                          <input type="number" class="form-control" placeholder="Change zip code" value="95043">
+                          <input id="zip_code" type="number" class="form-control" placeholder="Change zip code" value="">
 
                           <label>Birthdate:</label>
-                          <input type="date" class="form-control" placeholder="Change birthdate" value="1998-04-05">
+                          <input id="birthdate" type="date" class="form-control" placeholder="Change birthdate" value="">
 
                           <label>Profile Picture:</label>
                           <input type="file" class="form-control" placeholder="Change Profile picture">
@@ -359,14 +359,9 @@
         <div class="user">
           <img class="user" src="../images/profile.jpg" />
           <div class="profile">
-            <div class="name">Tiana <span>28</span></div>
-            <div class="passions">
-              <button type="button" class="btn btn-outline-light btn-sm" data-bs-toggle="button" autocomplete="off"
-                data-info="outdoors">⛺️ Outdoors</button>
-              <button type="button" class="btn btn-outline-light btn-sm" data-bs-toggle="button" autocomplete="off"
-                data-info="dancing">💃 Dancing</button>
-              <button type="button" class="btn btn-outline-light btn-sm" data-bs-toggle="button" autocomplete="off"
-                data-info="cardio">🫁 Cardio</button>
+            <div class="name"><span id="name"></span><span> </span><span id="age"></span></div>
+            <div class="passions" id="passions">
+              
             </div>
           </div>
         </div>
