@@ -66,14 +66,14 @@ function checkUserLoggedIn() {
     type: "POST",
     crossDomain: true,
     success: function (response) {
-      if(response.status == "failure") {
-          alert('Log in first');
-          window.location.href = '../index.html';
+      if (response.status == "failure") {
+        alert("Log in first");
+        window.location.href = "../index.html";
       } else {
-          sessionInfo = response.data.data;
-          fetchUserInfo(sessionInfo.reg_id);
-          $("#accessUserInfo").attr('data-userid', sessionInfo.reg_id);
-          console.log(sessionInfo);
+        sessionInfo = response.data.data;
+        fetchUserInfo(sessionInfo.reg_id);
+        $("#accessUserInfo").attr("data-userid", sessionInfo.reg_id);
+        console.log(sessionInfo);
       }
     },
     error: function () {},
@@ -81,6 +81,14 @@ function checkUserLoggedIn() {
 }
 
 function fetchUserInfo(reg_id) {
+  $.ajax({
+    url: "/user_picture/" + reg_id + ".jpg",
+    type: "GET",
+    success: function (response) {
+      $(".avatarimg").attr("src", "/user_picture/" + reg_id + ".jpg");
+    },
+  });
+
   $.ajax({
     url: url + "fetchUserInfo",
     type: "POST",
@@ -144,20 +152,15 @@ $("#changePassword").on("click", function () {
 });
 
 $("#editProfile").on("click", function () {
-  const phone = $("#phone").val(),
-    address = $("#address").val(),
-    zip_code = $("#zip_code").val(),
-    birthdate = $("#birthdate").val();
+  const profile = $("#profile_form")[0];
+  const fd = new FormData(profile);
   $.ajax({
-    url: url + "modifyUserInfo",
+    url: "http://localhost:3000/modifyUserInfo",
     type: "POST",
     crossDomain: true,
-    data: {
-      phone: phone,
-      address: address,
-      zipCode: zip_code,
-      birthdate: birthdate,
-    },
+    data: fd,
+    processData: false,
+    contentType: false,
     success: function (response) {
       if (response.status === "success") {
         $("#modal4").modal("hide");
