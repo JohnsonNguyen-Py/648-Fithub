@@ -73,19 +73,31 @@ app.post('/registerUser', urlencodedParser, function (req, res) {
                                     res.send({ status: "failure", message: err1, data: {} });
                                 } else {
                                     reg_id = result1.insertId;
-                                    account = {
-                                        reg_id: reg_id,
-                                        username: req.body.email_id,
-                                        password: md5(req.body.password)
+
+                                    const myArr = registeredUser.activity_type.split(",");
+                                    var actquerry = "INSERT INTO `user_activities`(user_id, user_activities) VALUES ";
+                                    for (var idx in myArr) {
+                                        if (idx == (myArr.length - 1)) {
+                                            actquerry += "(" + registeredUser.user_id + ",'" + myArr[idx] + "')";
+                                        } else {
+                                            actquerry += "(" + registeredUser.user_id + ",'" + myArr[idx] + "'),";
+                                        }
                                     }
-                                    var sql2 = "INSERT INTO `account`(reg_id, username, password) VALUES (" + account.reg_id + ",'" + account.username + "','" + account.password + "');";
-                                    dbconnection.query(sql2, (err2, result2) => {
-                                        dbconnection.query("INSERT INTO `check_new_message` (user_id) VALUES (" + registeredUser.user_id + ");", (err3, result3) => {
-                                            if (err3) {
-                                                res.send({ status: "failure", message: err2, data: {} });
-                                            } else {
-                                                res.send({ status: "success", message: "User Registered", data: {} });
-                                            }
+                                    dbconnection.query(actquerry, (err, result) => {
+                                        account = {
+                                            reg_id: reg_id,
+                                            username: req.body.email_id,
+                                            password: md5(req.body.password)
+                                        }
+                                        var sql2 = "INSERT INTO `account`(reg_id, username, password) VALUES (" + account.reg_id + ",'" + account.username + "','" + account.password + "');";
+                                        dbconnection.query(sql2, (err2, result2) => {
+                                            dbconnection.query("INSERT INTO `check_new_message` (user_id) VALUES (" + registeredUser.user_id + ");", (err3, result3) => {
+                                                if (err3) {
+                                                    res.send({ status: "failure", message: err2, data: {} });
+                                                } else {
+                                                    res.send({ status: "success", message: "User Registered", data: {} });
+                                                }
+                                            });
                                         });
                                     });
                                 }
@@ -360,7 +372,7 @@ app.post('/sendUserMessage', urlencodedParser, function (req, res) {
 //Vidhi - loading user matches data
 app.post('/loadMatches', urlencodedParser, function (req, res) {
     var user_id = req.body.userid;
-    var sql = 'SELECT workout_id, to_user_id, request_status, date_sent, date_updates, name from `workout request` join `registered user` on `workout request`.to_user_id = `registered user`.user_id where from_user_id = ' + user_id + ' order by date_updates desc';
+    var sql = 'SELECT workout_id, to_user_id, request_status, date_sent, date_updates, name from `workout request` join `registered user` on `workout request`.to_user_id = `registered user`.user_id where from_user_id = ' + user_id + ' order by date_sent desc';
     dbconnection.query(sql, (err, result) => {
         if (err) {
             res.send({ status: "failure", message: err, data: {} });
@@ -369,7 +381,7 @@ app.post('/loadMatches', urlencodedParser, function (req, res) {
             if (result && result.length > 0) {
                 data['sent'] = result;
             }
-            var sql2 = 'SELECT workout_id, from_user_id, request_status, date_sent, date_updates, name from `workout request` join `registered user` on `workout request`.from_user_id = `registered user`.user_id where to_user_id = ' + user_id + ' order by date_updates desc';
+            var sql2 = 'SELECT workout_id, from_user_id, request_status, date_sent, date_updates, name from `workout request` join `registered user` on `workout request`.from_user_id = `registered user`.user_id where to_user_id = ' + user_id + ' order by date_sent desc';
             dbconnection.query(sql2, (err2, result2) => {
                 if (result2 && result2.length > 0) {
                     data['received'] = result2;
@@ -384,7 +396,7 @@ app.post('/loadMatches', urlencodedParser, function (req, res) {
 app.post('/updateRequestStatus', urlencodedParser, function (req, res) {
     var id = req.body.id;
     var status = req.body.status;
-    var sql = 'UPDATE `workout request` SET `request_status` = '+status+', date_updates = CURRENT_TIMESTAMP() WHERE `workout_id` = ' + id;
+    var sql = 'UPDATE `workout request` SET `request_status` = ' + status + ', date_updates = CURRENT_TIMESTAMP() WHERE `workout_id` = ' + id;
     dbconnection.query(sql, (err, result) => {
         if (err) {
             res.send({ status: "failure", message: err, data: {} });
@@ -394,7 +406,7 @@ app.post('/updateRequestStatus', urlencodedParser, function (req, res) {
     });
 });
 
-//vidhi - update user request status
+//vidhi - fetch user info
 app.post('/fetchUserInfo', urlencodedParser, function (req, res) {
     var id = req.body.id;
     var sql = 'SELECT * from `registered user` where user_id = ' + id;
@@ -403,6 +415,66 @@ app.post('/fetchUserInfo', urlencodedParser, function (req, res) {
             res.send({ status: "failure", message: err, data: {} });
         } else {
             res.send({ status: "success", message: "Status Updates", data: result });
+        }
+    });
+});
+
+//vidhi - get workoutbuddy recommendation
+app.post('/getWorkOutBuddies', urlencodedParser, function (req, res) {
+    var user_id = req.body.id;
+    var no;
+    if (req.body.no) {
+        no = req.body.no;
+    } else {
+        no = 0;
+    }
+    var sql = '';
+    sql = 'SELECT `user_activities`.user_id, name, zip_code, gender, birthdate, activity_type from `user_activities` join `registered user` on  `user_activities`.user_id = `registered user`.user_id where `user_activities`.user_id != ' + user_id + ' and user_activities IN (SELECT user_activities from `user_activities` where user_id = ' + user_id + ' ) LIMIT ' + no + ',1';
+    // console.log(sql);
+    dbconnection.query(sql, (err, result) => {
+        if (err) {
+            res.send({ status: "failure", message: err, data: {} });
+        } else {
+            if (result) {
+                no++;
+                var data = {
+                    'no': no,
+                    'data': result['0']
+                }
+                res.send({ status: "success", message: err, data: data });
+            } else {
+                res.send({ status: "success", message: "No data", data: {} });
+            }
+        }
+    });
+});
+
+//vidhi - send workout request
+app.post('/sendWorkoutRequest', urlencodedParser, function (req, res) {
+    var to_user_id = req.body.to_user_id;
+    var from_user_id = req.body.from_user_id;
+    var msg = req.body.msg;
+
+    var sql = 'INSERT INTO `workout request` (from_user_id, to_user_id) VALUES (' + from_user_id + ',' + to_user_id + ')';
+    var sql1 = 'INSERT INTO `user_messages` (to_user_id, from_user_id, message) VALUES (' + to_user_id + ',' + from_user_id + ', "' + msg + '")';
+    var sql2 = 'UPDATE `check_new_message` SET is_new_msg = 1 where user_id = ' + to_user_id;
+    dbconnection.query(sql, (err, result) => {
+        if (err) {
+            res.send({ status: "failure", message: err, data: {} });
+        } else {
+            dbconnection.query(sql1, (err1, result1) => {
+                if (err1) {
+                    res.send({ status: "failure", message: err1, data: {} });
+                } else {
+                    dbconnection.query(sql2, (err2, result1) => {
+                        if (err2) {
+                            res.send({ status: "failure", message: err2, data: {} });
+                        } else {
+                            res.send({ status: "success", message: 'request sent', data: {} });
+                        }
+                    });
+                }
+            });
         }
     });
 });

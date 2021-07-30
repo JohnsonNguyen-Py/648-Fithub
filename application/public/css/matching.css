@@ -301,3 +301,14 @@ button {
   font-size: 0.7em;
   color: gray;
 }
+
+#filtermatchesdiv {
+  text-align: center;
+  color:#988b7e;
+}
+
+#headingFilter {
+  background: #f5f7fa;
+  color: #988b7e;
+  font-size: 2rem;
+}

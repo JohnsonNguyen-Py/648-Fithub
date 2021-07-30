@@ -236,10 +236,49 @@ function updateRequest(id, status) {
   return result;
 }
 
+function getUserMatches(no) {
+  var result = {};
+  $.ajax({
+    url: url + "getWorkOutBuddies",
+    type: "POST",
+    crossDomain: true,
+    data: {
+      id: user_id,
+      no: no
+    },
+    async: false,
+    success: function (response) {
+      result = response;
+    },
+    error: function () {
+      alert("Something went wrong. Please try again!!!");
+    }
+  });
+  if (result.status == "success") {
+    if (result.data['data']) {
+      var info = result.data['data'];
+      var html = '<img class="user" src="../images/woman-unsplash.jpg" /><div class="profile"><div class="name">' + info.name + '</div></div>';
+      var html1 = '<label>Name: ' + info.name + '</label></br><label>Zipcode: ' + info.zip_code + '</label></br><label>Gender: ' + info.gender + '</label></br><label>Birthdate: ' + new Date(info.birthdate).toISOString().substring(0, 10) + '</label></br><label>Passion: ' + info.activity_type.replaceAll('_', ' ').replaceAll(',', ', ').replace(/(^([a-zA-Z\p{M}]))|([ -][a-zA-Z\p{M}])/g,
+        function ($1) {
+          return $1.toUpperCase();
+        }) + '</label>';
+      $("#userinfodiv").html(html1);
+      $("#filtermatchesdiv").html(html);
+      $("#filterbuttons").css('display', '');
+      $("#filterbuttons").attr("resno", result.data['no']);
+      $("#filterbuttons").attr("userid", info.user_id);
+    } else {
+      $("#filtermatchesdiv").html('<div class="col-lg-12"><h3>&nbsp;</h3> </div><div class="col-lg-12"><h3>&nbsp; No more </h3></div><div class="col-lg-12"><h3>&nbsp; recommendations </h3></div><div class="col-lg-12"><h3>&nbsp; to show</h3></div>');
+      $("#filterbuttons").css('display', 'none');
+    }
+  }
+}
+
+checkUserLoggedIn();
+
 $(document).ready(function () {
 
-  checkUserLoggedIn();
-  loadMatches();
+  getUserMatches(0);
 
   $("#sidemsginfo").on("click", ".messages", function () {
     var userid = $(this).attr('user_id');
@@ -317,7 +356,7 @@ $(document).ready(function () {
       var response = updateRequest(tabid, 2);
       if (response.status == 'success') {
         $('#cancelRequest').remove();
-        $('div.messages[tabid = '+tabid+']').attr('status',2);
+        $('div.messages[tabid = ' + tabid + ']').attr('status', 2);
       } else {
         alert(response.message);
       }
@@ -330,7 +369,7 @@ $(document).ready(function () {
       var response = updateRequest(tabid, 3);
       if (response.status == 'success') {
         $('#cancelmyRequest').remove();
-        $('div.messages[tabid = '+tabid+']').attr('status',3);
+        $('div.messages[tabid = ' + tabid + ']').attr('status', 3);
       } else {
         alert(response.message);
       }
@@ -363,6 +402,54 @@ $(document).ready(function () {
 
   $(document).on("click", "#accept", function () {
     alert("Work out request sent");
+  })
+
+  $(document).on("click", "#viewProfile", function () {
+    $('#userinfo').modal('show');
+  })
+
+  $(document).on("click", "#viewNext", function () {
+    if (confirm("Sure View Next Profile ?") === true) {
+      getUserMatches($("#filterbuttons").attr("resno"));
+    }
+  })
+
+  $(document).on("click", "#sendRequest", function () {
+    $('#requestMessageSent').modal('show');
+  });
+  
+  $(document).on("click", "#sentUserRequest", function () { 
+    var msg = $("#requestMessageText").val();
+    if(msg < 5) {
+      $("#requestMessageText").css("border", "solid red 1px");
+      return;
+    } 
+
+    $("#requestMessageText").css("border", "");
+    $.ajax({
+      url: url + "sendWorkoutRequest",
+      type: "POST",
+      crossDomain: true,
+      data: {
+        to_user_id: $("#filterbuttons").attr("userid"),
+        from_user_id: user_id,
+        msg: msg
+      },
+      success: function (response) {
+        console.log(response);
+        if(response.status == 'success') {
+          getUserMatches($("#filterbuttons").attr("resno"));
+          alert("Request Sent");
+        } else {
+          alert("Something went wrong. Please try again");
+        }
+        $("#requestMessageText").val('');
+        $('#requestMessageSent').modal('hide');
+      },
+      error: function () {
+        alert("Something went wrong. Please try again!!!");
+      }
+    });
   })
   // for messages section - Vidhi Vora
   setInterval(function () {
