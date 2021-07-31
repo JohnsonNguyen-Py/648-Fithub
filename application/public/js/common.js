@@ -2,29 +2,29 @@
 var sessionInfo = {};
 // var url = "http://localhost:3000/";
 var url = "http://100.26.92.104:3000/";
-function checkUserLoggedIn() {
-    $.ajax({
-        url: url + "checkUserLoggedIn",
-        type: "POST",
-        crossDomain: true,
-        success: function (response) {
-            if(response.status == "failure") {
-                alert('Log in first');
-                window.location.href = '../index.html';
-            } else {
-                sessionInfo = response.data.data;
-            }
-        },
-        error: function () {
-        }
-    });
-}
+// function checkUserLoggedIn() {
+//     $.ajax({
+//         url: url + "checkUserLoggedIn",
+//         type: "POST",
+//         crossDomain: true,
+//         success: function (response) {
+//             if(response.status == "failure") {
+//                 alert('Log in first');
+//                 window.location.href = '../index.html';
+//             } else {
+//                 sessionInfo = response.data.data;
+//             }
+//         },
+//         error: function () {
+//         }
+//     });
+// }
 
-if(window.location.pathname == '/' || window.location.pathname == '/index.html') {
-    // console.log(window.location.pathname);
-} else {
-    checkUserLoggedIn();
-}
+// if(window.location.pathname == '/' || window.location.pathname == '/index.html') {
+//     // console.log(window.location.pathname);
+// } else {
+//     checkUserLoggedIn();
+// }
 
 //Vidhi- LOGIN API
 $("#userlogin").on("click", function () {
