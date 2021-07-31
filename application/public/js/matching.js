@@ -3,7 +3,8 @@ var url = "http://100.26.92.104:3000/";
 var current_active_tab = "Matches";
 var user_id = $("#accessUserInfo").data("userid");
 var sessionInfo = {};
-
+var filterResult = {};
+var showresultno = 0;
 function checkUserLoggedIn() {
   $.ajax({
     url: url + "checkUserLoggedIn",
@@ -18,7 +19,7 @@ function checkUserLoggedIn() {
         user_id = sessionInfo.user_id;
         $("#accessUserInfo").attr('data-userid', sessionInfo.reg_id);
         $("#avatarimguser").attr("src", "../images/user_picture/" + user_id + ".jpeg");
-        getUserMatches(0);
+        getUserMatches();
       }
     },
     error: function () {
@@ -244,7 +245,7 @@ function updateRequest(id, status) {
   return result;
 }
 
-function getUserMatches(no) {
+function getUserMatches() {
   var result = {};
   var zip_code, gender, activity_type;
   if ($("#filterzipcode").val().length == 5) {
@@ -272,7 +273,6 @@ function getUserMatches(no) {
     crossDomain: true,
     data: {
       id: user_id,
-      no: no,
       zip_code: zip_code,
       activity_type: activity_type,
       gender: gender
@@ -287,22 +287,34 @@ function getUserMatches(no) {
   });
   if (result.status == "success") {
     if (result.data['data']) {
-      var info = result.data['data'];
-      var html = '<img class="user" src="../images/user_picture/' + info.reg_id + '.jpeg" /><div class="profile"><div class="name">' + info.name + '</div></div>';
-      $("#filtermatchesdiv").html(html);
 
-      var html1 = '<label>Name: ' + info.name + '</label></br><label>Zipcode: ' + info.zip_code + '</label></br><label>Gender: ' + info.gender + '</label></br><label>Birthdate: ' + new Date(info.birthdate).toISOString().substring(0, 10) + '</label></br><label>Passion: ' + info.activity_type.replaceAll('_', ' ').replaceAll(',', ', ').replace(/(^([a-zA-Z\p{M}]))|([ -][a-zA-Z\p{M}])/g,
-        function ($1) {
-          return $1.toUpperCase();
-        }) + '</label>';
-      $("#userinfodiv").html(html1);
-      $("#filterbuttons").css('display', '');
-      $("#filterbuttons").attr("resno", result.data['no']);
-      $("#filterbuttons").attr("userid", info.user_id);
+      filterResult = result.data['data']
+      showSearchResults(0);
     } else {
       $("#filtermatchesdiv").html('<div class="col-lg-12"><h3>&nbsp;</h3> </div><div class="col-lg-12"><h3>&nbsp; No more </h3></div><div class="col-lg-12"><h3>&nbsp; recommendations </h3></div><div class="col-lg-12"><h3>&nbsp; to show</h3></div>');
       $("#filterbuttons").css('display', 'none');
     }
+  }
+}
+
+//vidhi - display user results 
+function showSearchResults(no) {
+  if(filterResult[no]) {
+    var info = filterResult[no];
+    var html = '<img class="user" src="../images/user_picture/' + info.reg_id + '.jpeg" /><div class="profile"><div class="name">' + info.name + '</div></div>';
+    $("#filtermatchesdiv").html(html);
+  
+    var html1 = '<label>Name: ' + info.name + '</label></br><label>Zipcode: ' + info.zip_code + '</label></br><label>Gender: ' + info.gender + '</label></br><label>Birthdate: ' + new Date(info.birthdate).toISOString().substring(0, 10) + '</label></br><label>Passion: ' + info.activity_type.replaceAll('_', ' ').replaceAll(',', ', ').replace(/(^([a-zA-Z\p{M}]))|([ -][a-zA-Z\p{M}])/g,
+      function ($1) {
+        return $1.toUpperCase();
+      }) + '</label>';
+    $("#userinfodiv").html(html1);
+    $("#filterbuttons").css('display', '');
+    $("#filterbuttons").attr("userid", info.user_id);
+    showresultno = no + 1;
+  } else {
+    $("#filtermatchesdiv").html('<div class="col-lg-12"><h3>&nbsp;</h3> </div><div class="col-lg-12"><h3>&nbsp; No more </h3></div><div class="col-lg-12"><h3>&nbsp; recommendations </h3></div><div class="col-lg-12"><h3>&nbsp; to show</h3></div>');
+    $("#filterbuttons").css('display', 'none');
   }
 }
 
@@ -471,7 +483,7 @@ $(document).ready(function () {
 
   $(document).on("click", "#viewNext", function () {
     if (confirm("Sure View Next Profile ?") === true) {
-      getUserMatches($("#filterbuttons").attr("resno"));
+      showSearchResults(showresultno);
     }
   })
 
@@ -499,7 +511,7 @@ $(document).ready(function () {
       success: function (response) {
         console.log(response);
         if (response.status == 'success') {
-          getUserMatches($("#filterbuttons").attr("resno"));
+          showSearchResults(showresultno);
           alert("Request Sent");
         } else {
           alert("Something went wrong. Please try again");
@@ -514,7 +526,7 @@ $(document).ready(function () {
   })
 
   $(document).on("click", "#filterSearch", function () {
-    getUserMatches(0);
+    getUserMatches();
   });
 
   // for messages section - Vidhi Vora
