@@ -286,6 +286,7 @@ button {
 }
 
 #messagingdiv {
+  width: 100%;
   overflow-y: scroll;
   overflow-x: hidden;
   align-self: center;
