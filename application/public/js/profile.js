@@ -71,7 +71,7 @@ function checkUserLoggedIn() {
         window.location.href = "../index.html";
       } else {
         sessionInfo = response.data.data;
-        fetchUserInfo(sessionInfo.reg_id);
+        fetchUserInfo(sessionInfo.reg_id, sessionInfo.user_id);
         $("#accessUserInfo").attr("data-userid", sessionInfo.reg_id);
         console.log(sessionInfo);
       }
@@ -80,12 +80,12 @@ function checkUserLoggedIn() {
   });
 }
 
-function fetchUserInfo(reg_id) {
+function fetchUserInfo(reg_id, user_id) {
   $.ajax({
-    url: "../images/user_picture/" + reg_id + ".jpeg",
+    url: "../images/user_picture/" + user_id + ".jpeg",
     type: "GET",
     success: function (response) {
-      $("#updateUserImg").attr("src", "../images/user_picture/" + reg_id + ".jpeg");
+      $("#updateUserImg").attr("src", "../images/user_picture/" + user_id + ".jpeg");
     },
     error: function(){
       $("#updateUserImg").attr("src", "../images/user_picture/user.jpeg");
