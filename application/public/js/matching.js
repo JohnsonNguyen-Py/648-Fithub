@@ -300,7 +300,7 @@ function getUserMatches(no) {
   }
 }
 
-// checkUserLoggedIn();
+checkUserLoggedIn();
 
 $(document).ready(function () {
 
