@@ -77,7 +77,7 @@
     <div class="side">
       <div class="header">
         <div class="avatar">
-          <img src="../images/circle-cropped.png" alt="">
+          <img class="avatarimg" src="../images/circle-cropped.png" alt="">
         </div>
         <a class="title" href="#">My Profile</a>
       </div>
@@ -136,7 +136,7 @@
                           <h5 class="modal-title" id="exampleModalLongTitle">Change Password</h5>
                         </div>
                         <div class="modal-body">
-                          <input type="password" class="form-control" placeholder="Enter New Password">
+                          <input type="password" id="password" class="form-control" placeholder="Enter New Password">
                         </div>
                         <div class="modal-footer">
                           <button id="changePassword" type="button"
@@ -163,21 +163,24 @@
                           <h5 class="modal-title" id="exampleModalLongTitle">Profile info</h5>
                         </div>
                         <div class="modal-body">
-                          <label>Phone number:</label>
-                          <input type="number" class="form-control" placeholder="Change Phone Number"
-                            value="6697864565">
+                          <form id="profile_form" enctype='multipart/form-data'>
+                            <label>Phone number:</label>
+                            <input name="phone" id="phone" type="number" class="form-control" placeholder="Change Phone Number"
+                              value="">
 
-                          <label>Address:</label>
-                          <input type="text" class="form-control" placeholder="Change Address" value="San Jose">
+                            <label>Address:</label>
+                            <input name="address" id="address" type="text" class="form-control" placeholder="Change Address" value="">
 
-                          <label>Zipcode:</label>
-                          <input type="number" class="form-control" placeholder="Change zip code" value="95043">
+                            <label>Zipcode:</label>
+                            <input name="zip_code" id="zip_code" type="number" class="form-control" placeholder="Change zip code" value="">
 
-                          <label>Birthdate:</label>
-                          <input type="date" class="form-control" placeholder="Change birthdate" value="1998-04-05">
+                            <label>Birthdate:</label>
+                            <input name="birthdate" id="birthdate" type="date" class="form-control" placeholder="Change birthdate" value="">
 
-                          <label>Profile Picture:</label>
-                          <input type="file" class="form-control" placeholder="Change Profile picture">
+                            <label>Profile Picture:</label>
+                            <input name="picture" id="picture" type="file" class="form-control" placeholder="Change Profile picture">
+                          
+                          </form>
                         </div>
                         <div class="modal-footer">
                           <button id="editProfile" type="button" class="btn btn-outline-dark">Continue</button>
@@ -238,7 +241,7 @@
                         <div class="modal-body">
                           <div class="messages">
                             <div class="avatar">
-                              <img src="https://randomuser.me/api/portraits/women/28.jpg" alt="">
+                              <img class="avatarimg" src="https://randomuser.me/api/portraits/women/28.jpg" alt="">
                             </div>
                             <div class="friend">
                               <div class="user">Hannah Montana
@@ -252,7 +255,7 @@
                           </div>
                           <div class="messages">
                             <div class="avatar">
-                              <img src="https://randomuser.me/api/portraits/women/28.jpg" alt="">
+                              <img class="avatarimg" src="https://randomuser.me/api/portraits/women/28.jpg" alt="">
                             </div>
                             <div class="friend">
                               <div class="user">Jenny Hill
@@ -286,7 +289,7 @@
                         <div class="modal-body">
                           <div class="messages">
                             <div class="avatar">
-                              <img src="https://randomuser.me/api/portraits/women/28.jpg" alt="">
+                              <img class="avatarimg" src="https://randomuser.me/api/portraits/women/28.jpg" alt="">
                             </div>
                             <div class="friend">
                               <div class="user">Pheobe Roy
@@ -300,7 +303,7 @@
                           </div>
                           <div class="messages">
                             <div class="avatar">
-                              <img src="https://randomuser.me/api/portraits/women/28.jpg" alt="">
+                              <img class="avatarimg" src="https://randomuser.me/api/portraits/women/28.jpg" alt="">
                             </div>
                             <div class="friend">
                               <div class="user">Julie Green
@@ -357,16 +360,11 @@
     <div class="content">
       <div class="card">
         <div class="user">
-          <img class="user" src="../images/profile.jpg" />
+          <img class="user avatarimg" src="../images/profile.jpg" />
           <div class="profile">
-            <div class="name">Tiana <span>28</span></div>
-            <div class="passions">
-              <button type="button" class="btn btn-outline-light btn-sm" data-bs-toggle="button" autocomplete="off"
-                data-info="outdoors">⛺️ Outdoors</button>
-              <button type="button" class="btn btn-outline-light btn-sm" data-bs-toggle="button" autocomplete="off"
-                data-info="dancing">💃 Dancing</button>
-              <button type="button" class="btn btn-outline-light btn-sm" data-bs-toggle="button" autocomplete="off"
-                data-info="cardio">🫁 Cardio</button>
+            <div class="name"><span id="name"></span><span> </span><span id="age"></span></div>
+            <div class="passions" id="passions">
+              
             </div>
           </div>
         </div>

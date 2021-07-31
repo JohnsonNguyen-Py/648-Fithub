@@ -9,6 +9,10 @@ var session = require('express-session');
 var md5 = require('md5');
 const path = require('path');
 
+var multer = require("multer");
+var fs = require("fs");
+var upload = multer({ dest: path.join(__dirname, "/public/upload") });
+
 var dbconnection = require('./mysqlConnector');
 
 app.use((req, res, next) => {
@@ -247,30 +251,88 @@ app.post('/getEvents', urlencodedParser, function (req, res) {
     });
 });
 
-
-app.post('/modifyUserInfo', urlencodedParser, function (req, res) {
-    if (req.session && req.session.reg_id) {
-        const regID = req.session.reg_id;
-        const { phone, address, zipCode: zip_code, birthdate } = req.body;
-        const userinfo = "SELECT * from `registered user` where reg_id = " + regID;
-        dbconnection.query(userinfo, (err, data) => {
-            if (err || !(data[0] && data[0].reg_id)) {
-                res.send({ status: "failure", message: "unable to find user", data: {} });
-            } else {
-                const updateSQL = `UPDATE \`registered user\` SET phone = ${phone}, address = ${address}, zip_code = ${zip_code}, brithdate = ${birthdate} WHERE reg_id = ${regID}`;
-                dbconnection.query(updateSQL, (err, result) => {
-                    if (err) {
-                        res.send({ status: "failure", message: 'fail to update profile', data: {} });
-                    } else {
-                        res.send({ status: "success", message: 'success', data: {} });
-                    }
-                });
-            }
+app.post("/modifyUserInfo", upload.single("picture"), function (req, res) {
+  const updateDB = (regID) => {
+    const { phone, address, zip_code, birthdate } = req.body;
+    const userinfo = "SELECT * from `registered user` where reg_id = " + regID;
+    dbconnection.query(userinfo, (err, data) => {
+      if (err || !(data[0] && data[0].reg_id)) {
+        res.send({
+          status: "failure",
+          message: "unable to find user",
+          data: {},
         });
+      } else {
+        const updateSQL = `UPDATE \`registered user\` SET phone = ${phone}, address = ${address}, zip_code = ${zip_code}, brithdate = ${birthdate} WHERE reg_id = ${regID}`;
+        dbconnection.query(updateSQL, (err, result) => {
+          if (err) {
+            res.send({
+              status: "failure",
+              message: "fail to update profile",
+              data: {},
+            });
+          } else {
+            res.send({ status: "success", message: "success", data: {} });
+          }
+        });
+      }
+    });
+  };
+
+  if (req.session && req.session.reg_id) {
+    const regID = req.session.reg_id;
+    if (req.file) {
+      const source_file = req.file.path;
+      const dest_dir = path.join(__dirname, "/public/user_picture");
+      const dest_file = path.join(
+        __dirname,
+        "/public/user_picture",
+        regID + ".jpg"
+      );
+      fs.exists(dest_dir, function (exists) {
+        if (exists) {
+          fs.rename(source_file, dest_file, function (err) {
+            if (err) {
+              res.send({
+                status: "failure",
+                message: "fail to update profile",
+                data: {},
+              });
+            } else {
+              updateDB(regID);
+            }
+          });
+        } else {
+          fs.mkdir(dest_dir, 0777, function (err) {
+            if (err) {
+              res.send({
+                status: "failure",
+                message: "fail to update profile",
+                data: {},
+              });
+            } else {
+              fs.rename(source_file, dest_file, function (err) {
+                if (err) {
+                  res.send({
+                    status: "failure",
+                    message: "fail to update profile",
+                    data: {},
+                  });
+                } else {
+                  updateDB(regID);
+                }
+              });
+            }
+          });
+        }
+      });
     } else {
-        res.send({ status: "failure", message: 'not signed in', data: {} });
+      updateDB(regID);
     }
-})
+  } else {
+    res.send({ status: "failure", message: "not signed in", data: {} });
+  }
+});
 
 app.post('/changePassword', urlencodedParser, function (req, res) {
     if (req.session && req.session.reg_id) {
