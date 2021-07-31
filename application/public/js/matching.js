@@ -17,6 +17,7 @@ function checkUserLoggedIn() {
         sessionInfo = response.data.data;
         user_id = sessionInfo.user_id;
         $("#accessUserInfo").attr('data-userid', sessionInfo.reg_id);
+        getUserMatches(0);
       }
     },
     error: function () {
@@ -277,8 +278,6 @@ function getUserMatches(no) {
 checkUserLoggedIn();
 
 $(document).ready(function () {
-
-  getUserMatches(0);
 
   $("#sidemsginfo").on("click", ".messages", function () {
     var userid = $(this).attr('user_id');
