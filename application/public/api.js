@@ -152,7 +152,7 @@ app.post('/loginAPI', urlencodedParser, function (req, res) {
     let email = req.body.email;
     let password = md5(req.body.password);
     function checkuserExists() {
-        var checkisuserexists = "SELECT * from `account` where username = '" + email + "'";
+        var checkisuserexists = "SELECT `registered user`.reg_id, `registered user`.user_id, password, phone, address, activity_type, zip_code, gender, name, birthdate, is_active from `account` join `registered user` on `registered user`.reg_id = `account`.reg_id where username = '" + email + "'";
         return new Promise(resolve => {
             dbconnection.query(checkisuserexists, (err, res1) => {
                 if (err) {
@@ -168,25 +168,16 @@ app.post('/loginAPI', urlencodedParser, function (req, res) {
             if (res1.length == 0) {
                 res.send({ status: "failure", message: "User does not exists", data: {} });
             } else if (res1.length == 1) {
-                if (res1[0].password == password) {
-                    resolve(res1[0].reg_id);
+                if (res1[0].is_active == 0) {
+                    res.send({ status: "failure", message: "User Deactivated. Contact admin to activate account!", data: {} });
+                } else if (res1[0].password == password) {
+                    resolve(res1);
                 } else {
                     res.send({ status: "failure", message: "Incorrect Password", data: {} });
                 }
             } else {
                 res.send({ status: "failure", message: "Multiple entries found. Please contact site administrator", data: {} });
             }
-        });
-    }).then(uid => {
-        return new Promise(resolve => {
-            var userinfo = "SELECT * from `registered user` where reg_id = " + uid;
-            dbconnection.query(userinfo, (err, data) => {
-                if (err) {
-                    res.send({ status: "failure", message: err, data: {} });
-                } else {
-                    resolve(data);
-                }
-            });
         });
     }).then(data => {
         return new Promise(resolve => {
@@ -200,7 +191,6 @@ app.post('/loginAPI', urlencodedParser, function (req, res) {
                         resolve("success");
                     }
                 });
-
             } else {
                 resolve("failure");
             }
@@ -398,13 +388,13 @@ app.post('/getNewMessagesDiv', urlencodedParser, function (req, res) {
 //vidhi - api to get new messages for a side bar
 app.post('/getNewMessagesSide', urlencodedParser, function (req, res) {
     var user = req.body.userid;
-    var sql = "SELECT name, from_user_id , max(date_updated) as 'date_updated' FROM user_messages join `registered user` on from_user_id = `registered user`.user_id where to_user_id = " + user + " group by  from_user_id, name";
+    var sql = "SELECT name, from_user_id , max(date_updated) as 'date_updated' FROM user_messages join `registered user` on from_user_id = `registered user`.user_id where to_user_id = " + user + " and `registered user`.is_active = 1 group by  from_user_id, name";
     dbconnection.query(sql, (err, result) => {
         var data = {};
         if (result && result.length > 0) {
             data['from'] = result;
         };
-        var sql2 = "SELECT name, to_user_id , max(date_updated) as 'date_updated' FROM user_messages join `registered user` on to_user_id = `registered user`.user_id where from_user_id = " + user + " group by  to_user_id, name";
+        var sql2 = "SELECT name, to_user_id , max(date_updated) as 'date_updated' FROM user_messages join `registered user` on to_user_id = `registered user`.user_id where from_user_id = " + user + " and `registered user`.is_active = 1 group by  to_user_id, name";
         dbconnection.query(sql2, (err2, result2) => {
             if (err2) {
                 res.send({ status: "failure", message: err2, data: {} });
@@ -442,7 +432,7 @@ app.post('/sendUserMessage', urlencodedParser, function (req, res) {
 //Vidhi - loading user matches data
 app.post('/loadMatches', urlencodedParser, function (req, res) {
     var user_id = req.body.userid;
-    var sql = 'SELECT workout_id, to_user_id, request_status, date_sent, date_updates, name from `workout request` join `registered user` on `workout request`.to_user_id = `registered user`.user_id where from_user_id = ' + user_id + ' order by date_sent desc';
+    var sql = 'SELECT workout_id, to_user_id, request_status, date_sent, date_updates, name from `workout request` join `registered user` on `workout request`.to_user_id = `registered user`.user_id where from_user_id = ' + user_id + ' and `registered user`.is_active = 1 order by date_sent desc';
     dbconnection.query(sql, (err, result) => {
         if (err) {
             res.send({ status: "failure", message: err, data: {} });
@@ -451,7 +441,7 @@ app.post('/loadMatches', urlencodedParser, function (req, res) {
             if (result && result.length > 0) {
                 data['sent'] = result;
             }
-            var sql2 = 'SELECT workout_id, from_user_id, request_status, date_sent, date_updates, name from `workout request` join `registered user` on `workout request`.from_user_id = `registered user`.user_id where to_user_id = ' + user_id + ' order by date_sent desc';
+            var sql2 = 'SELECT workout_id, from_user_id, request_status, date_sent, date_updates, name from `workout request` join `registered user` on `workout request`.from_user_id = `registered user`.user_id where to_user_id = ' + user_id + ' and `registered user`.is_active = 1 order by date_sent desc';
             dbconnection.query(sql2, (err2, result2) => {
                 if (result2 && result2.length > 0) {
                     data['received'] = result2;
@@ -479,7 +469,7 @@ app.post('/updateRequestStatus', urlencodedParser, function (req, res) {
 //vidhi - fetch user info
 app.post('/fetchUserInfo', urlencodedParser, function (req, res) {
     var id = req.body.id;
-    var sql = 'SELECT * from `registered user` where user_id = ' + id;
+    var sql = 'SELECT * from `registered user` where is_active = 1 and user_id = ' + id;
     dbconnection.query(sql, (err, result) => {
         if (err) {
             res.send({ status: "failure", message: err, data: {} });
@@ -495,7 +485,7 @@ app.post('/getWorkOutBuddies', urlencodedParser, function (req, res) {
     var no = req.body.no;
     var sql = '';
 
-    sql = 'SELECT `user_activities`.user_id, `registered user`.reg_id, name, zip_code, gender, birthdate, activity_type from `user_activities` join `registered user` on  `user_activities`.user_id = `registered user`.user_id where `user_activities`.user_id != ' + user_id;
+    sql = 'SELECT `user_activities`.user_id, `registered user`.reg_id, name, zip_code, gender, birthdate, activity_type from `user_activities` join `registered user` on  `user_activities`.user_id = `registered user`.user_id where `user_activities`.user_id != ' + user_id +'  and `registered user`.is_active = 1 ';
     if (req.body.zip_code) {
         sql += ' and zip_code = "' + req.body.zip_code + '"';
     }
