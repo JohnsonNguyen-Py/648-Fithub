@@ -240,25 +240,24 @@ function updateRequest(id, status) {
 
 function getUserMatches(no) {
   var result = {};
-  var filters = {};
+  var zip_code, gender, activity_type;
   if ($("#filterzipcode").val().length == 5) {
-    filters['zip_code'] = $("#filterzipcode").val();
+    zip_code = $("#filterzipcode").val();
   }
   if ($('input[name=filterGender]:checked').val() != "") {
-    filters['gender'] = $('input[name=filterGender]:checked').val();
+    gender = $('input[name=filterGender]:checked').val();
   }
 
-  var activity_type = '';
   $("#activities button").each(function (index) {
     if ($(this).hasClass("active") === true) {
       activity_type += ', "'+$(this).data('info')+'"';
     }
   });
 
-  if (activity_type.length > 0) {
+  if (activity_type) {
     activity_type = activity_type.replace(/^,/, '');
-    filters['activity_type'] = activity_type;
   }
+  console.log()
   $.ajax({
     url: url + "getWorkOutBuddies",
     type: "POST",
@@ -266,7 +265,9 @@ function getUserMatches(no) {
     data: {
       id: user_id,
       no: no,
-      filters: filters
+      zip_code: zip_code,
+      activity_type: activity_type,
+      gender: gender
     },
     async: false,
     success: function (response) {

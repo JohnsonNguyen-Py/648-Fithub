@@ -487,23 +487,22 @@ app.post('/getWorkOutBuddies', urlencodedParser, function (req, res) {
     var no = req.body.no;
     var sql = '';
     console.log(req.body.filters);
-    if (req.body.filters) {
-        var filters = req.body.filters;
-        sql = 'SELECT `user_activities`.user_id, `registered user`.reg_id, name, zip_code, gender, birthdate, activity_type from `user_activities` join `registered user` on  `user_activities`.user_id = `registered user`.user_id where `user_activities`.user_id != ' + user_id;
-
-        if (filters.zip_code) {
-            sql += ' and zip_code = "'+filters.zip_code+'"'; 
-        }
-        if(filters.gender) {
-            sql += ' and gender = "'+filters.gender+'"'; 
-        }
-        if(filters.activity_type) {
-            sql += ' and user_activities IN ('+filters.activity_type+')';
-        }
-        sql += ' LIMIT ' + no + ',1';
-    } else {
-        sql = 'SELECT `user_activities`.user_id, `registered user`.reg_id, name, zip_code, gender, birthdate, activity_type from `user_activities` join `registered user` on  `user_activities`.user_id = `registered user`.user_id where `user_activities`.user_id != ' + user_id + ' and user_activities IN (SELECT user_activities from `user_activities` where user_id = ' + user_id + ' ) LIMIT ' + no + ',1';
+    sql = 'SELECT `user_activities`.user_id, `registered user`.reg_id, name, zip_code, gender, birthdate, activity_type from `user_activities` join `registered user` on  `user_activities`.user_id = `registered user`.user_id where `user_activities`.user_id != ' + user_id;
+    if (zip_code) {
+        sql += ' and zip_code = "' + zip_code + '"';
     }
+    if (gender) {
+        sql += ' and gender = "' + gender + '"';
+    }
+    if (activity_type) {
+        sql += ' and user_activities IN (' + activity_type + ')';
+    } else if (zip_code || gender){ 
+
+    } else {
+        sql += ' and user_activities IN (SELECT user_activities from `user_activities` where user_id = ' + user_id + ' )';
+    }
+    sql += ' LIMIT ' + no + ',1';
+
     console.log(sql);
     dbconnection.query(sql, (err, result) => {
         if (err) {
