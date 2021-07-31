@@ -264,9 +264,11 @@ function getUserMatches(no) {
         type: "GET",
         success: function (response) {
           html = '<img class="user" src="../images/user_picture/' + info.reg_id + '.jpeg" /><div class="profile"><div class="name">' + info.name + '</div></div>';
+          $("#filtermatchesdiv").html(html);
         },
         error: function () {
           html = '<img class="user" src="../images/user_picture/user.jpeg" /><div class="profile"><div class="name">' + info.name + '</div></div>';
+          $("#filtermatchesdiv").html(html);
         }
       });
 
@@ -275,7 +277,6 @@ function getUserMatches(no) {
           return $1.toUpperCase();
         }) + '</label>';
       $("#userinfodiv").html(html1);
-      $("#filtermatchesdiv").html(html);
       $("#filterbuttons").css('display', '');
       $("#filterbuttons").attr("resno", result.data['no']);
       $("#filterbuttons").attr("userid", info.user_id);
