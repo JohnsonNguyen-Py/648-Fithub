@@ -245,7 +245,7 @@ function getUserMatches(no) {
     filters['zip_code'] = $("#filterzipcode").val();
   }
   if ($('input[name=filterGender]:checked').val() != "") {
-    filter['gender'] = $('input[name=filterGender]:checked').val();
+    filters['gender'] = $('input[name=filterGender]:checked').val();
   }
 
   var activity_type = [];
@@ -256,7 +256,7 @@ function getUserMatches(no) {
   });
 
   if (activity_type.length > 0) {
-    filter['activity_type'] = activity_type;
+    filters['activity_type'] = activity_type;
   }
   $.ajax({
     url: url + "getWorkOutBuddies",
