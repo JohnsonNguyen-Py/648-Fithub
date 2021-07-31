@@ -337,7 +337,7 @@ app.post("/modifyUserInfo", upload.single("picture"), function (req, res) {
 app.post('/changePassword', urlencodedParser, function (req, res) {
     if (req.session && req.session.reg_id) {
         const regID = req.session.reg_id;
-        const { password } = req.body;
+        const password = req.body.password;
         const userinfo = "SELECT * from `registered user` where reg_id = " + regID;
         dbconnection.query(userinfo, (err, data) => {
             if (err || !(data[0] && data[0].reg_id)) {
