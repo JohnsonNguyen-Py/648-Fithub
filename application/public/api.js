@@ -501,7 +501,7 @@ app.post('/getWorkOutBuddies', urlencodedParser, function (req, res) {
     } else {
         sql += ' and user_activities IN (SELECT user_activities from `user_activities` where user_id = ' + user_id + ' )';
     }
-    sql += ' LIMIT ' + no + ',1';
+    sql += ' group by reg_id LIMIT ' + no + ',1';
 
     console.log(sql);
     dbconnection.query(sql, (err, result) => {

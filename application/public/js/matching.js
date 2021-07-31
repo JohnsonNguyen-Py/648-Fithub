@@ -249,8 +249,10 @@ function getUserMatches(no) {
   }
 
   $("#activities button").each(function (index) {
-    if ($(this).hasClass("active") === true) {
+    if (activity_type && $(this).hasClass("active") === true) {
       activity_type += ', "'+$(this).data('info')+'"';
+    } else if($(this).hasClass("active") === true) {
+      activity_type = '"'+$(this).data('info')+'"';
     }
   });
 
@@ -298,7 +300,7 @@ function getUserMatches(no) {
   }
 }
 
-checkUserLoggedIn();
+// checkUserLoggedIn();
 
 $(document).ready(function () {
 
@@ -421,10 +423,6 @@ $(document).ready(function () {
       }
     });
   });
-
-  $(document).on("click", "#accept", function () {
-    alert("Work out request sent");
-  })
 
   $(document).on("click", "#viewProfile", function () {
     $('#userinfo').modal('show');
