@@ -49,8 +49,10 @@ function openTab(evt, tabName) {
   current_active_tab = tabName;
 
   if (current_active_tab == "messagesTab") {
-    checkIfNewMesage();
     fetchNewMsgSide();
+    $("#messagingdiv").html('<div class="col-lg-12"><h3>&nbsp; No messages to show</h3></div> ');
+    $("#imageDivMessages").css('display', 'none');
+    $("#messagesTabRow").css('display', 'none');
   } else if (current_active_tab == "myMatchesTab") {
     loadMatches();
   }
@@ -69,7 +71,7 @@ function checkIfNewMesage() {
     success: function (response) {
       if (response.status == "success") {
         if (response.data && response.data['is_new_msg'] == 1) {
-          fetchNewMsgDiv($("#fromuser").data("userid"));
+          fetchNewMsgSide();
         }
       } else {
         $("label[for='messageError']").text("Please refresh the page");
@@ -123,7 +125,9 @@ function fetchNewMsgSide() {
           }
         }
         $("#sidemsginfo").html(html);
-        fetchNewMsgDiv(uid, uname);
+        $("#messagingdiv").html('<div class="col-lg-12"><h3>&nbsp; Select user to view message</h3></div> ');
+        $("#imageDivMessages").css('display', 'none');
+        $("#messagesTabRow").css('display', 'none');
       } else {
         $("label[for='messageError']").text("No messages");
         $("#messagingdiv").html('<div class="col-lg-12"><h3>&nbsp; No messages to show</h3></div> ');
