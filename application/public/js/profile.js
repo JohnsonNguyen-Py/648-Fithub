@@ -155,7 +155,7 @@ $("#editProfile").on("click", function () {
   const profile = $("#profile_form")[0];
   const fd = new FormData(profile);
   $.ajax({
-    url: "http://localhost:3000/modifyUserInfo",
+    url: url + "modifyUserInfo",
     type: "POST",
     crossDomain: true,
     data: fd,
