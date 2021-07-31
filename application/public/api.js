@@ -263,7 +263,8 @@ app.post("/modifyUserInfo", upload.single("picture"), function (req, res) {
                     data: {},
                 });
             } else {
-                const updateSQL = `UPDATE \`registered user\` SET phone = ${phone}, address = ${address}, zip_code = ${zip_code}, brithdate = ${birthdate} WHERE reg_id = ${regID}`;
+                const updateSQL = 'UPDATE `registered user` SET phone = ${phone}, address = ${address}, zip_code = ${zip_code}, brithdate = ${birthdate} WHERE reg_id = ${regID}';
+                console.log(updateSQL);
                 dbconnection.query(updateSQL, (err, result) => {
                     if (err) {
                         res.send({
@@ -343,7 +344,7 @@ app.post('/changePassword', urlencodedParser, function (req, res) {
             if (err || !(data[0] && data[0].reg_id)) {
                 res.send({ status: "failure", message: "unable to find user", data: {} });
             } else {
-                const updateSQL = `UPDATE \`account\` SET password = ${md5(password)} WHERE reg_id = ${regID}`;
+                const updateSQL = 'UPDATE `account` SET password = ' + md5(password) +' WHERE reg_id = ' + regID;
                 dbconnection.query(updateSQL, (err, result) => {
                     if (err) {
                         res.send({ status: "failure", message: 'fail to change password', data: {} });
