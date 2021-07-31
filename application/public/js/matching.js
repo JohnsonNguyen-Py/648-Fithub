@@ -159,11 +159,12 @@ function fetchNewMsgDiv(from_user_id, uname) {
         }
         html += ' <div class="row"> <div class="col-lg-6">&nbsp;</div>  </div> <div class="row"> <div class="col-lg-6">&nbsp;</div>  </div>';
         $("#messagingdiv").html(html);
+        $("#userimgmsg").attr('src', '../images/user_picture/' + from_user_id + '.jpeg');
         $("#usernamemsg").html(uname);
         $("#sendMessage").removeAttr('disabled');
         $("#sendMessage").attr('touser', from_user_id);
-        $("#imageDivMessages").css('display', 'block');
-        $("#messagesTabRow").css('display', 'block');
+        $("#imageDivMessages").css('display', '');
+        $("#messagesTabRow").css('display', '');
       } else {
         $("label[for='messageError']").text("Please refresh the page");
       }
