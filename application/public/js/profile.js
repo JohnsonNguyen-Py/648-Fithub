@@ -87,6 +87,9 @@ function fetchUserInfo(reg_id) {
     success: function (response) {
       $("#updateUserImg").attr("src", "../images/user_picture/" + reg_id + ".jpeg");
     },
+    error: function(){
+      $("#updateUserImg").attr("src", "../images/user_picture/user.jpeg");
+    }
   });
 
   $.ajax({
