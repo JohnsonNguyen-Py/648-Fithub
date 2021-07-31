@@ -82,10 +82,10 @@ function checkUserLoggedIn() {
 
 function fetchUserInfo(reg_id) {
   $.ajax({
-    url: "/user_picture/" + reg_id + ".jpg",
+    url: "../images/user_picture/" + reg_id + ".jpeg",
     type: "GET",
     success: function (response) {
-      $(".avatarimg").attr("src", "/user_picture/" + reg_id + ".jpg");
+      $("#updateUserImg").attr("src", "../images/user_picture/" + reg_id + ".jpeg");
     },
   });
 
@@ -155,7 +155,7 @@ $("#editProfile").on("click", function () {
   const profile = $("#profile_form")[0];
   const fd = new FormData(profile);
   $.ajax({
-    url: "http://localhost:3000/modifyUserInfo",
+    url: url + "modifyUserInfo",
     type: "POST",
     crossDomain: true,
     data: fd,
