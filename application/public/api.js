@@ -485,8 +485,8 @@ app.post('/fetchUserInfo', urlencodedParser, function (req, res) {
 app.post('/getWorkOutBuddies', urlencodedParser, function (req, res) {
     var user_id = req.body.id;
     var no = req.body.no;
-
     var sql = '';
+    console.log(req.body.filters);
     if (req.body.filters) {
         var filters = req.body.filters;
         sql = 'SELECT `user_activities`.user_id, `registered user`.reg_id, name, zip_code, gender, birthdate, activity_type from `user_activities` join `registered user` on  `user_activities`.user_id = `registered user`.user_id where `user_activities`.user_id != ' + user_id;
