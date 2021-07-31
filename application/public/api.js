@@ -488,15 +488,15 @@ app.post('/getWorkOutBuddies', urlencodedParser, function (req, res) {
     var sql = '';
     console.log(req.body.filters);
     sql = 'SELECT `user_activities`.user_id, `registered user`.reg_id, name, zip_code, gender, birthdate, activity_type from `user_activities` join `registered user` on  `user_activities`.user_id = `registered user`.user_id where `user_activities`.user_id != ' + user_id;
-    if (zip_code) {
-        sql += ' and zip_code = "' + zip_code + '"';
+    if (req.body.zip_code) {
+        sql += ' and zip_code = "' + req.body.zip_code + '"';
     }
-    if (gender) {
-        sql += ' and gender = "' + gender + '"';
+    if (req.body.gender) {
+        sql += ' and gender = "' + req.body.gender + '"';
     }
-    if (activity_type) {
-        sql += ' and user_activities IN (' + activity_type + ')';
-    } else if (zip_code || gender){ 
+    if (req.body.activity_type) {
+        sql += ' and user_activities IN (' + req.body.activity_type + ')';
+    } else if (req.body.zip_code || req.body.gender){ 
 
     } else {
         sql += ' and user_activities IN (SELECT user_activities from `user_activities` where user_id = ' + user_id + ' )';
