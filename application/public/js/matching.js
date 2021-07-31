@@ -72,6 +72,9 @@ function checkIfNewMesage() {
       if (response.status == "success") {
         if (response.data && response.data['is_new_msg'] == 1) {
           fetchNewMsgSide();
+          $("#messagingdiv").html('<div class="col-lg-12"><h3>&nbsp; Select user to view message</h3></div> ');
+          $("#imageDivMessages").css('display', 'none');
+          $("#messagesTabRow").css('display', 'none');
         }
       } else {
         $("label[for='messageError']").text("Please refresh the page");
@@ -125,9 +128,6 @@ function fetchNewMsgSide() {
           }
         }
         $("#sidemsginfo").html(html);
-        $("#messagingdiv").html('<div class="col-lg-12"><h3>&nbsp; Select user to view message</h3></div> ');
-        $("#imageDivMessages").css('display', 'none');
-        $("#messagesTabRow").css('display', 'none');
       } else {
         $("label[for='messageError']").text("No messages");
         $("#messagingdiv").html('<div class="col-lg-12"><h3>&nbsp; No messages to show</h3></div> ');
