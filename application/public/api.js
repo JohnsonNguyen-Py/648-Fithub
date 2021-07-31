@@ -280,14 +280,14 @@ app.post("/modifyUserInfo", upload.single("picture"), function (req, res) {
     };
 
     if (req.session && req.session.data.reg_id) {
-        const regID = req.session.data.reg_id;
+        const regID = req.session.data.reg_id, userID = req.session.data.user_id;
         if (req.file) {
             const source_file = req.file.path;
             const dest_dir = path.join(__dirname, "/public/user_picture");
             const dest_file = path.join(
                 __dirname,
                 "/public/user_picture",
-                regID + ".jpg"
+                userID + ".jpg"
             );
             fs.exists(dest_dir, function (exists) {
                 if (exists) {
