@@ -504,7 +504,7 @@ app.post('/getWorkOutBuddies', urlencodedParser, function (req, res) {
     } else {
         sql = 'SELECT `user_activities`.user_id, `registered user`.reg_id, name, zip_code, gender, birthdate, activity_type from `user_activities` join `registered user` on  `user_activities`.user_id = `registered user`.user_id where `user_activities`.user_id != ' + user_id + ' and user_activities IN (SELECT user_activities from `user_activities` where user_id = ' + user_id + ' ) LIMIT ' + no + ',1';
     }
-    // console.log(sql);
+    console.log(sql);
     dbconnection.query(sql, (err, result) => {
         if (err) {
             res.send({ status: "failure", message: err, data: {} });
