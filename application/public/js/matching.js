@@ -248,14 +248,15 @@ function getUserMatches(no) {
     filters['gender'] = $('input[name=filterGender]:checked').val();
   }
 
-  var activity_type = [];
+  var activity_type = '';
   $("#activities button").each(function (index) {
     if ($(this).hasClass("active") === true) {
-      activity_type.push($(this).data('info'));
+      activity_type += ', "'+$(this).data('info')+'"';
     }
   });
 
   if (activity_type.length > 0) {
+    activity_type = activity_type.replace(/^,/, '');
     filters['activity_type'] = activity_type;
   }
   $.ajax({
