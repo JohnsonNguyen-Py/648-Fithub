@@ -287,7 +287,7 @@ app.post("/modifyUserInfo", upload.single("picture"), function (req, res) {
             const dest_file = path.join(
                 __dirname,
                 "/public/images/user_picture",
-                userID + ".jpg"
+                userID + ".jpeg"
             );
             fs.exists(dest_dir, function (exists) {
                 if (exists) {
