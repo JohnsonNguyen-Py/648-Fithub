@@ -500,7 +500,7 @@ app.post('/getWorkOutBuddies', urlencodedParser, function (req, res) {
     }
     sql += ' group by reg_id';
 
-    // console.log(sql);
+    console.log(sql);
     dbconnection.query(sql, (err, result) => {
         if (err) {
             res.send({ status: "failure", message: err, data: {} });
