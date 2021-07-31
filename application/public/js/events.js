@@ -1,5 +1,4 @@
 //VIDHI - Event us PAGE
-//VIDHI - Event us PAGE
 // var url = "http://localhost:3000/";
 var url = "http://100.26.92.104:3000/";
 var sessionInfo = {};
@@ -79,7 +78,7 @@ $("#saveEvent").on("click", function () {
     }
 
     $.ajax({
-        url: "http://100.26.92.104:3000/saveEvent",
+        url: url + "saveEvent",
         type: "POST",
         crossDomain: true,
         data: {
