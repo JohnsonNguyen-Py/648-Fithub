@@ -552,4 +552,35 @@ app.post('/sendWorkoutRequest', urlencodedParser, function (req, res) {
     });
 });
 
+//vidhi - accept workout request
+app.post('/acceptWorkoutRequest', urlencodedParser, function (req, res) {
+    var to_user_id = req.body.to_user_id;
+    var from_user_id = req.body.from_user_id;
+    var msg = req.body.msg;
+    var tabid = req.body.tabid;
+
+    var sql = 'UPDATE `workout request` SET request_status = 1 where workout_id = '+ tabid;
+    var sql1 = 'INSERT INTO `user_messages` (to_user_id, from_user_id, message) VALUES (' + to_user_id + ',' + from_user_id + ', "' + msg + '")';
+    var sql2 = 'UPDATE `check_new_message` SET is_new_msg = 1 where user_id = ' + to_user_id;
+    dbconnection.query(sql, (err, result) => {
+        if (err) {
+            res.send({ status: "failure", message: err, data: {} });
+        } else {
+            dbconnection.query(sql1, (err1, result1) => {
+                if (err1) {
+                    res.send({ status: "failure", message: err1, data: {} });
+                } else {
+                    dbconnection.query(sql2, (err2, result1) => {
+                        if (err2) {
+                            res.send({ status: "failure", message: err2, data: {} });
+                        } else {
+                            res.send({ status: "success", message: 'request accepted', data: {} });
+                        }
+                    });
+                }
+            });
+        }
+    });
+});
+
 app.listen(3000, console.log("Server running on 3000" + new Date().toString()));

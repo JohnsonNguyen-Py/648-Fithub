@@ -250,9 +250,9 @@ function getUserMatches(no) {
 
   $("#activities button").each(function (index) {
     if (activity_type && $(this).hasClass("active") === true) {
-      activity_type += ', "'+$(this).data('info')+'"';
-    } else if($(this).hasClass("active") === true) {
-      activity_type = '"'+$(this).data('info')+'"';
+      activity_type += ', "' + $(this).data('info') + '"';
+    } else if ($(this).hasClass("active") === true) {
+      activity_type = '"' + $(this).data('info') + '"';
     }
   });
 
@@ -371,7 +371,41 @@ $(document).ready(function () {
   });
 
   $(document).on("click", "#acceptRequest", function (e) {
+    $('#requestMessageReply').modal('show');
+  });
 
+  $(document).on("click", "#sentUserReply", function (e) {
+    var msg = $("#requestMessageReplyText").val();
+    if (msg < 5) {
+      $("#requestMessageReplyText").css("border", "solid red 1px");
+      return;
+    }
+
+    $("#requestMessageReplyText").css("border", "");
+    $.ajax({
+      url: url + "acceptWorkoutRequest",
+      type: "POST",
+      crossDomain: true,
+      data: {
+        to_user_id: $("#buttonsdiv").attr("userid"),
+        from_user_id: user_id,
+        msg: msg,
+        tabid: $("#buttonsdiv").attr("tabid")
+      },
+      success: function (response) {
+        console.log(response);
+        if (response.status == 'success') {
+          alert("Request Accepted. Check messages to connect further!");
+        } else {
+          alert("Something went wrong. Please try again");
+        }
+        $("#requestMessageReplyText").val('');
+        $('#requestMessageReply').modal('hide');
+      },
+      error: function () {
+        alert("Something went wrong. Please try again!!!");
+      }
+    });
   });
 
   $(document).on("click", "#cancelRequest", function (e) {
@@ -380,6 +414,7 @@ $(document).ready(function () {
       var response = updateRequest(tabid, 2);
       if (response.status == 'success') {
         $('#cancelRequest').remove();
+        $('#acceptRequest').remove();
         $('div.messages[tabid = ' + tabid + ']').attr('status', 2);
       } else {
         alert(response.message);
