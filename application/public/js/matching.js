@@ -17,6 +17,7 @@ function checkUserLoggedIn() {
         sessionInfo = response.data.data;
         user_id = sessionInfo.user_id;
         $("#accessUserInfo").attr('data-userid', sessionInfo.reg_id);
+        $("#sessionInfo").attr("src", "../images/user_picture/" + sessionInfo.reg_id + ".jpeg");
         getUserMatches(0);
       }
     },
@@ -107,7 +108,7 @@ function fetchNewMsgSide() {
                   uname = to[m2]['name'];
                 }
                 used.push(to[m2]['to_user_id']);
-                html += '<div class="messages" user_id=' + to[m2]['to_user_id'] + '><div class="avatar"><img src="https://randomuser.me/api/portraits/women/28.jpg" alt=""> </div><div class="friend"><div class="user">' + to[m2]['name'] + '</div><div class="timedisplay">Last sent on: ' + to[m2]['date_updated'].replace('T', ' ').replace(".000Z", " ") + '</div> </div> </div>'
+                html += '<div class="messages" user_id=' + to[m2]['to_user_id'] + '><div class="avatar"><img src="../images/user_picture/' + to[m2]['to_user_id'] + '.jpeg" alt=""> </div><div class="friend"><div class="user">' + to[m2]['name'] + '</div><div class="timedisplay">Last sent on: ' + to[m2]['date_updated'].replace('T', ' ').replace(".000Z", " ") + '</div> </div> </div>'
               }
             } else {
               if (!used.includes(from[m1]['from_user_id'])) {
@@ -116,7 +117,7 @@ function fetchNewMsgSide() {
                   uname = from[m1]['name'];
                 }
                 used.push(from[m1]['from_user_id']);
-                html += '<div class="messages" user_id=' + from[m1]['from_user_id'] + '><div class="avatar"><img src="https://randomuser.me/api/portraits/women/28.jpg" alt=""> </div><div class="friend"><div class="user">' + from[m1]['name'] + '</div><div class="timedisplay">Last received on: ' + from[m1]['date_updated'].replace('T', ' ').replace(".000Z", " ") + '</div> </div> </div>'
+                html += '<div class="messages" user_id=' + from[m1]['from_user_id'] + '><div class="avatar"><img src="../images/user_picture/' + from[m1]['from_user_id'] + '.jpeg" alt=""> </div><div class="friend"><div class="user">' + from[m1]['name'] + '</div><div class="timedisplay">Last received on: ' + from[m1]['date_updated'].replace('T', ' ').replace(".000Z", " ") + '</div> </div> </div>'
               }
             }
           }
@@ -192,7 +193,7 @@ function loadMatches() {
         if (data['received'].length > 0) {
           $("label[for='messageErrorReceived']").text("Requests Received");
           for (var index in data['received']) {
-            html += '<div class="messages" status="' + data['received'][index]['request_status'] + '" tabid="' + data['received'][index]['workout_id'] + '" user_id=' + data['received'][index]['from_user_id'] + '> <div class="avatar"> <img src="../images/userImg.png" alt=""> </div><div class="friend"> <div class="user">' + data['received'][index]['name'] + '</div> <div class="timedisplay">' + data['received'][index]['date_sent'].replace('T', ' ').replace(".000Z", " ") + '</div>  </div> </div>';
+            html += '<div class="messages" status="' + data['received'][index]['request_status'] + '" tabid="' + data['received'][index]['workout_id'] + '" user_id=' + data['received'][index]['from_user_id'] + '> <div class="avatar"> <img src="../images/user_picture/' + data['received'][index]['from_user_id'] + '.jpeg" alt=""> </div><div class="friend"> <div class="user">' + data['received'][index]['name'] + '</div> <div class="timedisplay">' + data['received'][index]['date_sent'].replace('T', ' ').replace(".000Z", " ") + '</div>  </div> </div>';
           }
           $("#matchreceived").html(html);
         }
@@ -200,7 +201,7 @@ function loadMatches() {
           $("label[for='messageErrorSent']").text("Requests Sent");
           html = "";
           for (var index in data['sent']) {
-            html += '<div class="messages" status="' + data['sent'][index]['request_status'] + '" tabid="' + data['sent'][index]['workout_id'] + '" user_id=' + data['sent'][index]['to_user_id'] + '> <div class="avatar"> <img src="../images/userImg.png" alt=""> </div><div class="friend"> <div class="user">' + data['sent'][index]['name'] + '</div> <div class="timedisplay">' + data['sent'][index]['date_sent'].replace('T', ' ').replace(".000Z", " ") + '</div>  </div> </div>';
+            html += '<div class="messages" status="' + data['sent'][index]['request_status'] + '" tabid="' + data['sent'][index]['workout_id'] + '" user_id=' + data['sent'][index]['to_user_id'] + '> <div class="avatar"> <img src="../images/user_picture/' + data['sent'][index]['to_user_id'] + '.jpeg" alt=""> </div><div class="friend"> <div class="user">' + data['sent'][index]['name'] + '</div> <div class="timedisplay">' + data['sent'][index]['date_sent'].replace('T', ' ').replace(".000Z", " ") + '</div>  </div> </div>';
           }
           $("#matchsent").html(html);
         }
@@ -258,19 +259,8 @@ function getUserMatches(no) {
   if (result.status == "success") {
     if (result.data['data']) {
       var info = result.data['data'];
-      var html;
-      $.ajax({
-        url: "../images/user_picture/" + info.reg_id + ".jpeg",
-        type: "GET",
-        success: function (response) {
-          html = '<img class="user" src="../images/user_picture/' + info.reg_id + '.jpeg" /><div class="profile"><div class="name">' + info.name + '</div></div>';
-          $("#filtermatchesdiv").html(html);
-        },
-        error: function () {
-          html = '<img class="user" src="../images/user_picture/user.jpeg" /><div class="profile"><div class="name">' + info.name + '</div></div>';
-          $("#filtermatchesdiv").html(html);
-        }
-      });
+      var html = '<img class="user" src="../images/user_picture/' + info.reg_id + '.jpeg" /><div class="profile"><div class="name">' + info.name + '</div></div>';
+      $("#filtermatchesdiv").html(html);
 
       var html1 = '<label>Name: ' + info.name + '</label></br><label>Zipcode: ' + info.zip_code + '</label></br><label>Gender: ' + info.gender + '</label></br><label>Birthdate: ' + new Date(info.birthdate).toISOString().substring(0, 10) + '</label></br><label>Passion: ' + info.activity_type.replaceAll('_', ' ').replaceAll(',', ', ').replace(/(^([a-zA-Z\p{M}]))|([ -][a-zA-Z\p{M}])/g,
         function ($1) {
@@ -329,7 +319,7 @@ $(document).ready(function () {
     var userid = $(this).attr('user_id');
     var username = $(this).find(".user").text();
     var tabid = $(this).attr('tabid');
-    var html = '<img class="user" src="../images/woman-unsplash.jpg" /> <div class="profile"><div class="name">' + username + '</div> <div class="local"> </div></div>';
+    var html = '<img class="user" src="../images/user_picture/' + userid + '.jpeg" /> <div class="profile"><div class="name">' + username + '</div> <div class="local"> </div></div>';
     $("#matchesdiv").html(html);
     var button = "";
     if ($(this).attr('status') == 0) {
@@ -345,7 +335,7 @@ $(document).ready(function () {
     var userid = $(this).attr('user_id');
     var tabid = $(this).attr('tabid');
     var username = $(this).find(".user").text();
-    var html = '<img class="user" src="../images/woman-unsplash.jpg" /> <div class="profile"><div class="name">' + username + '</div> <div class="local">  </div></div>';
+    var html = '<img class="user" src="../images/user_picture/' + userid + '.jpeg" /> <div class="profile"><div class="name">' + username + '</div> <div class="local">  </div></div>';
     $("#matchesdiv").html(html);
     var button = "";
     if ($(this).attr('status') == 0) {
