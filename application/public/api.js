@@ -103,7 +103,6 @@ app.post('/registerUser', urlencodedParser, function (req, res) {
                                                         if (err) throw err;
                                                         fs.writeFile('images/user_picture/'+registeredUser.user_id+'.jpeg', data, function (err) {
                                                             if (err) throw err;
-                                                            console.log('It\'s saved!');
                                                         });
                                                     });
                                                     res.send({ status: "success", message: "User Registered", data: {} });
@@ -219,6 +218,8 @@ app.post('/loginAPI', urlencodedParser, function (req, res) {
 
 
 app.post('/logOut', function (req, res) {
+    req.session.loggedIn = false;
+    req.session.data = {};
     req.session.destroy((err) => { });
     res.send({ status: "success", message: "user logged out", data: {} });
 });
