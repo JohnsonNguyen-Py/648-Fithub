@@ -392,7 +392,7 @@ app.post('/getNewMessagesSide', urlencodedParser, function (req, res) {
     var user = req.body.userid;
     var sql = "SELECT name, from_user_id , max(date_updated) as 'date_updated' FROM user_messages join `registered user` on from_user_id = `registered user`.user_id where to_user_id = " + user + " group by  from_user_id, name";
     dbconnection.query(sql, (err, result) => {
-        var data = {};
+        var data;
         if (result && result.length > 0) {
             data['from'] = result;
         };
@@ -404,10 +404,10 @@ app.post('/getNewMessagesSide', urlencodedParser, function (req, res) {
                 if (result && result2.length > 0) {
                     data['to'] = result2;
                 };
-                if (data.length > 0) {
+                if (data) {
                     res.send({ status: "success", message: 'success', data: data });
                 } else {
-                    res.send({ status: "faliure", message: 'no data', data: data });
+                    res.send({ status: "faliure", message: 'no data', data: {} });
                 }
             }
         });
