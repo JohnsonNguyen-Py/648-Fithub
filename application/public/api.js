@@ -392,7 +392,7 @@ app.post('/getNewMessagesSide', urlencodedParser, function (req, res) {
     var user = req.body.userid;
     var sql = "SELECT name, from_user_id , max(date_updated) as 'date_updated' FROM user_messages join `registered user` on from_user_id = `registered user`.user_id where to_user_id = " + user + " group by  from_user_id, name";
     dbconnection.query(sql, (err, result) => {
-        var data;
+        var data = {};
         if (result && result.length > 0) {
             data['from'] = result;
         };
