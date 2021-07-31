@@ -207,11 +207,11 @@ app.post('/loginAPI', urlencodedParser, function (req, res) {
 });
 
 
-app.post('/logOut', function (req, res) {
+app.get('/logOut', function (req, res) {
     req.session.loggedIn = false;
     req.session.data = {};
     req.session.destroy((err) => { });
-    res.send({ status: "success", message: "user logged out", data: {} });
+    res.sendFile(path.join(__dirname, '/index.html'));
 });
 
 //Save event info
