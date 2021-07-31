@@ -477,10 +477,28 @@
           <h5 class="modal-title" id="exampleModalLabel">Send Message</h5>
         </div>
         <div class="modal-body">
-          <input type="text" class="form-control" id="requestMessageText" placeholder="Enter message" minlength=5>
+          <input type="text" class="form-control" id="requestMessageText" placeholder="Enter message (min 5 characters)" minlength=5>
         </div>
         <div class="modal-footer">
           <button id='sentUserRequest' type="button" class="btn btn-danger" >Send</button>
+          <button id='closeModal' type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="requestMessageReply" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header1" style="text-align: center;">
+          <a class="dumbbell" href="#"><i class="fas fa-dumbbell"></i></a>
+          <h5 class="modal-title" id="exampleModalLabel">Send Reply</h5>
+        </div>
+        <div class="modal-body">
+          <input type="text" class="form-control" id="requestMessageReplyText" placeholder="Enter message (min 5 characters)" minlength=5>
+        </div>
+        <div class="modal-footer">
+          <button id='sentUserReply' type="button" class="btn btn-danger" >Send</button>
           <button id='closeModal' type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
         </div>
       </div>
