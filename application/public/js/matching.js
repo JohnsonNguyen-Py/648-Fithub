@@ -516,9 +516,9 @@ $(document).ready(function () {
   // for messages section - Vidhi Vora
   setInterval(function () {
     if (current_active_tab == "messagesTab") {
-      // checkIfNewMesage();
+      checkIfNewMesage();
     }
-  }, 30000);
+  }, 15000);
 
 
 });
