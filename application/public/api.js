@@ -99,6 +99,13 @@ app.post('/registerUser', urlencodedParser, function (req, res) {
                                                 if (err3) {
                                                     res.send({ status: "failure", message: err2, data: {} });
                                                 } else {
+                                                    fs.readFile('images/user_picture/user.jpeg', function (err, data) {
+                                                        if (err) throw err;
+                                                        fs.writeFile('images/user_picture/'+registeredUser.user_id+'.jpeg', data, function (err) {
+                                                            if (err) throw err;
+                                                            console.log('It\'s saved!');
+                                                        });
+                                                    });
                                                     res.send({ status: "success", message: "User Registered", data: {} });
                                                 }
                                             });
@@ -263,7 +270,7 @@ app.post("/modifyUserInfo", upload.single("picture"), function (req, res) {
                     data: {},
                 });
             } else {
-                const updateSQL = 'UPDATE `registered user` SET phone = "'+phone+'", address = "'+address+'", zip_code = "'+zip_code+'", birthdate = "'+birthdate+'" WHERE reg_id = ' + regID;
+                const updateSQL = 'UPDATE `registered user` SET phone = "' + phone + '", address = "' + address + '", zip_code = "' + zip_code + '", birthdate = "' + birthdate + '" WHERE reg_id = ' + regID;
                 dbconnection.query(updateSQL, (err, result) => {
                     if (err) {
                         res.send({
@@ -343,7 +350,7 @@ app.post('/changePassword', urlencodedParser, function (req, res) {
             if (err || !(data[0] && data[0].reg_id)) {
                 res.send({ status: "failure", message: "unable to find user", data: {} });
             } else {
-                const updateSQL = 'UPDATE `account` SET password = "' + md5(password) +'" WHERE reg_id = ' + regID;
+                const updateSQL = 'UPDATE `account` SET password = "' + md5(password) + '" WHERE reg_id = ' + regID;
                 dbconnection.query(updateSQL, (err, result) => {
                     if (err) {
                         res.send({ status: "failure", message: 'fail to change password', data: {} });
@@ -486,7 +493,7 @@ app.post('/getWorkOutBuddies', urlencodedParser, function (req, res) {
     var user_id = req.body.id;
     var no = req.body.no;
     var sql = '';
-    
+
     sql = 'SELECT `user_activities`.user_id, `registered user`.reg_id, name, zip_code, gender, birthdate, activity_type from `user_activities` join `registered user` on  `user_activities`.user_id = `registered user`.user_id where `user_activities`.user_id != ' + user_id;
     if (req.body.zip_code) {
         sql += ' and zip_code = "' + req.body.zip_code + '"';
@@ -496,7 +503,7 @@ app.post('/getWorkOutBuddies', urlencodedParser, function (req, res) {
     }
     if (req.body.activity_type) {
         sql += ' and user_activities IN (' + req.body.activity_type + ')';
-    } else if (req.body.zip_code || req.body.gender){ 
+    } else if (req.body.zip_code || req.body.gender) {
 
     } else {
         sql += ' and user_activities IN (SELECT user_activities from `user_activities` where user_id = ' + user_id + ' )';
@@ -559,7 +566,7 @@ app.post('/acceptWorkoutRequest', urlencodedParser, function (req, res) {
     var msg = req.body.msg;
     var tabid = req.body.tabid;
 
-    var sql = 'UPDATE `workout request` SET request_status = 1 where workout_id = '+ tabid;
+    var sql = 'UPDATE `workout request` SET request_status = 1 where workout_id = ' + tabid;
     var sql1 = 'INSERT INTO `user_messages` (to_user_id, from_user_id, message) VALUES (' + to_user_id + ',' + from_user_id + ', "' + msg + '")';
     var sql2 = 'UPDATE `check_new_message` SET is_new_msg = 1 where user_id = ' + to_user_id;
     dbconnection.query(sql, (err, result) => {
