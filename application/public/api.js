@@ -252,86 +252,86 @@ app.post('/getEvents', urlencodedParser, function (req, res) {
 });
 
 app.post("/modifyUserInfo", upload.single("picture"), function (req, res) {
-  const updateDB = (regID) => {
-    const { phone, address, zip_code, birthdate } = req.body;
-    const userinfo = "SELECT * from `registered user` where reg_id = " + regID;
-    dbconnection.query(userinfo, (err, data) => {
-      if (err || !(data[0] && data[0].reg_id)) {
-        res.send({
-          status: "failure",
-          message: "unable to find user",
-          data: {},
-        });
-      } else {
-        const updateSQL = `UPDATE \`registered user\` SET phone = ${phone}, address = ${address}, zip_code = ${zip_code}, brithdate = ${birthdate} WHERE reg_id = ${regID}`;
-        dbconnection.query(updateSQL, (err, result) => {
-          if (err) {
-            res.send({
-              status: "failure",
-              message: "fail to update profile",
-              data: {},
-            });
-          } else {
-            res.send({ status: "success", message: "success", data: {} });
-          }
-        });
-      }
-    });
-  };
-
-  if (req.session && req.session.data.reg_id) {
-    const regID = req.session.data.reg_id;
-    if (req.file) {
-      const source_file = req.file.path;
-      const dest_dir = path.join(__dirname, "/public/user_picture");
-      const dest_file = path.join(
-        __dirname,
-        "/public/user_picture",
-        regID + ".jpg"
-      );
-      fs.exists(dest_dir, function (exists) {
-        if (exists) {
-          fs.rename(source_file, dest_file, function (err) {
-            if (err) {
-              res.send({
-                status: "failure",
-                message: "fail to update profile",
-                data: {},
-              });
-            } else {
-              updateDB(regID);
-            }
-          });
-        } else {
-          fs.mkdir(dest_dir, 0777, function (err) {
-            if (err) {
-              res.send({
-                status: "failure",
-                message: "fail to update profile",
-                data: {},
-              });
-            } else {
-              fs.rename(source_file, dest_file, function (err) {
-                if (err) {
-                  res.send({
+    const updateDB = (regID) => {
+        const { phone, address, zip_code, birthdate } = req.body;
+        const userinfo = "SELECT * from `registered user` where reg_id = " + regID;
+        dbconnection.query(userinfo, (err, data) => {
+            if (err || !(data[0] && data[0].reg_id)) {
+                res.send({
                     status: "failure",
-                    message: "fail to update profile",
+                    message: "unable to find user",
                     data: {},
-                  });
-                } else {
-                  updateDB(regID);
-                }
-              });
+                });
+            } else {
+                const updateSQL = `UPDATE \`registered user\` SET phone = ${phone}, address = ${address}, zip_code = ${zip_code}, brithdate = ${birthdate} WHERE reg_id = ${regID}`;
+                dbconnection.query(updateSQL, (err, result) => {
+                    if (err) {
+                        res.send({
+                            status: "failure",
+                            message: "fail to update profile",
+                            data: {},
+                        });
+                    } else {
+                        res.send({ status: "success", message: "success", data: {} });
+                    }
+                });
             }
-          });
+        });
+    };
+
+    if (req.session && req.session.data.reg_id) {
+        const regID = req.session.data.reg_id;
+        if (req.file) {
+            const source_file = req.file.path;
+            const dest_dir = path.join(__dirname, "/public/user_picture");
+            const dest_file = path.join(
+                __dirname,
+                "/public/user_picture",
+                regID + ".jpg"
+            );
+            fs.exists(dest_dir, function (exists) {
+                if (exists) {
+                    fs.rename(source_file, dest_file, function (err) {
+                        if (err) {
+                            res.send({
+                                status: "failure",
+                                message: "fail to update profile",
+                                data: {},
+                            });
+                        } else {
+                            updateDB(regID);
+                        }
+                    });
+                } else {
+                    fs.mkdir(dest_dir, 0777, function (err) {
+                        if (err) {
+                            res.send({
+                                status: "failure",
+                                message: "fail to update profile",
+                                data: {},
+                            });
+                        } else {
+                            fs.rename(source_file, dest_file, function (err) {
+                                if (err) {
+                                    res.send({
+                                        status: "failure",
+                                        message: "fail to update profile",
+                                        data: {},
+                                    });
+                                } else {
+                                    updateDB(regID);
+                                }
+                            });
+                        }
+                    });
+                }
+            });
+        } else {
+            updateDB(regID);
         }
-      });
     } else {
-      updateDB(regID);
+        res.send({ status: "failure", message: "not signed in", data: {} });
     }
-  } else {
-    res.send({ status: "failure", message: "not signed in", data: {} });
-  }
 });
 
 app.post('/changePassword', urlencodedParser, function (req, res) {
@@ -484,14 +484,26 @@ app.post('/fetchUserInfo', urlencodedParser, function (req, res) {
 //vidhi - get workoutbuddy recommendation
 app.post('/getWorkOutBuddies', urlencodedParser, function (req, res) {
     var user_id = req.body.id;
-    var no;
-    if (req.body.no) {
-        no = req.body.no;
-    } else {
-        no = 0;
-    }
+    var no = req.body.no;
+
     var sql = '';
-    sql = 'SELECT `user_activities`.user_id, `registered user`.reg_id, name, zip_code, gender, birthdate, activity_type from `user_activities` join `registered user` on  `user_activities`.user_id = `registered user`.user_id where `user_activities`.user_id != ' + user_id + ' and user_activities IN (SELECT user_activities from `user_activities` where user_id = ' + user_id + ' ) LIMIT ' + no + ',1';
+    if (req.body.filters) {
+        var filters = req.body.filters;
+        sql = 'SELECT `user_activities`.user_id, `registered user`.reg_id, name, zip_code, gender, birthdate, activity_type from `user_activities` join `registered user` on  `user_activities`.user_id = `registered user`.user_id where `user_activities`.user_id != ' + user_id;
+
+        if (filters.zip_code) {
+            sql += ' and zip_code = "'+filters.zip_code+'"'; 
+        }
+        if(filters.gender) {
+            sql += ' and gender = "'+filters.gender+'"'; 
+        }
+        if(filters.activity_type) {
+            sql += ' and user_activities IN ('+filters.activity_type+')';
+        }
+        sql += ' LIMIT ' + no + ',1';
+    } else {
+        sql = 'SELECT `user_activities`.user_id, `registered user`.reg_id, name, zip_code, gender, birthdate, activity_type from `user_activities` join `registered user` on  `user_activities`.user_id = `registered user`.user_id where `user_activities`.user_id != ' + user_id + ' and user_activities IN (SELECT user_activities from `user_activities` where user_id = ' + user_id + ' ) LIMIT ' + no + ',1';
+    }
     // console.log(sql);
     dbconnection.query(sql, (err, result) => {
         if (err) {

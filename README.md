@@ -23,7 +23,7 @@
 | Student Name      | Student Email             | GitHub Username |
 |    :---:          |     :---:                 |     :---:       |
 | Vidhi Vora        | vvora@sfsu.edu            | vidhiv          |
-| Johnson Nguyen    | Jnguyen63@mail.sfsu.edu   | Johnson         |
+| Johnson Nguyen    | Jnguyen63@mail.sfsu.edu   | JohnsonNguyen-Py          |
 | Roberto Simental  | rsimental@mail.sfsu.edu   | RobSimental     |
 | Michael Satumba   | msatumba@mail.sfsu.edu    | michaelsatumba  |
 | Ziming Wang       | zwang11@mail.sfsu.edu     | wangziming0915  |
