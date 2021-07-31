@@ -165,6 +165,7 @@ function fetchNewMsgDiv(from_user_id, uname) {
         $("#sendMessage").attr('touser', from_user_id);
         $("#imageDivMessages").css('display', '');
         $("#messagesTabRow").css('display', '');
+        $("label[for='messageError']").text("Recent Messages");
       } else {
         $("label[for='messageError']").text("Please refresh the page");
       }
