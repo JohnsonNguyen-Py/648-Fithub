@@ -474,7 +474,7 @@ $(document).ready(function () {
   })
 
   $(document).on("click", "#filterSearch", function () {
-    getUserMatches($("#filterbuttons").attr("resno"));
+    getUserMatches(0);
   });
 
   // for messages section - Vidhi Vora
