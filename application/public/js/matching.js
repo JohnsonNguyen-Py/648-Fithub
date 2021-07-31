@@ -17,7 +17,7 @@ function checkUserLoggedIn() {
         sessionInfo = response.data.data;
         user_id = sessionInfo.user_id;
         $("#accessUserInfo").attr('data-userid', sessionInfo.reg_id);
-        $("#sessionInfo").attr("src", "../images/user_picture/" + sessionInfo.reg_id + ".jpeg");
+        $("#avatarimguser").attr("src", "../images/user_picture/" + user_id + ".jpeg");
         getUserMatches(0);
       }
     },
@@ -240,13 +240,32 @@ function updateRequest(id, status) {
 
 function getUserMatches(no) {
   var result = {};
+  var filters = {};
+  if ($("#filterzipcode").val().length == 5) {
+    filters['zip_code'] = $("#filterzipcode").val();
+  }
+  if ($('input[name=filterGender]:checked').val() != "") {
+    filter['gender'] = $('input[name=filterGender]:checked').val();
+  }
+
+  var activity_type = [];
+  $("#activities button").each(function (index) {
+    if ($(this).hasClass("active") === true) {
+      activity_type.push($(this).data('info'));
+    }
+  });
+
+  if (activity_type.length > 0) {
+    filter['activity_type'] = activity_type;
+  }
   $.ajax({
     url: url + "getWorkOutBuddies",
     type: "POST",
     crossDomain: true,
     data: {
       id: user_id,
-      no: no
+      no: no,
+      filters: filters
     },
     async: false,
     success: function (response) {
@@ -452,10 +471,17 @@ $(document).ready(function () {
       }
     });
   })
+
+  $(document).on("click", "#filterSearch", function () {
+    getUserMatches($("#filterbuttons").attr("resno"));
+  });
+
   // for messages section - Vidhi Vora
   setInterval(function () {
     if (current_active_tab == "messagesTab") {
       // checkIfNewMesage();
     }
   }, 30000);
+
+
 });
