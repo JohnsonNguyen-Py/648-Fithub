@@ -101,7 +101,7 @@ app.post('/registerUser', urlencodedParser, function (req, res) {
                                                 } else {
                                                     fs.readFile('images/user_picture/user.jpeg', function (err, data) {
                                                         if (err) throw err;
-                                                        fs.writeFile('images/user_picture/'+registeredUser.user_id+'.jpeg', data, function (err) {
+                                                        fs.writeFile('images/user_picture/' + registeredUser.user_id + '.jpeg', data, function (err) {
                                                             if (err) throw err;
                                                         });
                                                     });
@@ -482,10 +482,9 @@ app.post('/fetchUserInfo', urlencodedParser, function (req, res) {
 //vidhi - get workoutbuddy recommendation
 app.post('/getWorkOutBuddies', urlencodedParser, function (req, res) {
     var user_id = req.body.id;
-    var no = req.body.no;
     var sql = '';
 
-    sql = 'SELECT `user_activities`.user_id, `registered user`.reg_id, name, zip_code, gender, birthdate, activity_type from `user_activities` join `registered user` on  `user_activities`.user_id = `registered user`.user_id where `user_activities`.user_id != ' + user_id +'  and `registered user`.is_active = 1 ';
+    sql = 'SELECT `user_activities`.user_id, `registered user`.reg_id, name, zip_code, gender, birthdate, activity_type from `user_activities` join `registered user` on  `user_activities`.user_id = `registered user`.user_id where `user_activities`.user_id != ' + user_id + '  and `registered user`.is_active = 1 ';
     if (req.body.zip_code) {
         sql += ' and zip_code = "' + req.body.zip_code + '"';
     }
@@ -499,7 +498,7 @@ app.post('/getWorkOutBuddies', urlencodedParser, function (req, res) {
     } else {
         sql += ' and user_activities IN (SELECT user_activities from `user_activities` where user_id = ' + user_id + ' )';
     }
-    sql += ' group by reg_id LIMIT ' + no + ',1';
+    sql += ' group by reg_id';
 
     // console.log(sql);
     dbconnection.query(sql, (err, result) => {
@@ -507,10 +506,8 @@ app.post('/getWorkOutBuddies', urlencodedParser, function (req, res) {
             res.send({ status: "failure", message: err, data: {} });
         } else {
             if (result) {
-                no++;
                 var data = {
-                    'no': no,
-                    'data': result['0']
+                    'data': result
                 }
                 res.send({ status: "success", message: err, data: data });
             } else {
