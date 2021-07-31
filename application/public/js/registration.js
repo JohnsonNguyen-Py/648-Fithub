@@ -24,11 +24,11 @@
 
 function registerUser() {
   let phone = $("#phone").val();
-  if(phone.length != 10) {
-    $("#contactfeedback").css("display","block");
+  if (phone.length != 10) {
+    $("#contactfeedback").css("display", "block");
     return;
   } else {
-    $("#contactfeedback").css("display","none");
+    $("#contactfeedback").css("display", "none");
   }
 
   let activity_type = "";
@@ -39,19 +39,26 @@ function registerUser() {
   });
 
   if (activity_type == "") {
-    $("#actfeedback").css("display","block");
+    $("#actfeedback").css("display", "block");
     return;
   } else {
-    $("#actfeedback").css("display","none");
+    $("#actfeedback").css("display", "none");
   }
   activity_type = activity_type.replace(/^,/, '');
 
   let zip = $("#zip_code").val();
-  if(zip.length != 5) {
-    $("#zipfeedback").css("display","block");
+  if (zip.length != 5) {
+    $("#zipfeedback").css("display", "block");
     return;
   } else {
-    $("#zipfeedback").css("display","none");
+    $("#zipfeedback").css("display", "none");
+  }
+
+  const birth = $("#validationCustom04").val().split("T")[0];
+  const age = new Date().getFullYear() - new Date(birth).getFullYear();
+  if (age < 18) {
+    alert("You must be 18+ to create account!");
+    return;
   }
 
   // console.log(activity_type);
@@ -72,12 +79,11 @@ function registerUser() {
         birthdate: $("#validationCustom04").val()
       },
       success: function (response) {
-        if(response.status == "success") {
+        if (response.status == "success") {
           alert("Thank you for registering. Go to home page and then log in!!!");
           window.location.href = '../index.html';
         } else {
-          alert("Please try again!!");
-          console.log(response.message);
+          alert(response.message);
         }
 
       },
