@@ -167,6 +167,8 @@ function fetchNewMsgDiv(from_user_id, uname) {
         $("#sendMessage").attr('touser', from_user_id);
         $("#imageDivMessages").css('display', '');
         $("#messagesTabRow").css('display', '');
+        $("#fromuser").attr("userid",from_user_id);
+        $("#fromuser").attr("username",uname);
         $("label[for='messageError']").text("Recent Messages");
       } else {
         $("label[for='messageError']").text("Please refresh the page");
@@ -519,6 +521,9 @@ $(document).ready(function () {
   setInterval(function () {
     if (current_active_tab == "messagesTab") {
       checkIfNewMesage();
+      if($("#fromuser").attr("userid")) {
+        fetchNewMsgDiv($("#fromuser").attr("userid"), $("#fromuser").attr("username"));
+      }
     }
   }, 15000);
 
