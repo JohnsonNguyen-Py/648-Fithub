@@ -1,5 +1,7 @@
 //VIDHI - Event us PAGE
 // var url = "http://localhost:3000/";
+
+
 // var url = "http://100.26.92.104:3000/";
 // var sessionInfo = {};
 
@@ -121,3 +123,54 @@ $("#searchageevent").on("click", function () {
 $("#searchpassionevents").on("click", function () {
     $('#modal10').modal('hide');
 });
+
+
+
+
+
+// $("#join-button").on("click", function (){
+    
+//     let is_joined = 0;//false
+//     let date_joined = new Date();
+//     let button_join = $("#join-button");
+
+//     let sql = "SELECT * 'events' WHERE is_active = 1 ";
+
+//     //will check if it's true 
+//     if(sql){
+//         let date_joined = new Date();
+//         button_join.style.display = "none";
+//         alert("hide button");
+
+//     } else{
+//         let date_joined = new Date();
+//         button_join.style.display = "block";
+//     }
+
+//     $.ajax({
+//         url: "http://100.26.92.104:3000/joinEvent",
+//         type: "POST",
+//         crossDomain: true,
+//         data: {
+//             is_joined: is_joined,
+
+//             date_joined: date_joined
+//         },
+//         success: function (response) {
+//             if (response.status == "success") {
+//                 alert("Joined");
+//                 window.location.href = "events.html"
+//             } else {
+//                 alert("Could not joined!");
+//             }
+//         },
+//         error: function () {
+//             alert("Could not joined!");
+//         }
+
+//     });
+// });
+
+// $("#leave-button").on("click", function (){
+//     alert("Left!");
+// });
