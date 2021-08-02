@@ -154,6 +154,23 @@ $("#changePassword").on("click", function () {
   });
 });
 
+$("#deactive").on("click", function () {
+    $.ajax({
+        url: url + "deactiveUser",
+        type: "POST",
+        crossDomain: true,
+        success: function (response) {
+          if (response.status === "success") {
+            $("#modaldeactive").modal("hide");
+          }
+          alert(response.message);
+        },
+        error: function () {
+          alert("failed");
+        },
+    });
+});
+
 $("#editProfile").on("click", function () {
   const profile = $("#profile_form")[0];
   const fd = new FormData(profile);
