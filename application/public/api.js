@@ -397,7 +397,7 @@ app.post('/checkNewMessage', urlencodedParser, function (req, res) {
 app.post('/getNewMessagesDiv', urlencodedParser, function (req, res) {
     var user = req.body.userid;
     var fromuser = req.body.fromid;
-    var sql = "Select * from user_messages where to_user_id IN (" + user + "," + fromuser + ") and from_user_id IN (" + user + "," + fromuser + ") order by date_updated desc;";
+    var sql = "Select * from user_messages where to_user_id IN (" + user + "," + fromuser + ") and from_user_id IN (" + user + "," + fromuser + ") order by date_updated asc;";
     dbconnection.query(sql, (err, result) => {
         if (err) {
             res.send({ status: "failure", message: err, data: {} });
@@ -455,7 +455,7 @@ app.post('/sendUserMessage', urlencodedParser, function (req, res) {
 //Vidhi - loading user matches data
 app.post('/loadMatches', urlencodedParser, function (req, res) {
     var user_id = req.body.userid;
-    var sql = 'SELECT workout_id, to_user_id, request_status, date_sent, date_updates, name from `workout request` join `registered user` on `workout request`.to_user_id = `registered user`.user_id where from_user_id = ' + user_id + ' and `registered user`.is_active = 1 order by date_sent desc';
+    var sql = 'SELECT workout_id, to_user_id, request_status, date_sent, date_updates, name from `workout request` join `registered user` on `workout request`.to_user_id = `registered user`.user_id where from_user_id = ' + user_id + ' and request_status != 3 and `registered user`.is_active = 1 order by date_sent desc';
     dbconnection.query(sql, (err, result) => {
         if (err) {
             res.send({ status: "failure", message: err, data: {} });
@@ -464,7 +464,7 @@ app.post('/loadMatches', urlencodedParser, function (req, res) {
             if (result && result.length > 0) {
                 data['sent'] = result;
             }
-            var sql2 = 'SELECT workout_id, from_user_id, request_status, date_sent, date_updates, name from `workout request` join `registered user` on `workout request`.from_user_id = `registered user`.user_id where to_user_id = ' + user_id + ' and `registered user`.is_active = 1 order by date_sent desc';
+            var sql2 = 'SELECT workout_id, from_user_id, request_status, date_sent, date_updates, name from `workout request` join `registered user` on `workout request`.from_user_id = `registered user`.user_id where to_user_id = ' + user_id + ' and request_status != 2 and `registered user`.is_active = 1 order by date_sent desc';
             dbconnection.query(sql2, (err2, result2) => {
                 if (result2 && result2.length > 0) {
                     data['received'] = result2;
