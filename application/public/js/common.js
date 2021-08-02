@@ -143,7 +143,7 @@ $("#searchbar").on("keyup", function () {
                 if (response.data.length > 0) {
                     let data = response.data;
                     $.each(data, function (key, value) {
-                        html += '<li role="presentation"><a role="menuitem" tabindex="-1" href="">' + value.title + '</a></li>';
+                        html += '<li role="presentation"><a role="menuitem" tabindex="-1" href="eventProfileForAll?id='+value.event_id+'">' + value.title + '</a></li>';
                     });
                 } else {
                     html += '<li role="presentation"><a role="menuitem" tabindex="-1" href="#">No result found</a></li>';
