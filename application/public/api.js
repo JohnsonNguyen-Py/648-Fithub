@@ -267,7 +267,7 @@ app.post("/modifyUserInfo", upload.single("picture"), function (req, res) {
                         res.send({
                             status: "failure",
                             message: "fail to update profile",
-                            data: {},
+                            data: err,
                         });
                     } else {
                         res.send({ status: "success", message: "success", data: {} });
@@ -294,7 +294,7 @@ app.post("/modifyUserInfo", upload.single("picture"), function (req, res) {
                             res.send({
                                 status: "failure",
                                 message: "fail to update profile",
-                                data: {},
+                                data: err,
                             });
                         } else {
                             updateDB(regID);
@@ -306,7 +306,7 @@ app.post("/modifyUserInfo", upload.single("picture"), function (req, res) {
                             res.send({
                                 status: "failure",
                                 message: "fail to update profile",
-                                data: {},
+                                data: err,
                             });
                         } else {
                             fs.rename(source_file, dest_file, function (err) {
@@ -314,7 +314,7 @@ app.post("/modifyUserInfo", upload.single("picture"), function (req, res) {
                                     res.send({
                                         status: "failure",
                                         message: "fail to update profile",
-                                        data: {},
+                                        data: err,
                                     });
                                 } else {
                                     updateDB(regID);
@@ -345,6 +345,29 @@ app.post('/changePassword', urlencodedParser, function (req, res) {
                 dbconnection.query(updateSQL, (err, result) => {
                     if (err) {
                         res.send({ status: "failure", message: 'fail to change password', data: {} });
+                    } else {
+                        res.send({ status: "success", message: 'success', data: {} });
+                    }
+                });
+            }
+        });
+    } else {
+        res.send({ status: "failure", message: 'not signed in', data: {} });
+    }
+})
+
+app.post('/deactiveUser', urlencodedParser, function (req, res) {
+    if (req.session && req.session.data.reg_id) {
+        const regID = req.session.data.reg_id;
+        const userinfo = "SELECT * from `registered user` where reg_id = " + regID;
+        dbconnection.query(userinfo, (err, data) => {
+            if (err || !(data[0] && data[0].reg_id)) {
+                res.send({ status: "failure", message: "unable to find user", data: {} });
+            } else {
+                const updateSQL = 'UPDATE `registered user` SET is_active = 0 WHERE reg_id = ' + regID;
+                dbconnection.query(updateSQL, (err, result) => {
+                    if (err) {
+                        res.send({ status: "failure", message: 'fail to deactive user', data: {} });
                     } else {
                         res.send({ status: "success", message: 'success', data: {} });
                     }
