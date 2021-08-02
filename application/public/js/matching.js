@@ -170,6 +170,7 @@ function fetchNewMsgDiv(from_user_id, uname) {
         $("#messagesTabRow").css('display', '');
         $("#fromuser").attr("userid",from_user_id);
         $("#fromuser").attr("username",uname);
+        $('#messagingdiv').scrollTop($('#messagingdiv')[0].scrollHeight);
         $("label[for='messageError']").text("Recent Messages");
       } else {
         $("label[for='messageError']").text("Please refresh the page");

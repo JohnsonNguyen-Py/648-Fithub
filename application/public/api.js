@@ -397,7 +397,7 @@ app.post('/checkNewMessage', urlencodedParser, function (req, res) {
 app.post('/getNewMessagesDiv', urlencodedParser, function (req, res) {
     var user = req.body.userid;
     var fromuser = req.body.fromid;
-    var sql = "Select * from user_messages where to_user_id IN (" + user + "," + fromuser + ") and from_user_id IN (" + user + "," + fromuser + ");";
+    var sql = "Select * from user_messages where to_user_id IN (" + user + "," + fromuser + ") and from_user_id IN (" + user + "," + fromuser + ") order by date_updated desc;";
     dbconnection.query(sql, (err, result) => {
         if (err) {
             res.send({ status: "failure", message: err, data: {} });
