@@ -35,3 +35,10 @@ $("#searchbar").on("keyup", function () {
         }
     });
 })
+
+$(document).bind('click', function (e) {
+    var par = $(e.target).parent();
+    if (!$('#displist').is(e.target)) {
+        $('#displist').css("display", "none");
+    };
+});
