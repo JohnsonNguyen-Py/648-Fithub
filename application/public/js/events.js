@@ -2,31 +2,31 @@
 // var url = "http://localhost:3000/";
 
 
-// var url = "http://100.26.92.104:3000/";
-// var sessionInfo = {};
+var url = "http://100.26.92.104:3000/";
+var sessionInfo = {};
 
-// function checkUserLoggedIn() {
-//     $.ajax({
-//         url: url + "checkUserLoggedIn",
-//         type: "POST",
-//         crossDomain: true,
-//         success: function (response) {
-//             console.log(response);
-//             if(response.status == "failure") {
-//                 alert('Log in first');
-//                 window.location.href = '../index.html';
-//             } else {
-//                 sessionInfo = response.data.data;
-//                 $("#accessUserInfo").attr('data-userid', sessionInfo.reg_id);
-//                 console.log(sessionInfo);
-//             }
-//         },
-//         error: function () {
-//         }
-//     });
-// }
+function checkUserLoggedIn() {
+    $.ajax({
+        url: url + "checkUserLoggedIn",
+        type: "POST",
+        crossDomain: true,
+        success: function (response) {
+            console.log(response);
+            if(response.status == "failure") {
+                alert('Log in first');
+                window.location.href = '../index.html';
+            } else {
+                sessionInfo = response.data.data;
+                $("#accessUserInfo").attr('data-userid', sessionInfo.reg_id);
+                console.log(sessionInfo);
+            }
+        },
+        error: function () {
+        }
+    });
+}
 
-// checkUserLoggedIn();
+checkUserLoggedIn();
 
 $("#saveEvent").on("click", function () {
     let title = $("#title").val();
@@ -126,7 +126,7 @@ $("#searchpassionevents").on("click", function () {
 
 
 
-
+//EDUARDO - still working on it
 
 // $("#join-button").on("click", function (){
     
