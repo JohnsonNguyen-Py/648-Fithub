@@ -538,7 +538,5 @@ $(document).ready(function () {
         fetchNewMsgDiv($("#fromuser").attr("userid"), $("#fromuser").attr("username"));
       }
     }
-  }, 15000);
-
-
+  }, 5000);
 });
