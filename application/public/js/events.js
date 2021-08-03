@@ -126,6 +126,8 @@ $("#searchpassionevents").on("click", function () {
 
 
 
+
+
 //EDUARDO - still working on it
 
 // $("#join-button").on("click", function (){

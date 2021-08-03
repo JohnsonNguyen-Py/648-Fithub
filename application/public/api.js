@@ -644,7 +644,7 @@ app.post('/joinEvent', urlencodedParser, function(req, res){
 
 //EDUARDO - fetch events data
 app.post('/getEventsData', urlencodedParser, function (req, res) {
-    
+     
     var sql = 'SELECT * from events where is_active = 1';
 
     if (req.body.zipcode) {
