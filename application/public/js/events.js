@@ -1,6 +1,6 @@
 //VIDHI - Event us PAGE
-// var url = "http://localhost:3000/";
-var url = "http://100.26.92.104:3000/";
+var url = "http://localhost:3000/";
+// var url = "http://100.26.92.104:3000/";
 var sessionInfo = {};
 
 function checkUserLoggedIn() {
@@ -147,7 +147,7 @@ function getEvents() {
             if (response.status === "success") {
                 var data = response.data;
                 if (data.length > 0) {
-                    for (var id in data) { html += '   <div class="event-card"><a href="eventProfile.html?eventId=' + data[id].event_id + '" class="list-group-item list-group-item-action flex-column align-items-start"> <div class="d-flex w-100 justify-content-between"><h5 class="mb-1">' + data[id].title + '</h5></div><div class="row"><div class="col-lg-6">' + data[id].address + ' ' + data[id].zipcode + '</div></div><div class="row"> <div class="col-lg-6">From: ' + formatDate(data[id].from_date) + '</div><div class="col-lg-6">To: ' + formatDate(data[id].to_date) + '</div> </div><div class="row"> <div class="col-lg-6">Starting at: ' + data[id].start_time + '</div><div class="col-lg-6">Ending at: ' + data[id].end_time + '</div></div><div class="event-organizer" style="text-align: end;"><small>Event creator</small> <img class="event-creator-image" src="../images/user_picture/' + data[id].user_id + '.jpeg"></div><!-- <img class="event-image" src="../images/circle-cropped.png"> --></a></div>'; }
+                    for (var id in data) { html += '   <div class="event-card"><a href="EventProfile.html?eventId=' + data[id].event_id + '" class="list-group-item list-group-item-action flex-column align-items-start"> <div class="d-flex w-100 justify-content-between"><h5 class="mb-1">' + data[id].title + '</h5></div><div class="row"><div class="col-lg-6">' + data[id].address + ' ' + data[id].zipcode + '</div></div><div class="row"> <div class="col-lg-6">From: ' + formatDate(data[id].from_date) + '</div><div class="col-lg-6">To: ' + formatDate(data[id].to_date) + '</div> </div><div class="row"> <div class="col-lg-6">Starting at: ' + data[id].start_time + '</div><div class="col-lg-6">Ending at: ' + data[id].end_time + '</div></div><div class="event-organizer" style="text-align: end;"><small>Event creator</small> <img class="event-creator-image" src="../images/user_picture/' + data[id].user_id + '.jpeg"></div><!-- <img class="event-image" src="../images/circle-cropped.png"> --></a></div>'; }
                 } else {
                     html = '<div class="event-card"><a href="#" class="list-group-item list-group-item-action flex-column align-items-start"><div class="d-flex w-100 justify-content-between"><h5 class="mb-1">No Events found</h5></div></a></div>';
                 }
