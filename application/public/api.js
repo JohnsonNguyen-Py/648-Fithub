@@ -138,8 +138,8 @@ app.post('/saveContactUs', urlencodedParser, function (req, res) {
 });
 
 app.post('/checkUserLoggedIn', urlencodedParser, function (req, res) {
-    // console.log("checkUserLoggedIn:");
-    // console.log(req.session);
+    console.log("checkUserLoggedIn:");
+    console.log(req.session);
     if (req.session.loggedIn) {
         res.send({ status: "success", message: "User logged in", data: req.session });
     } else {
