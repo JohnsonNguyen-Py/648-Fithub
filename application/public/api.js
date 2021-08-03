@@ -623,4 +623,46 @@ app.get('/eventProfileForAll', function (req, res) {
     });
 });
 
+
+//EDUARDO 
+app.post('/joinEvent', urlencodedParser, function(req, res){
+
+    var user_id = req.body.id;
+    var event_id = req.body.id;
+    var date = req.body.date;
+
+    var sql = 'INSERT INTO `join_leave_event` (user_id, event_id, date_joined) VALUES (' + user_id + ',' + event_id + ', "' + date + '")';
+
+    dbconnection.query(sql, (err, result) => {
+        if(err){
+            res.send({status: "failure", message: err, data:{}})
+        }else {
+            res.send({ status: "success", message: 'Event Joined', data: {} });
+        }
+    });
+});
+
+//EDUARDO - fetch events data
+app.post('/getEventsData', urlencodedParser, function (req, res) {
+    
+    var sql = 'SELECT * from events where is_active = 1';
+
+    if (req.body.zipcode) {
+        sql += ' and zip_code = "' + req.body.zipcode + '"';
+    }
+
+    // console.log(sql);
+    dbconnection.query(sql, (err, result) => {
+        if (err) {
+            res.send({ status: "failure", message: err, data: {} });
+        } else {
+            if (result) {
+                res.send({ status: "success", message: err, data: result });
+            } else {
+                res.send({ status: "success", message: "No data", data: {} });
+            }
+        }
+    });
+});
+
 app.listen(3000, console.log("Server running on 3000" + new Date().toString()));
