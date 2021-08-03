@@ -138,8 +138,8 @@ app.post('/saveContactUs', urlencodedParser, function (req, res) {
 });
 
 app.post('/checkUserLoggedIn', urlencodedParser, function (req, res) {
-    // console.log("checkUserLoggedIn:");
-    // console.log(req.session);
+    console.log("checkUserLoggedIn:");
+    console.log(req.session);
     if (req.session.loggedIn) {
         res.send({ status: "success", message: "User logged in", data: req.session });
     } else {
@@ -680,6 +680,27 @@ app.get('/eventProfileForAll', function (req, res) {
             res.send(html);
         }
     });
+});
+
+
+//johnson
+app.get('/eventProfileForAdmin', function (req, res) {
+    var event_id = req.body.event_id;
+    var is_active = req.body.is_active;
+    var sql = '';
+
+    const updateSQL = 'UPDATE `events` SET is_active =  "' + is_active + '" WHERE event_id = ' + event_id;
+
+    if (req.body.activateEvents == 0) {
+        sql = 'SELECT * FROM `events` WHERE event_id = "' + event_id + '" and is_active = 0';
+        dbconnection.query(updateSQL, (err, result) => {
+            if (err) {
+                res.send({ status: "failure", message: err, data: {} });
+            } else {
+                res.send({ status: "success", message: "Accepted!", data: {} });
+            }
+        });
+    }
 });
 
 

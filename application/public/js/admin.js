@@ -48,8 +48,24 @@ $("#userlogin").on("click", function () {
 function validateEmail(email) {
     const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(String(email).toLowerCase());
-}
+};
 
 
-
+$("#approveButton").on("click", function () {
+    $.ajax({
+        url: url + "eventProfileForAdmin",
+        type: "POST",
+        crossDomain: true,
+        data: {
+            id: sessionInfo.user_id,
+            showevents: 0
+        },
+        success: function (response) {
+            if (response.status === "success") {
+                alert(response.message);
+                console.log("testing here");
+            }
+        },
+    });
+});
 
