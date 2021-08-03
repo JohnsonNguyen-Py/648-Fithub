@@ -140,21 +140,6 @@ app.post('/saveContactUs', urlencodedParser, function (req, res) {
 app.post('/checkUserLoggedIn', urlencodedParser, function (req, res) {
     // console.log("checkUserLoggedIn:");
     // console.log(req.session);
-    req.session.loggedIn = true;
-req.session.data= {
-    reg_id: 1,
-    user_id: 1,
-    password: '39f3fe61989747afed312c7b7465e004',
-    phone: '9998887777',
-    address: 'san jose california',
-    activity_type: 'roller_skating',
-    zip_code: '97807',
-    gender: 'female',
-    name: 'vidhi1',
-    birthdate: '2000-01-13T08:00:00.000Z',
-    is_active: 1
-  }
-
     if (req.session.loggedIn) {
         res.send({ status: "success", message: "User logged in", data: req.session });
     } else {
