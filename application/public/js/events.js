@@ -1,8 +1,6 @@
 //VIDHI - Event us PAGE
-// var url = "http://localhost:3000/";
-
-
-var url = "http://100.26.92.104:3000/";
+var url = "http://localhost:3000/";
+// var url = "http://100.26.92.104:3000/";
 var sessionInfo = {};
 
 function checkUserLoggedIn() {
@@ -12,13 +10,13 @@ function checkUserLoggedIn() {
         crossDomain: true,
         success: function (response) {
             console.log(response);
-            if(response.status == "failure") {
+            if (response.status == "failure") {
                 alert('Log in first');
                 window.location.href = '../index.html';
             } else {
                 sessionInfo = response.data.data;
-                $("#accessUserInfo").attr('data-userid', sessionInfo.reg_id);
-                console.log(sessionInfo);
+                $("#avatarimguser").attr("src", "../images/user_picture/" + sessionInfo.user_id + ".jpeg");
+                getEvents();
             }
         },
         error: function () {
@@ -27,6 +25,47 @@ function checkUserLoggedIn() {
 }
 
 checkUserLoggedIn();
+
+function formatDate(date) {
+    var d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+
+    if (month.length < 2) 
+        month = '0' + month;
+    if (day.length < 2) 
+        day = '0' + day;
+
+    return [year, month, day].join('-');
+}
+
+function getEvents() {
+    $.ajax({
+        url: url + "getEventsData",
+        type: "POST",
+        crossDomain: true,
+        data: {
+            id: sessionInfo.user_id,
+        },
+        success: function (response) {
+            if (response.status === "success") {
+                var html = '';
+                var data = response.data;
+                for (var id in data) {
+                    html += '<div class="event-card"><a href="eventProfile.html?id='+data[id].event_id+'" class="list-group-item list-group-item-action flex-column align-items-start"> <div class="d-flex w-100 justify-content-between"><h5 class="mb-1">'+data[id].title+'</h5></div><div class="row"><div class="col-lg-6">'+data[id].address+' ' +data[id].zipcode +'</div></div><div class="row"> <div class="col-lg-6">From: '+formatDate(data[id].from_date)+'</div><div class="col-lg-6">To: '+formatDate(data[id].to_date)+'</div> </div><div class="row"> <div class="col-lg-6">Starting at: '+data[id].start_time+'</div><div class="col-lg-6">Ending at: '+data[id].end_time+'</div></div><div class="event-organizer" style="text-align: end;"><small>Event creator</small> <img class="event-creator-image" src="../images/user_picture/'+data[id].user_id+'.jpeg"></div><!-- <img class="event-image" src="../images/circle-cropped.png"> --></a></div>';
+                }
+                $(".viewingAllEventsUser").html(html);
+                console.log(response);
+            } else {
+                alert("No events found")
+            }
+        },
+        error: function () { 
+            alert("Please try again!!!")
+        },
+    });
+}
 
 $("#saveEvent").on("click", function () {
     let title = $("#title").val();
@@ -84,6 +123,7 @@ $("#saveEvent").on("click", function () {
         type: "POST",
         crossDomain: true,
         data: {
+            user_id: sessionInfo.user_id,
             title: title,
             description: description,
             address: address,
@@ -124,12 +164,10 @@ $("#searchpassionevents").on("click", function () {
     $('#modal10').modal('hide');
 });
 
-
-
 //EDUARDO - still working on it
 
 // $("#join-button").on("click", function (){
-    
+
 //     let is_joined = 0;//false
 //     let date_joined = new Date();
 //     let button_join = $("#join-button");
