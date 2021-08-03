@@ -164,7 +164,7 @@ $("#deactive").on("click", function () {
             $("#modaldeactive").modal("hide");
           }
           alert("You will be logged out!");
-          window.location.href = "index.html";
+          window.location.href = "../index.html";
         },
         error: function () {
           alert("failed");
@@ -185,8 +185,9 @@ $("#editProfile").on("click", function () {
     success: function (response) {
       if (response.status === "success") {
         $("#modal4").modal("hide");
+        alert("Profile Updated");
+        window.location.reload();
       }
-      alert(response.message);
     },
     error: function () {
       alert("failed");
