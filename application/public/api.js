@@ -369,6 +369,10 @@ app.post('/deactiveUser', urlencodedParser, function (req, res) {
                     if (err) {
                         res.send({ status: "failure", message: 'fail to deactive user', data: {} });
                     } else {
+
+                        req.session.loggedIn = false;
+                        req.session.data = {};
+                        req.session.destroy((err) => { });
                         res.send({ status: "success", message: 'success', data: {} });
                     }
                 });
@@ -392,6 +396,10 @@ app.post('/deleteUser', urlencodedParser, function (req, res) {
                 if (err) {
                     res.send({ status: "failure", message: 'fail to delete user', data: {} });
                 } else {
+
+                    req.session.loggedIn = false;
+                    req.session.data = {};
+                    req.session.destroy((err) => { });
                     res.send({ status: "success", message: 'success', data: {} });
                 }
             });
@@ -590,7 +598,7 @@ app.post('/sendWorkoutRequest', urlencodedParser, function (req, res) {
     });
 });
 
-app.get('/getWorkoutRequest', urlencodedParser, function (req, res) {
+app.post('/getWorkoutRequest', urlencodedParser, function (req, res) {
     const regID = req.body.user_id;
     const sql = "SELECT t1.workout_id, t1.from_user_id, t1.to_user_id, t1.date_sent, t2.name from `workout request` t1 LEFT JOIN `registered user` t2 ON t1.from_user_id = t2.user_id WHERE to_user_id = " + regID + " AND request_status = 0";
     dbconnection.query(sql, (err, data) => {
