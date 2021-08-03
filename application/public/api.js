@@ -625,32 +625,39 @@ app.get('/eventProfileForAll', function (req, res) {
 
 
 //EDUARDO 
-app.post('/joinEvent', urlencodedParser, function (req, res) {
-
-    var user_id = req.body.id;
-    var event_id = req.body.id;
-    var date = req.body.date;
-
-    var sql = 'INSERT INTO `join_leave_event` (user_id, event_id, date_joined) VALUES (' + user_id + ',' + event_id + ', "' + date + '")';
-
+app.post('/joinDisjoinEvent', urlencodedParser, function (req, res) {
+    var user_id = req.body.user_id;
+    var event_id = req.body.event_id;
+    var acttye = req.body.acttye;
+    var is_joined = req.body.is_joined;
+    var sql = '';
+    if (acttye == "ins") {
+        sql = 'INSERT INTO `join_leave_event` (user_id, event_id, is_joined, date_joined) VALUES (' + user_id + ',' + event_id + ', ' + is_joined + ', CURRENT_TIMESTAMP())';
+    } else {
+        sql = 'UPDATE `join_leave_event` SET is_joined = ' + is_joined + ', date_disjoin = CURRENT_TIMESTAMP() where user_id = ' + user_id + ' and event_id = ' + event_id;
+    }
+    // console.log(sql);
     dbconnection.query(sql, (err, result) => {
         if (err) {
             res.send({ status: "failure", message: err, data: {} })
         } else {
-            res.send({ status: "success", message: 'Event Joined', data: {} });
+            res.send({ status: "success", message: 'Event Joined/Disjoined', data: {} });
         }
     });
 });
 
 //EDUARDO - fetch events data
 app.post('/getEventsData', urlencodedParser, function (req, res) {
-
-    var sql = 'SELECT * from events where user_id != '+req.body.id+' and is_active = 1';
-
-    if (req.body.zipcode) {
-        sql += ' and zip_code = "' + req.body.zipcode + '"';
+    var sql = '';
+    if (req.body.showevents == 1) {
+        sql = 'SELECT * from events where user_id != ' + req.body.id + ' and is_active = 1';
+        if (req.body.zip_code) {
+            sql += ' and zipcode = "' + req.body.zip_code + '"';
+        }
+        sql += " order by from_date asc";
+    } else {
+        sql = 'SELECT * from events where user_id = ' + req.body.id + ' and is_active = 0';
     }
-    sql += " order by from_date asc"
     // console.log(sql);
     dbconnection.query(sql, (err, result) => {
         if (err) {
@@ -659,10 +666,56 @@ app.post('/getEventsData', urlencodedParser, function (req, res) {
             if (result) {
                 res.send({ status: "success", message: err, data: result });
             } else {
-                res.send({ status: "success", message: "No data", data: {} });
+                res.send({ status: "failure", message: "No data", data: {} });
             }
         }
     });
 });
+
+app.post('/getEventsUserInfo', urlencodedParser, function (req, res) {
+    var user_id = req.body.user_id;
+    var event_id = req.body.event_id;
+    var sql = 'SELECT * from events where event_id = ' + req.body.event_id + ' and is_active = 1';
+    dbconnection.query(sql, (err, result) => {
+        if (err) {
+            res.send({ status: "failure", message: err, data: {} });
+        } else {
+            if (result[0]) {
+                var q1 = `SELECT is_joined from join_leave_event where user_id = ${user_id} and event_id = ${event_id}`;
+                dbconnection.query(q1, (err1, result1) => {
+                    if (err1) {
+                        res.send({ status: "failure", message: err1, data: {} });
+                    } else {
+                        var data = {
+                            eventInfo: result[0],
+                            userInfo: result1[0]
+                        }
+                        res.send({ status: "success", message: "", data: data });
+                    }
+                });
+            } else {
+                res.send({ status: "failure", message: "Event does not exists", data: {} });
+            }
+        }
+    });
+});
+
+app.post('/deleteEvent', urlencodedParser, function (req, res) {
+    var user = req.body.user_id;
+    var eveid = req.body.eveid;
+    if (eveid && user) {
+        var q1 = `DELETE from events where user_id = ${user} and event_id = ${eveid}`;
+        dbconnection.query(q1, (err1, result1) => {
+            if (err1) {
+                res.send({ status: "failure", message: err1, data: {} });
+            } else {
+                res.send({ status: "success", message: err1, data: {} });
+            }
+        });
+    } else {
+        res.send({ status: "failure", message: "Missing information to delete event", data: {} });
+    }
+});
+
 
 app.listen(3000, console.log("Server running on 3000" + new Date().toString()));

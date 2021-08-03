@@ -25,6 +25,11 @@
   color: white;
   background-color: #fd2e79;
 }
+#approve-button{
+  float: right;
+  color: white;
+  background-color: #05a11a;
+}
 /*events*/
 .list-group{
     margin-left: 10%;

@@ -66,8 +66,8 @@
             </li>
             <li class="nav-item">
               <form class="form-inline d-flex dropdown">
-                <input class="form-control form-control-sm" type="text" placeholder="Search Events (biking)" id="searchbar"
-                  data-toggle="dropdown">
+                <input class="form-control form-control-sm" type="text" placeholder="Search Events (biking)"
+                  id="searchbar" data-toggle="dropdown">
                 <ul class="dropdown-menu" id="displist" role="menu" aria-labelledby="menu1">
                 </ul>
               </form>
@@ -80,76 +80,43 @@
       <div class="side">
         <div class="header">
           <div class="avatar">
-            <img  id="avatarimguser" src="../images/circle-cropped.png" alt="">
+            <img id="avatarimguser" src="../images/circle-cropped.png" alt="">
           </div>
           <a class="title" href="events.html">Events</a>
         </div>
         <div class="flex-shrink-0 p-3">
           <ul class="list-unstyled ps-0">
-              <li class="mb-1">
-                  <a href="CreateEvents.html">
-                      <button class="btn btn-toggle align-items-center rounded collapsed"
-                          aria-expanded="false">
-                          Create an Event
-                      </button>
-                  </a>
-              </li>
+            <li class="mb-1">
+              <a href="CreateEvents.html">
+                <button class="btn btn-toggle align-items-center rounded collapsed" aria-expanded="false">
+                  Create an Event
+                </button>
+              </a>
+            </li>
+            <li class="mb-1">
+              <a href="myEvents.html">
+                <button class="btn btn-toggle align-items-center rounded collapsed" aria-expanded="false">
+                  My Events
+                </button>
+              </a>
+            </li>
           </ul>
+        </div>
       </div>
-    </div>
 
-    <!-- Events -->
-    <div class="creatingevent">
-      <div class="col-lg-8" id="event-info">
-        <div class="card shadow-sm">
-          <div class="card-header bg-transparent border-0">
-            <h3 class="mb-0"><i class="far fa-clone pr-1"></i>Event Information</h3>
-          </div>
-          <div class="card-body pt-0">
-            <table class="table table-bordered">
-              <tr>
-                <th width="30%">Event</th>
-                <td width="2%">:</td>
-                <td>Group Biking</td>
-              </tr>
-              <tr>
-                <th width="30%">Location</th>
-                <td width="2%">:</td>
-                <td>San Francisco State University, CA</td>
-              </tr>
-              <tr>
-                <th width="30%">Time</th>
-                <td width="2%">:</td>
-                <td>19/7/2021-21/7/2021 8:00am-10:00am PST</td>
-              </tr>
-              <tr>
-                <th width="30%">Limit of Enroller</th>
-                <td width="2%">:</td>
-                <td>30</td>
-              </tr>
-              <tr>
-                <th width="30%">Contact</th>
-                <td width="2%">:</td>
-                <td>415-920-xxxx</td>
-              </tr>
-              <tr>
-                <th width="30%">Description</th>
-                <td width="2%">:</td>
-                <td>Welcome to the biggest group biking in SFSU! We are here to meet you up!</td>
-              </tr>
-            </table>
-          </div>
-          <div class="row event-buttons">
-            <div class="col-lg-4">
-              <button class="btn btn-lg download-button" id="join-button" type="button">Join</button> </br>
+      <!-- Events -->
+      <div class="creatingevent">
+        <div class="col-lg-8" id="event-info">
+          <div class="card shadow-sm">
+            <div class="card-header bg-transparent border-0">
+              <h3 class="mb-0"><i class="far fa-clone pr-1"></i>Event Information</h3>
             </div>
-            <div class="col-lg-4">
-              <button class="btn btn-lg download-button" id="leave-button" type="button">Leave</button> </br>
+            <div class="card-body pt-0" id="viewEventProfile">
+              
             </div>
           </div>
         </div>
       </div>
-    </div>
   </section>
   </div>
 

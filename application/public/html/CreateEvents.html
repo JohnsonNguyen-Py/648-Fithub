@@ -41,37 +41,37 @@
             <nav class="navbar navbar-expand-lg navbar-dark">
                 <i class="fas fa-dumbbell fa-2x"></i>
                 <a class="navbar-brand" href="../index.html">FitHub</a>
-          
+
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                  aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="navbar-toggler-icon"></span>
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
                 </button>
-          
+
                 <div class="collapse navbar-collapse" id="navbarNav">
-                  <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                      <a class="nav-link" href="../html/myProfile.html">My Account</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="../html/matching.html">Find a Buddy</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="../html/events.html">Events</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="/logOut">Log out</a>
-                    </li>
-                    <li class="nav-item">
-                      <form class="form-inline d-flex dropdown">
-                        <input class="form-control form-control-sm" type="text" placeholder="Search Events (biking)" id="searchbar"
-                          data-toggle="dropdown">
-                        <ul class="dropdown-menu" id="displist" role="menu" aria-labelledby="menu1">
-                        </ul>
-                      </form>
-                    </li>
-                  </ul>
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="../html/myProfile.html">My Account</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../html/matching.html">Find a Buddy</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../html/events.html">Events</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/logOut">Log out</a>
+                        </li>
+                        <li class="nav-item">
+                            <form class="form-inline d-flex dropdown">
+                                <input class="form-control form-control-sm" type="text"
+                                    placeholder="Search Events (biking)" id="searchbar" data-toggle="dropdown">
+                                <ul class="dropdown-menu" id="displist" role="menu" aria-labelledby="menu1">
+                                </ul>
+                            </form>
+                        </li>
+                    </ul>
                 </div>
-              </nav>
+            </nav>
         </div>
     </section>
     <div class="container">
@@ -82,7 +82,19 @@
                 </div>
                 <a class="title" href="events.html">Events</a>
             </div>
+            <div class="flex-shrink-0 p-3">
+                <ul class="list-unstyled ps-0">
+                    <li class="mb-1">
+                        <a href="myEvents.html">
+                            <button class="btn btn-toggle align-items-center rounded collapsed" aria-expanded="false">
+                                My Events
+                            </button>
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
+
         <div class="creatingevent">
             <section class="white-section" id="events-list">
                 <div class="list-group">
@@ -108,8 +120,8 @@
                                         placeholder="Enter event address" required> </br>
                                 </div>
                                 <div class="col-lg-4">
-                                    <input type="text" class="form-control" id="zipcode"  maxlength="5" pattern="[0-9]{5}"
-                                        placeholder="Enter event zipcode" required> </br>
+                                    <input type="text" class="form-control" id="zipcode" maxlength="5"
+                                        pattern="[0-9]{5}" placeholder="Enter event zipcode" required> </br>
                                 </div>
                             </div>
                             <div class="row">
@@ -118,13 +130,11 @@
                                         required> </br>
                                 </div>
                                 <div class="col-lg-4">
-                                    <input type="time" class="form-control" id="startTime"
-                                        value="12:00" required>
+                                    <input type="time" class="form-control" id="startTime" value="12:00" required>
                                     <label for=startTime class="time-text">Start Time</label>
                                 </div>
                                 <div class="col-lg-4">
-                                    <input type="time" class="form-control" id="endTime"
-                                        value="12:00" required>
+                                    <input type="time" class="form-control" id="endTime" value="12:00" required>
                                     <label for=endTime class="time-text">End Time</label>
                                 </div>
                             </div>
