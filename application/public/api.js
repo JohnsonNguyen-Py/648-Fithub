@@ -239,7 +239,7 @@ app.post('/saveEvent', urlencodedParser, function (req, res) {
 
 app.post('/getEvents', urlencodedParser, function (req, res) {
     let keyword = req.body.keyword;
-    var sql = "SELECT * FROM `events` WHERE is_active = 1 and `description` LIKE '%" + keyword + "%'";
+    var sql = "SELECT * FROM `events` WHERE from_date > CURRENT_TIMESTAMP() and is_active = 1 and `description` LIKE '%" + keyword + "%'";
     dbconnection.query(sql, (err, result) => {
         if (err) {
             res.send({ status: "failure", message: err, data: {} });
