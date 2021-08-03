@@ -379,6 +379,26 @@ app.post('/deactiveUser', urlencodedParser, function (req, res) {
     }
 })
 
+app.post('/deleteUser', urlencodedParser, function (req, res) {
+    const regID = req.body.reg_id;
+    const userinfo = "SELECT * from `registered user` where reg_id = " + regID;
+    dbconnection.query(userinfo, (err, data) => {
+        if (err || !(data[0] && data[0].reg_id)) {
+            res.send({ status: "failure", message: "unable to find user", data: {} });
+        } else {
+            const updateSQL = 'DELETE FROM `registered user` WHERE reg_id = ' + regID;
+            // console.log(updateSQL);
+            dbconnection.query(updateSQL, (err, result) => {
+                if (err) {
+                    res.send({ status: "failure", message: 'fail to delete user', data: {} });
+                } else {
+                    res.send({ status: "success", message: 'success', data: {} });
+                }
+            });
+        }
+    });
+})
+
 //vidhi - api to check for new messages for a user
 app.post('/checkNewMessage', urlencodedParser, function (req, res) {
     var user = req.body.userid;
@@ -569,6 +589,37 @@ app.post('/sendWorkoutRequest', urlencodedParser, function (req, res) {
         }
     });
 });
+
+app.get('/getWorkoutRequest', urlencodedParser, function (req, res) {
+    const regID = req.body.user_id;
+    const sql = "SELECT t1.workout_id, t1.from_user_id, t1.to_user_id, t1.date_sent, t2.name from `workout request` t1 LEFT JOIN `registered user` t2 ON t1.from_user_id = t2.user_id WHERE to_user_id = " + regID + " AND request_status = 0";
+    dbconnection.query(sql, (err, data) => {
+        console.log(err);
+        if (err) {
+            res.send({ status: "failure", message: "unable to find workout request", data: {} });
+        } else {
+            res.send({ status: "success", message: 'success', data: data });
+        }
+    });
+})
+
+app.post('/rejectWorkoutRequest', urlencodedParser, function (req, res) {
+    if (req.session && req.session.data.reg_id) {
+        const regID = req.session.data.user_id;
+        const tabid = req.body.tabid;
+        const sql = 'DELETE FROM `workout request` WHERE to_user_id = ' + regID + ' AND workout_id = ' + tabid;
+        dbconnection.query(sql, (err, data) => {
+            console.log(err);
+            if (err) {
+                res.send({ status: "failure", message: "unable to reject workout request", data: {} });
+            } else {
+                res.send({ status: "success", message: 'success', data: {} });
+            }
+        });
+    } else {
+        res.send({ status: "failure", message: 'not signed in', data: {} });
+    }
+})
 
 //vidhi - accept workout request
 app.post('/acceptWorkoutRequest', urlencodedParser, function (req, res) {
