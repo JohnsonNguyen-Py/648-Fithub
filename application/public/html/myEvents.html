@@ -20,6 +20,8 @@
         rel="stylesheet">
     <!-- CSS Stylesheets -->
     <link rel="stylesheet" href="../css/events.css">
+    <link rel="stylesheet" href="../css/CreateEvents.css">
+    <link rel="stylesheet" href="../css/eventProfile.css">
 
     <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/ab3cb519ad.js" crossorigin="anonymous"></script>
@@ -82,7 +84,6 @@
                     </div>
                     <a class="title" href="events.html">Events</a>
                 </div>
-                <!-- SIDEBAR LIST -->
                 <div class="flex-shrink-0 p-3">
                     <ul class="list-unstyled ps-0">
                         <li class="mb-1">
@@ -93,82 +94,19 @@
                                 </button>
                             </a>
                         </li>
-                        <li class="mb-1">
-                            <a href="myEvents.html">
-                              <button class="btn btn-toggle align-items-center rounded collapsed" aria-expanded="false">
-                                My Events
-                              </button>
-                            </a>
-                          </li>
-                        <li class="mb-1">
-                            <button class="btn btn-toggle align-items-center rounded collapsed"
-                                data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">
-                                Search Filters
-                            </button>
-                            <div class="collapse" id="dashboard-collapse">
-                                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                    <li>
-                                        <!-- Button trigger modal -->
-                                        <button type="button" class="btn btn-sm" data-bs-toggle="modal"
-                                            data-bs-target="#modal6">
-                                            Zipcode
-                                        </button>
-                                        <!-- Modal -->
-                                        <div class="modal fade" id="modal6" tabindex="-1" role="dialog"
-                                            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                            <div class="modal-dialog modal-dialog-centered" role="document">
-                                                <div class="modal-content">
-                                                    <div class="modal-header1">
-                                                        <a class="dumbbell" href="#"><i class="fas fa-dumbbell"></i></a>
-                                                    </div>
-                                                    <h5 class="modal-title" id="exampleModalLabel">Zipcode</h5>
-                                                    <div class="modal-body">
-                                                        <input type="number" class="form-control" id="filterzipcode"
-                                                            placeholder="zipcode">
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary"
-                                                            id="searchzipevent">Continue</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-
-                                    <li>
-                                        <button id="filterSearch" type="button" class="btn btn-danger">
-                                            Search
-                                        </button>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
                     </ul>
                 </div>
             </div>
+
+            <!-- Events -->
             <div class="creatingevent">
                 <section class="white-section viewingAllEventsUser" id="events-list">
-                    <div class="event-card">
-                        <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-                            <div class="d-flex w-100 justify-content-between">
-                                <h5 class="mb-1">No Events found</h5>
-                            </div>
-                        </a>
-                    </div>
+                    
                 </section>
             </div>
-        </div>
     </section>
+    </div>
 
-
-    <!-- <div class="event-arrows">
-        <a class="arrows" href="#">
-            <img class="arrows" id="left-arrow" src="../images/arrow.png">
-        </a>
-        <a class="arrows" href="#">
-            <img class="arrows" id="right-arrow" src="../images/arrow.png">
-        </a>
-    </div> -->
 
     <!-- Footer -->
     <footer class="white-section" id="footer">
