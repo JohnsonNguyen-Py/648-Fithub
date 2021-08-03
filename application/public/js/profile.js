@@ -163,7 +163,8 @@ $("#deactive").on("click", function () {
           if (response.status === "success") {
             $("#modaldeactive").modal("hide");
           }
-          alert(response.message);
+          alert("You will be logged out!");
+          window.location.href = "index.html";
         },
         error: function () {
           alert("failed");
