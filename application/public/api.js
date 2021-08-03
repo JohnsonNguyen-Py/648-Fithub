@@ -281,10 +281,10 @@ app.post("/modifyUserInfo", upload.single("picture"), function (req, res) {
         const regID = req.session.data.reg_id, userID = req.session.data.user_id;
         if (req.file) {
             const source_file = req.file.path;
-            const dest_dir = path.join(__dirname, "/public/images/user_picture");
+            const dest_dir = path.join(__dirname, "/images/user_picture");
             const dest_file = path.join(
                 __dirname,
-                "/public/images/user_picture",
+                "/images/user_picture",
                 userID + ".jpeg"
             );
             fs.exists(dest_dir, function (exists) {
