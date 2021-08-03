@@ -1,6 +1,6 @@
 //VIDHI - Event us PAGE
-var url = "http://localhost:3000/";
-// var url = "http://100.26.92.104:3000/";
+// var url = "http://localhost:3000/";
+var url = "http://100.26.92.104:3000/";
 var sessionInfo = {};
 
 function checkUserLoggedIn() {
