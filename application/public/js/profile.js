@@ -222,7 +222,7 @@ $("#delaccount").on("click", function () {
 $("#modal11-button").on("click", function () {
   $.ajax({
     url: url + "getWorkoutRequest",
-    type: "GET",
+    type: "POST",
     crossDomain: true,
     data: {
       user_id: sessionInfo.user_id
@@ -258,10 +258,7 @@ function updateWorkoutRequest() {
       },
     });
     return `<div class="messages"><div class="avatar"><img id="workout_avatar_${idx}" src="../images/user_picture/${el.from_user_id}.jpeg" alt=""></div><div class="friend">
-        <div class="user">${el.name}<div class="no">
-            <i class="accept_request fa fa-check" aria-hidden="true" data-tabid="${el.workout_id}" data-fromid="${el.from_user_id}" data-toid="${el.to_user_id}"></i>&nbsp;&nbsp;
-            <i class="reject_request fas fa-times" aria-hidden="true" data-tabid="${el.workout_id}" data-fromid="${el.from_user_id}" data-toid="${el.to_user_id}"></i>
-        </div></div></div></div>`;
+        <div class="user">${el.name}</div></div></div>`;
   });
   $("#request_body").html(nodes.join());
 }
