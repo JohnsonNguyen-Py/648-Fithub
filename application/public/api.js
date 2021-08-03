@@ -225,9 +225,9 @@ app.post('/saveEvent', urlencodedParser, function (req, res) {
         to_date: req.body.date,
         start_time: req.body.startTime,
         end_time: req.body.endTime,
-        reg_id: 1
+        user_id: req.body.user_id
     };
-    var sql = "INSERT INTO `events`(reg_id, title, description, address, zipcode, from_date, to_date, start_time, end_time) VALUES (" + data.reg_id + ", '" + data.title + "','" + data.description + "','" + data.address + "','" + data.zipcode + "','" + data.from_date + "','" + data.to_date + "','" + data.start_time + "','" + data.end_time + "')";
+    var sql = "INSERT INTO `events`(user_id, title, description, address, zipcode, from_date, to_date, start_time, end_time) VALUES (" + data.user_id + ", '" + data.title + "','" + data.description + "','" + data.address + "','" + data.zipcode + "','" + data.from_date + "','" + data.to_date + "','" + data.start_time + "','" + data.end_time + "')";
     dbconnection.query(sql, (err, result) => {
         if (err) {
             res.send({ status: "failure", message: err, data: {} });
@@ -625,7 +625,7 @@ app.get('/eventProfileForAll', function (req, res) {
 
 
 //EDUARDO 
-app.post('/joinEvent', urlencodedParser, function(req, res){
+app.post('/joinEvent', urlencodedParser, function (req, res) {
 
     var user_id = req.body.id;
     var event_id = req.body.id;
@@ -634,9 +634,9 @@ app.post('/joinEvent', urlencodedParser, function(req, res){
     var sql = 'INSERT INTO `join_leave_event` (user_id, event_id, date_joined) VALUES (' + user_id + ',' + event_id + ', "' + date + '")';
 
     dbconnection.query(sql, (err, result) => {
-        if(err){
-            res.send({status: "failure", message: err, data:{}})
-        }else {
+        if (err) {
+            res.send({ status: "failure", message: err, data: {} })
+        } else {
             res.send({ status: "success", message: 'Event Joined', data: {} });
         }
     });
@@ -644,13 +644,13 @@ app.post('/joinEvent', urlencodedParser, function(req, res){
 
 //EDUARDO - fetch events data
 app.post('/getEventsData', urlencodedParser, function (req, res) {
-     
-    var sql = 'SELECT * from events where is_active = 1';
+
+    var sql = 'SELECT * from events where user_id != '+req.body.id+' and is_active = 1';
 
     if (req.body.zipcode) {
         sql += ' and zip_code = "' + req.body.zipcode + '"';
     }
-
+    sql += " order by from_date asc"
     // console.log(sql);
     dbconnection.query(sql, (err, result) => {
         if (err) {
