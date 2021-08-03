@@ -1,5 +1,5 @@
-var url = "http://100.26.92.104:3000/";
-//var url = "http://localhost:3000/";
+//var url = "http://100.26.92.104:3000/";
+var url = "http://localhost:3000/";
 var sessionInfo = {};
 
 //reuse from common with adjustment with ../html/myprofile.html
@@ -44,6 +44,8 @@ $("#userlogin").on("click", function () {
 
 
 });
+
+checkUserLoggedIn();
 
 function validateEmail(email) {
     const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
