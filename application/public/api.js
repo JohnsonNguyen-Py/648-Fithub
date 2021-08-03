@@ -644,12 +644,12 @@ app.post('/joinEvent', urlencodedParser, function(req, res){
 
 //EDUARDO - fetch events data
 app.post('/getEventsData', urlencodedParser, function (req, res) {
-    var zipCode = req.body.zipcode;
-    var sql = '';
+    
+    var sql = 'SELECT * from events where is_active = 1';
 
-    //add event_id, description, start_time, end_time, from_date, to_date, tittle, address, zipcode, is_active
-
-    sql = 'SELECT `events`.event_id, description, star_time, end_time, from_date, to_date, tittle, address, zipcode, is_active = 1';
+    if (req.body.zipcode) {
+        sql += ' and zip_code = "' + req.body.zipcode + '"';
+    }
 
     // console.log(sql);
     dbconnection.query(sql, (err, result) => {
@@ -657,10 +657,7 @@ app.post('/getEventsData', urlencodedParser, function (req, res) {
             res.send({ status: "failure", message: err, data: {} });
         } else {
             if (result) {
-                var data = {
-                    'data': result
-                }
-                res.send({ status: "success", message: err, data: data });
+                res.send({ status: "success", message: err, data: result });
             } else {
                 res.send({ status: "success", message: "No data", data: {} });
             }
