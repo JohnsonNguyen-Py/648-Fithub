@@ -1,6 +1,6 @@
 // var url = "http://localhost:3000/";
 var url = "http://100.26.92.104:3000/";
-var testurl = "http://localhost:3000/";
+// var testurl = "http://localhost:3000/";
 var sessionInfo = {};
 var workout_requests = [];
 const nodes = {
@@ -76,7 +76,7 @@ function checkUserLoggedIn() {
         $("#accessUserInfo").attr("data-userid", sessionInfo.reg_id);
       }
     },
-    error: function () {},
+    error: function () { },
   });
 }
 
@@ -130,7 +130,7 @@ function fetchUserInfo(reg_id, user_id) {
         console.log("unable to fetch userinfo");
       }
     },
-    error: function () {},
+    error: function () { },
   });
 }
 
@@ -203,11 +203,14 @@ $("#delaccount").on("click", function () {
     url: url + "deleteUser",
     type: "POST",
     crossDomain: true,
+    data: {
+      reg_id: sessionInfo.reg_id
+    },
     success: function (response) {
       if (response.status === "success") {
         $("#modaldel").modal("hide");
       }
-      alert("You will be logged out!");
+      alert("Account deleted");
       window.location.href = "../index.html";
     },
     error: function () {
@@ -216,96 +219,100 @@ $("#delaccount").on("click", function () {
   });
 });
 
-$("#modal11-button").on("click", function(){
-    $.ajax({
-        url: url + "getWorkoutRequest",
-        type: "GET",
-        crossDomain: true,
-        success: function (response) {
-          if (response.status === "success") {
-            const list = response.data;
-            workout_requests = list;
-            updateWorkoutRequest()
-          }else{
-            alert(response.message);
-          }
-        },
-        error: function () {
-          alert("failed");
-        },
-    });
+$("#modal11-button").on("click", function () {
+  $.ajax({
+    url: url + "getWorkoutRequest",
+    type: "GET",
+    crossDomain: true,
+    data: {
+      user_id: sessionInfo.user_id
+    },
+    success: function (response) {
+      if (response.status === "success") {
+        const list = response.data;
+        workout_requests = list;
+        updateWorkoutRequest();
+      } else {
+        alert(response.message);
+      }
+    },
+    error: function () {
+      alert("failed");
+    },
+  });
 })
 
-function updateWorkoutRequest(){
-    const nodes = workout_requests.map((el,idx) => {
-        $.ajax({
-            url: "../images/user_picture/" + el.from_user_id + ".jpeg",
-            type: "GET",
-            success: function (response) {
-              $("#workout_avatar_" + idx).attr(
-                "src",
-                "../images/user_picture/" + el.from_user_id + ".jpeg"
-              );
-            },
-            error: function () {
-              $("#workout_avatar_" + idx).attr("src", "../images/userImg.png");
-            },
-          });
-        return `<div class="messages"><div class="avatar"><img id="workout_avatar_${idx}" src="../images/user_picture/${el.from_user_id}.jpeg" alt=""></div><div class="friend">
+function updateWorkoutRequest() {
+  const nodes = workout_requests.map((el, idx) => {
+    $.ajax({
+      url: "../images/user_picture/" + el.from_user_id + ".jpeg",
+      type: "GET",
+      success: function (response) {
+        $("#workout_avatar_" + idx).attr(
+          "src",
+          "../images/user_picture/" + el.from_user_id + ".jpeg"
+        );
+      },
+      error: function () {
+        $("#workout_avatar_" + idx).attr("src", "../images/userImg.png");
+      },
+    });
+    return `<div class="messages"><div class="avatar"><img id="workout_avatar_${idx}" src="../images/user_picture/${el.from_user_id}.jpeg" alt=""></div><div class="friend">
         <div class="user">${el.name}<div class="no">
             <i class="accept_request fa fa-check" aria-hidden="true" data-tabid="${el.workout_id}" data-fromid="${el.from_user_id}" data-toid="${el.to_user_id}"></i>&nbsp;&nbsp;
             <i class="reject_request fas fa-times" aria-hidden="true" data-tabid="${el.workout_id}" data-fromid="${el.from_user_id}" data-toid="${el.to_user_id}"></i>
-        </div></div></div></div>`;});
-    $("#request_body").html(nodes.join());
+        </div></div></div></div>`;
+  });
+  $("#request_body").html(nodes.join());
 }
 
-$("#request_body").on("click", ".accept_request", function(ev){
-    const target = ev.target;
-    const tabid = target.getAttribute("data-tabid"), fromid = target.getAttribute("data-fromid"), toid = target.getAttribute("data-toid");
-    $.ajax({
-        url: url + "acceptWorkoutRequest",
-        type: "POST",
-        crossDomain: true,
-        data:{
-            to_user_id: toid,
-            from_user_id: fromid,
-            tabid: tabid,
-            msg: 'I accepted your workout request'
-        },
-        success: function (response) {
-          if(response.status === "success"){
-            alert(response.message);
-            workout_requests.splice(workout_requests.findIndex(el => el.workout_id == tabid), 1);
-            updateWorkoutRequest()
-          }else{
-            alert("failed");
-          }
-        },
-        error: function () {
-          alert("failed");
-        },
-    });
+$("#request_body").on("click", ".accept_request", function (ev) {
+  const target = ev.target;
+  const tabid = target.getAttribute("data-tabid"), fromid = target.getAttribute("data-fromid"), toid = target.getAttribute("data-toid");
+  $.ajax({
+    url: url + "acceptWorkoutRequest",
+    type: "POST",
+    crossDomain: true,
+    data: {
+      to_user_id: toid,
+      from_user_id: fromid,
+      tabid: tabid,
+      msg: 'I accepted your workout request'
+    },
+    success: function (response) {
+      if (response.status === "success") {
+        alert(response.message);
+        workout_requests.splice(workout_requests.findIndex(el => el.workout_id == tabid), 1);
+        updateWorkoutRequest()
+      } else {
+        alert("failed");
+      }
+    },
+    error: function () {
+      alert("failed");
+    },
+  });
 })
 
-$("#request_body").on("click", ".reject_request", function(ev){
-    const target = ev.target;
-    const tabid = target.getAttribute("data-tabid"), fromid = target.getAttribute("data-fromid"), toid = target.getAttribute("data-toid");
-    $.ajax({
-        url: url + "rejectWorkoutRequest",
-        type: "POST",
-        crossDomain: true,
-        data:{
-            tabid: tabid,
-        },
-        success: function (response) {
-          alert(response.message);
-          if(response.status === "success"){
-            workout_requests.splice(workout_requests.findIndex(el => el.workout_id == tabid), 1);
-            updateWorkoutRequest()
-          }
-        },
-        error: function () {
-          alert("failed");
-        },
-    });
+$("#request_body").on("click", ".reject_request", function (ev) {
+  const target = ev.target;
+  const tabid = target.getAttribute("data-tabid"), fromid = target.getAttribute("data-fromid"), toid = target.getAttribute("data-toid");
+  $.ajax({
+    url: url + "rejectWorkoutRequest",
+    type: "POST",
+    crossDomain: true,
+    data: {
+      tabid: tabid,
+    },
+    success: function (response) {
+      alert(response.message);
+      if (response.status === "success") {
+        workout_requests.splice(workout_requests.findIndex(el => el.workout_id == tabid), 1);
+        updateWorkoutRequest()
+      }
+    },
+    error: function () {
+      alert("failed");
+    },
+  });
 })
