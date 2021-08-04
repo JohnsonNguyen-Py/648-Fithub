@@ -684,7 +684,7 @@ app.get('/eventProfileForAll', function (req, res) {
 
 
 //johnson
-app.get('/eventProfileForAdmin', function (req, res) {
+app.post('/eventProfileForAdmin', urlencodedParser, function (req, res) {
     var event_id = req.body.event_id;
     const updateSQL = 'UPDATE `events` SET is_active =  1 WHERE event_id = ' + event_id;
 
