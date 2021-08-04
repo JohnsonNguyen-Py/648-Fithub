@@ -30,7 +30,7 @@ $("#userlogin").on("click", function () {
         success: function (response) {
             if (response.status == "success") {
                 //console.log("testing");
-                window.location.href = "../html/myProfile.html";
+                window.location.href = "../html/adminEvents.html";
             } else {
                 alert(response.message);
             }
