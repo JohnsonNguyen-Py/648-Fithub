@@ -2,7 +2,7 @@ var url = "http://100.26.92.104:3000/";
 // var url = "http://localhost:3000/";
 var sessionInfo = {};
 
-//reuse from common with adjustment with ../html/myprofile.html
+//reuse from common.js and events.js with adjustment with ../html/myprofile.html
 function checkUserLoggedIn() {
     $.ajax({
         url: url + "checkUserLoggedIn",
@@ -19,6 +19,21 @@ function checkUserLoggedIn() {
         },
         error: function () { },
     });
+}
+
+
+function formatDate(date) {
+    var d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+
+    if (month.length < 2)
+        month = '0' + month;
+    if (day.length < 2)
+        day = '0' + day;
+
+    return [year, month, day].join('-');
 }
 
 $("#userlogin").on("click", function () {
