@@ -797,5 +797,20 @@ app.post('/deleteEvent', urlencodedParser, function (req, res) {
     }
 });
 
+app.post('/getEventsDataAdmin', urlencodedParser, function (req, res) {
+    var sql = 'SELECT * from events where user_id != ' + req.body.id + ' and is_active = 0';
+    // console.log(sql);
+    dbconnection.query(sql, (err, result) => {
+        if (err) {
+            res.send({ status: "failure", message: err, data: {} });
+        } else {
+            if (result) {
+                res.send({ status: "success", message: err, data: result });
+            } else {
+                res.send({ status: "failure", message: "No data", data: {} });
+            }
+        }
+    });
+});
 
 app.listen(3000, console.log("Server running on 3000" + new Date().toString()));
