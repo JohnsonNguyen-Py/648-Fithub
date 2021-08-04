@@ -71,7 +71,7 @@ function validateEmail(email) {
 
 function getUnapprovedEvents() {
     $.ajax({
-        url: url + "getUnapprovedEventsAdmin",
+        url: url + "getEventsData",
         type: "POST",
         crossDomain: true,
         data: {
