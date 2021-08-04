@@ -60,7 +60,7 @@ $("#userlogin").on("click", function () {
     });
 });
 
-if(!window.location.pathname == "/html/adminLogin.html") {
+if(window.location.pathname == "/html/adminEvents.html") {
     checkUserLoggedIn();
 }
 
