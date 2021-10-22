@@ -6,7 +6,7 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false })
 var cookieParser = require('cookie-parser');
 
 var session = require('express-session');
-var md5 = require('md5');
+const bcrypt = require('bcrypt');
 const path = require('path');
 
 var multer = require("multer");
