@@ -91,7 +91,7 @@ app.post('/registerUser', urlencodedParser, function (req, res) {
                                         account = {
                                             reg_id: reg_id,
                                             username: req.body.email_id,
-                                            password: md5(req.body.password)
+                                            password: bcrypt(req.body.password)
                                         }
                                         var sql2 = "INSERT INTO `account`(reg_id, username, password) VALUES (" + account.reg_id + ",'" + account.username + "','" + account.password + "');";
                                         dbconnection.query(sql2, (err2, result2) => {
@@ -150,7 +150,7 @@ app.post('/checkUserLoggedIn', urlencodedParser, function (req, res) {
 app.post('/loginAPI', urlencodedParser, function (req, res) {
     //get username and password
     let email = req.body.email;
-    let password = md5(req.body.password);
+    let password = bcrypt(req.body.password);
     function checkuserExists() {
         var checkisuserexists = "SELECT `registered user`.reg_id, `registered user`.user_id, password, phone, address, activity_type, zip_code, gender, name, birthdate, is_active from `account` join `registered user` on `registered user`.reg_id = `account`.reg_id where username = '" + email + "'";
         return new Promise(resolve => {
@@ -341,7 +341,7 @@ app.post('/changePassword', urlencodedParser, function (req, res) {
             if (err || !(data[0] && data[0].reg_id)) {
                 res.send({ status: "failure", message: "unable to find user", data: {} });
             } else {
-                const updateSQL = 'UPDATE `account` SET password = "' + md5(password) + '" WHERE reg_id = ' + regID;
+                const updateSQL = 'UPDATE `account` SET password = "' + bcrypt(password) + '" WHERE reg_id = ' + regID;
                 dbconnection.query(updateSQL, (err, result) => {
                     if (err) {
                         res.send({ status: "failure", message: 'fail to change password', data: {} });
